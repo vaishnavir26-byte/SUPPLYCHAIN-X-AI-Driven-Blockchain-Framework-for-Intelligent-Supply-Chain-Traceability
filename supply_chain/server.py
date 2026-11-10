@@ -86,6 +86,23 @@ class SupplyChainRequestHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             return
 
+        if path == "/presentation" or path == "/presentation.html":
+            pres_path = os.path.join(STATIC_DIR, "presentation.html")
+            if not os.path.exists(pres_path):
+                pres_path = os.path.join(os.path.dirname(STATIC_DIR), "..", "presentation.html")
+            if os.path.exists(pres_path):
+                with open(pres_path, 'rb') as f:
+                    content = f.read()
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.end_headers()
+                self.wfile.write(content)
+                return
+            else:
+                self._send_json(404, {"error": "Presentation template not found"})
+                return
+
         if path == "/" or path == "/index.html":
             index_path = os.path.join(STATIC_DIR, "index.html")
             if os.path.exists(index_path):
