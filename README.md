@@ -7,9 +7,9 @@
 [![Storage](https://img.shields.io/badge/Document%20Storage-IPFS%20Architecture-cyan.svg)](https://ipfs.tech/)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4-38bdf8.svg)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available%20Now-success.svg)](https://48a0320b47e31f.lhr.life)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available%20Now-success.svg)](https://5a69d615963104.lhr.life)
 
-> 🚀 **Live Interactive Demo:** [https://48a0320b47e31f.lhr.life](https://48a0320b47e31f.lhr.life)  
+> 🚀 **Live Interactive Demo:** [https://5a69d615963104.lhr.life](https://5a69d615963104.lhr.life)  
 > 📦 **GitHub Repository:** [https://github.com/vaishnavir26-byte/SUPPLYCHAIN-X-AI-Driven-Blockchain-Framework-for-Intelligent-Supply-Chain-Traceability](https://github.com/vaishnavir26-byte/SUPPLYCHAIN-X-AI-Driven-Blockchain-Framework-for-Intelligent-Supply-Chain-Traceability)
 
 ---
