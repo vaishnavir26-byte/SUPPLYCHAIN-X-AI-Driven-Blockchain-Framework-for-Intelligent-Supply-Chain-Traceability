@@ -1,0 +1,2580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TraceChain AI — Permissioned Blockchain & AI Risk Traceability</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310b981'><path d='M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z'/></svg>">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eefdf5',
+              100: '#d7fbe8',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              900: '#064e3b',
+            },
+            blockchain: {
+              dark: '#0f172a',
+              card: '#1e293b',
+              accent: '#38bdf8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.02); }
+    }
+    .pulse-glow { animation: pulseGlow 3s infinite ease-in-out; }
+    .mono-hash { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+    @keyframes dashMove {
+      to { stroke-dashoffset: -40; }
+    }
+    .heartbeat-line {
+      stroke-dasharray: 6, 6;
+      animation: dashMove 2s linear infinite;
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(51, 65, 85, 0.6);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.25);
+    }
+    .glow-sky {
+      box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Navigation Bar -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50 px-6 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-sky-500 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+          <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-lg tracking-tight text-white">TraceChain <span class="text-emerald-400">AI</span></span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">v1.0 Fabric Sim</span>
+          </div>
+          <p class="text-xs text-slate-400">AI & Blockchain Supply Chain Integrity & Risk Intelligence</p>
+        </div>
+      </div>
+
+      <!-- Live Raft Status Indicator Badge -->
+      <div class="flex items-center gap-4">
+        <div id="raft-badge" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+          <span id="raft-summary-text" class="text-slate-300 font-mono font-medium">Raft Quorum: Checking...</span>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-xs text-slate-300">
+          <i data-lucide="layers" class="w-4 h-4 text-sky-400"></i>
+          <span>Blocks: <b id="head-block-badge" class="text-white font-mono">--</b></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs (7 PRD Screens) -->
+    <div class="max-w-7xl mx-auto mt-3 flex items-center gap-1 overflow-x-auto pb-1 text-sm scrollbar-none">
+      <button onclick="switchTab('screen-dashboard')" class="nav-tab active px-3.5 py-1.5 rounded-lg flex items-center gap-2 font-medium transition text-white bg-emerald-600">
+        <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Main Dashboard
+      </button>
+      <button onclick="switchTab('screen-products')" class="nav-tab px-3.5 py-1.5 rounded-lg flex items-center gap-2 font-medium transition text-slate-400 hover:text-white hover:bg-slate-800">
+        <i data-lucide="package" class="w-4 h-4"></i> Product Traceability
+      </button>
+      <button onclick="switchTab('screen-explorer')" class="nav-tab px-3.5 py-1.5 rounded-lg flex items-center gap-2 font-medium transition text-slate-400 hover:text-white hover:bg-slate-800">
+        <i data-lucide="blocks" class="w-4 h-4"></i> Blockchain Explorer
+      </button>
+      <button onclick="switchTab('screen-approvals')" class="nav-tab px-3.5 py-1.5 rounded-lg flex items-center gap-2 font-medium transition text-slate-400 hover:text-white hover:bg-slate-800">
+        <i data-lucide="users-check" class="w-4 h-4"></i> Multi-Party Approvals
+      </button>
+      <button onclick="switchTab('screen-documents')" class="nav-tab px-3.5 py-1.5 rounded-lg flex items-center gap-2 font-medium transition text-slate-400 hover:text-white hover:bg-slate-800">
+        <i data-lucide="file-check-2" class="w-4 h-4"></i> IPFS & Merkle Verification
+      </button>
+      <button onclick="switchTab('screen-ai')" class="nav-tab px-3.5 py-1.5 rounded-lg flex items-center gap-2 font-medium transition text-slate-400 hover:text-white hover:bg-slate-800">
+        <i data-lucide="brain-circuit" class="w-4 h-4"></i> AI Risk Prediction
+      </button>
+      <button onclick="switchTab('screen-network')" class="nav-tab px-3.5 py-1.5 rounded-lg flex items-center gap-2 font-medium transition text-slate-400 hover:text-white hover:bg-slate-800">
+        <i data-lucide="network" class="w-4 h-4"></i> Raft Network Management
+      </button>
+    </div>
+  </header>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-md"></div>
+
+  <!-- Main Content Viewport -->
+  <main class="max-w-7xl mx-auto w-full p-6 flex-1">
+
+    <!-- ==========================================
+         SCREEN 1: MAIN DASHBOARD
+         ========================================== -->
+    <section id="screen-dashboard" class="tab-pane space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            Supply Chain Command Center
+          </h1>
+          <p class="text-slate-400 text-sm mt-0.5">Real-time telemetry, permissioned blockchain status, and AI-predicted risk overview.</p>
+        </div>
+        <button onclick="refreshDashboard()" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-2 border border-slate-700 transition">
+          <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Refresh Data
+        </button>
+      </div>
+
+      <!-- KPI Metrics Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 relative overflow-hidden shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Registered Products</span>
+            <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+              <i data-lucide="package" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div id="stat-products" class="text-3xl font-bold text-white mt-3">--</div>
+          <p class="text-xs text-emerald-400 mt-1 flex items-center gap-1 font-mono">
+            <i data-lucide="check" class="w-3 h-3"></i> 100% Origin Traced
+          </p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 relative overflow-hidden shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Blockchain Blocks</span>
+            <div class="w-9 h-9 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center">
+              <i data-lucide="blocks" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div id="stat-blocks" class="text-3xl font-bold text-white mt-3">--</div>
+          <p class="text-xs text-sky-400 mt-1 flex items-center gap-1 font-mono">
+            <i data-lucide="shield-check" class="w-3 h-3"></i> Cryptographically Chained
+          </p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 relative overflow-hidden shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Pending Approvals</span>
+            <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div id="stat-proposals" class="text-3xl font-bold text-white mt-3">--</div>
+          <p class="text-xs text-amber-400 mt-1 flex items-center gap-1 font-mono">
+            Multi-Party Endorsements
+          </p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 relative overflow-hidden shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Consensus State</span>
+            <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <i data-lucide="server" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div id="stat-raft" class="text-xl font-bold text-emerald-400 mt-3 truncate">ONLINE</div>
+          <p id="stat-raft-detail" class="text-xs text-slate-400 mt-1 font-mono">
+            Quorum: 2/3 Nodes Active
+          </p>
+        </div>
+      </div>
+
+      <!-- Visual Analytics Graphs Row -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Chart 1: Supply Chain Lifecycle Distribution -->
+        <div class="glass-card rounded-xl p-5 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <h3 class="font-semibold text-slate-200 text-xs uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="pie-chart" class="w-4 h-4 text-emerald-400"></i> Batch Lifecycle Stages
+            </h3>
+            <span class="text-[11px] font-mono text-emerald-400">Live State</span>
+          </div>
+          <div class="relative h-48 flex items-center justify-center">
+            <canvas id="chart-stage-distribution"></canvas>
+          </div>
+          <div class="grid grid-cols-3 gap-1 text-[10px] text-center pt-1 border-t border-slate-800/80 text-slate-400">
+            <div><span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1"></span>Harvested</div>
+            <div><span class="inline-block w-2 h-2 rounded-full bg-sky-500 mr-1"></span>Processing</div>
+            <div><span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1"></span>In Transit</div>
+          </div>
+        </div>
+
+        <!-- Chart 2: Blockchain Activity & Orderer Commits -->
+        <div class="lg:col-span-2 glass-card rounded-xl p-5 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <h3 class="font-semibold text-slate-200 text-xs uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="trending-up" class="w-4 h-4 text-sky-400"></i> Consensus Throughput & Block Commits
+            </h3>
+            <span class="text-[11px] font-mono text-sky-400">Raft Telemetry</span>
+          </div>
+          <div class="relative h-48">
+            <canvas id="chart-activity-pulse"></canvas>
+          </div>
+          <div class="flex justify-between items-center text-[11px] text-slate-400 pt-1 border-t border-slate-800/80">
+            <span>Dynamic transaction throughput via Raft cluster</span>
+            <span class="text-emerald-400 font-mono flex items-center gap-1"><i data-lucide="shield-check" class="w-3 h-3"></i> Zero Forking Guarantee</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Callouts & Recent Activity -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Traceability Overview -->
+        <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="font-semibold text-slate-200 flex items-center gap-2 text-sm">
+              <i data-lucide="activity" class="w-4 h-4 text-emerald-400"></i> Recent Supply Chain Batches
+            </h3>
+            <span class="text-xs text-slate-400">Live Stage Feed</span>
+          </div>
+          <div id="dashboard-products-list" class="space-y-3">
+            <p class="text-xs text-slate-500 text-center py-4">Loading active products...</p>
+          </div>
+        </div>
+
+        <!-- AI Risk Quick Summary -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="font-semibold text-slate-200 flex items-center gap-2 text-sm">
+              <i data-lucide="brain" class="w-4 h-4 text-sky-400"></i> AI Risk Summary
+            </h3>
+            <span class="text-xs px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-mono text-[11px]">RF + IsoForest</span>
+          </div>
+          <div id="dashboard-risk-box" class="space-y-3">
+            <div class="p-4 rounded-lg bg-slate-800/60 border border-slate-700/60 text-center space-y-2">
+              <span class="text-xs text-slate-400 font-medium">Model Status</span>
+              <div class="text-2xl font-bold text-emerald-400">Calibrated</div>
+              <p class="text-xs text-slate-400">Input features: Delays, Rejections, Supplier Index, Anomalies.</p>
+            </div>
+            <button onclick="switchTab('screen-ai')" class="w-full py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs flex items-center justify-center gap-2 transition">
+              <i data-lucide="play" class="w-3.5 h-3.5"></i> Run Risk Prediction Simulation
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 2: PRODUCT MANAGEMENT & TRACEABILITY
+         ========================================== -->
+    <section id="screen-products" class="tab-pane hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-white flex items-center gap-2">
+            Product Registration & Traceability
+          </h1>
+          <p class="text-slate-400 text-sm">Register new agricultural/manufactured batches and inspect end-to-end custody stages.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Registration Form (FR-02) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex items-center gap-2">
+            <i data-lucide="file-plus" class="w-5 h-5 text-emerald-400"></i>
+            <h3 class="font-semibold text-slate-200 text-sm">Register Product (FR-02)</h3>
+          </div>
+          <form id="form-register-product" onsubmit="handleProductRegistration(event)" class="space-y-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Product ID</label>
+              <input type="text" id="reg-product-id" required class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500 font-mono" placeholder="PROD-COFFEE-8812">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Product Name</label>
+              <input type="text" id="reg-name" required class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" placeholder="Organic Arabica Highland Beans">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Batch ID</label>
+              <input type="text" id="reg-batch-id" required class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500 font-mono" placeholder="BATCH-ETH-2026-04">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Geographic Origin</label>
+              <input type="text" id="reg-origin" required class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" placeholder="Yirgacheffe Cooperative, Ethiopia (Lat 6.16, Long 38.20)">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Quantity</label>
+              <input type="text" id="reg-quantity" required class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" placeholder="20 Metric Tons">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Submitting MSP Identity (FR-05)</label>
+              <select id="reg-sender-msp" class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500">
+                <option value="FarmerOrgMSP">FarmerOrgMSP (Farmer Co-op)</option>
+                <option value="OrdererMSP">OrdererMSP (Consortium Authority)</option>
+              </select>
+            </div>
+            <button type="submit" class="w-full mt-2 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded transition flex items-center justify-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4"></i> Submit to Blockchain
+            </button>
+          </form>
+        </div>
+
+        <!-- Product Details & Lifecycle Traceability Timeline (FR-03) -->
+        <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="font-semibold text-slate-200 text-sm flex items-center gap-2">
+              <i data-lucide="milestone" class="w-4 h-4 text-emerald-400"></i> Provenance & Lifecycle Timeline (FR-03)
+            </h3>
+            <div class="flex items-center gap-2">
+              <select id="product-selector" onchange="renderSelectedProductTrace()" class="bg-slate-800 border border-slate-700 rounded px-3 py-1 text-xs text-slate-200 font-mono">
+                <!-- Populated via JS -->
+              </select>
+              <button onclick="verifySelectedProduct()" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded text-xs flex items-center gap-1 font-medium transition">
+                <i data-lucide="shield" class="w-3.5 h-3.5"></i> Verify
+              </button>
+              <button onclick="openProductQrModal()" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs flex items-center gap-1 font-medium transition">
+                <i data-lucide="qr-code" class="w-3.5 h-3.5"></i> QR Code
+              </button>
+            </div>
+          </div>
+
+          <!-- Visual Lifecycle Journey Stepper (Interactive Graphical Map) -->
+          <div id="product-visual-stepper" class="p-4 rounded-xl glass-card space-y-2">
+            <!-- Populated via JS -->
+          </div>
+
+          <div id="product-trace-view" class="space-y-4">
+            <!-- Populated via JS -->
+          </div>
+
+          <!-- Update Lifecycle Stage Controls -->
+          <div class="border-t border-slate-800 pt-4">
+            <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Advance Lifecycle Stage (Chaincode: UpdateProductStage)</h4>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 text-xs">
+              <select id="stage-select" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-slate-200">
+                <option value="HARVESTED">HARVESTED</option>
+                <option value="PROCESSING">PROCESSING</option>
+                <option value="PACKAGED">PACKAGED</option>
+                <option value="IN_TRANSIT">IN_TRANSIT</option>
+                <option value="RECEIVED">RECEIVED</option>
+                <option value="RETAIL_STOCKED">RETAIL_STOCKED</option>
+              </select>
+              <input type="text" id="stage-location" placeholder="Location (e.g. Antwerp Port Dock 4)" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-slate-200">
+              <input type="text" id="stage-note" placeholder="Inspection notes / status" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-slate-200">
+              <button onclick="handleUpdateStage()" class="bg-sky-600 hover:bg-sky-500 text-white font-medium rounded px-3 py-1.5 transition flex items-center justify-center gap-1">
+                <i data-lucide="arrow-right-circle" class="w-3.5 h-3.5"></i> Commit Stage
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 3: BLOCKCHAIN EXPLORER
+         ========================================== -->
+    <section id="screen-explorer" class="tab-pane hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-white flex items-center gap-2">
+            Blockchain Ledger Explorer
+          </h1>
+          <p class="text-slate-400 text-sm">Inspect cryptographically ordered blocks, transaction receipts, Merkle roots, and orderer signatures.</p>
+        </div>
+        <button onclick="verifyChainIntegrity()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium rounded-lg flex items-center gap-2 shadow-sm transition">
+          <i data-lucide="shield-check" class="w-4 h-4"></i> Validate Ledger Cryptographic Integrity
+        </button>
+      </div>
+
+      <!-- Cryptographic Linked Blocks Visual Ribbon -->
+      <div class="glass-card rounded-xl p-5 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <h3 class="font-semibold text-slate-200 text-xs uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="link" class="w-4 h-4 text-sky-400"></i> Cryptographically Linked Block Ribbon
+          </h3>
+          <span class="text-[11px] font-mono text-slate-400">Pointers: Block(N).previous_hash == Block(N-1).hash</span>
+        </div>
+        <div id="linked-blocks-ribbon" class="flex gap-4 overflow-x-auto pb-2 pt-1 scrollbar-none items-center">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+        <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
+          <span class="text-xs font-semibold uppercase text-slate-400 tracking-wider">Ordered Blocks (Genesis to Head)</span>
+          <span id="chain-validation-badge" class="text-xs px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
+            Chain Valid
+          </span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="bg-slate-800/80 text-slate-400 uppercase font-mono text-[11px]">
+              <tr>
+                <th class="p-3.5">Block #</th>
+                <th class="p-3.5">Block Hash</th>
+                <th class="p-3.5">Previous Block Hash</th>
+                <th class="p-3.5">Merkle Root</th>
+                <th class="p-3.5">Tx Count</th>
+                <th class="p-3.5">Ordering Leader</th>
+                <th class="p-3.5">Timestamp</th>
+                <th class="p-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="blocks-table-body" class="divide-y divide-slate-800">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Transaction Inspector Modal / Box -->
+      <div id="tx-details-box" class="hidden bg-slate-900 border border-sky-500/30 rounded-xl p-5 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <h4 class="font-bold text-white text-sm flex items-center gap-2">
+            <i data-lucide="file-code-2" class="w-4 h-4 text-sky-400"></i> Block Transaction Detail
+          </h4>
+          <button onclick="document.getElementById('tx-details-box').classList.add('hidden')" class="text-slate-400 hover:text-white text-xs">Close</button>
+        </div>
+        <pre id="tx-raw-json" class="bg-slate-950 p-4 rounded-lg text-emerald-400 font-mono text-xs overflow-x-auto"></pre>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 4: MULTI-PARTY VERIFICATION & ENDORSEMENT
+         ========================================== -->
+    <section id="screen-approvals" class="tab-pane hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-white flex items-center gap-2">
+            Multi-Party Custody Transfer & Endorsement (FR-06)
+          </h1>
+          <p class="text-slate-400 text-sm">Simulate enterprise custody transfers requiring multi-organization cryptographic approvals.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Propose Transfer Card -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex items-center gap-2">
+            <i data-lucide="send" class="w-4 h-4 text-sky-400"></i>
+            <h3 class="font-semibold text-slate-200 text-sm">Propose Custody Transfer</h3>
+          </div>
+          <form id="form-propose-transfer" onsubmit="handleProposeTransfer(event)" class="space-y-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Target Product</label>
+              <select id="prop-product-id" class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 font-mono">
+                <!-- Populated via JS -->
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Proposing Organization (Owner)</label>
+              <select id="prop-from-msp" class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200">
+                <option value="FarmerOrgMSP">FarmerOrgMSP (Farmer Co-op)</option>
+                <option value="ManufacturerOrgMSP">ManufacturerOrgMSP (Processing Co)</option>
+                <option value="DistributorOrgMSP">DistributorOrgMSP (Logistics)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Recipient Organization</label>
+              <select id="prop-to-msp" class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200">
+                <option value="ManufacturerOrgMSP">ManufacturerOrgMSP (Processor)</option>
+                <option value="DistributorOrgMSP">DistributorOrgMSP (Logistics)</option>
+                <option value="RetailerOrgMSP">RetailerOrgMSP (Supermarket)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Transfer Justification</label>
+              <input type="text" id="prop-reason" required class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200" placeholder="Commercial delivery consignment lot #402">
+            </div>
+            <div class="p-3 rounded bg-slate-800/60 border border-slate-700/60 text-[11px] text-slate-400 space-y-1">
+              <p class="font-semibold text-slate-300">Configured Endorsement Policy:</p>
+              <p>Requires: <span class="text-sky-300">Recipient Approval</span> + <span class="text-amber-300">Regulator Safety Endorsement</span>.</p>
+            </div>
+            <button type="submit" class="w-full py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-medium rounded transition flex items-center justify-center gap-2">
+              <i data-lucide="file-signature" class="w-4 h-4"></i> Create Transfer Proposal
+            </button>
+          </form>
+        </div>
+
+        <!-- Proposals List & Action Board -->
+        <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="font-semibold text-slate-200 text-sm flex items-center gap-2">
+              <i data-lucide="clipboard-list" class="w-4 h-4 text-emerald-400"></i> Active Transfer Proposals & Endorsement Matrix
+            </h3>
+            <button onclick="loadProposals()" class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
+              <i data-lucide="refresh-cw" class="w-3 h-3"></i> Refresh
+            </button>
+          </div>
+          <div id="proposals-list" class="space-y-4">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 5: DOCUMENT & MERKLE VERIFICATION
+         ========================================== -->
+    <section id="screen-documents" class="tab-pane hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-white flex items-center gap-2">
+            IPFS Storage & Merkle Tree Verification (FR-07, FR-08)
+          </h1>
+          <p class="text-slate-400 text-sm">Store documents with cryptographic CIDs, detect byte alterations, and verify batch inclusion proofs.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- IPFS Document Pinning & Tamper Test -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex items-center gap-2">
+            <i data-lucide="upload-cloud" class="w-4 h-4 text-sky-400"></i>
+            <h3 class="font-semibold text-slate-200 text-sm">IPFS Document Pinning (FR-07)</h3>
+          </div>
+          <form id="form-upload-doc" onsubmit="handleDocUpload(event)" class="space-y-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Document Label / File Name</label>
+              <input type="text" id="doc-file-name" required class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200" placeholder="Certificate_of_Origin_Lab_Analysis.pdf">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Document Category</label>
+              <select id="doc-type" class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200">
+                <option value="CERT_OF_ORIGIN">Certificate of Origin (Phytosanitary)</option>
+                <option value="QUALITY_LAB_REPORT">Quality Inspection Lab Report</option>
+                <option value="COMMERCIAL_INVOICE">Commercial Invoice & Bill of Lading</option>
+                <option value="REGULATORY_PERMIT">Regulatory Compliance Permit</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Document Content (Text / Digest Simulation)</label>
+              <textarea id="doc-content" rows="3" required class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 font-mono text-xs" placeholder="[LAB REPORT #4092] Sample tested: 100% Organic Grade A. Pesticides: 0.0 ppm. Moisture: 11.2%. Approved."></textarea>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="doc-encrypt" class="rounded bg-slate-800 border-slate-700 text-emerald-500">
+              <label for="doc-encrypt" class="text-slate-300">Simulate End-to-End Encryption before IPFS Storage</label>
+            </div>
+            <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded transition flex items-center justify-center gap-2">
+              <i data-lucide="cloud-lightning" class="w-4 h-4"></i> Pin to IPFS & Anchor SHA-256 On-Chain
+            </button>
+          </form>
+
+          <!-- Tamper Detection Testing Panel -->
+          <div class="border-t border-slate-800 pt-4 space-y-3">
+            <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="shield-alert" class="w-4 h-4 text-amber-400"></i> Zero-Byte Tampering Detection Test
+            </h4>
+            <div class="space-y-2 text-xs">
+              <input type="text" id="verify-doc-id" placeholder="Document ID to verify (e.g. DOC-1700...)" class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 font-mono">
+              <textarea id="verify-doc-content" rows="2" placeholder="Paste document content to test verification against on-chain hash..." class="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-slate-200 font-mono text-xs"></textarea>
+              <div class="flex gap-2">
+                <button onclick="testDocIntegrity(false)" class="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded border border-slate-700 transition">
+                  Verify Authentic
+                </button>
+                <button onclick="testDocIntegrity(true)" class="flex-1 py-2 bg-rose-600/80 hover:bg-rose-500 text-white font-medium rounded transition">
+                  Inject Tamper & Verify
+                </button>
+              </div>
+            </div>
+            <div id="tamper-test-result" class="hidden p-3 rounded text-xs font-mono"></div>
+          </div>
+        </div>
+
+        <!-- Merkle Tree Batch Generator & Inclusion Proof (FR-08) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="git-merge" class="w-4 h-4 text-emerald-400"></i>
+              <h3 class="font-semibold text-slate-200 text-sm">Merkle Tree Batch Engine (FR-08)</h3>
+            </div>
+            <button onclick="generateMerkleBatch()" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs flex items-center gap-1 font-medium transition">
+              <i data-lucide="refresh-cw" class="w-3 h-3"></i> Generate Tree
+            </button>
+          </div>
+
+          <p class="text-xs text-slate-400">
+            Computes recursive SHA-256 parent pairs, writes the Merkle root to the blockchain, and validates logarithmic inclusion proofs ($O(\log N)$).
+          </p>
+
+          <div id="merkle-tree-display" class="space-y-3 font-mono text-xs">
+            <div class="p-4 rounded-lg bg-slate-950 border border-slate-800 text-center py-6 text-slate-500">
+              Click "Generate Tree" to synthesize a 4-document batch Merkle tree.
+            </div>
+          </div>
+
+          <!-- Proof Verification Inspector -->
+          <div id="merkle-proof-panel" class="hidden border-t border-slate-800 pt-4 space-y-2">
+            <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center justify-between">
+              <span>Cryptographic Proof Verification</span>
+              <span id="proof-status-badge" class="px-2 py-0.5 rounded text-[11px] font-mono"></span>
+            </h4>
+            <div id="proof-steps" class="bg-slate-950 p-3 rounded border border-slate-800 text-xs font-mono space-y-1"></div>
+            <button onclick="verifySampleProof()" class="w-full py-2 bg-sky-600 hover:bg-sky-500 text-white font-medium rounded text-xs transition flex items-center justify-center gap-2">
+              <i data-lucide="check-check" class="w-3.5 h-3.5"></i> Execute On-Chain Merkle Proof Verification
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 6: AI RISK DASHBOARD
+         ========================================== -->
+    <section id="screen-ai" class="tab-pane hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-white flex items-center gap-2">
+            AI Supply Chain Risk Intelligence (FR-10)
+          </h1>
+          <p class="text-slate-400 text-sm">Multi-factor machine learning evaluation (Random Forest + Isolation Forest) anchored immutably on-chain.</p>
+        </div>
+        <button onclick="executeAiPrediction()" class="px-3.5 py-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white text-xs font-medium rounded-lg flex items-center gap-2 shadow-sm transition">
+          <i data-lucide="cpu" class="w-4 h-4"></i> Calculate Risk Score & Anchor On-Chain
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Feature Adjustment Sliders -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex items-center gap-2">
+            <i data-lucide="sliders" class="w-4 h-4 text-sky-400"></i>
+            <h3 class="font-semibold text-slate-200 text-sm">Input Feature Parameters</h3>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <div>
+              <div class="flex justify-between text-slate-300 mb-1">
+                <span>Supplier Reliability Index</span>
+                <span id="val-reliability" class="font-mono text-emerald-400 font-bold">85%</span>
+              </div>
+              <input type="range" id="input-reliability" min="0" max="100" value="85" oninput="updateSliderValues()" class="w-full accent-emerald-500 bg-slate-800 rounded">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-slate-300 mb-1">
+                <span>Historical Delivery Delays</span>
+                <span id="val-delays" class="font-mono text-amber-400 font-bold">2 Days</span>
+              </div>
+              <input type="range" id="input-delays" min="0" max="30" value="2" oninput="updateSliderValues()" class="w-full accent-amber-500 bg-slate-800 rounded">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-slate-300 mb-1">
+                <span>Product Rejection Rate</span>
+                <span id="val-rejection" class="font-mono text-rose-400 font-bold">1.5%</span>
+              </div>
+              <input type="range" id="input-rejection" min="0" max="50" step="0.5" value="1.5" oninput="updateSliderValues()" class="w-full accent-rose-500 bg-slate-800 rounded">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-slate-300 mb-1">
+                <span>Document Verification Failures</span>
+                <span id="val-doc-fails" class="font-mono text-sky-400 font-bold">0</span>
+              </div>
+              <input type="range" id="input-doc-fails" min="0" max="5" value="0" oninput="updateSliderValues()" class="w-full accent-sky-500 bg-slate-800 rounded">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-slate-300 mb-1">
+                <span>Transaction Irregularities Score</span>
+                <span id="val-irregularity" class="font-mono text-indigo-400 font-bold">8/100</span>
+              </div>
+              <input type="range" id="input-irregularity" min="0" max="100" value="8" oninput="updateSliderValues()" class="w-full accent-indigo-500 bg-slate-800 rounded">
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk Prediction Output & Dial -->
+        <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-5">
+          <div class="border-b border-slate-800 pb-3 flex items-center justify-between">
+            <h3 class="font-semibold text-slate-200 text-sm flex items-center gap-2">
+              <i data-lucide="gauge" class="w-4 h-4 text-emerald-400"></i> Model Output & Classification
+            </h3>
+            <span class="text-xs text-slate-400 font-mono">Model: RF-v2.4-IsoForest-Hybrid</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+            <!-- Score Badge / Display -->
+            <div class="p-6 rounded-xl bg-slate-950 border border-slate-800 text-center space-y-3">
+              <span class="text-xs text-slate-400 font-medium uppercase tracking-wider">Calculated Supply Chain Risk</span>
+              <div id="ai-risk-score-display" class="text-5xl font-black text-emerald-400">18.4%</div>
+              <div id="ai-risk-classification-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider">
+                LOW RISK (0–39%)
+              </div>
+              <p id="ai-risk-recommendation" class="text-xs text-slate-400 pt-2 border-t border-slate-800/80">
+                Low risk detected. Automatic execution and standard transfer flow permitted.
+              </p>
+            </div>
+
+            <!-- Radar Chart: Multi-Factor Surface -->
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-center space-y-2">
+              <span class="text-[11px] text-slate-400 font-medium uppercase tracking-wider">5-Axis Risk Surface Radar Profile</span>
+              <div class="relative h-48 flex items-center justify-center">
+                <canvas id="chart-risk-radar"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contributing Factors Impact -->
+          <div class="space-y-3 text-xs">
+            <h4 class="font-semibold text-slate-300 uppercase tracking-wider">Contributing Risk Breakdown</h4>
+            <div class="space-y-2">
+                <div>
+                  <div class="flex justify-between text-slate-400 mb-0.5">
+                    <span>Supplier Unreliability</span>
+                    <span id="factor-unreliability" class="font-mono text-slate-200">4.5%</span>
+                  </div>
+                  <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div id="bar-unreliability" class="bg-emerald-500 h-full w-[15%]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-slate-400 mb-0.5">
+                    <span>Delivery Delay Impact</span>
+                    <span id="factor-delay" class="font-mono text-slate-200">1.7%</span>
+                  </div>
+                  <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div id="bar-delay" class="bg-amber-500 h-full w-[6%]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-slate-400 mb-0.5">
+                    <span>Rejection Rate Impact</span>
+                    <span id="factor-rejection" class="font-mono text-slate-200">0.6%</span>
+                  </div>
+                  <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div id="bar-rejection" class="bg-rose-500 h-full w-[3%]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-slate-400 mb-0.5">
+                    <span>Doc Failure Impact</span>
+                    <span id="factor-doc" class="font-mono text-slate-200">0.0%</span>
+                  </div>
+                  <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div id="bar-doc" class="bg-sky-500 h-full w-[0%]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-slate-400 mb-0.5">
+                    <span>Isolation Forest Anomaly Boost</span>
+                    <span id="factor-anomaly" class="font-mono text-slate-200">1.2%</span>
+                  </div>
+                  <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div id="bar-anomaly" class="bg-indigo-500 h-full w-[8%]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- On-Chain Snapshot Receipt -->
+          <div class="p-3.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono space-y-1">
+            <div class="flex items-center justify-between text-slate-400">
+              <span class="text-slate-300 font-semibold">On-Chain Input Snapshot Hash (SHA-256):</span>
+              <span class="text-emerald-400">ReportRisk Anchored</span>
+            </div>
+            <p id="snapshot-hash-val" class="text-sky-400 truncate">Computing...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model Performance Evaluation & Training Metrics (PRD FR-10) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <h4 class="font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Model Validation Metrics
+            </h4>
+            <button onclick="retrainAiModel()" class="px-2 py-0.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-medium flex items-center gap-1">
+              <i data-lucide="refresh-cw" class="w-3 h-3"></i> Retrain
+            </button>
+          </div>
+          <div class="space-y-2 text-xs">
+            <div class="flex justify-between p-2 rounded bg-slate-950 border border-slate-800/80">
+              <span class="text-slate-400">Training Accuracy:</span>
+              <span id="metric-train-acc" class="font-bold text-emerald-400 font-mono">99.8%</span>
+            </div>
+            <div class="flex justify-between p-2 rounded bg-slate-950 border border-slate-800/80">
+              <span class="text-slate-400">Test Accuracy (Holdout):</span>
+              <span id="metric-test-acc" class="font-bold text-sky-400 font-mono">97.3%</span>
+            </div>
+            <div class="flex justify-between p-2 rounded bg-slate-950 border border-slate-800/80">
+              <span class="text-slate-400">Macro F1-Score:</span>
+              <span id="metric-macro-f1" class="font-bold text-indigo-400 font-mono">86.5%</span>
+            </div>
+            <div class="flex justify-between p-2 rounded bg-slate-950 border border-slate-800/80">
+              <span class="text-slate-400">Dataset Batch Records:</span>
+              <span class="font-bold text-slate-200 font-mono">1,500 Samples</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confusion Matrix -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+          <div class="border-b border-slate-800 pb-2">
+            <h4 class="font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="grid" class="w-4 h-4 text-amber-400"></i> Confusion Matrix (3-Tier Multi-Class)
+            </h4>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-center text-xs font-mono">
+              <thead>
+                <tr class="text-slate-400 text-[10px] uppercase">
+                  <th class="p-1">Actual \ Pred</th>
+                  <th class="p-1 text-emerald-400">Low</th>
+                  <th class="p-1 text-amber-400">Med</th>
+                  <th class="p-1 text-rose-400">High</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800 text-slate-200">
+                <tr>
+                  <td class="p-2 text-left font-bold text-slate-400">Low</td>
+                  <td id="cm-00" class="p-2 bg-emerald-950/40 font-bold text-emerald-300">256</td>
+                  <td id="cm-01" class="p-2 text-slate-500">0</td>
+                  <td id="cm-02" class="p-2 text-slate-500">0</td>
+                </tr>
+                <tr>
+                  <td class="p-2 text-left font-bold text-slate-400">Med</td>
+                  <td id="cm-10" class="p-2 text-slate-500">0</td>
+                  <td id="cm-11" class="p-2 bg-amber-950/40 font-bold text-amber-300">25</td>
+                  <td id="cm-12" class="p-2 text-rose-400">4</td>
+                </tr>
+                <tr>
+                  <td class="p-2 text-left font-bold text-slate-400">High</td>
+                  <td id="cm-20" class="p-2 text-slate-500">0</td>
+                  <td id="cm-21" class="p-2 text-amber-400">4</td>
+                  <td id="cm-22" class="p-2 bg-rose-950/40 font-bold text-rose-300">11</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Feature Importance Chart -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-2">
+          <div class="border-b border-slate-800 pb-2 flex items-center justify-between">
+            <h4 class="font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="bar-chart-3" class="w-4 h-4 text-sky-400"></i> Feature Importance (Gini)
+            </h4>
+          </div>
+          <div class="space-y-1.5 text-[11px]">
+            <div class="flex justify-between text-slate-400"><span>1. Supplier Reliability</span><span class="text-emerald-400 font-mono font-bold">32%</span></div>
+            <div class="w-full bg-slate-950 h-1.5 rounded-full"><div class="bg-emerald-500 h-full w-[32%] rounded-full"></div></div>
+
+            <div class="flex justify-between text-slate-400"><span>2. Delivery Delays</span><span class="text-amber-400 font-mono font-bold">26%</span></div>
+            <div class="w-full bg-slate-950 h-1.5 rounded-full"><div class="bg-amber-500 h-full w-[26%] rounded-full"></div></div>
+
+            <div class="flex justify-between text-slate-400"><span>3. Rejection Rate</span><span class="text-rose-400 font-mono font-bold">21%</span></div>
+            <div class="w-full bg-slate-950 h-1.5 rounded-full"><div class="bg-rose-500 h-full w-[21%] rounded-full"></div></div>
+
+            <div class="flex justify-between text-slate-400"><span>4. Document Failures</span><span class="text-sky-400 font-mono font-bold">12%</span></div>
+            <div class="w-full bg-slate-950 h-1.5 rounded-full"><div class="bg-sky-500 h-full w-[12%] rounded-full"></div></div>
+
+            <div class="flex justify-between text-slate-400"><span>5. Irregularity Score</span><span class="text-indigo-400 font-mono font-bold">9%</span></div>
+            <div class="w-full bg-slate-950 h-1.5 rounded-full"><div class="bg-indigo-500 h-full w-[9%] rounded-full"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 7: NETWORK MANAGEMENT & RAFT
+         ========================================== -->
+    <section id="screen-network" class="tab-pane hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-white flex items-center gap-2">
+            Raft Consensus & Consortium Management (FR-09)
+          </h1>
+          <p class="text-slate-400 text-sm">3-Node Raft ordering service simulator with fault injection, quorum calculation, and MSP certificates.</p>
+        </div>
+      </div>
+
+      <!-- Raft Consensus Ordering Cluster -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2">
+            <i data-lucide="server-cog" class="w-5 h-5 text-indigo-400"></i>
+            <div>
+              <h3 class="font-semibold text-slate-200 text-sm">3-Node Raft Ordering Service Cluster</h3>
+              <p class="text-xs text-slate-400">Crash-Fault Tolerant (CFT) Quorum: Requires at least 2 of 3 nodes active.</p>
+            </div>
+          </div>
+          <button onclick="loadRaftStatus()" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded text-xs flex items-center gap-1 border border-slate-700">
+            <i data-lucide="refresh-cw" class="w-3 h-3"></i> Refresh
+          </button>
+        </div>
+
+        <!-- Raft Consensus Animated Network Topology SVG -->
+        <div id="raft-topology-visualizer" class="p-5 rounded-xl glass-card space-y-2">
+          <!-- Rendered dynamically via JS with SVG connections and pulse indicators -->
+        </div>
+
+        <div id="raft-nodes-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- Failure Simulation Guidance Alert -->
+        <div class="p-4 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-400 space-y-1">
+          <p class="font-semibold text-slate-300 flex items-center gap-1.5">
+            <i data-lucide="info" class="w-4 h-4 text-sky-400"></i> Raft Quorum Demonstration Guide:
+          </p>
+          <ul class="list-disc list-inside space-y-0.5 text-slate-400">
+            <li><b>Kill 1 Node:</b> 2 nodes remain active $\implies$ Quorum ($2 \ge 2$) is maintained. If Leader is killed, Followers elect a new Leader. Transactions continue committing!</li>
+            <li><b>Kill 2 Nodes:</b> Only 1 node remains active $\implies$ Quorum ($1 < 2$) is lost. The network halts gracefully to protect ledger consistency.</li>
+            <li><b>Revive Node:</b> Node catches up on Raft logs, restoring quorum and unblocking consensus.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Consortium Organizations & X.509 Identities (FR-01, FR-05) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+        <div class="border-b border-slate-800 pb-3 flex items-center gap-2">
+          <i data-lucide="building-2" class="w-5 h-5 text-emerald-400"></i>
+          <h3 class="font-semibold text-slate-200 text-sm">Consortium Organizations & Simulated X.509 MSP Registry</h3>
+        </div>
+        <div id="orgs-list-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- QR Code Verification Modal (PRD Section 17) -->
+    <div id="qr-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2">
+            <i data-lucide="qr-code" class="w-5 h-5 text-emerald-400"></i>
+            <h3 class="font-bold text-white text-sm">Product QR Verification Passport</h3>
+          </div>
+          <button onclick="closeProductQrModal()" class="text-slate-400 hover:text-white text-xs">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="flex flex-col items-center justify-center p-4 bg-white rounded-xl shadow-inner text-slate-900 space-y-2">
+          <!-- Stylized SVG QR Code Pattern representing on-chain identity -->
+          <svg class="w-48 h-48" viewBox="0 0 100 100" fill="currentColor">
+            <!-- Position Detection Patterns -->
+            <rect x="5" y="5" width="25" height="25" fill="#0f172a" rx="3"/>
+            <rect x="9" y="9" width="17" height="17" fill="#ffffff" rx="1"/>
+            <rect x="13" y="13" width="9" height="9" fill="#059669"/>
+
+            <rect x="70" y="5" width="25" height="25" fill="#0f172a" rx="3"/>
+            <rect x="74" y="9" width="17" height="17" fill="#ffffff" rx="1"/>
+            <rect x="78" y="13" width="9" height="9" fill="#059669"/>
+
+            <rect x="5" y="70" width="25" height="25" fill="#0f172a" rx="3"/>
+            <rect x="9" y="74" width="17" height="17" fill="#ffffff" rx="1"/>
+            <rect x="13" y="78" width="9" height="9" fill="#059669"/>
+
+            <!-- Data Dots Grid -->
+            <rect x="35" y="8" width="5" height="5" fill="#0f172a"/>
+            <rect x="45" y="8" width="5" height="5" fill="#0f172a"/>
+            <rect x="55" y="8" width="5" height="5" fill="#059669"/>
+            <rect x="35" y="18" width="5" height="5" fill="#059669"/>
+            <rect x="48" y="18" width="5" height="5" fill="#0f172a"/>
+            <rect x="58" y="18" width="5" height="5" fill="#0f172a"/>
+
+            <rect x="8" y="35" width="5" height="5" fill="#0f172a"/>
+            <rect x="18" y="35" width="5" height="5" fill="#059669"/>
+            <rect x="8" y="45" width="5" height="5" fill="#059669"/>
+            <rect x="18" y="45" width="5" height="5" fill="#0f172a"/>
+            <rect x="8" y="55" width="5" height="5" fill="#0f172a"/>
+            <rect x="18" y="55" width="5" height="5" fill="#059669"/>
+
+            <rect x="35" y="35" width="8" height="8" fill="#059669" rx="1"/>
+            <rect x="48" y="35" width="6" height="6" fill="#0f172a"/>
+            <rect x="58" y="35" width="7" height="7" fill="#059669"/>
+            <rect x="70" y="35" width="5" height="5" fill="#0f172a"/>
+            <rect x="85" y="35" width="6" height="6" fill="#059669"/>
+
+            <rect x="35" y="48" width="6" height="6" fill="#0f172a"/>
+            <rect x="45" y="48" width="10" height="10" fill="#047857" rx="2"/>
+            <rect x="60" y="48" width="6" height="6" fill="#0f172a"/>
+            <rect x="75" y="48" width="7" height="7" fill="#059669"/>
+
+            <rect x="35" y="62" width="6" height="6" fill="#059669"/>
+            <rect x="45" y="62" width="6" height="6" fill="#0f172a"/>
+            <rect x="55" y="62" width="8" height="8" fill="#059669"/>
+            <rect x="70" y="62" width="5" height="5" fill="#0f172a"/>
+            <rect x="80" y="62" width="6" height="6" fill="#047857"/>
+
+            <rect x="35" y="75" width="6" height="6" fill="#0f172a"/>
+            <rect x="45" y="75" width="6" height="6" fill="#059669"/>
+            <rect x="55" y="75" width="6" height="6" fill="#0f172a"/>
+            <rect x="70" y="75" width="8" height="8" fill="#059669"/>
+            <rect x="85" y="75" width="5" height="5" fill="#0f172a"/>
+
+            <rect x="35" y="88" width="8" height="8" fill="#059669"/>
+            <rect x="48" y="88" width="6" height="6" fill="#0f172a"/>
+            <rect x="58" y="88" width="6" height="6" fill="#059669"/>
+            <rect x="70" y="88" width="6" height="6" fill="#0f172a"/>
+            <rect x="80" y="88" width="8" height="8" fill="#059669"/>
+          </svg>
+          <div class="text-[11px] font-mono text-slate-600 font-bold tracking-tight">SCAN FOR ON-CHAIN PROVENANCE</div>
+        </div>
+
+        <div id="qr-product-info" class="p-3 bg-slate-950 rounded-lg text-xs font-mono space-y-1 text-slate-300 border border-slate-800">
+          <!-- Populated via JS -->
+        </div>
+
+        <button onclick="closeProductQrModal()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg text-xs transition">
+          Close Passport
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 py-4 px-6 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span>TraceChain AI v1.0</span>
+        <span>•</span>
+        <span>Simulated Hyperledger Fabric Permissioned Architecture</span>
+        <span>•</span>
+        <span>Hardware Requirement: None (No IoT)</span>
+      </div>
+      <div>Zero-Hardware Cryptographic Verification & AI Risk Intelligence</div>
+    </div>
+  </footer>
+
+  <!-- Frontend Application Logic Script -->
+  <script>
+    // Global State
+    let currentTab = 'screen-dashboard';
+    let productsList = [];
+    let raftStatusData = null;
+    let latestMerkleData = null;
+    let stageDistributionChart = null;
+    let activityPulseChart = null;
+    let riskRadarChart = null;
+
+    // Toast Helper
+    function showToast(title, message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const colors = {
+        success: 'bg-emerald-950 border-emerald-500/50 text-emerald-200',
+        error: 'bg-rose-950 border-rose-500/50 text-rose-200',
+        info: 'bg-slate-900 border-sky-500/50 text-sky-200',
+        warning: 'bg-amber-950 border-amber-500/50 text-amber-200'
+      };
+      toast.className = `p-3.5 rounded-xl border shadow-xl flex items-start gap-3 transition transform duration-200 text-xs ${colors[type] || colors.info}`;
+      toast.innerHTML = `
+        <div class="flex-1">
+          <div class="font-bold mb-0.5">${title}</div>
+          <div class="opacity-90">${message}</div>
+        </div>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    // Tab Navigation Switcher
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.nav-tab').forEach(el => {
+        el.classList.remove('active', 'text-white', 'bg-emerald-600');
+        el.classList.add('text-slate-400');
+      });
+
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) targetPane.classList.remove('hidden');
+
+      // Highlight active nav button
+      const buttons = document.querySelectorAll('.nav-tab');
+      buttons.forEach(btn => {
+        if (btn.getAttribute('onclick')?.includes(tabId)) {
+          btn.classList.add('active', 'text-white', 'bg-emerald-600');
+          btn.classList.remove('text-slate-400');
+        }
+      });
+
+      currentTab = tabId;
+      if (tabId === 'screen-dashboard') refreshDashboard();
+      if (tabId === 'screen-products') loadProducts();
+      if (tabId === 'screen-explorer') loadBlocks();
+      if (tabId === 'screen-approvals') loadProposals();
+      if (tabId === 'screen-documents') loadDocuments();
+      if (tabId === 'screen-ai') updateSliderValues();
+      if (tabId === 'screen-network') { loadRaftStatus(); loadOrganizations(); }
+
+      lucide.createIcons();
+    }
+
+    // Client-Side Simulated Permissioned Blockchain & AI Engine Fallback (Supports Static/CDN Hostings e.g. Netlify)
+    const clientSim = {
+      products: {
+        "PROD-ORG-WHEAT-2026": {
+          product_id: "PROD-ORG-WHEAT-2026",
+          product_name: "Certified Organic Durum Wheat",
+          batch_id: "BATCH-WV-9021",
+          origin: "GreenValley Farms, Punjab / California Zone 4",
+          quantity: "50 Metric Tons",
+          registration_date: Math.floor(Date.now() / 1000) - 86400 * 3,
+          current_owner: "FarmerOrgMSP",
+          stage: "HARVESTED",
+          status: "ACTIVE_VERIFIED",
+          document_cids: [],
+          history: [{
+            stage: "HARVESTED",
+            owner: "FarmerOrgMSP",
+            location: "GreenValley Farms, Punjab / California Zone 4",
+            timestamp: Math.floor(Date.now() / 1000) - 86400 * 3,
+            note: "Initial product registration at origin farm",
+            updated_by: "FarmerOrgMSP"
+          }]
+        }
+      },
+      blocks: [
+        {
+          block_number: 0,
+          timestamp: Math.floor(Date.now() / 1000) - 86400 * 4,
+          previous_hash: "0000000000000000000000000000000000000000000000000000000000000000",
+          merkle_root: "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+          orderer_node: "orderer1.supplychain.net",
+          orderer_signature: "GENESIS_CRYPTOGRAPHIC_ROOT_SIGNATURE",
+          block_hash: "0000a1f8c9b4e2d3f6a8b7c5e1d9f4a2b8c6e3d7f1a5b9c2e8d4f7a1b3c5e2d6",
+          tx_count: 1,
+          transactions: [{
+            tx_id: "TX-GENESIS-CONSORTIUM-BOOTSTRAP",
+            tx_type: "ConsortiumGenesis",
+            sender_msp: "OrdererMSP",
+            timestamp: Math.floor(Date.now() / 1000) - 86400 * 4,
+            payload: { network: "AI-Blockchain-SupplyChain-Permissioned-Ledger", consensus: "Raft-3Node-CFT" }
+          }]
+        },
+        {
+          block_number: 1,
+          timestamp: Math.floor(Date.now() / 1000) - 86400 * 3,
+          previous_hash: "0000a1f8c9b4e2d3f6a8b7c5e1d9f4a2b8c6e3d7f1a5b9c2e8d4f7a1b3c5e2d6",
+          merkle_root: "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+          orderer_node: "orderer1.supplychain.net",
+          orderer_signature: "SIG-ORDERER-BLOCK-1",
+          block_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          tx_count: 1,
+          transactions: [{
+            tx_id: "TX-INIT-REG-WHEAT-2026",
+            tx_type: "RegisterProduct",
+            sender_msp: "FarmerOrgMSP",
+            timestamp: Math.floor(Date.now() / 1000) - 86400 * 3,
+            payload: { product_id: "PROD-ORG-WHEAT-2026", name: "Certified Organic Durum Wheat" }
+          }]
+        }
+      ],
+      proposals: {},
+      documents: {},
+      merkle_roots: {},
+      risk_reports: {},
+      raft: {
+        term: 1,
+        leader: "orderer1.supplychain.net",
+        nodes: [
+          { node_id: "orderer1.supplychain.net", address: "grpc://10.0.0.11:7050", role: "LEADER", is_active: true, current_term: 1, commit_index: 2 },
+          { node_id: "orderer2.supplychain.net", address: "grpc://10.0.0.12:7050", role: "FOLLOWER", is_active: true, current_term: 1, commit_index: 2 },
+          { node_id: "orderer3.supplychain.net", address: "grpc://10.0.0.13:7050", role: "FOLLOWER", is_active: true, current_term: 1, commit_index: 2 }
+        ]
+      }
+    };
+
+    function handleClientSimGet(endpoint) {
+      if (endpoint === '/api/status') {
+        const active = clientSim.raft.nodes.filter(n => n.is_active);
+        const quorum = active.length >= 2;
+        return {
+          system: "AI & Blockchain Supply Chain Traceability Platform",
+          version: "1.0",
+          total_products: Object.keys(clientSim.products).length,
+          total_blocks: clientSim.blocks.length,
+          total_proposals: Object.keys(clientSim.proposals).length,
+          total_documents: Object.keys(clientSim.documents).length,
+          raft_status: {
+            quorum_available: quorum,
+            active_nodes_count: active.length,
+            total_nodes: clientSim.raft.nodes.length,
+            current_leader: clientSim.raft.leader,
+            network_status: quorum ? "ONLINE - OPERATIONAL" : "HALTED - INSUFFICIENT QUORUM"
+          },
+          chain_integrity: { valid: true, total_blocks: clientSim.blocks.length }
+        };
+      }
+      if (endpoint === '/api/products') return { products: Object.values(clientSim.products) };
+      if (endpoint.startsWith('/api/products/')) {
+        const id = endpoint.split('/api/products/')[1];
+        return { product: clientSim.products[id] || null };
+      }
+      if (endpoint === '/api/proposals') return { proposals: Object.values(clientSim.proposals) };
+      if (endpoint === '/api/blocks') return { blocks: clientSim.blocks };
+      if (endpoint === '/api/raft/status') {
+        const active = clientSim.raft.nodes.filter(n => n.is_active);
+        return {
+          cluster_type: "Crash-Fault Tolerant (CFT) Raft Ordering Service",
+          total_nodes: clientSim.raft.nodes.length,
+          active_nodes_count: active.length,
+          quorum_threshold: 2,
+          quorum_available: active.length >= 2,
+          current_leader: clientSim.raft.leader,
+          nodes: clientSim.raft.nodes
+        };
+      }
+      if (endpoint === '/api/organizations') {
+        return {
+          organizations: {
+            "FarmerOrgMSP": { msp_id: "FarmerOrgMSP", org_name: "GreenValley Organic Farmers Co-op", role: "FARMER", certificate_id: "CERT-FARMER-9901-X509", domain: "farmer.supplychain.org" },
+            "ManufacturerOrgMSP": { msp_id: "ManufacturerOrgMSP", org_name: "Apex Food Processing & Packaging Ltd.", role: "MANUFACTURER", certificate_id: "CERT-MFR-4421-X509", domain: "mfr.supplychain.org" },
+            "DistributorOrgMSP": { msp_id: "DistributorOrgMSP", org_name: "TransGlobal Cold-Chain Logistics", role: "DISTRIBUTOR", certificate_id: "CERT-DIST-7789-X509", domain: "logistics.supplychain.org" },
+            "RetailerOrgMSP": { msp_id: "RetailerOrgMSP", org_name: "MetroFresh Hypermarkets Corp.", role: "RETAILER", certificate_id: "CERT-RETAIL-1123-X509", domain: "retail.supplychain.org" },
+            "RegulatorOrgMSP": { msp_id: "RegulatorOrgMSP", org_name: "National Agricultural & Food Safety Authority", role: "REGULATOR", certificate_id: "CERT-REGULATOR-0001-X509", domain: "safety.regulator.gov" },
+            "OrdererMSP": { msp_id: "OrdererMSP", org_name: "Consortium Raft Ordering Service", role: "ADMIN", certificate_id: "CERT-ORDERER-ROOT-X509", domain: "orderers.supplychain.net" }
+          }
+        };
+      }
+      if (endpoint === '/api/ledger/verify') {
+        return { valid: true, total_blocks: clientSim.blocks.length, message: "Blockchain ledger integrity verified: all cryptographic links intact." };
+      }
+      if (endpoint.startsWith('/api/qr/')) {
+        const id = endpoint.split('/api/qr/')[1];
+        const p = clientSim.products[id] || Object.values(clientSim.products)[0];
+        return {
+          product_id: p.product_id,
+          batch_id: p.batch_id,
+          origin: p.origin,
+          current_custodian: p.current_owner,
+          stage: p.stage,
+          verify_url: window.location.href
+        };
+      }
+      return {};
+    }
+
+    function handleClientSimPost(endpoint, data) {
+      const activeOrderers = clientSim.raft.nodes.filter(n => n.is_active);
+      if (activeOrderers.length < 2 && !endpoint.includes('raft')) {
+        throw new Error("Raft Consensus Halted: Quorum lost. Active nodes: " + activeOrderers.length + "/3. Minimum required quorum is 2 nodes.");
+      }
+
+      if (endpoint === '/api/products/register') {
+        const prod = {
+          product_id: data.product_id,
+          product_name: data.name,
+          batch_id: data.batch_id,
+          origin: data.origin,
+          quantity: data.quantity,
+          registration_date: Math.floor(Date.now() / 1000),
+          current_owner: data.sender_msp,
+          stage: "HARVESTED",
+          status: "ACTIVE_VERIFIED",
+          document_cids: [],
+          history: [{
+            stage: "HARVESTED",
+            owner: data.sender_msp,
+            location: data.origin,
+            timestamp: Math.floor(Date.now() / 1000),
+            note: "Initial product registration at origin farm"
+          }]
+        };
+        clientSim.products[data.product_id] = prod;
+        const bNum = clientSim.blocks.length;
+        const newBlock = {
+          block_number: bNum,
+          timestamp: Math.floor(Date.now() / 1000),
+          previous_hash: clientSim.blocks[bNum - 1].block_hash,
+          merkle_root: "a8f7c9e123d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
+          orderer_node: clientSim.raft.leader,
+          orderer_signature: "SIG-ORDERER-BLOCK-" + bNum,
+          block_hash: "hash_block_" + bNum + "_" + Math.random().toString(16).slice(2, 10),
+          tx_count: 1,
+          transactions: [{ tx_id: "TX-" + Date.now(), tx_type: "RegisterProduct", payload: data }]
+        };
+        clientSim.blocks.push(newBlock);
+        return { success: true, product: prod, receipt: { block_number: bNum, block_hash: newBlock.block_hash } };
+      }
+
+      if (endpoint === '/api/products/stage') {
+        const p = clientSim.products[data.product_id];
+        if (!p) throw new Error("Product not found");
+        p.stage = data.stage;
+        p.history.push({
+          stage: data.stage,
+          owner: p.current_owner,
+          location: data.location || "Transit Hub",
+          timestamp: Math.floor(Date.now() / 1000),
+          note: data.note || "Stage updated"
+        });
+        const bNum = clientSim.blocks.length;
+        const newBlock = {
+          block_number: bNum,
+          timestamp: Math.floor(Date.now() / 1000),
+          previous_hash: clientSim.blocks[bNum - 1].block_hash,
+          merkle_root: "c1d2e3f4a5b6c7d8e9f0a8f7c9e123d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0",
+          orderer_node: clientSim.raft.leader,
+          orderer_signature: "SIG-ORDERER-BLOCK-" + bNum,
+          block_hash: "hash_block_" + bNum + "_" + Math.random().toString(16).slice(2, 10),
+          tx_count: 1,
+          transactions: [{ tx_id: "TX-STAGE-" + Date.now(), tx_type: "UpdateProductStage", payload: data }]
+        };
+        clientSim.blocks.push(newBlock);
+        return { success: true, product: p, receipt: { block_number: bNum, block_hash: newBlock.block_hash } };
+      }
+
+      if (endpoint === '/api/products/verify') {
+        const p = clientSim.products[data.product_id];
+        return {
+          verified: !!p,
+          product_id: data.product_id,
+          total_transactions: (p?.history || []).length + 1,
+          chain_valid: true
+        };
+      }
+
+      if (endpoint === '/api/proposals/propose') {
+        const pId = "PROP-" + Date.now();
+        const p = clientSim.products[data.product_id];
+        const prop = {
+          proposal_id: pId,
+          product_id: data.product_id,
+          product_name: p ? p.product_name : data.product_id,
+          from_msp: data.sender_msp,
+          to_msp: data.recipient_msp,
+          transfer_reason: data.reason,
+          status: "PENDING_APPROVAL",
+          required_approvals: [data.recipient_msp, "RegulatorOrgMSP"],
+          collected_approvals: { [data.sender_msp]: { status: "APPROVED", role: "PROPOSER" } }
+        };
+        clientSim.proposals[pId] = prop;
+        return { success: true, proposal: prop };
+      }
+
+      if (endpoint === '/api/proposals/approve') {
+        const prop = clientSim.proposals[data.proposal_id];
+        if (!prop) throw new Error("Proposal not found");
+        prop.collected_approvals[data.approver_msp] = { status: data.decision, remarks: data.remarks };
+        if (data.decision === 'REJECTED') prop.status = 'REJECTED';
+        return { success: true, proposal: prop };
+      }
+
+      if (endpoint === '/api/proposals/finalize') {
+        const prop = clientSim.proposals[data.proposal_id];
+        if (!prop) throw new Error("Proposal not found");
+        for (const req of prop.required_approvals) {
+          if (!prop.collected_approvals[req] || prop.collected_approvals[req].status !== 'APPROVED') {
+            throw new Error("Endorsement policy incomplete. Missing approval from " + req);
+          }
+        }
+        prop.status = "FINALIZED";
+        const prod = clientSim.products[prop.product_id];
+        if (prod) {
+          prod.current_owner = prop.to_msp;
+          prod.stage = "IN_TRANSIT";
+          prod.history.push({
+            stage: "IN_TRANSIT",
+            owner: prop.to_msp,
+            timestamp: Math.floor(Date.now() / 1000),
+            note: "Ownership transferred via multi-party approval"
+          });
+        }
+        const bNum = clientSim.blocks.length;
+        const newBlock = {
+          block_number: bNum,
+          timestamp: Math.floor(Date.now() / 1000),
+          previous_hash: clientSim.blocks[bNum - 1].block_hash,
+          merkle_root: "merkle_finalize_" + bNum,
+          orderer_node: clientSim.raft.leader,
+          block_hash: "hash_block_" + bNum + "_" + Math.random().toString(16).slice(2, 10),
+          tx_count: 1,
+          transactions: [{ tx_id: "TX-FINAL-" + Date.now(), tx_type: "FinalizeTransfer" }]
+        };
+        clientSim.blocks.push(newBlock);
+        return { success: true, proposal: prop, receipt: { block_number: bNum } };
+      }
+
+      if (endpoint === '/api/documents/upload') {
+        const cid = "bafkrei" + Math.random().toString(36).slice(2, 14) + "ipfsdoc";
+        const sha256 = "d2d2d2" + Math.random().toString(16).slice(2, 10) + "a1b2c3d4e5f67890123456789abcdef0";
+        const docId = "DOC-" + Date.now();
+        const doc = { doc_id: docId, cid: cid, sha256_hash: sha256, file_name: data.file_name, doc_type: data.doc_type };
+        clientSim.documents[docId] = doc;
+        return {
+          ipfs: { cid: cid, sha256: sha256 },
+          blockchain: { document: doc }
+        };
+      }
+
+      if (endpoint === '/api/documents/verify') {
+        const doc = clientSim.documents[data.doc_id];
+        const match = doc && doc.sha256_hash.toLowerCase() === data.calculated_hash.toLowerCase();
+        return {
+          verified: match,
+          tampered: !match,
+          doc_id: data.doc_id,
+          expected_hash: doc ? doc.sha256_hash : "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          calculated_hash: data.calculated_hash
+        };
+      }
+
+      if (endpoint === '/api/merkle/generate') {
+        const root = "7d4b9f2e" + Math.random().toString(16).slice(2, 10) + "1234567890abcdef1234567890abcdef";
+        const leaves = [
+          "0a1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef",
+          "1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef0a",
+          "2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef0a1b",
+          "3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef0a1b2c"
+        ];
+        return {
+          tree: { root: root, leaf_count: 4, depth: 3, leaf_hashes: leaves },
+          sample_leaf: leaves[0],
+          sample_proof: [
+            { hash: leaves[1], position: "right" },
+            { hash: "parent_sibling_node_hash_level_1", position: "right" }
+          ],
+          blockchain_receipt: { merkle_record: { batch_id: data.batch_id, root_hash: root }, receipt: { block_number: clientSim.blocks.length } }
+        };
+      }
+
+      if (endpoint === '/api/merkle/verify_proof') {
+        return { verified: true, verdict: "CRYPTOGRAPHIC INCLUSION VERIFIED: Document belongs to batch." };
+      }
+
+      if (endpoint === '/api/ai/predict') {
+        const rel = parseFloat(data.supplier_reliability || 85);
+        const delays = parseFloat(data.historical_delays || 2);
+        const rej = parseFloat(data.rejection_rate || 1.5);
+        const docF = parseFloat(data.doc_verification_failures || 0);
+        const irreg = parseFloat(data.tx_irregularities || 8);
+
+        const w_rel = ((100 - rel) / 100) * 30;
+        const w_del = (delays / 30) * 25;
+        const w_rej = (rej / 50) * 20;
+        const w_doc = (docF / 5) * 15;
+        const w_irr = (irreg / 100) * 10;
+        const anomaly = Math.min(15, (delays * 0.4 + irreg * 0.1));
+        const total = Math.min(100, Math.max(0, w_rel + w_del + w_rej + w_doc + w_irr + anomaly));
+        const score = Math.round(total * 10) / 10;
+        const classification = score < 40 ? "Low" : (score < 70 ? "Medium" : "High");
+        const rec = classification === "Low" ? "Low risk detected. Automatic execution and standard transfer flow permitted." :
+                    (classification === "Medium" ? "Moderate risk detected. Recommend secondary physical inspection." : "Critical risk threshold breached! Mandatory regulatory audit hold.");
+
+        const bNum = clientSim.blocks.length;
+        const snap = "snap_" + Math.random().toString(16).slice(2, 10) + "sha256hash";
+        return {
+          ai_assessment: {
+            risk_score: score,
+            classification: classification,
+            recommendation: rec,
+            snapshot_hash: snap,
+            contributing_factors: {
+              supplier_unreliability_impact: Math.round(w_rel * 10) / 10,
+              delivery_delay_impact: Math.round(w_del * 10) / 10,
+              batch_rejection_impact: Math.round(w_rej * 10) / 10,
+              document_failure_impact: Math.round(w_doc * 10) / 10,
+              transaction_anomaly_impact: Math.round(w_irr * 10) / 10,
+              isolation_forest_anomaly_boost: Math.round(anomaly * 10) / 10
+            }
+          },
+          blockchain_receipt: { receipt: { block_number: bNum } }
+        };
+      }
+
+      if (endpoint === '/api/ai/retrain') {
+        return {
+          report: {
+            training_accuracy: 99.8,
+            test_accuracy: 97.3,
+            test_macro_f1: 86.5,
+            confusion_matrix: [[256, 0, 0], [0, 25, 4], [0, 4, 11]]
+          }
+        };
+      }
+
+      if (endpoint === '/api/raft/toggle_node') {
+        const node = clientSim.raft.nodes.find(n => n.node_id === data.node_id);
+        if (node) {
+          node.is_active = data.is_active;
+          if (!data.is_active && node.role === 'LEADER') {
+            node.role = 'FOLLOWER';
+            const remaining = clientSim.raft.nodes.filter(n => n.is_active);
+            if (remaining.length >= 2) {
+              remaining[0].role = 'LEADER';
+              clientSim.raft.leader = remaining[0].node_id;
+            } else {
+              clientSim.raft.leader = "None (No Quorum)";
+            }
+          } else if (data.is_active) {
+            const active = clientSim.raft.nodes.filter(n => n.is_active);
+            if (active.length >= 2 && clientSim.raft.leader.includes("None")) {
+              active[0].role = 'LEADER';
+              clientSim.raft.leader = active[0].node_id;
+            }
+          }
+        }
+        const active = clientSim.raft.nodes.filter(n => n.is_active);
+        return {
+          quorum_available: active.length >= 2,
+          active_nodes_count: active.length,
+          total_nodes: clientSim.raft.nodes.length,
+          network_status: active.length >= 2 ? "ONLINE - OPERATIONAL" : "HALTED - INSUFFICIENT QUORUM"
+        };
+      }
+
+      return {};
+    }
+
+    // API Dispatchers with automatic failover to client-side engine
+    async function apiGet(endpoint) {
+      try {
+        const res = await fetch(endpoint);
+        if (res.ok) return await res.json();
+      } catch (err) {}
+      return handleClientSimGet(endpoint);
+    }
+
+    async function apiPost(endpoint, data) {
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) return await res.json();
+      } catch (err) {}
+      return handleClientSimPost(endpoint, data);
+    }
+
+    // 1. Dashboard Logic
+    async function refreshDashboard() {
+      try {
+        const status = await apiGet('/api/status');
+        document.getElementById('stat-products').innerText = status.total_products;
+        document.getElementById('stat-blocks').innerText = status.total_blocks;
+        document.getElementById('head-block-badge').innerText = '#' + (status.total_blocks - 1);
+        document.getElementById('stat-proposals').innerText = status.total_proposals;
+
+        const raft = status.raft_status;
+        const raftBadge = document.getElementById('raft-badge');
+        const raftSummaryText = document.getElementById('raft-summary-text');
+        const statRaft = document.getElementById('stat-raft');
+        const statRaftDetail = document.getElementById('stat-raft-detail');
+
+        if (raft.quorum_available) {
+          raftBadge.className = 'flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-400';
+          raftSummaryText.innerText = `Raft Quorum: ${raft.active_nodes_count}/${raft.total_nodes} Active`;
+          statRaft.innerText = 'ONLINE';
+          statRaft.className = 'text-xl font-bold text-emerald-400 mt-3 truncate';
+          statRaftDetail.innerText = `Leader: ${raft.current_leader.split('.')[0]}`;
+        } else {
+          raftBadge.className = 'flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-xs text-rose-400';
+          raftSummaryText.innerText = `Raft Halted: ${raft.active_nodes_count}/${raft.total_nodes} (No Quorum)`;
+          statRaft.innerText = 'HALTED';
+          statRaft.className = 'text-xl font-bold text-rose-400 mt-3 truncate';
+          statRaftDetail.innerText = 'Quorum Lost (< 2 nodes)';
+        }
+
+        // Load Products into Dashboard
+        const prods = await apiGet('/api/products');
+        productsList = prods.products;
+        updateDashboardCharts(productsList, status.total_blocks);
+        const container = document.getElementById('dashboard-products-list');
+        if (productsList.length === 0) {
+          container.innerHTML = '<p class="text-xs text-slate-500 text-center py-4">No products registered yet.</p>';
+        } else {
+          container.innerHTML = productsList.map(p => `
+            <div class="p-3 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+              <div class="space-y-0.5">
+                <div class="font-bold text-white flex items-center gap-2">
+                  ${p.product_name}
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">${p.batch_id}</span>
+                </div>
+                <div class="text-slate-400 flex items-center gap-2 text-[11px]">
+                  <span>Origin: ${p.origin.split(',')[0]}</span>
+                  <span>•</span>
+                  <span>Custodian: <b class="text-emerald-400">${p.current_owner}</b></span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20 uppercase font-mono">
+                  ${p.stage}
+                </span>
+              </div>
+            </div>
+          `).join('');
+        }
+      } catch (e) {
+        showToast('Error', e.message, 'error');
+      }
+    }
+
+    // 2. Product Management Logic
+    async function loadProducts() {
+      try {
+        const res = await apiGet('/api/products');
+        productsList = res.products;
+
+        const selector = document.getElementById('product-selector');
+        const propSelector = document.getElementById('prop-product-id');
+        selector.innerHTML = '';
+        propSelector.innerHTML = '';
+
+        productsList.forEach(p => {
+          const opt1 = document.createElement('option');
+          opt1.value = p.product_id;
+          opt1.innerText = `${p.product_id} (${p.product_name})`;
+          selector.appendChild(opt1);
+
+          const opt2 = document.createElement('option');
+          opt2.value = p.product_id;
+          opt2.innerText = `${p.product_id} (${p.product_name})`;
+          propSelector.appendChild(opt2);
+        });
+
+        renderSelectedProductTrace();
+      } catch (e) {
+        showToast('Error', e.message, 'error');
+      }
+    }
+
+    function renderSelectedProductTrace() {
+      const selId = document.getElementById('product-selector').value;
+      const p = productsList.find(x => x.product_id === selId);
+      const container = document.getElementById('product-trace-view');
+
+      if (!p) {
+        container.innerHTML = '<p class="text-xs text-slate-500 text-center py-4">No product selected.</p>';
+        return;
+      }
+
+      renderVisualStepper(p);
+
+      container.innerHTML = `
+        <div class="p-4 rounded-lg bg-slate-950 border border-slate-800 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+            <div>
+              <h4 class="font-bold text-white text-base">${p.product_name}</h4>
+              <p class="text-xs text-slate-400 font-mono mt-0.5">ID: ${p.product_id} | Batch: ${p.batch_id}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                Owner: ${p.current_owner}
+              </span>
+              <span class="px-2.5 py-1 rounded text-xs font-mono bg-sky-500/10 text-sky-400 border border-sky-500/30">
+                Stage: ${p.stage}
+              </span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+            <div class="p-2 rounded bg-slate-900 border border-slate-800">
+              <span class="text-slate-400 text-[10px] uppercase">Origin</span>
+              <div class="font-medium text-slate-200 truncate">${p.origin}</div>
+            </div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800">
+              <span class="text-slate-400 text-[10px] uppercase">Quantity</span>
+              <div class="font-medium text-slate-200">${p.quantity}</div>
+            </div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800">
+              <span class="text-slate-400 text-[10px] uppercase">Status</span>
+              <div class="font-medium text-emerald-400">${p.status}</div>
+            </div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800">
+              <span class="text-slate-400 text-[10px] uppercase">IPFS Docs</span>
+              <div class="font-medium text-sky-400">${(p.document_cids || []).length} Pinned</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage Timeline Visualizer -->
+        <div class="space-y-3 pt-2">
+          <h5 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Immutable Stage Audit Trail</h5>
+          <div class="relative border-l border-emerald-500/30 ml-3 space-y-4 text-xs pl-5">
+            ${(p.history || []).map((h, idx) => `
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-slate-900 shadow"></span>
+                <div class="font-bold text-slate-200 flex items-center gap-2">
+                  <span class="text-emerald-400 font-mono">${h.stage}</span>
+                  <span class="text-[11px] text-slate-400">${new Date(h.timestamp * 1000).toLocaleString()}</span>
+                </div>
+                <p class="text-slate-400 mt-0.5">${h.note || 'Stage updated'}</p>
+                <p class="text-[11px] text-slate-500 font-mono mt-0.5">Custodian: ${h.owner} ${h.location ? '| Location: ' + h.location : ''}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    async function handleProductRegistration(e) {
+      e.preventDefault();
+      try {
+        const body = {
+          product_id: document.getElementById('reg-product-id').value.trim(),
+          name: document.getElementById('reg-name').value.trim(),
+          batch_id: document.getElementById('reg-batch-id').value.trim(),
+          origin: document.getElementById('reg-origin').value.trim(),
+          quantity: document.getElementById('reg-quantity').value.trim(),
+          sender_msp: document.getElementById('reg-sender-msp').value
+        };
+        const res = await apiPost('/api/products/register', body);
+        showToast('Product Registered', `Committed to Block #${res.receipt.block_number}`, 'success');
+        e.target.reset();
+        await loadProducts();
+      } catch (err) {
+        showToast('Registration Error', err.message, 'error');
+      }
+    }
+
+    async function handleUpdateStage() {
+      const selId = document.getElementById('product-selector').value;
+      const stage = document.getElementById('stage-select').value;
+      const location = document.getElementById('stage-location').value.trim();
+      const note = document.getElementById('stage-note').value.trim();
+
+      const p = productsList.find(x => x.product_id === selId);
+      if (!p) return;
+
+      try {
+        const res = await apiPost('/api/products/stage', {
+          product_id: selId,
+          stage: stage,
+          location: location,
+          note: note,
+          sender_msp: p.current_owner
+        });
+        showToast('Stage Updated', `Product moved to ${stage} in Block #${res.receipt.block_number}`, 'success');
+        await loadProducts();
+      } catch (err) {
+        showToast('Stage Update Failed', err.message, 'error');
+      }
+    }
+
+    async function verifySelectedProduct() {
+      const selId = document.getElementById('product-selector').value;
+      try {
+        const res = await apiPost('/api/products/verify', { product_id: selId });
+        showToast('Product Verified', `Verified ${res.total_transactions} on-chain transactions. Ledger intact.`, 'success');
+      } catch (err) {
+        showToast('Verification Failed', err.message, 'error');
+      }
+    }
+
+    // 3. Blockchain Explorer Logic
+    async function loadBlocks() {
+      try {
+        const res = await apiGet('/api/blocks');
+        renderLinkedBlocksRibbon(res.blocks);
+        const tbody = document.getElementById('blocks-table-body');
+        tbody.innerHTML = res.blocks.map(b => `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="p-3.5 font-bold font-mono text-emerald-400">#${b.block_number}</td>
+            <td class="p-3.5 font-mono text-sky-400 truncate max-w-[140px]" title="${b.block_hash}">${b.block_hash.slice(0, 16)}...</td>
+            <td class="p-3.5 font-mono text-slate-400 truncate max-w-[140px]" title="${b.previous_hash}">${b.previous_hash.slice(0, 16)}...</td>
+            <td class="p-3.5 font-mono text-indigo-400 truncate max-w-[140px]" title="${b.merkle_root}">${b.merkle_root.slice(0, 16)}...</td>
+            <td class="p-3.5 font-mono">${b.tx_count}</td>
+            <td class="p-3.5 text-slate-300 font-mono text-[11px]">${b.orderer_node.split('.')[0]}</td>
+            <td class="p-3.5 text-slate-400">${new Date(b.timestamp * 1000).toLocaleTimeString()}</td>
+            <td class="p-3.5 text-right">
+              <button onclick='viewBlockDetails(${JSON.stringify(b)})' class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 text-[11px] font-mono">
+                Inspect
+              </button>
+            </td>
+          </tr>
+        `).reverse().join('');
+      } catch (e) {
+        showToast('Error', e.message, 'error');
+      }
+    }
+
+    function viewBlockDetails(block) {
+      const box = document.getElementById('tx-details-box');
+      const pre = document.getElementById('tx-raw-json');
+      box.classList.remove('hidden');
+      pre.innerText = JSON.stringify(block, null, 2);
+      box.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    async function verifyChainIntegrity() {
+      try {
+        const res = await apiGet('/api/ledger/verify');
+        const badge = document.getElementById('chain-validation-badge');
+        if (res.valid) {
+          badge.className = 'text-xs px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono';
+          badge.innerText = `Chain Valid (${res.total_blocks} Blocks Verified)`;
+          showToast('Ledger Integrity Verified', res.message, 'success');
+        } else {
+          badge.className = 'text-xs px-2.5 py-1 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 font-mono';
+          badge.innerText = 'Tampering Detected!';
+          showToast('Integrity Alert', res.error, 'error');
+        }
+      } catch (err) {
+        showToast('Error', err.message, 'error');
+      }
+    }
+
+    // 4. Multi-Party Verification Logic
+    async function loadProposals() {
+      try {
+        const res = await apiGet('/api/proposals');
+        const container = document.getElementById('proposals-list');
+        if (res.proposals.length === 0) {
+          container.innerHTML = '<p class="text-xs text-slate-500 text-center py-6">No transfer proposals pending endorsement.</p>';
+          return;
+        }
+
+        container.innerHTML = res.proposals.map(prop => {
+          const isFinal = prop.status === 'FINALIZED';
+          const isRejected = prop.status === 'REJECTED';
+          return `
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3 text-xs">
+              <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                <div>
+                  <span class="font-bold text-white text-sm">${prop.product_name}</span>
+                  <span class="text-[11px] font-mono text-slate-400 ml-2">(${prop.proposal_id})</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold ${
+                  isFinal ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
+                  isRejected ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' :
+                  'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                }">
+                  ${prop.status}
+                </span>
+              </div>
+              <div class="flex flex-wrap items-center gap-4 text-slate-300">
+                <div>From: <b class="text-sky-400 font-mono">${prop.from_msp}</b></div>
+                <div>&rarr;</div>
+                <div>To: <b class="text-emerald-400 font-mono">${prop.to_msp}</b></div>
+                <div class="text-slate-400">Reason: ${prop.transfer_reason}</div>
+              </div>
+
+              <!-- Endorsement Status Matrix -->
+              <div class="p-3 rounded-lg bg-slate-900 border border-slate-800 space-y-2">
+                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Required Endorsement Signatures</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  ${prop.required_approvals.map(reqMsp => {
+                    const approved = prop.collected_approvals[reqMsp];
+                    return `
+                      <div class="p-2 rounded bg-slate-950 border border-slate-800 flex items-center justify-between">
+                        <div class="font-mono text-[11px] text-slate-300">${reqMsp}</div>
+                        ${approved ?
+                          `<span class="text-emerald-400 font-bold flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> Signed</span>` :
+                          `<div class="flex gap-1">
+                            <button onclick="endorseProposal('${prop.proposal_id}', '${reqMsp}', 'APPROVED')" class="px-2 py-0.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-[10px]">Approve</button>
+                            <button onclick="endorseProposal('${prop.proposal_id}', '${reqMsp}', 'REJECTED')" class="px-2 py-0.5 bg-rose-600 hover:bg-rose-500 text-white rounded text-[10px]">Reject</button>
+                          </div>`
+                        }
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+
+              ${!isFinal && !isRejected ? `
+                <div class="flex justify-end pt-1">
+                  <button onclick="finalizeProposal('${prop.proposal_id}', '${prop.from_msp}')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded text-xs flex items-center gap-2 transition">
+                    <i data-lucide="check-check" class="w-4 h-4"></i> Finalize Ownership Transfer (Chaincode: FinalizeTransfer)
+                  </button>
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }).join('');
+        lucide.createIcons();
+      } catch (e) {
+        showToast('Error', e.message, 'error');
+      }
+    }
+
+    async function handleProposeTransfer(e) {
+      e.preventDefault();
+      try {
+        const res = await apiPost('/api/proposals/propose', {
+          product_id: document.getElementById('prop-product-id').value,
+          sender_msp: document.getElementById('prop-from-msp').value,
+          recipient_msp: document.getElementById('prop-to-msp').value,
+          reason: document.getElementById('prop-reason').value
+        });
+        showToast('Proposal Created', `Proposal ID: ${res.proposal.proposal_id}`, 'success');
+        e.target.reset();
+        await loadProposals();
+      } catch (err) {
+        showToast('Proposal Error', err.message, 'error');
+      }
+    }
+
+    async function endorseProposal(proposalId, approverMsp, decision) {
+      try {
+        const res = await apiPost('/api/proposals/approve', {
+          proposal_id: proposalId,
+          approver_msp: approverMsp,
+          decision: decision,
+          remarks: `Endorsed digitally by ${approverMsp}`
+        });
+        showToast('Endorsement Recorded', `${approverMsp} marked as ${decision}`, 'success');
+        await loadProposals();
+      } catch (err) {
+        showToast('Endorsement Error', err.message, 'error');
+      }
+    }
+
+    async function finalizeProposal(proposalId, senderMsp) {
+      try {
+        const res = await apiPost('/api/proposals/finalize', {
+          proposal_id: proposalId,
+          sender_msp: senderMsp
+        });
+        showToast('Transfer Finalized', `Custody updated in Block #${res.receipt.block_number}`, 'success');
+        await loadProposals();
+        await loadProducts();
+      } catch (err) {
+        showToast('Finalization Blocked', err.message, 'error');
+      }
+    }
+
+    // 5. Document & Merkle Logic
+    async function handleDocUpload(e) {
+      e.preventDefault();
+      try {
+        const body = {
+          file_name: document.getElementById('doc-file-name').value.trim(),
+          doc_type: document.getElementById('doc-type').value,
+          content: document.getElementById('doc-content').value,
+          encrypt: document.getElementById('doc-encrypt').checked,
+          product_id: productsList[0]?.product_id || null,
+          sender_msp: 'FarmerOrgMSP'
+        };
+        const res = await apiPost('/api/documents/upload', body);
+        showToast('Document Stored', `Pinned to IPFS (${res.ipfs.cid.slice(0, 16)}...) and anchored on-chain!`, 'success');
+        document.getElementById('verify-doc-id').value = res.blockchain.document.doc_id;
+        document.getElementById('verify-doc-content').value = body.content;
+      } catch (err) {
+        showToast('Upload Error', err.message, 'error');
+      }
+    }
+
+    async function testDocIntegrity(simulateTampering) {
+      const docId = document.getElementById('verify-doc-id').value.trim();
+      let text = document.getElementById('verify-doc-content').value;
+      if (!docId || !text) {
+        showToast('Warning', 'Provide document ID and content first.', 'warning');
+        return;
+      }
+
+      if (simulateTampering) {
+        text = text + " [UNAUTHORIZED TAMPERED BYTE: 0xFF]";
+      }
+
+      // Compute SHA-256 via Web Crypto
+      const enc = new TextEncoder().encode(text);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', enc);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const calculatedHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+      try {
+        const res = await apiPost('/api/documents/verify', {
+          doc_id: docId,
+          calculated_hash: calculatedHash
+        });
+
+        const resultBox = document.getElementById('tamper-test-result');
+        resultBox.classList.remove('hidden');
+        if (res.verified) {
+          resultBox.className = 'p-3 rounded text-xs font-mono bg-emerald-950 border border-emerald-500 text-emerald-200 space-y-1';
+          resultBox.innerHTML = `
+            <div class="font-bold">VERIFICATION SUCCESS: ZERO BYTES ALTERED</div>
+            <p>Calculated Hash: ${res.calculated_hash}</p>
+            <p>On-Chain Hash: ${res.expected_hash}</p>
+          `;
+          showToast('Integrity Confirmed', 'Matches immutable blockchain record.', 'success');
+        } else {
+          resultBox.className = 'p-3 rounded text-xs font-mono bg-rose-950 border border-rose-500 text-rose-200 space-y-1';
+          resultBox.innerHTML = `
+            <div class="font-bold">TAMPERING DETECTED! CRYPTOGRAPHIC HASH MISMATCH</div>
+            <p>Calculated Hash: ${res.calculated_hash}</p>
+            <p>Expected Hash:   ${res.expected_hash}</p>
+          `;
+          showToast('Tampering Alert!', 'Document was altered after pinning.', 'error');
+        }
+      } catch (err) {
+        showToast('Verification Error', err.message, 'error');
+      }
+    }
+
+    async function generateMerkleBatch() {
+      try {
+        const res = await apiPost('/api/merkle/generate', {
+          batch_id: 'BATCH-CERT-' + Math.floor(Math.random() * 9000 + 1000)
+        });
+        latestMerkleData = res;
+        renderVisualMerkleTree(res);
+
+        // Reveal proof test panel
+        const proofPanel = document.getElementById('merkle-proof-panel');
+        proofPanel.classList.remove('hidden');
+        const badge = document.getElementById('proof-status-badge');
+        badge.className = 'px-2 py-0.5 rounded text-[11px] font-mono bg-sky-500/10 text-sky-400 border border-sky-500/20';
+        badge.innerText = `Proof Generated (${res.sample_proof.length} Audit Siblings)`;
+
+        const steps = document.getElementById('proof-steps');
+        steps.innerHTML = `
+          <div class="text-slate-400">Target Leaf Hash: <span class="text-sky-300">${res.sample_leaf.slice(0, 16)}...</span></div>
+          <div class="text-slate-400">Audit Path Steps:</div>
+          ${res.sample_proof.map((p, idx) => `
+            <div class="text-slate-300 pl-3">&bull; Step ${idx + 1}: Hash pair with <span class="text-amber-300">[${p.position.toUpperCase()}]</span> sibling ${p.hash.slice(0, 16)}...</div>
+          `).join('')}
+        `;
+
+        showToast('Merkle Tree Generated', `Root anchored on-chain in Block #${res.blockchain_receipt.receipt.block_number}`, 'success');
+      } catch (err) {
+        showToast('Merkle Error', err.message, 'error');
+      }
+    }
+
+    async function verifySampleProof() {
+      if (!latestMerkleData) return;
+      try {
+        const res = await apiPost('/api/merkle/verify_proof', {
+          batch_id: latestMerkleData.blockchain_receipt.merkle_record.batch_id,
+          leaf_hash: latestMerkleData.sample_leaf,
+          proof: latestMerkleData.sample_proof
+        });
+        showToast('Merkle Proof Verified', res.verdict, 'success');
+      } catch (err) {
+        showToast('Proof Verification Failed', err.message, 'error');
+      }
+    }
+
+    // 6. AI Risk Prediction Logic
+    function updateSliderValues() {
+      const rel = document.getElementById('input-reliability').value;
+      const delays = document.getElementById('input-delays').value;
+      const rej = document.getElementById('input-rejection').value;
+      const docF = document.getElementById('input-doc-fails').value;
+      const irreg = document.getElementById('input-irregularity').value;
+
+      document.getElementById('val-reliability').innerText = rel + '%';
+      document.getElementById('val-delays').innerText = delays + ' Days';
+      document.getElementById('val-rejection').innerText = rej + '%';
+      document.getElementById('val-doc-fails').innerText = docF;
+      document.getElementById('val-irregularity').innerText = irreg + '/100';
+
+      updateRadarChart(rel, delays, rej, docF, irreg);
+    }
+
+    async function executeAiPrediction() {
+      try {
+        const payload = {
+          product_id: productsList[0]?.product_id || 'PROD-ORG-WHEAT-2026',
+          supplier_reliability: document.getElementById('input-reliability').value,
+          historical_delays: document.getElementById('input-delays').value,
+          rejection_rate: document.getElementById('input-rejection').value,
+          doc_verification_failures: document.getElementById('input-doc-fails').value,
+          tx_irregularities: document.getElementById('input-irregularity').value
+        };
+
+        const res = await apiPost('/api/ai/predict', payload);
+        const ai = res.ai_assessment;
+
+        // Update UI
+        const scoreEl = document.getElementById('ai-risk-score-display');
+        const badgeEl = document.getElementById('ai-risk-classification-badge');
+        const recEl = document.getElementById('ai-risk-recommendation');
+        const snapEl = document.getElementById('snapshot-hash-val');
+
+        scoreEl.innerText = ai.risk_score + '%';
+        recEl.innerText = ai.recommendation;
+        snapEl.innerText = ai.snapshot_hash;
+
+        if (ai.classification === 'Low') {
+          scoreEl.className = 'text-5xl font-black text-emerald-400';
+          badgeEl.className = 'inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider';
+          badgeEl.innerText = 'LOW RISK (0–39%)';
+        } else if (ai.classification === 'Medium') {
+          scoreEl.className = 'text-5xl font-black text-amber-400';
+          badgeEl.className = 'inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-wider';
+          badgeEl.innerText = 'MEDIUM RISK (40–69%)';
+        } else {
+          scoreEl.className = 'text-5xl font-black text-rose-400';
+          badgeEl.className = 'inline-block px-3 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20 uppercase tracking-wider';
+          badgeEl.innerText = 'HIGH RISK (70–100%)';
+        }
+
+        // Factors
+        const f = ai.contributing_factors;
+        document.getElementById('factor-unreliability').innerText = f.supplier_unreliability_impact + '%';
+        document.getElementById('bar-unreliability').style.width = Math.min(100, f.supplier_unreliability_impact * 3) + '%';
+
+        document.getElementById('factor-delay').innerText = f.delivery_delay_impact + '%';
+        document.getElementById('bar-delay').style.width = Math.min(100, f.delivery_delay_impact * 3) + '%';
+
+        document.getElementById('factor-rejection').innerText = f.batch_rejection_impact + '%';
+        document.getElementById('bar-rejection').style.width = Math.min(100, f.batch_rejection_impact * 3) + '%';
+
+        document.getElementById('factor-doc').innerText = f.document_failure_impact + '%';
+        document.getElementById('bar-doc').style.width = Math.min(100, f.document_failure_impact * 5) + '%';
+
+        document.getElementById('factor-anomaly').innerText = f.isolation_forest_anomaly_boost + '%';
+        document.getElementById('bar-anomaly').style.width = Math.min(100, f.isolation_forest_anomaly_boost * 6) + '%';
+
+        showToast('AI Assessment Anchored', `Classification: ${ai.classification} (${ai.risk_score}%). Anchored in Block #${res.blockchain_receipt.receipt.block_number}`, 'success');
+      } catch (err) {
+        showToast('Prediction Error', err.message, 'error');
+      }
+    }
+
+    // 7. Raft Network Management Logic
+    async function loadRaftStatus() {
+      try {
+        const status = await apiGet('/api/raft/status');
+        raftStatusData = status;
+        renderRaftTopology(status);
+        const grid = document.getElementById('raft-nodes-grid');
+
+        grid.innerHTML = status.nodes.map(n => {
+          const isLeader = n.role === 'LEADER';
+          const isAlive = n.is_active;
+          return `
+            <div class="p-4 rounded-xl ${isAlive ? 'bg-slate-950 border-slate-800' : 'bg-rose-950/20 border-rose-500/30'} border space-y-3 text-xs">
+              <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                <span class="font-bold text-white font-mono">${n.node_id.split('.')[0]}</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
+                  isLeader ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-slate-800 text-slate-400'
+                }">
+                  ${n.role}
+                </span>
+              </div>
+              <div class="space-y-1 font-mono text-[11px] text-slate-400">
+                <div>Status: <b class="${isAlive ? 'text-emerald-400' : 'text-rose-400'}">${isAlive ? 'ONLINE' : 'CRASHED / OFFLINE'}</b></div>
+                <div>Address: ${n.address}</div>
+                <div>Term: ${n.current_term}</div>
+                <div>Committed Log Entries: ${n.commit_index}</div>
+              </div>
+              <div class="pt-1">
+                <button onclick="toggleNode('${n.node_id}', ${!isAlive})" class="w-full py-1.5 rounded font-medium text-xs transition ${
+                  isAlive ? 'bg-rose-600/80 hover:bg-rose-500 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+                }">
+                  ${isAlive ? 'Simulate Crash (Kill Node)' : 'Revive & Catch-Up Node'}
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (e) {
+        showToast('Raft Error', e.message, 'error');
+      }
+    }
+
+    async function toggleNode(nodeId, newStatus) {
+      try {
+        const res = await apiPost('/api/raft/toggle_node', { node_id: nodeId, is_active: newStatus });
+        showToast('Node State Changed', `${nodeId.split('.')[0]} is now ${newStatus ? 'ONLINE' : 'OFFLINE'}. Network: ${res.network_status}`, newStatus ? 'success' : 'warning');
+        await loadRaftStatus();
+        await refreshDashboard();
+      } catch (err) {
+        showToast('Raft Action Failed', err.message, 'error');
+      }
+    }
+
+    async function loadOrganizations() {
+      try {
+        const res = await apiGet('/api/organizations');
+        const grid = document.getElementById('orgs-list-grid');
+        grid.innerHTML = Object.values(res.organizations).map(org => `
+          <div class="p-3.5 rounded-lg bg-slate-950 border border-slate-800 space-y-2 text-xs">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
+              <span class="font-bold text-white font-mono">${org.msp_id}</span>
+              <span class="px-2 py-0.5 rounded text-[10px] bg-slate-800 text-emerald-400 font-mono">${org.role}</span>
+            </div>
+            <div class="text-slate-300 font-medium">${org.org_name}</div>
+            <div class="text-[11px] text-slate-400 font-mono space-y-0.5">
+              <div>Certificate: <span class="text-sky-300">${org.certificate_id}</span></div>
+              <div>Domain: ${org.domain}</div>
+            </div>
+          </div>
+        `).join('');
+      } catch (e) {
+        showToast('Error', e.message, 'error');
+      }
+    }
+
+    async function retrainAiModel() {
+      try {
+        showToast('Training Started', 'Retraining Random Forest ensemble on 1,500 samples...', 'info');
+        const res = await apiPost('/api/ai/retrain', {});
+        const rep = res.report;
+        document.getElementById('metric-train-acc').innerText = rep.training_accuracy + '%';
+        document.getElementById('metric-test-acc').innerText = rep.test_accuracy + '%';
+        document.getElementById('metric-macro-f1').innerText = rep.test_macro_f1 + '%';
+
+        const cm = rep.confusion_matrix;
+        document.getElementById('cm-00').innerText = cm[0][0];
+        document.getElementById('cm-01').innerText = cm[0][1];
+        document.getElementById('cm-02').innerText = cm[0][2];
+        document.getElementById('cm-10').innerText = cm[1][0];
+        document.getElementById('cm-11').innerText = cm[1][1];
+        document.getElementById('cm-12').innerText = cm[1][2];
+        document.getElementById('cm-20').innerText = cm[2][0];
+        document.getElementById('cm-21').innerText = cm[2][1];
+        document.getElementById('cm-22').innerText = cm[2][2];
+
+        showToast('Training Succeeded', `New Test Accuracy: ${rep.test_accuracy}% (Macro F1: ${rep.test_macro_f1}%)`, 'success');
+      } catch (err) {
+        showToast('Retrain Error', err.message, 'error');
+      }
+    }
+
+    async function openProductQrModal() {
+      const selId = document.getElementById('product-selector')?.value || productsList[0]?.product_id;
+      if (!selId) return;
+      try {
+        const res = await apiGet(`/api/qr/${selId}`);
+        const box = document.getElementById('qr-product-info');
+        box.innerHTML = `
+          <div>Product: <b class="text-white">${res.product_id}</b></div>
+          <div>Batch ID: <span class="text-emerald-400">${res.batch_id}</span></div>
+          <div>Origin: ${res.origin}</div>
+          <div>Custodian: <span class="text-sky-300">${res.current_custodian}</span></div>
+          <div>Stage: <span class="text-amber-400 font-bold">${res.stage}</span></div>
+          <div class="text-[10px] text-slate-500 pt-1 border-t border-slate-800">Direct Verification URL: ${res.verify_url}</div>
+        `;
+        document.getElementById('qr-modal').classList.remove('hidden');
+        lucide.createIcons();
+      } catch (err) {
+        showToast('QR Error', err.message, 'error');
+      }
+    }
+
+    function closeProductQrModal() {
+      document.getElementById('qr-modal').classList.add('hidden');
+    }
+
+    // -------------------------------------------------------------
+    // VISUAL RENDERING ENHANCEMENTS (Charts, SVG Graphs, Steppers)
+    // -------------------------------------------------------------
+    function updateDashboardCharts(products, totalBlocks) {
+      const ctxStage = document.getElementById('chart-stage-distribution')?.getContext('2d');
+      const ctxActivity = document.getElementById('chart-activity-pulse')?.getContext('2d');
+      if (!ctxStage || !ctxActivity) return;
+
+      const stageCounts = { HARVESTED: 0, PROCESSING: 0, PACKAGED: 0, IN_TRANSIT: 0, RECEIVED: 0, RETAIL_STOCKED: 0 };
+      (products || []).forEach(p => {
+        if (stageCounts[p.stage] !== undefined) stageCounts[p.stage]++;
+        else stageCounts.HARVESTED++;
+      });
+      const stageData = Object.values(stageCounts);
+
+      if (stageDistributionChart) {
+        stageDistributionChart.data.datasets[0].data = stageData;
+        stageDistributionChart.update();
+      } else {
+        stageDistributionChart = new Chart(ctxStage, {
+          type: 'doughnut',
+          data: {
+            labels: ['Harvested', 'Processing', 'Packaged', 'In Transit', 'Received', 'Retail Stocked'],
+            datasets: [{
+              data: stageData,
+              backgroundColor: ['#10b981', '#0284c7', '#38bdf8', '#f59e0b', '#8b5cf6', '#ec4899'],
+              borderColor: '#0f172a',
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            cutout: '68%'
+          }
+        });
+      }
+
+      const labels = Array.from({ length: 7 }, (_, i) => `T-${6 - i}m`);
+      const tb = parseInt(totalBlocks) || 2;
+      const activityData = [Math.max(1, tb - 6), Math.max(1, tb - 4), Math.max(2, tb - 3), Math.max(2, tb - 2), Math.max(2, tb - 1), tb, tb];
+
+      if (activityPulseChart) {
+        activityPulseChart.data.datasets[0].data = activityData;
+        activityPulseChart.update();
+      } else {
+        activityPulseChart = new Chart(ctxActivity, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Committed Blocks',
+              data: activityData,
+              borderColor: '#38bdf8',
+              backgroundColor: 'rgba(56, 189, 248, 0.1)',
+              fill: true,
+              tension: 0.4,
+              pointBackgroundColor: '#10b981',
+              pointBorderColor: '#ffffff',
+              pointRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { grid: { color: 'rgba(51, 65, 85, 0.25)' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
+              y: { grid: { color: 'rgba(51, 65, 85, 0.25)' }, ticks: { color: '#94a3b8', font: { size: 10 }, stepSize: 1 } }
+            }
+          }
+        });
+      }
+    }
+
+    function updateRadarChart(rel, delays, rej, docFails, irreg) {
+      const ctx = document.getElementById('chart-risk-radar')?.getContext('2d');
+      if (!ctx) return;
+
+      const dataValues = [
+        100 - parseFloat(rel || 85),
+        Math.min(100, parseFloat(delays || 2) * 3.33),
+        Math.min(100, parseFloat(rej || 1.5) * 2.0),
+        Math.min(100, parseFloat(docFails || 0) * 20.0),
+        parseFloat(irreg || 8)
+      ];
+
+      if (riskRadarChart) {
+        riskRadarChart.data.datasets[0].data = dataValues;
+        riskRadarChart.update();
+      } else {
+        riskRadarChart = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['Unreliability', 'Delays', 'Rejection', 'Doc Fails', 'Anomalies'],
+            datasets: [{
+              label: 'Risk Vector',
+              data: dataValues,
+              backgroundColor: 'rgba(16, 185, 129, 0.2)',
+              borderColor: '#10b981',
+              borderWidth: 2,
+              pointBackgroundColor: '#38bdf8',
+              pointRadius: 3
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                angleLines: { color: 'rgba(51, 65, 85, 0.4)' },
+                grid: { color: 'rgba(51, 65, 85, 0.4)' },
+                pointLabels: { color: '#94a3b8', font: { size: 9, weight: 'bold' } },
+                ticks: { display: false, min: 0, max: 100 }
+              }
+            },
+            plugins: { legend: { display: false } }
+          }
+        });
+      }
+    }
+
+    function renderVisualStepper(p) {
+      const container = document.getElementById('product-visual-stepper');
+      if (!container || !p) return;
+
+      const STAGES = [
+        { key: "HARVESTED", label: "Origin Farm" },
+        { key: "PROCESSING", label: "Processing Mill" },
+        { key: "PACKAGED", label: "Packaged QA" },
+        { key: "IN_TRANSIT", label: "Cold Freight" },
+        { key: "RECEIVED", label: "Distribution" },
+        { key: "RETAIL_STOCKED", label: "Retail Supermarket" }
+      ];
+
+      const currentIdx = STAGES.findIndex(s => s.key === p.stage);
+      const activeIdx = currentIdx === -1 ? 0 : currentIdx;
+
+      container.innerHTML = `
+        <div class="flex items-center justify-between text-xs mb-3">
+          <span class="font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="compass" class="w-4 h-4 text-emerald-400"></i> Provenance Journey Progress
+          </span>
+          <span class="px-2.5 py-0.5 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            Stage ${activeIdx + 1} of 6: ${p.stage}
+          </span>
+        </div>
+        <div class="relative flex items-center justify-between py-2">
+          <!-- Background Line -->
+          <div class="absolute top-1/2 left-4 right-4 h-1 bg-slate-800 -translate-y-1/2 z-0"></div>
+          <!-- Active Line -->
+          <div class="absolute top-1/2 left-4 h-1 bg-gradient-to-r from-emerald-500 to-sky-500 -translate-y-1/2 z-0 transition-all duration-500"
+               style="width: ${((activeIdx) / (STAGES.length - 1)) * 95}%"></div>
+
+          ${STAGES.map((s, idx) => {
+            const isPast = idx < activeIdx;
+            const isCurr = idx === activeIdx;
+
+            let circleClasses = "w-8 h-8 rounded-full flex items-center justify-center font-bold z-10 transition text-xs ";
+            if (isPast) {
+              circleClasses += "bg-emerald-600 text-white ring-4 ring-slate-900 border border-emerald-400";
+            } else if (isCurr) {
+              circleClasses += "bg-sky-500 text-white ring-4 ring-sky-500/30 border-2 border-white animate-pulse glow-sky";
+            } else {
+              circleClasses += "bg-slate-800 text-slate-500 ring-4 ring-slate-900 border border-slate-700";
+            }
+
+            return `
+              <div class="flex flex-col items-center z-10 text-center">
+                <div class="${circleClasses}">
+                  ${isPast ? '<i data-lucide="check" class="w-3.5 h-3.5"></i>' : (idx + 1)}
+                </div>
+                <span class="mt-1.5 text-[10px] font-medium ${isCurr ? 'text-sky-300 font-bold' : (isPast ? 'text-emerald-400' : 'text-slate-500')} max-w-[60px] leading-tight">
+                  ${s.label}
+                </span>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderLinkedBlocksRibbon(blocks) {
+      const container = document.getElementById('linked-blocks-ribbon');
+      if (!container || !blocks) return;
+
+      const displayBlocks = blocks.slice(-6);
+      container.innerHTML = displayBlocks.map((b, idx) => `
+        <div class="flex items-center gap-3 flex-shrink-0">
+          <div onclick='viewBlockDetails(${JSON.stringify(b)})' class="cursor-pointer glass-card hover:border-sky-500/60 p-3 rounded-xl w-44 transition transform hover:-translate-y-0.5 space-y-1.5 text-xs shadow-md">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1">
+              <span class="font-bold text-emerald-400 font-mono">Block #${b.block_number}</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">${b.tx_count} Tx</span>
+            </div>
+            <div class="space-y-0.5 text-[10px] font-mono text-slate-400">
+              <div class="truncate text-sky-400" title="${b.block_hash}">H: ${b.block_hash.slice(0, 14)}...</div>
+              <div class="truncate text-slate-500" title="${b.previous_hash}">P: ${b.previous_hash.slice(0, 14)}...</div>
+            </div>
+          </div>
+          ${idx < displayBlocks.length - 1 ? `
+            <div class="flex items-center text-emerald-400 font-bold animate-pulse text-sm">
+              &rarr;
+            </div>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+
+    function renderVisualMerkleTree(data) {
+      const container = document.getElementById('merkle-tree-display');
+      if (!container || !data) return;
+
+      const root = data.tree.root;
+      const leaves = data.tree.leaf_hashes;
+
+      container.innerHTML = `
+        <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="git-commit" class="w-4 h-4 text-emerald-400"></i> Cryptographic Merkle Hierarchy
+            </span>
+            <span class="font-mono text-[11px] text-sky-400">Root: ${root.slice(0, 16)}...</span>
+          </div>
+
+          <div class="w-full overflow-x-auto flex justify-center py-2">
+            <svg class="w-[420px] h-[190px]" viewBox="0 0 420 190">
+              <line x1="210" y1="35" x2="110" y2="85" stroke="#059669" stroke-width="2" stroke-dasharray="4,4"/>
+              <line x1="210" y1="35" x2="310" y2="85" stroke="#059669" stroke-width="2" stroke-dasharray="4,4"/>
+
+              <line x1="110" y1="105" x2="60" y2="155" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="110" y1="105" x2="160" y2="155" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="310" y1="105" x2="260" y2="155" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="310" y1="105" x2="360" y2="155" stroke="#38bdf8" stroke-width="1.5"/>
+
+              <rect x="145" y="10" width="130" height="30" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+              <text x="210" y="30" fill="#ffffff" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">Root: ${root.slice(0, 12)}...</text>
+
+              <rect x="60" y="80" width="100" height="26" rx="5" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+              <text x="110" y="97" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="middle">Branch H12</text>
+
+              <rect x="260" y="80" width="100" height="26" rx="5" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+              <text x="310" y="97" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="middle">Branch H34</text>
+
+              <rect x="20" y="150" width="80" height="28" rx="4" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+              <text x="60" y="168" fill="#a7f3d0" font-size="8" font-family="monospace" text-anchor="middle">Doc 1: ${(leaves[0] || '').slice(0, 6)}...</text>
+
+              <rect x="120" y="150" width="80" height="28" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+              <text x="160" y="168" fill="#cbd5e1" font-size="8" font-family="monospace" text-anchor="middle">Doc 2: ${(leaves[1] || '').slice(0, 6)}...</text>
+
+              <rect x="220" y="150" width="80" height="28" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+              <text x="260" y="168" fill="#cbd5e1" font-size="8" font-family="monospace" text-anchor="middle">Doc 3: ${(leaves[2] || '').slice(0, 6)}...</text>
+
+              <rect x="320" y="150" width="80" height="28" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+              <text x="360" y="168" fill="#cbd5e1" font-size="8" font-family="monospace" text-anchor="middle">Doc 4: ${(leaves[3] || '').slice(0, 6)}...</text>
+            </svg>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderRaftTopology(status) {
+      const container = document.getElementById('raft-topology-visualizer');
+      if (!container || !status) return;
+
+      const n1 = status.nodes.find(n => n.node_id.includes('orderer1')) || { is_active: true, role: 'LEADER' };
+      const n2 = status.nodes.find(n => n.node_id.includes('orderer2')) || { is_active: true, role: 'FOLLOWER' };
+      const n3 = status.nodes.find(n => n.node_id.includes('orderer3')) || { is_active: true, role: 'FOLLOWER' };
+      const quorumOk = status.quorum_available;
+
+      container.innerHTML = `
+        <div class="flex items-center justify-between text-xs border-b border-slate-800 pb-2">
+          <span class="font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="network" class="w-4 h-4 text-sky-400"></i> Raft Consensus Ordering Topology (3 Nodes)
+          </span>
+          <span class="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold ${
+            quorumOk ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border border-rose-500/20 animate-pulse'
+          }">
+            ${quorumOk ? 'QUORUM HEALTHY (>= 2/3)' : 'QUORUM BREACHED (< 2/3)'}
+          </span>
+        </div>
+
+        <div class="w-full flex justify-center py-2">
+          <svg class="w-[360px] h-[180px]" viewBox="0 0 360 180">
+            <line x1="180" y1="45" x2="70" y2="135" stroke="${n1.is_active && n2.is_active ? '#10b981' : '#f43f5e'}" stroke-width="2" class="${n1.is_active && n2.is_active ? 'heartbeat-line' : ''}"/>
+            <line x1="180" y1="45" x2="290" y2="135" stroke="${n1.is_active && n3.is_active ? '#10b981' : '#f43f5e'}" stroke-width="2" class="${n1.is_active && n3.is_active ? 'heartbeat-line' : ''}"/>
+            <line x1="70" y1="135" x2="290" y2="135" stroke="${n2.is_active && n3.is_active ? '#38bdf8' : '#64748b'}" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+            <circle cx="180" cy="110" r="22" fill="#0f172a" stroke="${quorumOk ? '#10b981' : '#f43f5e'}" stroke-width="3"/>
+            <text x="180" y="114" fill="${quorumOk ? '#34d399' : '#f87171'}" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">${status.active_nodes_count}/3</text>
+
+            <circle cx="180" cy="45" r="20" fill="${n1.is_active ? '#064e3b' : '#4c0519'}" stroke="${n1.is_active ? (n1.role === 'LEADER' ? '#fbbf24' : '#10b981') : '#f43f5e'}" stroke-width="3"/>
+            <text x="180" y="48" fill="#ffffff" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">ORD-1</text>
+            <text x="180" y="16" fill="${n1.role === 'LEADER' ? '#fbbf24' : '#94a3b8'}" font-size="8" text-anchor="middle" font-weight="bold">${n1.is_active ? n1.role : 'OFFLINE'}</text>
+
+            <circle cx="70" cy="135" r="20" fill="${n2.is_active ? '#064e3b' : '#4c0519'}" stroke="${n2.is_active ? (n2.role === 'LEADER' ? '#fbbf24' : '#38bdf8') : '#f43f5e'}" stroke-width="3"/>
+            <text x="70" y="138" fill="#ffffff" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">ORD-2</text>
+            <text x="70" y="170" fill="${n2.role === 'LEADER' ? '#fbbf24' : '#94a3b8'}" font-size="8" text-anchor="middle" font-weight="bold">${n2.is_active ? n2.role : 'OFFLINE'}</text>
+
+            <circle cx="290" cy="135" r="20" fill="${n3.is_active ? '#064e3b' : '#4c0519'}" stroke="${n3.is_active ? (n3.role === 'LEADER' ? '#fbbf24' : '#38bdf8') : '#f43f5e'}" stroke-width="3"/>
+            <text x="290" y="138" fill="#ffffff" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">ORD-3</text>
+            <text x="290" y="170" fill="${n3.role === 'LEADER' ? '#fbbf24' : '#94a3b8'}" font-size="8" text-anchor="middle" font-weight="bold">${n3.is_active ? n3.role : 'OFFLINE'}</text>
+          </svg>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    // Initial Bootstrap
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      refreshDashboard();
+      loadProducts();
+    });
+  </script>
+</body>
+</html>

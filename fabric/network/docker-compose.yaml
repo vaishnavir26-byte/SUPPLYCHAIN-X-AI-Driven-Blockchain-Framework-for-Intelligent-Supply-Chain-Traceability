@@ -1,0 +1,128 @@
+version: '3.7'
+
+networks:
+  supplychain-net:
+    name: supplychain-net
+
+services:
+  # -------------------------------------------------------------
+  # 3-Node Raft Consensus Ordering Service (FR-09)
+  # -------------------------------------------------------------
+  orderer1.supplychain.net:
+    image: hyperledger/fabric-orderer:2.5
+    container_name: orderer1.supplychain.net
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=7050
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+    ports:
+      - "7050:7050"
+    networks:
+      - supplychain-net
+
+  orderer2.supplychain.net:
+    image: hyperledger/fabric-orderer:2.5
+    container_name: orderer2.supplychain.net
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=8050
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+    ports:
+      - "8050:8050"
+    networks:
+      - supplychain-net
+
+  orderer3.supplychain.net:
+    image: hyperledger/fabric-orderer:2.5
+    container_name: orderer3.supplychain.net
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=9050
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+    ports:
+      - "9050:9050"
+    networks:
+      - supplychain-net
+
+  # -------------------------------------------------------------
+  # Consortium Peer Nodes
+  # -------------------------------------------------------------
+  peer0.farmer.supplychain.org:
+    image: hyperledger/fabric-peer:2.5
+    container_name: peer0.farmer.supplychain.org
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_ID=peer0.farmer.supplychain.org
+      - CORE_PEER_ADDRESS=peer0.farmer.supplychain.org:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_LOCALMSPID=FarmerOrgMSP
+    ports:
+      - "7051:7051"
+    networks:
+      - supplychain-net
+
+  peer0.mfr.supplychain.org:
+    image: hyperledger/fabric-peer:2.5
+    container_name: peer0.mfr.supplychain.org
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_ID=peer0.mfr.supplychain.org
+      - CORE_PEER_ADDRESS=peer0.mfr.supplychain.org:8051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
+      - CORE_PEER_LOCALMSPID=ManufacturerOrgMSP
+    ports:
+      - "8051:8051"
+    networks:
+      - supplychain-net
+
+  peer0.logistics.supplychain.org:
+    image: hyperledger/fabric-peer:2.5
+    container_name: peer0.logistics.supplychain.org
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_ID=peer0.logistics.supplychain.org
+      - CORE_PEER_ADDRESS=peer0.logistics.supplychain.org:9051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
+      - CORE_PEER_LOCALMSPID=DistributorOrgMSP
+    ports:
+      - "9051:9051"
+    networks:
+      - supplychain-net
+
+  peer0.retail.supplychain.org:
+    image: hyperledger/fabric-peer:2.5
+    container_name: peer0.retail.supplychain.org
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_ID=peer0.retail.supplychain.org
+      - CORE_PEER_ADDRESS=peer0.retail.supplychain.org:10051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:10051
+      - CORE_PEER_LOCALMSPID=RetailerOrgMSP
+    ports:
+      - "10051:10051"
+    networks:
+      - supplychain-net
+
+  peer0.safety.regulator.gov:
+    image: hyperledger/fabric-peer:2.5
+    container_name: peer0.safety.regulator.gov
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_ID=peer0.safety.regulator.gov
+      - CORE_PEER_ADDRESS=peer0.safety.regulator.gov:11051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:11051
+      - CORE_PEER_LOCALMSPID=RegulatorOrgMSP
+    ports:
+      - "11051:11051"
+    networks:
+      - supplychain-net

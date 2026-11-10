@@ -1,0 +1,226 @@
+---
+################################################################################
+# Hyperledger Fabric Consortium Configuration: configtx.yaml
+# Network: AI & Blockchain Supply Chain Traceability Platform
+# Consensus: 3-Node Raft Ordering Service (CFT)
+################################################################################
+
+Organizations:
+  - &OrdererOrg
+    Name: OrdererMSP
+    ID: OrdererMSP
+    MSPDir: crypto-config/ordererOrganizations/supplychain.net/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrdererMSP.admin')"
+
+  - &FarmerOrg
+    Name: FarmerOrgMSP
+    ID: FarmerOrgMSP
+    MSPDir: crypto-config/peerOrganizations/farmer.supplychain.org/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('FarmerOrgMSP.admin', 'FarmerOrgMSP.peer', 'FarmerOrgMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('FarmerOrgMSP.admin', 'FarmerOrgMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('FarmerOrgMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('FarmerOrgMSP.peer')"
+
+  - &ManufacturerOrg
+    Name: ManufacturerOrgMSP
+    ID: ManufacturerOrgMSP
+    MSPDir: crypto-config/peerOrganizations/mfr.supplychain.org/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('ManufacturerOrgMSP.admin', 'ManufacturerOrgMSP.peer', 'ManufacturerOrgMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('ManufacturerOrgMSP.admin', 'ManufacturerOrgMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('ManufacturerOrgMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('ManufacturerOrgMSP.peer')"
+
+  - &DistributorOrg
+    Name: DistributorOrgMSP
+    ID: DistributorOrgMSP
+    MSPDir: crypto-config/peerOrganizations/logistics.supplychain.org/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('DistributorOrgMSP.admin', 'DistributorOrgMSP.peer', 'DistributorOrgMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('DistributorOrgMSP.admin', 'DistributorOrgMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('DistributorOrgMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('DistributorOrgMSP.peer')"
+
+  - &RetailerOrg
+    Name: RetailerOrgMSP
+    ID: RetailerOrgMSP
+    MSPDir: crypto-config/peerOrganizations/retail.supplychain.org/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('RetailerOrgMSP.admin', 'RetailerOrgMSP.peer', 'RetailerOrgMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('RetailerOrgMSP.admin', 'RetailerOrgMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('RetailerOrgMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('RetailerOrgMSP.peer')"
+
+  - &RegulatorOrg
+    Name: RegulatorOrgMSP
+    ID: RegulatorOrgMSP
+    MSPDir: crypto-config/peerOrganizations/safety.regulator.gov/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('RegulatorOrgMSP.admin', 'RegulatorOrgMSP.peer', 'RegulatorOrgMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('RegulatorOrgMSP.admin', 'RegulatorOrgMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('RegulatorOrgMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('RegulatorOrgMSP.peer')"
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_5: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Read:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Write:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admin:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+  Addresses:
+    - orderer1.supplychain.net:7050
+    - orderer2.supplychain.net:7050
+    - orderer3.supplychain.net:7050
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 100
+    AbsoluteMaxBytes: 10 MB
+    PreferredMaxBytes: 2 MB
+  EtcdRaft:
+    Consenters:
+      - Host: orderer1.supplychain.net
+        Port: 7050
+        ClientTLSCert: crypto-config/ordererOrganizations/supplychain.net/orderers/orderer1.supplychain.net/tls/server.crt
+        ServerTLSCert: crypto-config/ordererOrganizations/supplychain.net/orderers/orderer1.supplychain.net/tls/server.crt
+      - Host: orderer2.supplychain.net
+        Port: 7050
+        ClientTLSCert: crypto-config/ordererOrganizations/supplychain.net/orderers/orderer2.supplychain.net/tls/server.crt
+        ServerTLSCert: crypto-config/ordererOrganizations/supplychain.net/orderers/orderer2.supplychain.net/tls/server.crt
+      - Host: orderer3.supplychain.net
+        Port: 7050
+        ClientTLSCert: crypto-config/ordererOrganizations/supplychain.net/orderers/orderer3.supplychain.net/tls/server.crt
+        ServerTLSCert: crypto-config/ordererOrganizations/supplychain.net/orderers/orderer3.supplychain.net/tls/server.crt
+  Organizations:
+    - *OrdererOrg
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admin:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+  Capabilities:
+    <<: *OrdererCapabilities
+
+Channel: &ChannelDefaults
+  Policies:
+    Read:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Write:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admin:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  SupplyChainRaftGenesis:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrg
+    Consortiums:
+      SupplyChainConsortium:
+        Organizations:
+          - *FarmerOrg
+          - *ManufacturerOrg
+          - *DistributorOrg
+          - *RetailerOrg
+          - *RegulatorOrg
+
+  SupplyChainChannel:
+    Consortium: SupplyChainConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *FarmerOrg
+        - *ManufacturerOrg
+        - *DistributorOrg
+        - *RetailerOrg
+        - *RegulatorOrg

@@ -1,0 +1,71 @@
+{
+  "model_name": "Random Forest Ensemble (TraceChain-AI v1.0)",
+  "model_architecture": "Ensemble (N=20 Trees, MaxDepth=6, Subsampling=Gini)",
+  "dataset_size": 1500,
+  "train_samples": 1200,
+  "test_samples": 300,
+  "features": [
+    "supplier_reliability",
+    "historical_delays",
+    "rejection_rate",
+    "doc_verification_failures",
+    "tx_irregularities"
+  ],
+  "feature_importances": {
+    "supplier_reliability": 0.32,
+    "historical_delays": 0.26,
+    "rejection_rate": 0.21,
+    "doc_verification_failures": 0.12,
+    "tx_irregularities": 0.09
+  },
+  "training_accuracy": 99.83,
+  "test_accuracy": 97.33,
+  "test_macro_f1": 86.51,
+  "confusion_matrix": [
+    [
+      256,
+      0,
+      0
+    ],
+    [
+      0,
+      25,
+      4
+    ],
+    [
+      0,
+      4,
+      11
+    ]
+  ],
+  "confusion_matrix_labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "detailed_class_metrics": {
+    "Low (0)": {
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0,
+      "support": 256
+    },
+    "Medium (1)": {
+      "precision": 86.21,
+      "recall": 86.21,
+      "f1_score": 86.21,
+      "support": 29
+    },
+    "High (2)": {
+      "precision": 73.33,
+      "recall": 73.33,
+      "f1_score": 73.33,
+      "support": 15
+    }
+  },
+  "anomaly_detector": {
+    "type": "Isolation Forest (Contamination=0.05)",
+    "average_path_length_threshold": 3.82,
+    "status": "Operational"
+  }
+}

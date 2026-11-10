@@ -1,0 +1,1501 @@
+record_id,commodity,supplier_msp,supplier_reliability,historical_delays,rejection_rate,doc_verification_failures,tx_irregularities,ground_truth_score,classification,class_code
+REC-00001,Raw Cane Sugar,SunValleyEstates,50.6,6.8,5.79,2,18.1,30.6,Low,0
+REC-00002,Arabica Coffee,GlobalGrainConsortium,85.1,0.0,0.95,0,1.4,5.0,Low,0
+REC-00003,Arabica Coffee,GlobalGrainConsortium,63.6,6.2,8.71,0,37.8,23.4,Low,0
+REC-00004,Basmati Rice,HighlandGrowers,81.7,0.4,3.08,0,6.3,7.7,Low,0
+REC-00005,Basmati Rice,GlobalGrainConsortium,70.2,11.3,8.29,1,17.4,26.4,Low,0
+REC-00006,Basmati Rice,FarmerOrgMSP,71.5,9.8,9.64,0,34.8,24.1,Low,0
+REC-00007,Basmati Rice,AgriCoop-North,45.3,18.8,28.32,4,53.1,60.7,Medium,1
+REC-00008,Raw Cane Sugar,AgriCoop-North,67.5,10.8,4.57,2,20.1,28.6,Low,0
+REC-00009,Durum Wheat,AgriCoop-North,84.1,5.0,2.6,0,10.6,11.0,Low,0
+REC-00010,Basmati Rice,AgriCoop-North,70.1,8.0,4.53,2,41.3,27.6,Low,0
+REC-00011,Raw Cane Sugar,SunValleyEstates,59.9,13.1,7.67,1,19.2,30.9,Low,0
+REC-00012,Arabica Coffee,SunValleyEstates,92.9,0.8,2.38,0,15.0,5.2,Low,0
+REC-00013,Organic Cotton,FarmerOrgMSP,93.1,3.0,0.7,0,10.5,5.9,Low,0
+REC-00014,Raw Cane Sugar,GlobalGrainConsortium,89.3,0.9,1.08,0,14.2,5.8,Low,0
+REC-00015,Arabica Coffee,DeltaFarms,96.2,2.1,3.1,0,5.1,4.6,Low,0
+REC-00016,Durum Wheat,GlobalGrainConsortium,92.3,1.9,3.89,0,8.1,6.3,Low,0
+REC-00017,Organic Cotton,FarmerOrgMSP,90.3,1.4,0.7,0,8.6,5.2,Low,0
+REC-00018,Arabica Coffee,FarmerOrgMSP,86.7,0.2,1.52,0,12.3,6.0,Low,0
+REC-00019,Organic Cotton,AgriCoop-North,88.6,0.1,2.95,0,14.7,6.2,Low,0
+REC-00020,Arabica Coffee,SunValleyEstates,86.4,1.2,1.13,0,6.9,6.2,Low,0
+REC-00021,Soybean Oil,SunValleyEstates,67.2,11.1,7.19,2,34.5,31.4,Low,0
+REC-00022,Durum Wheat,FarmerOrgMSP,80.9,0.1,0.18,0,9.2,6.8,Low,0
+REC-00023,Arabica Coffee,HighlandGrowers,51.5,4.7,4.25,1,17.1,24.9,Low,0
+REC-00024,Arabica Coffee,DeltaFarms,55.4,5.3,11.48,2,32.3,31.6,Low,0
+REC-00025,Raw Cane Sugar,FarmerOrgMSP,54.8,5.0,7.45,1,27.3,26.4,Low,0
+REC-00026,Durum Wheat,AgriCoop-North,74.6,5.0,7.22,1,39.0,21.6,Low,0
+REC-00027,Durum Wheat,DeltaFarms,87.9,0.2,0.82,0,13.2,5.4,Low,0
+REC-00028,Durum Wheat,AgriCoop-North,71.4,5.0,9.22,2,40.1,26.4,Low,0
+REC-00029,Soybean Oil,HighlandGrowers,86.7,0.4,1.66,1,6.3,8.6,Low,0
+REC-00030,Basmati Rice,AgriCoop-North,42.5,17.1,37.08,5,52.7,66.6,Medium,1
+REC-00031,Soybean Oil,SunValleyEstates,35.3,21.8,38.93,2,47.5,63.9,Medium,1
+REC-00032,Durum Wheat,GlobalGrainConsortium,33.6,13.0,30.28,3,48.4,56.7,Medium,1
+REC-00033,Soybean Oil,GlobalGrainConsortium,29.1,28.9,32.51,2,76.0,72.0,High,2
+REC-00034,Soybean Oil,AgriCoop-North,87.5,4.1,0.9,0,4.3,8.0,Low,0
+REC-00035,Organic Cotton,SunValleyEstates,57.5,7.2,10.01,0,15.3,24.3,Low,0
+REC-00036,Arabica Coffee,HighlandGrowers,17.6,15.8,21.55,4,89.0,67.4,Medium,1
+REC-00037,Organic Cotton,FarmerOrgMSP,85.5,1.2,1.28,0,12.3,7.1,Low,0
+REC-00038,Durum Wheat,GlobalGrainConsortium,63.9,13.3,4.83,0,22.9,26.1,Low,0
+REC-00039,Basmati Rice,SunValleyEstates,81.5,1.4,2.9,0,9.9,8.9,Low,0
+REC-00040,Durum Wheat,HighlandGrowers,96.7,2.8,0.46,0,4.9,4.0,Low,0
+REC-00041,Organic Cotton,FarmerOrgMSP,65.9,6.6,9.93,2,36.2,29.3,Low,0
+REC-00042,Organic Cotton,AgriCoop-North,97.7,1.8,0.68,1,6.2,6.1,Low,0
+REC-00043,Basmati Rice,AgriCoop-North,76.0,0.7,3.74,0,1.6,9.4,Low,0
+REC-00044,Raw Cane Sugar,AgriCoop-North,66.7,7.5,8.48,1,44.2,27.1,Low,0
+REC-00045,Durum Wheat,AgriCoop-North,23.3,14.9,40.8,3,89.1,69.7,Medium,1
+REC-00046,Basmati Rice,AgriCoop-North,58.3,13.3,10.42,2,39.3,37.7,Low,0
+REC-00047,Soybean Oil,HighlandGrowers,52.7,12.7,10.87,0,21.0,31.2,Low,0
+REC-00048,Durum Wheat,HighlandGrowers,94.1,0.4,0.19,0,5.6,2.7,Low,0
+REC-00049,Basmati Rice,AgriCoop-North,87.2,1.7,3.39,0,1.4,6.8,Low,0
+REC-00050,Soybean Oil,SunValleyEstates,98.6,0.1,2.43,0,12.0,2.7,Low,0
+REC-00051,Durum Wheat,SunValleyEstates,19.0,28.2,18.84,2,80.4,69.4,Medium,1
+REC-00052,Durum Wheat,GlobalGrainConsortium,33.8,24.9,38.71,3,63.2,71.4,High,2
+REC-00053,Raw Cane Sugar,DeltaFarms,36.8,23.9,16.49,4,70.4,64.5,Medium,1
+REC-00054,Raw Cane Sugar,AgriCoop-North,91.7,1.2,0.85,0,6.3,4.5,Low,0
+REC-00055,Organic Cotton,SunValleyEstates,57.5,9.5,4.0,1,21.3,27.4,Low,0
+REC-00056,Raw Cane Sugar,AgriCoop-North,61.6,8.4,5.71,1,38.8,27.7,Low,0
+REC-00057,Arabica Coffee,GlobalGrainConsortium,57.1,10.6,8.95,0,39.6,29.2,Low,0
+REC-00058,Durum Wheat,DeltaFarms,94.4,0.2,0.28,0,9.6,2.9,Low,0
+REC-00059,Raw Cane Sugar,GlobalGrainConsortium,90.1,0.3,2.82,0,4.4,4.8,Low,0
+REC-00060,Raw Cane Sugar,SunValleyEstates,93.0,2.2,0.52,0,3.5,4.5,Low,0
+REC-00061,Organic Cotton,SunValleyEstates,88.4,3.7,0.57,0,7.5,7.5,Low,0
+REC-00062,Organic Cotton,DeltaFarms,97.8,3.3,2.49,0,8.1,5.2,Low,0
+REC-00063,Basmati Rice,SunValleyEstates,41.0,20.5,21.33,3,87.0,61.0,Medium,1
+REC-00064,Organic Cotton,FarmerOrgMSP,80.7,0.9,2.88,0,5.7,8.3,Low,0
+REC-00065,Organic Cotton,DeltaFarms,80.6,1.8,2.86,1,6.7,12.1,Low,0
+REC-00066,Organic Cotton,DeltaFarms,80.0,0.8,3.63,0,10.7,9.2,Low,0
+REC-00067,Organic Cotton,GlobalGrainConsortium,97.6,0.5,1.62,0,12.7,3.1,Low,0
+REC-00068,Durum Wheat,DeltaFarms,70.0,13.0,7.91,1,28.1,28.8,Low,0
+REC-00069,Organic Cotton,SunValleyEstates,91.3,0.8,0.74,0,2.8,3.9,Low,0
+REC-00070,Soybean Oil,AgriCoop-North,84.5,1.2,0.21,0,2.9,6.0,Low,0
+REC-00071,Soybean Oil,HighlandGrowers,84.1,0.4,1.37,0,6.3,6.3,Low,0
+REC-00072,Durum Wheat,GlobalGrainConsortium,61.8,11.5,4.42,1,21.7,28.0,Low,0
+REC-00073,Soybean Oil,GlobalGrainConsortium,75.7,0.4,3.37,0,4.3,9.4,Low,0
+REC-00074,Raw Cane Sugar,GlobalGrainConsortium,97.7,0.9,1.1,0,9.5,2.8,Low,0
+REC-00075,Raw Cane Sugar,DeltaFarms,94.7,5.0,0.52,1,5.4,9.5,Low,0
+REC-00076,Basmati Rice,GlobalGrainConsortium,92.2,0.1,2.79,0,2.4,3.8,Low,0
+REC-00077,Raw Cane Sugar,HighlandGrowers,53.0,13.8,10.26,1,31.0,35.8,Low,0
+REC-00078,Basmati Rice,GlobalGrainConsortium,90.5,0.0,1.74,0,7.1,4.3,Low,0
+REC-00079,Organic Cotton,DeltaFarms,31.1,14.8,18.34,4,75.8,59.9,Medium,1
+REC-00080,Basmati Rice,DeltaFarms,94.8,1.3,1.36,0,14.1,4.6,Low,0
+REC-00081,Arabica Coffee,DeltaFarms,86.2,1.4,1.58,1,12.9,10.2,Low,0
+REC-00082,Durum Wheat,SunValleyEstates,94.1,0.6,3.53,0,4.9,4.2,Low,0
+REC-00083,Raw Cane Sugar,GlobalGrainConsortium,18.0,25.0,29.59,3,79.5,74.2,High,2
+REC-00084,Organic Cotton,HighlandGrowers,94.0,0.1,0.96,0,5.3,2.8,Low,0
+REC-00085,Basmati Rice,HighlandGrowers,87.7,0.8,3.01,0,10.8,6.6,Low,0
+REC-00086,Arabica Coffee,AgriCoop-North,77.9,0.3,0.57,0,11.7,8.3,Low,0
+REC-00087,Durum Wheat,AgriCoop-North,86.6,1.9,3.91,0,5.0,7.7,Low,0
+REC-00088,Durum Wheat,SunValleyEstates,83.7,0.5,2.86,0,1.6,6.6,Low,0
+REC-00089,Basmati Rice,DeltaFarms,97.7,1.5,3.04,0,1.2,3.3,Low,0
+REC-00090,Durum Wheat,DeltaFarms,83.2,5.0,1.08,0,2.6,9.9,Low,0
+REC-00091,Durum Wheat,AgriCoop-North,88.8,1.7,0.69,0,14.3,6.5,Low,0
+REC-00092,Soybean Oil,DeltaFarms,93.3,1.4,3.18,0,8.3,5.3,Low,0
+REC-00093,Durum Wheat,AgriCoop-North,89.1,0.8,2.32,1,14.4,9.3,Low,0
+REC-00094,Durum Wheat,DeltaFarms,56.6,4.8,5.92,2,17.3,27.1,Low,0
+REC-00095,Soybean Oil,FarmerOrgMSP,89.3,0.5,1.0,0,10.8,5.1,Low,0
+REC-00096,Arabica Coffee,DeltaFarms,73.1,11.9,9.0,2,39.1,31.5,Low,0
+REC-00097,Basmati Rice,SunValleyEstates,80.4,0.2,1.14,0,1.8,6.7,Low,0
+REC-00098,Soybean Oil,HighlandGrowers,64.2,6.9,4.99,2,24.1,26.9,Low,0
+REC-00099,Basmati Rice,FarmerOrgMSP,86.9,0.1,0.26,0,5.5,4.7,Low,0
+REC-00100,Raw Cane Sugar,HighlandGrowers,98.1,2.7,2.34,0,15.0,5.3,Low,0
+REC-00101,Organic Cotton,DeltaFarms,93.3,0.3,2.12,0,4.9,3.6,Low,0
+REC-00102,Durum Wheat,AgriCoop-North,62.3,4.9,6.78,1,24.6,23.6,Low,0
+REC-00103,Soybean Oil,FarmerOrgMSP,91.6,0.5,3.79,0,8.7,5.3,Low,0
+REC-00104,Raw Cane Sugar,SunValleyEstates,82.8,5.0,1.68,0,14.8,11.5,Low,0
+REC-00105,Durum Wheat,AgriCoop-North,76.3,1.1,2.53,0,7.2,9.8,Low,0
+REC-00106,Raw Cane Sugar,SunValleyEstates,78.1,0.5,3.54,0,1.4,8.5,Low,0
+REC-00107,Durum Wheat,DeltaFarms,67.7,7.1,4.11,1,17.8,22.0,Low,0
+REC-00108,Basmati Rice,DeltaFarms,37.7,14.8,45.58,4,70.4,68.3,Medium,1
+REC-00109,Organic Cotton,SunValleyEstates,74.5,6.4,8.41,1,20.7,21.4,Low,0
+REC-00110,Organic Cotton,HighlandGrowers,53.4,4.7,10.18,1,25.2,27.5,Low,0
+REC-00111,Arabica Coffee,DeltaFarms,57.1,7.0,8.7,2,29.7,31.2,Low,0
+REC-00112,Arabica Coffee,GlobalGrainConsortium,83.3,1.2,2.22,0,5.5,7.4,Low,0
+REC-00113,Soybean Oil,DeltaFarms,84.2,2.9,1.7,0,7.6,8.6,Low,0
+REC-00114,Organic Cotton,HighlandGrowers,42.7,23.7,17.48,2,51.3,55.1,Medium,1
+REC-00115,Arabica Coffee,DeltaFarms,45.6,19.9,30.93,5,45.8,64.9,Medium,1
+REC-00116,Raw Cane Sugar,DeltaFarms,48.9,13.3,40.13,4,61.9,60.7,Medium,1
+REC-00117,Raw Cane Sugar,GlobalGrainConsortium,71.3,12.5,10.87,1,43.6,30.7,Low,0
+REC-00118,Basmati Rice,AgriCoop-North,32.1,21.7,34.23,3,76.6,68.8,Medium,1
+REC-00119,Raw Cane Sugar,HighlandGrowers,60.8,5.0,9.07,0,28.3,22.4,Low,0
+REC-00120,Arabica Coffee,SunValleyEstates,16.6,26.3,22.56,4,66.5,74.6,High,2
+REC-00121,Raw Cane Sugar,AgriCoop-North,91.4,0.3,0.78,0,6.4,3.8,Low,0
+REC-00122,Soybean Oil,HighlandGrowers,89.0,0.4,2.59,0,10.3,5.7,Low,0
+REC-00123,Soybean Oil,GlobalGrainConsortium,53.9,8.4,6.76,2,24.0,31.9,Low,0
+REC-00124,Organic Cotton,HighlandGrowers,95.3,0.3,1.6,0,4.3,2.7,Low,0
+REC-00125,Organic Cotton,GlobalGrainConsortium,98.8,0.5,3.91,0,4.8,2.8,Low,0
+REC-00126,Arabica Coffee,SunValleyEstates,74.3,13.1,9.96,1,38.3,29.4,Low,0
+REC-00127,Raw Cane Sugar,AgriCoop-North,55.5,5.9,6.01,2,38.0,30.5,Low,0
+REC-00128,Basmati Rice,GlobalGrainConsortium,72.6,10.5,6.47,1,16.0,24.2,Low,0
+REC-00129,Basmati Rice,SunValleyEstates,96.8,0.6,1.72,0,12.0,3.3,Low,0
+REC-00130,Basmati Rice,GlobalGrainConsortium,81.5,0.3,3.66,0,14.5,8.7,Low,0
+REC-00131,Raw Cane Sugar,GlobalGrainConsortium,43.1,20.4,14.71,3,88.0,57.8,Medium,1
+REC-00132,Organic Cotton,FarmerOrgMSP,48.9,26.5,25.17,5,45.7,67.1,Medium,1
+REC-00133,Durum Wheat,GlobalGrainConsortium,91.1,1.7,2.38,0,14.2,6.5,Low,0
+REC-00134,Durum Wheat,GlobalGrainConsortium,75.6,3.2,2.29,0,4.1,11.3,Low,0
+REC-00135,Durum Wheat,HighlandGrowers,72.7,7.0,7.27,0,16.4,18.6,Low,0
+REC-00136,Raw Cane Sugar,GlobalGrainConsortium,19.1,16.2,31.35,5,67.7,72.1,High,2
+REC-00137,Soybean Oil,SunValleyEstates,63.5,9.9,9.81,1,34.6,29.6,Low,0
+REC-00138,Basmati Rice,FarmerOrgMSP,97.8,0.0,1.55,0,14.3,2.7,Low,0
+REC-00139,Arabica Coffee,FarmerOrgMSP,27.9,28.2,35.21,2,64.9,71.7,High,2
+REC-00140,Basmati Rice,AgriCoop-North,43.8,13.7,19.64,2,47.5,46.9,Medium,1
+REC-00141,Arabica Coffee,HighlandGrowers,42.5,15.7,41.87,3,74.3,63.5,Medium,1
+REC-00142,Organic Cotton,HighlandGrowers,69.7,10.0,6.22,0,44.6,24.4,Low,0
+REC-00143,Arabica Coffee,SunValleyEstates,52.7,12.7,5.05,1,38.7,33.7,Low,0
+REC-00144,Soybean Oil,DeltaFarms,79.2,0.1,2.99,0,11.4,8.7,Low,0
+REC-00145,Raw Cane Sugar,SunValleyEstates,62.8,5.1,8.03,2,16.3,26.3,Low,0
+REC-00146,Durum Wheat,DeltaFarms,90.4,0.0,3.99,0,7.0,5.2,Low,0
+REC-00147,Basmati Rice,SunValleyEstates,61.1,13.0,6.58,0,17.0,26.8,Low,0
+REC-00148,Organic Cotton,SunValleyEstates,63.7,7.3,11.96,2,23.8,30.1,Low,0
+REC-00149,Arabica Coffee,DeltaFarms,94.0,0.2,2.65,0,8.7,3.9,Low,0
+REC-00150,Soybean Oil,HighlandGrowers,80.5,0.6,1.87,0,2.3,7.3,Low,0
+REC-00151,Durum Wheat,FarmerOrgMSP,59.4,5.5,11.38,0,17.7,23.1,Low,0
+REC-00152,Organic Cotton,HighlandGrowers,92.9,0.7,0.61,1,14.4,7.4,Low,0
+REC-00153,Raw Cane Sugar,FarmerOrgMSP,60.3,12.7,11.53,1,41.0,34.2,Low,0
+REC-00154,Soybean Oil,AgriCoop-North,36.0,18.3,32.81,3,52.7,61.8,Medium,1
+REC-00155,Soybean Oil,SunValleyEstates,58.8,9.6,4.92,1,32.2,28.5,Low,0
+REC-00156,Raw Cane Sugar,GlobalGrainConsortium,43.6,23.0,35.14,2,75.4,63.7,Medium,1
+REC-00157,Arabica Coffee,SunValleyEstates,79.3,1.8,1.31,0,1.1,8.3,Low,0
+REC-00158,Arabica Coffee,DeltaFarms,51.7,11.4,11.77,0,37.4,32.4,Low,0
+REC-00159,Durum Wheat,FarmerOrgMSP,83.2,0.7,2.91,0,8.9,7.7,Low,0
+REC-00160,Organic Cotton,DeltaFarms,93.1,0.1,0.42,0,6.9,3.0,Low,0
+REC-00161,Organic Cotton,DeltaFarms,80.2,1.1,1.45,0,10.5,8.5,Low,0
+REC-00162,Arabica Coffee,AgriCoop-North,82.4,0.4,3.94,1,3.9,10.6,Low,0
+REC-00163,Soybean Oil,SunValleyEstates,57.2,5.2,7.98,1,20.3,25.4,Low,0
+REC-00164,Raw Cane Sugar,FarmerOrgMSP,62.5,12.3,10.45,0,26.9,28.4,Low,0
+REC-00165,Raw Cane Sugar,DeltaFarms,86.0,0.1,1.32,0,6.7,5.5,Low,0
+REC-00166,Raw Cane Sugar,HighlandGrowers,84.7,5.0,0.77,0,7.4,9.8,Low,0
+REC-00167,Basmati Rice,GlobalGrainConsortium,95.3,0.4,2.4,0,6.5,3.4,Low,0
+REC-00168,Basmati Rice,HighlandGrowers,83.0,0.3,2.09,0,8.1,7.0,Low,0
+REC-00169,Arabica Coffee,SunValleyEstates,70.5,12.2,5.89,0,22.7,23.6,Low,0
+REC-00170,Organic Cotton,SunValleyEstates,93.2,0.1,3.81,0,7.5,4.4,Low,0
+REC-00171,Raw Cane Sugar,HighlandGrowers,97.2,1.2,2.58,0,13.1,4.2,Low,0
+REC-00172,Organic Cotton,FarmerOrgMSP,76.6,0.9,1.28,0,1.8,8.5,Low,0
+REC-00173,Durum Wheat,SunValleyEstates,85.8,0.1,3.34,1,13.1,10.0,Low,0
+REC-00174,Organic Cotton,GlobalGrainConsortium,84.2,1.3,3.82,0,1.6,7.5,Low,0
+REC-00175,Basmati Rice,GlobalGrainConsortium,89.5,1.0,3.84,0,12.4,6.8,Low,0
+REC-00176,Organic Cotton,AgriCoop-North,90.5,0.1,2.86,0,8.3,4.9,Low,0
+REC-00177,Raw Cane Sugar,GlobalGrainConsortium,97.0,0.7,3.12,0,1.7,2.9,Low,0
+REC-00178,Organic Cotton,AgriCoop-North,82.9,1.2,1.61,0,12.9,8.1,Low,0
+REC-00179,Soybean Oil,AgriCoop-North,89.0,0.2,1.46,0,10.8,5.1,Low,0
+REC-00180,Raw Cane Sugar,GlobalGrainConsortium,97.5,0.6,1.57,0,12.4,3.1,Low,0
+REC-00181,Organic Cotton,HighlandGrowers,68.5,10.9,8.21,2,35.1,31.3,Low,0
+REC-00182,Arabica Coffee,AgriCoop-North,82.4,4.5,1.43,0,3.7,10.0,Low,0
+REC-00183,Durum Wheat,GlobalGrainConsortium,95.3,0.2,3.11,0,13.4,4.2,Low,0
+REC-00184,Organic Cotton,AgriCoop-North,93.4,0.2,1.57,0,12.6,4.0,Low,0
+REC-00185,Raw Cane Sugar,DeltaFarms,51.1,7.6,9.76,1,33.3,31.2,Low,0
+REC-00186,Raw Cane Sugar,SunValleyEstates,80.7,5.0,3.16,0,3.7,11.6,Low,0
+REC-00187,Arabica Coffee,SunValleyEstates,31.2,17.1,25.75,5,93.3,69.5,Medium,1
+REC-00188,Organic Cotton,FarmerOrgMSP,81.0,1.5,3.51,0,2.4,8.6,Low,0
+REC-00189,Arabica Coffee,DeltaFarms,93.3,0.5,3.63,0,7.1,4.6,Low,0
+REC-00190,Durum Wheat,HighlandGrowers,47.6,19.5,26.27,4,56.8,60.2,Medium,1
+REC-00191,Durum Wheat,HighlandGrowers,82.6,0.2,2.89,0,3.0,6.8,Low,0
+REC-00192,Durum Wheat,FarmerOrgMSP,31.5,27.0,39.32,5,67.4,80.5,High,2
+REC-00193,Basmati Rice,AgriCoop-North,80.2,0.2,3.77,0,6.9,8.3,Low,0
+REC-00194,Soybean Oil,SunValleyEstates,76.1,0.8,3.2,0,2.6,9.4,Low,0
+REC-00195,Basmati Rice,AgriCoop-North,90.2,1.3,2.9,0,1.0,5.3,Low,0
+REC-00196,Organic Cotton,SunValleyEstates,79.5,1.7,2.14,0,14.3,9.9,Low,0
+REC-00197,Basmati Rice,HighlandGrowers,62.7,4.2,10.99,0,34.1,22.5,Low,0
+REC-00198,Organic Cotton,GlobalGrainConsortium,58.9,4.7,5.93,2,33.8,28.0,Low,0
+REC-00199,Raw Cane Sugar,DeltaFarms,53.3,7.5,6.71,2,20.3,31.0,Low,0
+REC-00200,Arabica Coffee,FarmerOrgMSP,31.7,15.3,16.85,5,46.8,59.7,Medium,1
+REC-00201,Organic Cotton,DeltaFarms,72.1,7.2,6.48,1,44.7,24.4,Low,0
+REC-00202,Basmati Rice,HighlandGrowers,93.1,0.3,1.49,0,13.1,4.2,Low,0
+REC-00203,Arabica Coffee,DeltaFarms,83.8,3.3,3.0,0,6.4,9.5,Low,0
+REC-00204,Durum Wheat,DeltaFarms,59.2,12.0,6.13,0,36.8,28.4,Low,0
+REC-00205,Basmati Rice,HighlandGrowers,70.6,9.5,6.57,0,24.8,21.8,Low,0
+REC-00206,Basmati Rice,SunValleyEstates,92.2,0.3,1.83,0,11.2,4.4,Low,0
+REC-00207,Soybean Oil,HighlandGrowers,24.6,29.6,46.12,2,78.6,79.6,High,2
+REC-00208,Soybean Oil,FarmerOrgMSP,93.0,0.3,0.22,0,10.5,3.5,Low,0
+REC-00209,Arabica Coffee,GlobalGrainConsortium,80.7,1.6,1.51,0,1.5,7.9,Low,0
+REC-00210,Basmati Rice,GlobalGrainConsortium,83.9,0.9,0.4,0,6.1,6.3,Low,0
+REC-00211,Durum Wheat,HighlandGrowers,98.1,0.0,0.83,0,13.8,2.3,Low,0
+REC-00212,Soybean Oil,AgriCoop-North,67.6,6.1,8.9,2,42.5,28.6,Low,0
+REC-00213,Raw Cane Sugar,HighlandGrowers,95.5,0.9,3.6,0,2.2,3.8,Low,0
+REC-00214,Raw Cane Sugar,GlobalGrainConsortium,67.7,9.5,6.32,1,40.5,27.2,Low,0
+REC-00215,Arabica Coffee,AgriCoop-North,37.3,26.3,30.32,2,94.3,68.3,Medium,1
+REC-00216,Durum Wheat,FarmerOrgMSP,50.7,9.5,6.95,2,18.9,33.4,Low,0
+REC-00217,Durum Wheat,AgriCoop-North,99.0,1.9,2.15,0,12.5,4.0,Low,0
+REC-00218,Organic Cotton,GlobalGrainConsortium,37.5,20.1,36.48,4,51.4,67.2,Medium,1
+REC-00219,Organic Cotton,AgriCoop-North,93.4,0.2,2.06,0,12.6,4.2,Low,0
+REC-00220,Basmati Rice,FarmerOrgMSP,78.9,4.1,0.98,0,8.3,11.0,Low,0
+REC-00221,Organic Cotton,GlobalGrainConsortium,90.2,1.2,0.59,0,8.5,5.0,Low,0
+REC-00222,Organic Cotton,FarmerOrgMSP,97.6,0.3,2.67,0,9.5,3.0,Low,0
+REC-00223,Arabica Coffee,SunValleyEstates,50.7,4.5,9.13,2,22.9,30.5,Low,0
+REC-00224,Soybean Oil,AgriCoop-North,90.3,1.0,2.55,0,14.4,6.2,Low,0
+REC-00225,Soybean Oil,DeltaFarms,67.1,7.0,4.58,0,19.7,19.5,Low,0
+REC-00226,Basmati Rice,DeltaFarms,83.2,0.2,3.46,0,14.8,8.1,Low,0
+REC-00227,Arabica Coffee,AgriCoop-North,83.9,1.2,1.34,0,4.7,6.8,Low,0
+REC-00228,Arabica Coffee,HighlandGrowers,82.0,0.7,2.5,0,13.1,8.3,Low,0
+REC-00229,Basmati Rice,DeltaFarms,40.2,15.4,17.74,5,69.9,59.9,Medium,1
+REC-00230,Durum Wheat,HighlandGrowers,97.7,1.1,3.87,0,5.9,3.7,Low,0
+REC-00231,Soybean Oil,AgriCoop-North,96.2,1.6,1.94,0,12.9,4.5,Low,0
+REC-00232,Organic Cotton,AgriCoop-North,40.5,25.7,25.17,5,47.6,69.1,Medium,1
+REC-00233,Organic Cotton,GlobalGrainConsortium,81.9,0.7,1.86,0,12.6,8.0,Low,0
+REC-00234,Basmati Rice,AgriCoop-North,53.2,5.0,6.99,1,31.7,27.2,Low,0
+REC-00235,Soybean Oil,SunValleyEstates,87.2,1.0,0.28,0,5.7,5.4,Low,0
+REC-00236,Organic Cotton,GlobalGrainConsortium,89.6,1.1,1.38,0,3.3,4.9,Low,0
+REC-00237,Basmati Rice,DeltaFarms,64.8,9.1,8.08,1,36.3,28.0,Low,0
+REC-00238,Raw Cane Sugar,GlobalGrainConsortium,59.2,10.7,11.84,2,24.2,34.3,Low,0
+REC-00239,Raw Cane Sugar,FarmerOrgMSP,64.9,6.7,9.24,2,32.3,29.0,Low,0
+REC-00240,Raw Cane Sugar,AgriCoop-North,79.1,1.5,2.52,0,3.1,8.8,Low,0
+REC-00241,Raw Cane Sugar,AgriCoop-North,97.8,0.2,0.17,0,3.1,1.2,Low,0
+REC-00242,Arabica Coffee,SunValleyEstates,93.6,3.8,3.5,0,1.9,6.7,Low,0
+REC-00243,Organic Cotton,HighlandGrowers,82.8,1.6,2.15,0,3.4,7.7,Low,0
+REC-00244,Soybean Oil,AgriCoop-North,91.2,3.0,2.75,0,4.7,6.7,Low,0
+REC-00245,Raw Cane Sugar,AgriCoop-North,24.8,17.4,45.89,4,83.6,75.8,High,2
+REC-00246,Durum Wheat,SunValleyEstates,62.2,8.8,8.48,2,23.2,30.4,Low,0
+REC-00247,Basmati Rice,GlobalGrainConsortium,59.5,13.8,10.55,0,23.7,30.2,Low,0
+REC-00248,Basmati Rice,SunValleyEstates,97.2,1.6,3.01,0,12.6,4.6,Low,0
+REC-00249,Organic Cotton,AgriCoop-North,53.4,10.2,8.69,0,16.5,27.6,Low,0
+REC-00250,Arabica Coffee,FarmerOrgMSP,51.3,8.1,9.74,0,35.4,28.8,Low,0
+REC-00251,Arabica Coffee,HighlandGrowers,49.2,14.8,35.5,5,68.9,63.7,Medium,1
+REC-00252,Raw Cane Sugar,FarmerOrgMSP,90.5,3.6,0.45,0,8.5,6.9,Low,0
+REC-00253,Soybean Oil,DeltaFarms,21.1,27.9,18.33,2,94.9,69.7,Medium,1
+REC-00254,Organic Cotton,FarmerOrgMSP,93.0,3.1,1.23,1,5.2,8.7,Low,0
+REC-00255,Arabica Coffee,SunValleyEstates,26.7,20.2,35.09,5,89.5,76.8,High,2
+REC-00256,Arabica Coffee,FarmerOrgMSP,79.6,0.2,0.73,0,4.6,7.0,Low,0
+REC-00257,Raw Cane Sugar,DeltaFarms,69.8,9.7,10.06,0,33.3,24.5,Low,0
+REC-00258,Soybean Oil,HighlandGrowers,62.9,4.9,9.35,0,44.5,23.4,Low,0
+REC-00259,Basmati Rice,SunValleyEstates,15.2,18.9,28.08,4,92.7,73.7,High,2
+REC-00260,Soybean Oil,HighlandGrowers,50.3,10.5,9.54,0,35.0,31.0,Low,0
+REC-00261,Raw Cane Sugar,HighlandGrowers,91.5,3.8,3.56,0,10.7,8.2,Low,0
+REC-00262,Basmati Rice,DeltaFarms,80.3,4.7,1.96,0,14.8,12.1,Low,0
+REC-00263,Raw Cane Sugar,SunValleyEstates,72.8,11.6,10.42,0,37.9,25.8,Low,0
+REC-00264,Durum Wheat,FarmerOrgMSP,17.9,20.0,37.34,2,90.9,71.3,High,2
+REC-00265,Organic Cotton,DeltaFarms,72.6,6.0,8.29,0,24.8,19.0,Low,0
+REC-00266,Soybean Oil,AgriCoop-North,79.9,1.3,0.45,0,12.3,8.5,Low,0
+REC-00267,Soybean Oil,HighlandGrowers,86.0,0.1,1.9,0,11.1,6.2,Low,0
+REC-00268,Organic Cotton,FarmerOrgMSP,68.6,9.8,4.36,1,36.0,25.9,Low,0
+REC-00269,Arabica Coffee,GlobalGrainConsortium,17.4,28.8,13.14,5,54.0,74.4,High,2
+REC-00270,Soybean Oil,DeltaFarms,37.6,19.6,47.74,5,67.4,75.9,High,2
+REC-00271,Organic Cotton,DeltaFarms,98.1,3.1,0.62,0,2.7,3.7,Low,0
+REC-00272,Raw Cane Sugar,GlobalGrainConsortium,92.5,0.4,0.11,1,5.2,6.1,Low,0
+REC-00273,Raw Cane Sugar,FarmerOrgMSP,87.8,2.6,1.07,0,4.9,6.7,Low,0
+REC-00274,Durum Wheat,FarmerOrgMSP,90.8,1.4,3.75,0,4.4,5.9,Low,0
+REC-00275,Soybean Oil,AgriCoop-North,85.7,1.7,3.5,0,1.6,7.3,Low,0
+REC-00276,Raw Cane Sugar,SunValleyEstates,93.1,2.2,0.65,0,4.3,4.6,Low,0
+REC-00277,Raw Cane Sugar,SunValleyEstates,89.4,1.7,1.35,0,3.0,5.4,Low,0
+REC-00278,Raw Cane Sugar,GlobalGrainConsortium,82.2,0.1,3.8,0,13.8,8.3,Low,0
+REC-00279,Basmati Rice,GlobalGrainConsortium,86.9,5.0,3.77,0,12.0,10.8,Low,0
+REC-00280,Basmati Rice,GlobalGrainConsortium,78.6,0.7,3.04,0,12.9,9.5,Low,0
+REC-00281,Soybean Oil,AgriCoop-North,86.1,0.1,1.71,0,8.4,5.8,Low,0
+REC-00282,Arabica Coffee,FarmerOrgMSP,82.9,0.1,1.85,0,8.5,6.8,Low,0
+REC-00283,Raw Cane Sugar,GlobalGrainConsortium,91.2,1.4,3.51,0,11.7,6.4,Low,0
+REC-00284,Arabica Coffee,GlobalGrainConsortium,86.5,3.1,1.4,0,1.2,7.3,Low,0
+REC-00285,Arabica Coffee,SunValleyEstates,99.0,1.0,1.05,0,3.9,1.9,Low,0
+REC-00286,Soybean Oil,DeltaFarms,81.8,0.9,2.63,0,6.0,7.9,Low,0
+REC-00287,Soybean Oil,FarmerOrgMSP,98.6,1.0,3.37,0,6.2,3.2,Low,0
+REC-00288,Soybean Oil,HighlandGrowers,80.3,0.2,1.12,0,9.1,7.4,Low,0
+REC-00289,Raw Cane Sugar,HighlandGrowers,82.9,0.7,3.35,0,10.2,8.1,Low,0
+REC-00290,Basmati Rice,AgriCoop-North,94.7,5.0,2.6,0,3.4,7.1,Low,0
+REC-00291,Organic Cotton,FarmerOrgMSP,88.1,0.3,3.57,0,14.4,6.7,Low,0
+REC-00292,Raw Cane Sugar,AgriCoop-North,51.9,12.2,4.39,0,27.4,29.1,Low,0
+REC-00293,Organic Cotton,DeltaFarms,78.6,0.4,1.88,1,9.9,11.5,Low,0
+REC-00294,Basmati Rice,SunValleyEstates,50.4,9.3,7.29,0,30.9,28.6,Low,0
+REC-00295,Durum Wheat,SunValleyEstates,15.6,26.6,36.27,3,50.4,76.0,High,2
+REC-00296,Basmati Rice,DeltaFarms,79.6,1.1,3.28,0,6.6,9.0,Low,0
+REC-00297,Raw Cane Sugar,FarmerOrgMSP,80.8,1.8,1.27,0,2.1,8.0,Low,0
+REC-00298,Soybean Oil,DeltaFarms,84.1,1.2,0.32,1,3.4,9.2,Low,0
+REC-00299,Arabica Coffee,AgriCoop-North,58.3,13.8,11.79,2,42.6,39.0,Low,0
+REC-00300,Basmati Rice,SunValleyEstates,39.2,22.2,21.76,2,79.2,59.4,Medium,1
+REC-00301,Raw Cane Sugar,DeltaFarms,75.8,4.0,1.33,0,9.2,12.0,Low,0
+REC-00302,Organic Cotton,HighlandGrowers,25.5,22.2,32.4,5,78.9,76.7,High,2
+REC-00303,Basmati Rice,FarmerOrgMSP,92.8,2.3,2.79,1,11.4,9.3,Low,0
+REC-00304,Basmati Rice,FarmerOrgMSP,80.6,0.1,2.46,0,9.3,7.8,Low,0
+REC-00305,Soybean Oil,AgriCoop-North,69.6,8.5,5.83,2,43.2,28.9,Low,0
+REC-00306,Durum Wheat,HighlandGrowers,66.5,4.9,8.95,0,36.4,21.4,Low,0
+REC-00307,Durum Wheat,HighlandGrowers,92.1,1.5,2.98,0,2.5,5.1,Low,0
+REC-00308,Organic Cotton,DeltaFarms,93.3,0.2,0.44,0,8.8,3.2,Low,0
+REC-00309,Durum Wheat,HighlandGrowers,77.2,1.2,2.43,0,13.1,10.1,Low,0
+REC-00310,Organic Cotton,AgriCoop-North,93.7,1.9,2.28,0,4.4,4.8,Low,0
+REC-00311,Soybean Oil,HighlandGrowers,54.2,6.7,6.15,0,16.9,23.5,Low,0
+REC-00312,Organic Cotton,SunValleyEstates,86.6,0.1,1.08,0,9.8,5.5,Low,0
+REC-00313,Basmati Rice,DeltaFarms,77.6,0.5,3.8,0,9.7,9.6,Low,0
+REC-00314,Raw Cane Sugar,AgriCoop-North,94.6,2.9,3.9,0,5.5,6.1,Low,0
+REC-00315,Organic Cotton,AgriCoop-North,79.3,0.8,1.34,0,9.9,8.4,Low,0
+REC-00316,Organic Cotton,AgriCoop-North,81.7,2.3,1.52,0,3.8,8.4,Low,0
+REC-00317,Basmati Rice,GlobalGrainConsortium,63.8,13.5,7.69,2,21.3,33.3,Low,0
+REC-00318,Basmati Rice,GlobalGrainConsortium,95.3,2.4,2.72,0,5.2,5.0,Low,0
+REC-00319,Organic Cotton,SunValleyEstates,85.2,0.7,1.85,0,9.2,6.7,Low,0
+REC-00320,Organic Cotton,SunValleyEstates,45.4,19.5,13.32,4,80.1,58.0,Medium,1
+REC-00321,Organic Cotton,FarmerOrgMSP,52.1,11.7,9.26,1,20.0,32.8,Low,0
+REC-00322,Durum Wheat,FarmerOrgMSP,90.5,1.6,3.87,0,12.1,6.9,Low,0
+REC-00323,Basmati Rice,DeltaFarms,80.3,2.1,2.28,0,4.1,9.0,Low,0
+REC-00324,Basmati Rice,DeltaFarms,91.3,1.8,0.69,0,7.8,5.2,Low,0
+REC-00325,Soybean Oil,AgriCoop-North,18.0,27.0,38.29,4,60.6,80.5,High,2
+REC-00326,Durum Wheat,GlobalGrainConsortium,83.4,0.2,2.92,0,1.9,6.5,Low,0
+REC-00327,Arabica Coffee,SunValleyEstates,95.4,1.6,2.74,0,14.8,5.3,Low,0
+REC-00328,Arabica Coffee,AgriCoop-North,78.8,1.2,3.84,0,6.7,9.6,Low,0
+REC-00329,Soybean Oil,DeltaFarms,60.8,4.3,8.91,0,28.5,21.8,Low,0
+REC-00330,Organic Cotton,AgriCoop-North,80.2,0.5,2.84,0,9.1,8.4,Low,0
+REC-00331,Basmati Rice,SunValleyEstates,79.7,0.2,2.72,0,14.5,8.8,Low,0
+REC-00332,Raw Cane Sugar,GlobalGrainConsortium,84.4,0.2,1.47,0,3.4,5.8,Low,0
+REC-00333,Basmati Rice,FarmerOrgMSP,73.0,9.9,9.38,1,18.5,25.0,Low,0
+REC-00334,Arabica Coffee,DeltaFarms,91.6,1.1,1.73,0,6.4,4.8,Low,0
+REC-00335,Basmati Rice,AgriCoop-North,67.3,10.5,12.0,2,20.0,31.4,Low,0
+REC-00336,Arabica Coffee,DeltaFarms,95.2,1.4,3.48,0,7.8,4.8,Low,0
+REC-00337,Soybean Oil,DeltaFarms,32.7,20.9,36.65,5,80.5,75.3,High,2
+REC-00338,Basmati Rice,AgriCoop-North,88.6,2.4,0.96,1,4.1,9.2,Low,0
+REC-00339,Durum Wheat,HighlandGrowers,64.1,11.7,7.96,2,18.4,31.5,Low,0
+REC-00340,Soybean Oil,SunValleyEstates,70.6,7.7,10.58,0,37.8,23.2,Low,0
+REC-00341,Durum Wheat,DeltaFarms,85.2,2.0,2.65,0,13.2,8.5,Low,0
+REC-00342,Arabica Coffee,GlobalGrainConsortium,95.7,0.1,3.47,0,12.4,4.0,Low,0
+REC-00343,Arabica Coffee,AgriCoop-North,83.4,1.9,2.57,0,2.9,7.9,Low,0
+REC-00344,Raw Cane Sugar,HighlandGrowers,64.3,9.3,8.77,0,24.7,24.4,Low,0
+REC-00345,Soybean Oil,FarmerOrgMSP,81.4,2.9,3.94,0,2.3,9.8,Low,0
+REC-00346,Basmati Rice,AgriCoop-North,45.3,14.3,43.18,3,52.3,59.8,Medium,1
+REC-00347,Soybean Oil,DeltaFarms,66.9,8.9,8.62,1,33.8,27.2,Low,0
+REC-00348,Basmati Rice,DeltaFarms,94.1,2.2,1.67,0,10.7,5.3,Low,0
+REC-00349,Soybean Oil,GlobalGrainConsortium,26.5,12.0,39.87,2,81.5,62.1,Medium,1
+REC-00350,Arabica Coffee,DeltaFarms,59.0,4.6,8.28,0,44.0,23.8,Low,0
+REC-00351,Basmati Rice,GlobalGrainConsortium,94.9,0.6,2.35,0,7.8,3.7,Low,0
+REC-00352,Arabica Coffee,DeltaFarms,51.1,10.3,10.69,0,18.7,29.4,Low,0
+REC-00353,Basmati Rice,AgriCoop-North,98.8,0.8,3.98,0,13.4,4.0,Low,0
+REC-00354,Raw Cane Sugar,AgriCoop-North,45.7,13.7,24.98,2,63.6,50.1,Medium,1
+REC-00355,Durum Wheat,FarmerOrgMSP,90.0,1.9,3.05,0,2.3,6.0,Low,0
+REC-00356,Basmati Rice,FarmerOrgMSP,76.9,1.4,2.13,0,1.1,9.1,Low,0
+REC-00357,Durum Wheat,FarmerOrgMSP,29.8,14.4,14.55,5,49.5,58.8,Medium,1
+REC-00358,Raw Cane Sugar,AgriCoop-North,96.1,0.2,3.12,0,2.9,2.9,Low,0
+REC-00359,Raw Cane Sugar,AgriCoop-North,88.5,1.4,0.74,0,4.0,5.3,Low,0
+REC-00360,Durum Wheat,SunValleyEstates,36.6,20.0,19.82,2,52.0,54.8,Medium,1
+REC-00361,Durum Wheat,AgriCoop-North,58.8,8.3,10.33,0,23.3,25.7,Low,0
+REC-00362,Raw Cane Sugar,HighlandGrowers,89.4,1.4,3.14,0,12.9,6.9,Low,0
+REC-00363,Arabica Coffee,DeltaFarms,89.6,0.3,1.63,0,12.0,5.2,Low,0
+REC-00364,Basmati Rice,HighlandGrowers,80.8,1.5,0.38,0,1.2,7.3,Low,0
+REC-00365,Durum Wheat,FarmerOrgMSP,95.7,1.3,1.53,0,11.7,4.2,Low,0
+REC-00366,Basmati Rice,GlobalGrainConsortium,75.3,0.4,3.7,0,6.6,9.9,Low,0
+REC-00367,Organic Cotton,AgriCoop-North,69.2,8.2,7.22,2,31.1,28.1,Low,0
+REC-00368,Soybean Oil,SunValleyEstates,82.4,1.1,0.89,0,8.5,7.4,Low,0
+REC-00369,Arabica Coffee,FarmerOrgMSP,70.9,10.8,4.53,2,28.1,28.4,Low,0
+REC-00370,Raw Cane Sugar,GlobalGrainConsortium,97.2,0.2,2.49,1,10.3,6.0,Low,0
+REC-00371,Organic Cotton,GlobalGrainConsortium,75.3,0.2,0.14,0,5.9,8.2,Low,0
+REC-00372,Durum Wheat,HighlandGrowers,83.9,2.1,3.51,0,2.7,8.3,Low,0
+REC-00373,Soybean Oil,DeltaFarms,56.8,4.6,9.7,2,33.8,30.1,Low,0
+REC-00374,Organic Cotton,GlobalGrainConsortium,76.3,2.9,0.75,0,11.8,11.0,Low,0
+REC-00375,Soybean Oil,HighlandGrowers,55.7,9.1,4.35,0,22.3,24.8,Low,0
+REC-00376,Raw Cane Sugar,GlobalGrainConsortium,78.6,4.0,3.44,0,13.8,12.5,Low,0
+REC-00377,Basmati Rice,FarmerOrgMSP,82.7,0.8,2.91,0,2.1,7.2,Low,0
+REC-00378,Durum Wheat,DeltaFarms,96.6,0.3,3.24,0,14.4,4.0,Low,0
+REC-00379,Arabica Coffee,HighlandGrowers,42.1,17.6,15.11,5,45.4,57.6,Medium,1
+REC-00380,Arabica Coffee,GlobalGrainConsortium,82.3,1.5,1.91,0,7.9,8.1,Low,0
+REC-00381,Organic Cotton,HighlandGrowers,41.6,16.4,12.23,5,46.2,55.7,Medium,1
+REC-00382,Raw Cane Sugar,GlobalGrainConsortium,67.3,4.1,6.68,2,26.3,24.5,Low,0
+REC-00383,Arabica Coffee,GlobalGrainConsortium,79.9,5.0,1.74,0,14.6,12.4,Low,0
+REC-00384,Soybean Oil,GlobalGrainConsortium,76.1,0.4,3.4,0,13.5,10.2,Low,0
+REC-00385,Soybean Oil,GlobalGrainConsortium,77.3,0.2,3.3,1,8.9,12.2,Low,0
+REC-00386,Raw Cane Sugar,HighlandGrowers,23.3,16.7,23.34,5,80.0,69.3,Medium,1
+REC-00387,Arabica Coffee,FarmerOrgMSP,81.5,0.1,0.89,0,9.2,6.9,Low,0
+REC-00388,Basmati Rice,DeltaFarms,86.2,0.8,2.19,0,3.9,6.1,Low,0
+REC-00389,Durum Wheat,AgriCoop-North,77.9,0.3,2.78,0,10.8,9.1,Low,0
+REC-00390,Durum Wheat,GlobalGrainConsortium,58.2,4.9,5.99,1,26.9,24.7,Low,0
+REC-00391,Organic Cotton,AgriCoop-North,94.7,0.3,3.81,0,8.8,4.2,Low,0
+REC-00392,Arabica Coffee,AgriCoop-North,77.4,2.4,0.57,1,11.9,13.2,Low,0
+REC-00393,Durum Wheat,FarmerOrgMSP,84.6,1.7,3.76,1,9.2,11.5,Low,0
+REC-00394,Basmati Rice,FarmerOrgMSP,21.9,23.6,41.13,2,90.3,74.6,High,2
+REC-00395,Durum Wheat,DeltaFarms,86.1,0.3,2.34,0,6.5,6.0,Low,0
+REC-00396,Arabica Coffee,FarmerOrgMSP,54.3,6.1,5.5,1,28.4,26.8,Low,0
+REC-00397,Durum Wheat,HighlandGrowers,65.4,10.5,7.99,2,29.4,31.3,Low,0
+REC-00398,Organic Cotton,FarmerOrgMSP,85.1,1.5,3.21,0,14.9,8.5,Low,0
+REC-00399,Organic Cotton,SunValleyEstates,42.4,18.5,31.6,5,62.2,66.6,Medium,1
+REC-00400,Basmati Rice,FarmerOrgMSP,81.5,0.0,2.43,1,12.3,10.8,Low,0
+REC-00401,Durum Wheat,AgriCoop-North,61.8,7.6,8.67,0,44.2,25.7,Low,0
+REC-00402,Arabica Coffee,SunValleyEstates,56.7,12.2,11.34,0,37.9,31.5,Low,0
+REC-00403,Organic Cotton,HighlandGrowers,69.9,7.5,10.71,0,20.3,21.6,Low,0
+REC-00404,Organic Cotton,SunValleyEstates,67.4,13.1,4.23,2,25.6,30.9,Low,0
+REC-00405,Arabica Coffee,DeltaFarms,97.8,2.7,3.26,0,8.6,5.1,Low,0
+REC-00406,Organic Cotton,AgriCoop-North,76.3,1.4,0.18,0,5.6,8.9,Low,0
+REC-00407,Arabica Coffee,SunValleyEstates,58.5,5.8,10.42,1,16.8,26.1,Low,0
+REC-00408,Basmati Rice,GlobalGrainConsortium,53.5,5.1,8.21,1,43.8,28.9,Low,0
+REC-00409,Raw Cane Sugar,DeltaFarms,28.8,13.8,22.86,3,93.8,60.4,Medium,1
+REC-00410,Organic Cotton,HighlandGrowers,74.0,10.5,5.39,2,35.8,28.3,Low,0
+REC-00411,Raw Cane Sugar,FarmerOrgMSP,89.1,0.3,1.3,0,2.8,4.3,Low,0
+REC-00412,Basmati Rice,SunValleyEstates,48.2,19.0,47.79,2,54.1,61.9,Medium,1
+REC-00413,Basmati Rice,AgriCoop-North,88.6,4.1,0.65,0,4.3,7.5,Low,0
+REC-00414,Soybean Oil,FarmerOrgMSP,74.1,12.2,9.36,2,41.6,31.8,Low,0
+REC-00415,Soybean Oil,DeltaFarms,81.0,0.1,1.1,0,1.0,6.3,Low,0
+REC-00416,Soybean Oil,FarmerOrgMSP,74.2,12.8,7.94,1,25.5,27.1,Low,0
+REC-00417,Durum Wheat,FarmerOrgMSP,69.7,9.8,10.07,0,19.9,23.3,Low,0
+REC-00418,Raw Cane Sugar,FarmerOrgMSP,82.6,4.5,0.39,0,6.3,9.8,Low,0
+REC-00419,Durum Wheat,DeltaFarms,96.6,0.1,2.42,0,7.8,2.9,Low,0
+REC-00420,Arabica Coffee,DeltaFarms,20.8,28.0,17.66,2,61.6,66.3,Medium,1
+REC-00421,Durum Wheat,FarmerOrgMSP,68.1,11.3,6.12,1,23.9,26.8,Low,0
+REC-00422,Raw Cane Sugar,GlobalGrainConsortium,88.2,1.0,0.31,1,2.2,7.7,Low,0
+REC-00423,Soybean Oil,FarmerOrgMSP,55.0,4.3,5.37,1,44.3,26.7,Low,0
+REC-00424,Arabica Coffee,HighlandGrowers,84.5,1.0,2.68,1,8.6,10.4,Low,0
+REC-00425,Basmati Rice,SunValleyEstates,27.9,20.0,21.48,5,58.2,67.7,Medium,1
+REC-00426,Organic Cotton,AgriCoop-North,93.1,1.7,0.43,0,8.6,4.5,Low,0
+REC-00427,Soybean Oil,SunValleyEstates,95.2,2.6,1.73,0,13.1,5.6,Low,0
+REC-00428,Organic Cotton,SunValleyEstates,31.7,13.4,44.5,2,70.1,62.5,Medium,1
+REC-00429,Arabica Coffee,AgriCoop-North,65.5,5.2,10.06,0,43.5,23.1,Low,0
+REC-00430,Raw Cane Sugar,AgriCoop-North,53.2,8.2,11.91,1,21.1,30.7,Low,0
+REC-00431,Organic Cotton,DeltaFarms,56.4,13.1,11.31,0,17.6,30.3,Low,0
+REC-00432,Organic Cotton,SunValleyEstates,95.6,1.1,3.68,1,10.8,7.8,Low,0
+REC-00433,Durum Wheat,FarmerOrgMSP,52.8,5.5,8.53,2,37.8,31.9,Low,0
+REC-00434,Soybean Oil,GlobalGrainConsortium,77.4,0.5,2.19,0,6.8,8.8,Low,0
+REC-00435,Raw Cane Sugar,DeltaFarms,89.6,0.1,1.17,0,9.5,4.6,Low,0
+REC-00436,Basmati Rice,FarmerOrgMSP,96.3,0.6,1.03,0,13.9,3.4,Low,0
+REC-00437,Arabica Coffee,AgriCoop-North,94.0,0.6,3.39,0,10.6,4.7,Low,0
+REC-00438,Durum Wheat,AgriCoop-North,92.8,2.2,1.35,0,9.5,5.5,Low,0
+REC-00439,Durum Wheat,SunValleyEstates,96.9,0.8,1.99,0,6.2,3.0,Low,0
+REC-00440,Durum Wheat,AgriCoop-North,51.6,11.1,7.23,2,41.4,36.8,Low,0
+REC-00441,Raw Cane Sugar,AgriCoop-North,95.0,2.7,1.07,0,13.9,5.6,Low,0
+REC-00442,Basmati Rice,DeltaFarms,94.8,1.1,2.58,0,1.4,3.6,Low,0
+REC-00443,Basmati Rice,GlobalGrainConsortium,79.3,3.1,2.39,0,3.3,10.1,Low,0
+REC-00444,Arabica Coffee,AgriCoop-North,52.3,4.3,4.4,2,38.4,29.5,Low,0
+REC-00445,Raw Cane Sugar,FarmerOrgMSP,66.9,6.7,7.28,0,40.9,22.5,Low,0
+REC-00446,Basmati Rice,GlobalGrainConsortium,78.2,0.3,3.22,0,9.5,9.0,Low,0
+REC-00447,Arabica Coffee,DeltaFarms,37.5,19.6,25.55,4,67.9,64.1,Medium,1
+REC-00448,Basmati Rice,SunValleyEstates,87.5,1.5,2.38,1,15.0,10.5,Low,0
+REC-00449,Basmati Rice,GlobalGrainConsortium,65.2,7.0,4.86,0,25.1,20.7,Low,0
+REC-00450,Organic Cotton,AgriCoop-North,81.6,1.6,3.81,0,3.6,8.7,Low,0
+REC-00451,Raw Cane Sugar,FarmerOrgMSP,43.2,26.4,33.6,4,79.0,72.4,High,2
+REC-00452,Organic Cotton,GlobalGrainConsortium,74.9,6.6,7.35,1,37.1,22.7,Low,0
+REC-00453,Raw Cane Sugar,HighlandGrowers,43.6,18.2,37.68,5,90.3,71.2,High,2
+REC-00454,Arabica Coffee,GlobalGrainConsortium,95.3,2.8,3.52,0,2.4,5.4,Low,0
+REC-00455,Durum Wheat,AgriCoop-North,94.4,2.2,0.81,0,5.7,4.4,Low,0
+REC-00456,Basmati Rice,DeltaFarms,92.9,0.6,3.17,0,4.6,4.4,Low,0
+REC-00457,Arabica Coffee,SunValleyEstates,31.5,27.6,33.01,2,68.6,69.6,Medium,1
+REC-00458,Arabica Coffee,HighlandGrowers,91.3,1.1,1.71,0,3.1,4.5,Low,0
+REC-00459,Durum Wheat,DeltaFarms,88.7,3.6,1.88,0,11.0,8.2,Low,0
+REC-00460,Arabica Coffee,SunValleyEstates,98.7,0.6,0.33,0,3.9,1.4,Low,0
+REC-00461,Soybean Oil,DeltaFarms,62.2,11.6,4.7,2,28.0,31.7,Low,0
+REC-00462,Basmati Rice,SunValleyEstates,86.5,0.0,2.18,0,14.3,6.4,Low,0
+REC-00463,Arabica Coffee,FarmerOrgMSP,91.2,1.5,1.07,0,5.8,4.9,Low,0
+REC-00464,Raw Cane Sugar,SunValleyEstates,89.1,0.3,3.31,0,5.1,5.4,Low,0
+REC-00465,Basmati Rice,AgriCoop-North,83.1,3.3,3.98,0,13.6,10.8,Low,0
+REC-00466,Arabica Coffee,GlobalGrainConsortium,96.8,2.5,0.17,0,14.8,4.6,Low,0
+REC-00467,Raw Cane Sugar,HighlandGrowers,87.1,0.2,2.87,0,6.3,5.8,Low,0
+REC-00468,Durum Wheat,FarmerOrgMSP,65.6,9.9,4.38,0,34.6,23.8,Low,0
+REC-00469,Arabica Coffee,GlobalGrainConsortium,60.4,7.8,8.38,1,36.1,28.3,Low,0
+REC-00470,Organic Cotton,GlobalGrainConsortium,50.2,8.2,4.81,2,23.1,32.0,Low,0
+REC-00471,Durum Wheat,DeltaFarms,94.9,0.2,2.9,0,2.6,3.1,Low,0
+REC-00472,Basmati Rice,AgriCoop-North,79.8,0.5,2.14,0,10.8,8.4,Low,0
+REC-00473,Raw Cane Sugar,FarmerOrgMSP,86.9,0.3,3.74,0,1.0,5.8,Low,0
+REC-00474,Durum Wheat,GlobalGrainConsortium,44.2,24.0,17.37,2,84.0,58.1,Medium,1
+REC-00475,Durum Wheat,FarmerOrgMSP,72.6,10.4,7.65,1,22.9,25.2,Low,0
+REC-00476,Raw Cane Sugar,FarmerOrgMSP,71.9,12.5,6.88,2,24.4,30.0,Low,0
+REC-00477,Basmati Rice,DeltaFarms,93.2,0.1,3.42,0,3.4,3.8,Low,0
+REC-00478,Soybean Oil,DeltaFarms,24.4,25.2,25.41,4,54.1,71.3,High,2
+REC-00479,Arabica Coffee,FarmerOrgMSP,24.5,18.9,42.62,5,77.4,78.2,High,2
+REC-00480,Soybean Oil,SunValleyEstates,92.4,5.0,3.39,0,13.8,9.2,Low,0
+REC-00481,Raw Cane Sugar,AgriCoop-North,54.5,7.8,6.87,0,40.9,27.0,Low,0
+REC-00482,Durum Wheat,GlobalGrainConsortium,86.7,3.3,1.82,1,10.2,11.5,Low,0
+REC-00483,Raw Cane Sugar,HighlandGrowers,33.4,25.4,38.06,3,93.9,74.8,High,2
+REC-00484,Raw Cane Sugar,GlobalGrainConsortium,91.5,1.4,1.79,0,7.7,5.2,Low,0
+REC-00485,Raw Cane Sugar,AgriCoop-North,53.7,12.3,11.14,2,16.6,36.3,Low,0
+REC-00486,Basmati Rice,HighlandGrowers,86.3,1.0,0.75,0,5.5,5.8,Low,0
+REC-00487,Organic Cotton,DeltaFarms,80.3,1.5,1.67,0,7.4,8.6,Low,0
+REC-00488,Soybean Oil,DeltaFarms,87.0,0.6,3.92,0,1.2,6.1,Low,0
+REC-00489,Organic Cotton,SunValleyEstates,88.2,2.6,3.19,0,9.9,8.0,Low,0
+REC-00490,Soybean Oil,HighlandGrowers,91.1,4.5,1.52,1,4.1,10.4,Low,0
+REC-00491,Raw Cane Sugar,AgriCoop-North,89.9,1.0,2.66,0,2.6,5.2,Low,0
+REC-00492,Durum Wheat,FarmerOrgMSP,83.5,1.5,3.22,0,6.2,8.1,Low,0
+REC-00493,Organic Cotton,AgriCoop-North,32.2,26.8,38.73,5,50.3,78.2,High,2
+REC-00494,Durum Wheat,DeltaFarms,97.3,0.7,1.88,0,11.0,3.2,Low,0
+REC-00495,Organic Cotton,SunValleyEstates,90.2,1.7,0.58,0,7.4,5.3,Low,0
+REC-00496,Soybean Oil,SunValleyEstates,87.0,1.1,0.29,0,12.7,6.2,Low,0
+REC-00497,Raw Cane Sugar,SunValleyEstates,72.8,10.9,5.39,0,18.1,21.2,Low,0
+REC-00498,Arabica Coffee,HighlandGrowers,58.0,12.8,7.35,2,42.5,36.5,Low,0
+REC-00499,Raw Cane Sugar,SunValleyEstates,83.2,0.5,3.24,0,9.4,7.7,Low,0
+REC-00500,Arabica Coffee,AgriCoop-North,91.8,3.0,2.88,0,9.9,7.1,Low,0
+REC-00501,Arabica Coffee,SunValleyEstates,57.3,7.5,9.38,2,34.5,32.3,Low,0
+REC-00502,Raw Cane Sugar,GlobalGrainConsortium,90.3,1.9,3.07,0,9.2,6.6,Low,0
+REC-00503,Organic Cotton,FarmerOrgMSP,92.9,2.8,1.22,0,12.3,6.2,Low,0
+REC-00504,Basmati Rice,GlobalGrainConsortium,78.5,1.7,0.88,0,3.3,8.5,Low,0
+REC-00505,Soybean Oil,FarmerOrgMSP,95.1,1.8,1.25,0,1.5,3.6,Low,0
+REC-00506,Arabica Coffee,SunValleyEstates,66.9,9.6,5.79,2,31.8,29.4,Low,0
+REC-00507,Raw Cane Sugar,HighlandGrowers,70.0,6.9,9.32,1,26.6,24.1,Low,0
+REC-00508,Raw Cane Sugar,GlobalGrainConsortium,16.9,25.4,19.31,5,86.5,77.5,High,2
+REC-00509,Arabica Coffee,HighlandGrowers,59.2,9.9,9.91,0,38.3,28.3,Low,0
+REC-00510,Durum Wheat,DeltaFarms,98.6,0.1,3.85,0,2.7,2.3,Low,0
+REC-00511,Arabica Coffee,FarmerOrgMSP,81.3,0.3,3.4,1,7.5,11.0,Low,0
+REC-00512,Soybean Oil,SunValleyEstates,82.7,0.1,3.74,0,10.3,7.8,Low,0
+REC-00513,Organic Cotton,AgriCoop-North,76.7,1.8,2.15,0,8.3,10.2,Low,0
+REC-00514,Basmati Rice,HighlandGrowers,87.9,0.1,0.96,0,5.6,4.7,Low,0
+REC-00515,Durum Wheat,FarmerOrgMSP,93.1,1.1,3.99,0,14.7,6.1,Low,0
+REC-00516,Durum Wheat,GlobalGrainConsortium,61.1,13.0,8.91,2,22.3,34.3,Low,0
+REC-00517,Basmati Rice,FarmerOrgMSP,28.3,26.3,16.08,4,72.0,69.1,Medium,1
+REC-00518,Basmati Rice,GlobalGrainConsortium,43.8,18.7,40.9,5,69.3,70.7,High,2
+REC-00519,Durum Wheat,GlobalGrainConsortium,87.3,4.4,0.75,0,8.5,8.6,Low,0
+REC-00520,Organic Cotton,GlobalGrainConsortium,91.1,2.2,3.47,0,2.5,6.1,Low,0
+REC-00521,Arabica Coffee,FarmerOrgMSP,40.9,19.8,41.4,2,82.3,65.0,Medium,1
+REC-00522,Organic Cotton,AgriCoop-North,83.0,0.1,0.31,0,8.8,6.2,Low,0
+REC-00523,Raw Cane Sugar,FarmerOrgMSP,29.3,20.1,26.56,4,45.8,65.2,Medium,1
+REC-00524,Durum Wheat,HighlandGrowers,90.4,1.4,3.05,0,10.8,6.3,Low,0
+REC-00525,Soybean Oil,DeltaFarms,18.7,26.2,22.85,2,59.1,67.3,Medium,1
+REC-00526,Organic Cotton,HighlandGrowers,90.9,1.0,2.18,0,6.5,5.1,Low,0
+REC-00527,Durum Wheat,SunValleyEstates,20.0,24.2,44.91,4,92.9,83.4,High,2
+REC-00528,Durum Wheat,HighlandGrowers,19.9,12.8,32.62,5,71.9,69.9,Medium,1
+REC-00529,Arabica Coffee,AgriCoop-North,92.8,1.9,0.93,0,12.9,5.4,Low,0
+REC-00530,Durum Wheat,SunValleyEstates,89.8,0.4,0.55,0,8.9,4.5,Low,0
+REC-00531,Soybean Oil,HighlandGrowers,88.2,0.5,0.36,1,11.2,8.2,Low,0
+REC-00532,Soybean Oil,DeltaFarms,91.1,0.4,1.21,1,3.7,6.9,Low,0
+REC-00533,Soybean Oil,AgriCoop-North,90.8,1.8,0.69,0,12.3,5.8,Low,0
+REC-00534,Arabica Coffee,GlobalGrainConsortium,80.9,0.4,2.99,0,12.8,8.5,Low,0
+REC-00535,Durum Wheat,AgriCoop-North,71.9,8.6,6.87,1,29.6,24.3,Low,0
+REC-00536,Raw Cane Sugar,GlobalGrainConsortium,52.0,6.8,10.61,2,20.9,32.4,Low,0
+REC-00537,Soybean Oil,SunValleyEstates,76.8,0.0,2.08,1,9.1,11.7,Low,0
+REC-00538,Arabica Coffee,HighlandGrowers,75.9,0.5,3.59,0,10.2,10.1,Low,0
+REC-00539,Durum Wheat,DeltaFarms,96.4,1.3,3.44,0,8.0,4.3,Low,0
+REC-00540,Organic Cotton,AgriCoop-North,75.3,0.4,3.86,0,10.6,10.3,Low,0
+REC-00541,Soybean Oil,HighlandGrowers,79.3,4.5,2.67,0,11.3,12.2,Low,0
+REC-00542,Organic Cotton,HighlandGrowers,93.3,0.4,1.13,0,10.4,3.8,Low,0
+REC-00543,Organic Cotton,GlobalGrainConsortium,97.0,3.2,0.26,0,2.4,3.9,Low,0
+REC-00544,Soybean Oil,HighlandGrowers,70.9,6.6,8.35,0,26.3,20.2,Low,0
+REC-00545,Soybean Oil,HighlandGrowers,96.6,0.1,1.08,0,4.1,1.9,Low,0
+REC-00546,Arabica Coffee,DeltaFarms,58.6,11.9,11.1,0,30.1,29.8,Low,0
+REC-00547,Raw Cane Sugar,FarmerOrgMSP,76.9,1.5,0.92,0,6.1,9.2,Low,0
+REC-00548,Arabica Coffee,SunValleyEstates,60.4,7.3,4.91,2,29.4,28.9,Low,0
+REC-00549,Raw Cane Sugar,SunValleyEstates,95.0,0.0,0.27,0,3.3,1.9,Low,0
+REC-00550,Organic Cotton,SunValleyEstates,88.7,0.1,1.11,0,14.4,5.4,Low,0
+REC-00551,Organic Cotton,DeltaFarms,72.0,11.3,10.57,0,21.5,24.2,Low,0
+REC-00552,Organic Cotton,HighlandGrowers,21.0,26.9,33.63,3,76.2,76.2,High,2
+REC-00553,Arabica Coffee,FarmerOrgMSP,91.5,3.8,2.43,1,6.3,10.3,Low,0
+REC-00554,Arabica Coffee,DeltaFarms,87.5,3.6,2.77,0,9.5,8.8,Low,0
+REC-00555,Raw Cane Sugar,AgriCoop-North,36.0,27.8,31.13,2,49.7,65.8,Medium,1
+REC-00556,Basmati Rice,FarmerOrgMSP,33.9,12.0,45.76,5,71.1,70.2,High,2
+REC-00557,Raw Cane Sugar,GlobalGrainConsortium,60.7,13.4,7.86,1,25.5,31.7,Low,0
+REC-00558,Organic Cotton,SunValleyEstates,85.2,0.4,3.09,0,2.2,6.2,Low,0
+REC-00559,Durum Wheat,DeltaFarms,79.5,1.9,3.18,0,2.6,9.3,Low,0
+REC-00560,Organic Cotton,HighlandGrowers,67.2,7.2,6.9,0,27.8,21.4,Low,0
+REC-00561,Arabica Coffee,DeltaFarms,87.9,1.2,2.49,0,6.6,6.3,Low,0
+REC-00562,Organic Cotton,HighlandGrowers,88.4,0.3,2.28,0,14.8,6.1,Low,0
+REC-00563,Soybean Oil,GlobalGrainConsortium,60.0,5.4,10.91,0,37.4,24.6,Low,0
+REC-00564,Raw Cane Sugar,FarmerOrgMSP,18.5,21.2,40.3,2,53.0,69.5,Medium,1
+REC-00565,Arabica Coffee,HighlandGrowers,70.6,8.7,8.8,0,16.9,21.3,Low,0
+REC-00566,Raw Cane Sugar,SunValleyEstates,75.9,0.7,3.94,0,8.3,10.2,Low,0
+REC-00567,Organic Cotton,HighlandGrowers,93.6,0.3,2.03,1,12.9,7.3,Low,0
+REC-00568,Basmati Rice,AgriCoop-North,93.8,1.1,2.82,0,10.4,4.9,Low,0
+REC-00569,Soybean Oil,DeltaFarms,74.4,4.9,6.21,1,25.6,19.8,Low,0
+REC-00570,Organic Cotton,SunValleyEstates,87.4,2.0,0.37,1,5.0,9.1,Low,0
+REC-00571,Organic Cotton,FarmerOrgMSP,98.1,0.5,2.46,0,14.0,3.4,Low,0
+REC-00572,Organic Cotton,HighlandGrowers,84.8,0.2,0.38,0,14.3,6.3,Low,0
+REC-00573,Arabica Coffee,HighlandGrowers,43.5,22.3,36.99,5,73.2,72.6,High,2
+REC-00574,Basmati Rice,FarmerOrgMSP,31.1,20.3,33.13,2,69.1,63.7,Medium,1
+REC-00575,Basmati Rice,SunValleyEstates,93.9,0.4,2.83,0,6.8,4.0,Low,0
+REC-00576,Basmati Rice,FarmerOrgMSP,91.8,0.5,1.22,0,11.5,4.5,Low,0
+REC-00577,Raw Cane Sugar,GlobalGrainConsortium,79.3,0.6,0.95,0,3.6,7.5,Low,0
+REC-00578,Arabica Coffee,AgriCoop-North,21.7,25.3,20.46,3,88.6,70.6,High,2
+REC-00579,Raw Cane Sugar,GlobalGrainConsortium,81.0,1.4,0.71,0,13.9,8.5,Low,0
+REC-00580,Basmati Rice,DeltaFarms,75.2,2.9,3.84,0,6.2,12.0,Low,0
+REC-00581,Organic Cotton,HighlandGrowers,45.8,22.3,21.89,3,94.2,62.0,Medium,1
+REC-00582,Durum Wheat,SunValleyEstates,93.0,0.2,2.15,0,14.2,4.5,Low,0
+REC-00583,Basmati Rice,GlobalGrainConsortium,95.6,2.2,1.88,0,8.3,4.7,Low,0
+REC-00584,Arabica Coffee,SunValleyEstates,91.2,0.7,0.49,0,13.1,4.7,Low,0
+REC-00585,Soybean Oil,GlobalGrainConsortium,81.5,4.8,1.44,0,6.9,10.8,Low,0
+REC-00586,Organic Cotton,GlobalGrainConsortium,59.1,8.0,7.61,2,18.9,29.9,Low,0
+REC-00587,Arabica Coffee,GlobalGrainConsortium,77.4,0.5,1.02,0,6.3,8.2,Low,0
+REC-00588,Organic Cotton,SunValleyEstates,94.3,0.3,2.05,0,12.9,4.1,Low,0
+REC-00589,Durum Wheat,GlobalGrainConsortium,69.6,7.0,8.5,2,16.4,26.0,Low,0
+REC-00590,Basmati Rice,HighlandGrowers,80.2,0.4,3.37,1,11.4,11.8,Low,0
+REC-00591,Raw Cane Sugar,SunValleyEstates,88.4,2.5,1.44,0,5.9,6.7,Low,0
+REC-00592,Raw Cane Sugar,SunValleyEstates,88.8,1.6,0.78,0,6.0,5.6,Low,0
+REC-00593,Arabica Coffee,AgriCoop-North,92.7,3.3,1.59,0,9.8,6.6,Low,0
+REC-00594,Durum Wheat,FarmerOrgMSP,73.2,8.2,8.9,1,40.5,25.5,Low,0
+REC-00595,Basmati Rice,DeltaFarms,80.5,0.6,1.24,0,10.0,7.8,Low,0
+REC-00596,Arabica Coffee,FarmerOrgMSP,73.5,11.5,8.17,1,27.4,26.5,Low,0
+REC-00597,Soybean Oil,FarmerOrgMSP,80.6,0.4,3.0,0,3.9,7.7,Low,0
+REC-00598,Durum Wheat,FarmerOrgMSP,97.5,1.0,0.31,0,8.3,2.5,Low,0
+REC-00599,Basmati Rice,DeltaFarms,78.7,1.6,3.55,0,4.5,9.6,Low,0
+REC-00600,Basmati Rice,DeltaFarms,53.3,12.4,4.23,2,25.7,34.6,Low,0
+REC-00601,Organic Cotton,AgriCoop-North,95.9,4.1,2.24,0,14.3,7.0,Low,0
+REC-00602,Organic Cotton,HighlandGrowers,86.0,2.1,3.52,0,10.0,8.4,Low,0
+REC-00603,Basmati Rice,AgriCoop-North,31.9,16.1,15.22,4,63.3,58.3,Medium,1
+REC-00604,Durum Wheat,GlobalGrainConsortium,75.0,2.5,3.41,0,7.6,11.7,Low,0
+REC-00605,Organic Cotton,AgriCoop-North,48.1,20.6,12.33,5,84.9,61.2,Medium,1
+REC-00606,Arabica Coffee,GlobalGrainConsortium,63.7,5.9,11.06,1,26.8,25.9,Low,0
+REC-00607,Organic Cotton,SunValleyEstates,59.7,7.8,6.1,1,33.8,27.4,Low,0
+REC-00608,Durum Wheat,AgriCoop-North,67.1,6.8,9.94,1,27.4,25.3,Low,0
+REC-00609,Basmati Rice,FarmerOrgMSP,77.6,0.9,1.87,0,7.9,9.0,Low,0
+REC-00610,Soybean Oil,GlobalGrainConsortium,98.3,0.0,3.89,0,2.8,2.3,Low,0
+REC-00611,Soybean Oil,HighlandGrowers,77.2,0.0,0.95,0,12.0,8.4,Low,0
+REC-00612,Soybean Oil,FarmerOrgMSP,94.0,0.6,3.39,0,1.8,3.8,Low,0
+REC-00613,Raw Cane Sugar,AgriCoop-North,79.4,3.4,1.08,0,1.2,9.6,Low,0
+REC-00614,Durum Wheat,SunValleyEstates,98.4,0.4,3.98,0,11.3,3.5,Low,0
+REC-00615,Raw Cane Sugar,FarmerOrgMSP,55.2,7.9,11.69,1,19.8,29.7,Low,0
+REC-00616,Durum Wheat,GlobalGrainConsortium,63.7,5.2,7.85,1,21.0,23.5,Low,0
+REC-00617,Durum Wheat,DeltaFarms,77.7,1.5,1.37,0,4.9,9.0,Low,0
+REC-00618,Arabica Coffee,HighlandGrowers,50.2,4.4,10.27,1,35.7,29.3,Low,0
+REC-00619,Raw Cane Sugar,FarmerOrgMSP,56.2,9.0,9.49,1,42.9,31.7,Low,0
+REC-00620,Organic Cotton,GlobalGrainConsortium,90.5,1.8,3.19,0,4.3,6.1,Low,0
+REC-00621,Raw Cane Sugar,AgriCoop-North,70.1,8.4,5.54,2,26.3,26.8,Low,0
+REC-00622,Organic Cotton,AgriCoop-North,75.9,1.8,2.28,0,7.9,10.4,Low,0
+REC-00623,Arabica Coffee,FarmerOrgMSP,82.8,0.9,3.48,0,13.0,8.6,Low,0
+REC-00624,Organic Cotton,DeltaFarms,85.8,2.6,2.21,0,11.9,8.5,Low,0
+REC-00625,Raw Cane Sugar,FarmerOrgMSP,72.1,10.2,6.91,2,22.2,27.9,Low,0
+REC-00626,Arabica Coffee,SunValleyEstates,63.5,7.9,8.19,1,38.0,27.6,Low,0
+REC-00627,Arabica Coffee,AgriCoop-North,84.8,0.6,0.48,0,1.6,5.4,Low,0
+REC-00628,Organic Cotton,SunValleyEstates,22.1,20.7,15.56,5,77.9,69.6,Medium,1
+REC-00629,Arabica Coffee,GlobalGrainConsortium,56.4,7.7,8.85,0,15.4,24.6,Low,0
+REC-00630,Soybean Oil,HighlandGrowers,96.4,0.1,3.22,1,8.8,6.3,Low,0
+REC-00631,Basmati Rice,FarmerOrgMSP,51.5,10.2,8.23,2,17.1,34.1,Low,0
+REC-00632,Organic Cotton,GlobalGrainConsortium,48.6,13.7,38.11,5,54.5,62.5,Medium,1
+REC-00633,Raw Cane Sugar,SunValleyEstates,90.0,0.3,3.02,0,2.5,4.7,Low,0
+REC-00634,Soybean Oil,SunValleyEstates,86.0,1.6,3.54,0,3.5,7.3,Low,0
+REC-00635,Basmati Rice,HighlandGrowers,78.8,5.0,1.83,0,5.4,11.8,Low,0
+REC-00636,Soybean Oil,SunValleyEstates,90.2,2.6,1.36,0,8.6,6.5,Low,0
+REC-00637,Durum Wheat,HighlandGrowers,23.9,29.3,28.11,5,45.0,78.0,High,2
+REC-00638,Basmati Rice,FarmerOrgMSP,87.4,5.0,1.28,0,4.1,8.9,Low,0
+REC-00639,Organic Cotton,AgriCoop-North,73.6,12.2,11.35,2,31.7,31.8,Low,0
+REC-00640,Basmati Rice,HighlandGrowers,86.0,0.3,1.13,0,4.5,5.4,Low,0
+REC-00641,Arabica Coffee,DeltaFarms,84.6,3.7,2.96,0,12.1,10.1,Low,0
+REC-00642,Durum Wheat,GlobalGrainConsortium,67.2,9.8,11.26,2,34.3,31.9,Low,0
+REC-00643,Soybean Oil,DeltaFarms,59.5,11.8,11.37,1,25.4,32.1,Low,0
+REC-00644,Raw Cane Sugar,DeltaFarms,19.2,25.9,38.92,2,76.7,75.1,High,2
+REC-00645,Arabica Coffee,FarmerOrgMSP,87.6,0.6,2.3,0,10.8,6.2,Low,0
+REC-00646,Arabica Coffee,DeltaFarms,74.9,13.7,10.02,2,30.1,32.0,Low,0
+REC-00647,Soybean Oil,HighlandGrowers,84.5,0.2,0.42,0,1.7,5.2,Low,0
+REC-00648,Soybean Oil,DeltaFarms,87.0,2.2,0.61,0,8.8,6.9,Low,0
+REC-00649,Basmati Rice,DeltaFarms,54.9,10.2,9.89,0,22.3,28.2,Low,0
+REC-00650,Basmati Rice,HighlandGrowers,97.2,0.1,2.72,0,5.9,2.6,Low,0
+REC-00651,Soybean Oil,SunValleyEstates,75.6,0.5,3.95,0,14.9,10.8,Low,0
+REC-00652,Durum Wheat,FarmerOrgMSP,76.1,2.6,0.88,0,11.6,10.8,Low,0
+REC-00653,Raw Cane Sugar,FarmerOrgMSP,56.1,10.2,5.18,1,15.4,28.3,Low,0
+REC-00654,Basmati Rice,SunValleyEstates,86.3,0.6,2.99,0,8.6,6.7,Low,0
+REC-00655,Raw Cane Sugar,SunValleyEstates,92.5,0.2,2.83,1,9.2,7.5,Low,0
+REC-00656,Raw Cane Sugar,FarmerOrgMSP,79.1,0.5,3.18,0,1.7,8.1,Low,0
+REC-00657,Basmati Rice,GlobalGrainConsortium,90.8,1.6,3.66,0,2.5,5.8,Low,0
+REC-00658,Organic Cotton,SunValleyEstates,98.5,1.1,2.87,0,7.8,3.3,Low,0
+REC-00659,Organic Cotton,HighlandGrowers,79.8,5.0,2.29,0,1.6,11.3,Low,0
+REC-00660,Arabica Coffee,SunValleyEstates,84.4,0.3,1.45,0,9.8,6.5,Low,0
+REC-00661,Organic Cotton,HighlandGrowers,76.5,0.4,1.61,0,14.9,9.5,Low,0
+REC-00662,Raw Cane Sugar,SunValleyEstates,83.2,0.7,0.64,0,8.3,6.7,Low,0
+REC-00663,Organic Cotton,HighlandGrowers,39.0,19.5,32.62,5,93.5,71.9,High,2
+REC-00664,Arabica Coffee,HighlandGrowers,78.2,1.6,2.37,0,3.8,9.2,Low,0
+REC-00665,Organic Cotton,AgriCoop-North,72.5,13.1,7.44,0,34.7,25.6,Low,0
+REC-00666,Raw Cane Sugar,FarmerOrgMSP,88.4,4.5,0.56,0,13.3,8.8,Low,0
+REC-00667,Raw Cane Sugar,GlobalGrainConsortium,72.0,8.1,7.29,1,37.4,24.8,Low,0
+REC-00668,Basmati Rice,SunValleyEstates,93.7,0.2,0.82,0,9.6,3.3,Low,0
+REC-00669,Soybean Oil,AgriCoop-North,80.5,0.4,2.78,0,10.6,8.4,Low,0
+REC-00670,Arabica Coffee,AgriCoop-North,89.5,1.9,1.56,0,7.9,6.1,Low,0
+REC-00671,Raw Cane Sugar,GlobalGrainConsortium,75.8,2.2,0.16,0,6.8,9.8,Low,0
+REC-00672,Soybean Oil,GlobalGrainConsortium,41.5,13.2,45.38,5,88.4,70.5,High,2
+REC-00673,Soybean Oil,GlobalGrainConsortium,86.0,0.4,1.68,1,11.3,9.3,Low,0
+REC-00674,Durum Wheat,SunValleyEstates,89.7,2.0,2.42,0,13.3,7.1,Low,0
+REC-00675,Raw Cane Sugar,FarmerOrgMSP,86.0,3.2,3.52,0,8.5,9.1,Low,0
+REC-00676,Basmati Rice,HighlandGrowers,87.4,1.5,0.29,0,6.6,5.8,Low,0
+REC-00677,Raw Cane Sugar,DeltaFarms,85.1,1.4,0.31,0,3.0,6.1,Low,0
+REC-00678,Soybean Oil,DeltaFarms,87.0,0.3,2.38,0,8.6,6.0,Low,0
+REC-00679,Durum Wheat,HighlandGrowers,75.6,0.9,3.6,0,13.4,10.9,Low,0
+REC-00680,Raw Cane Sugar,DeltaFarms,90.6,1.9,0.74,0,2.3,4.9,Low,0
+REC-00681,Arabica Coffee,DeltaFarms,52.1,11.1,9.81,2,33.4,36.9,Low,0
+REC-00682,Arabica Coffee,AgriCoop-North,76.1,0.3,1.41,0,13.1,9.3,Low,0
+REC-00683,Raw Cane Sugar,AgriCoop-North,92.1,0.8,1.31,0,7.2,4.3,Low,0
+REC-00684,Soybean Oil,SunValleyEstates,78.2,0.3,2.53,0,7.4,8.5,Low,0
+REC-00685,Soybean Oil,DeltaFarms,65.2,8.9,5.73,2,29.3,29.1,Low,0
+REC-00686,Arabica Coffee,FarmerOrgMSP,89.4,0.4,2.23,0,8.8,5.3,Low,0
+REC-00687,Organic Cotton,HighlandGrowers,76.3,0.6,0.67,1,9.1,11.8,Low,0
+REC-00688,Raw Cane Sugar,GlobalGrainConsortium,77.1,0.2,3.98,0,5.0,9.1,Low,0
+REC-00689,Durum Wheat,FarmerOrgMSP,64.3,9.6,11.73,2,32.4,32.6,Low,0
+REC-00690,Durum Wheat,HighlandGrowers,58.1,13.0,10.56,1,40.3,34.7,Low,0
+REC-00691,Arabica Coffee,SunValleyEstates,77.9,2.9,1.38,0,3.9,10.0,Low,0
+REC-00692,Organic Cotton,GlobalGrainConsortium,88.7,5.0,2.16,1,11.1,12.5,Low,0
+REC-00693,Arabica Coffee,SunValleyEstates,89.6,0.6,2.15,0,6.0,5.1,Low,0
+REC-00694,Raw Cane Sugar,HighlandGrowers,87.5,1.5,2.02,0,9.5,6.8,Low,0
+REC-00695,Arabica Coffee,SunValleyEstates,15.1,12.4,34.52,2,81.9,63.8,Medium,1
+REC-00696,Arabica Coffee,GlobalGrainConsortium,29.5,18.0,32.17,3,45.6,62.6,Medium,1
+REC-00697,Raw Cane Sugar,HighlandGrowers,94.0,0.6,2.08,0,1.1,3.2,Low,0
+REC-00698,Basmati Rice,GlobalGrainConsortium,92.4,1.4,0.21,0,5.6,4.1,Low,0
+REC-00699,Organic Cotton,HighlandGrowers,86.4,0.1,0.63,0,7.4,5.2,Low,0
+REC-00700,Raw Cane Sugar,HighlandGrowers,94.5,3.9,0.32,0,8.9,5.9,Low,0
+REC-00701,Durum Wheat,AgriCoop-North,75.4,1.3,1.39,0,12.1,10.2,Low,0
+REC-00702,Soybean Oil,AgriCoop-North,75.7,5.0,2.54,0,9.0,13.4,Low,0
+REC-00703,Soybean Oil,FarmerOrgMSP,95.8,2.1,2.85,0,1.4,4.3,Low,0
+REC-00704,Durum Wheat,HighlandGrowers,80.7,0.9,3.81,0,5.2,8.6,Low,0
+REC-00705,Organic Cotton,AgriCoop-North,69.4,13.1,7.55,0,39.0,27.0,Low,0
+REC-00706,Durum Wheat,SunValleyEstates,97.2,2.0,2.14,0,3.0,3.7,Low,0
+REC-00707,Durum Wheat,FarmerOrgMSP,53.3,11.2,7.67,2,40.9,36.5,Low,0
+REC-00708,Durum Wheat,SunValleyEstates,76.1,2.8,3.5,0,13.4,12.2,Low,0
+REC-00709,Basmati Rice,AgriCoop-North,68.6,4.2,10.07,2,41.8,27.1,Low,0
+REC-00710,Basmati Rice,FarmerOrgMSP,81.6,0.6,1.82,0,3.1,7.1,Low,0
+REC-00711,Arabica Coffee,GlobalGrainConsortium,90.0,1.1,0.91,0,5.5,4.8,Low,0
+REC-00712,Durum Wheat,AgriCoop-North,64.4,5.7,6.49,1,31.2,24.1,Low,0
+REC-00713,Raw Cane Sugar,SunValleyEstates,96.7,0.1,1.6,1,6.5,5.4,Low,0
+REC-00714,Arabica Coffee,GlobalGrainConsortium,37.0,24.4,28.05,4,60.6,68.5,Medium,1
+REC-00715,Durum Wheat,GlobalGrainConsortium,70.2,4.8,11.38,1,32.0,23.7,Low,0
+REC-00716,Arabica Coffee,AgriCoop-North,85.9,1.7,2.87,0,4.2,7.2,Low,0
+REC-00717,Basmati Rice,DeltaFarms,36.6,28.4,26.11,4,84.4,73.6,High,2
+REC-00718,Basmati Rice,SunValleyEstates,76.6,0.2,1.97,0,5.0,8.5,Low,0
+REC-00719,Durum Wheat,HighlandGrowers,87.2,0.8,2.89,0,8.8,6.5,Low,0
+REC-00720,Soybean Oil,FarmerOrgMSP,84.6,0.8,2.52,0,14.6,7.8,Low,0
+REC-00721,Organic Cotton,GlobalGrainConsortium,94.5,1.3,3.16,0,12.0,5.2,Low,0
+REC-00722,Organic Cotton,SunValleyEstates,90.9,0.1,3.73,0,7.8,5.1,Low,0
+REC-00723,Durum Wheat,GlobalGrainConsortium,88.3,2.6,0.79,0,2.0,6.2,Low,0
+REC-00724,Arabica Coffee,AgriCoop-North,69.3,7.8,7.95,2,16.8,26.6,Low,0
+REC-00725,Soybean Oil,SunValleyEstates,46.6,23.5,12.01,3,78.0,57.2,Medium,1
+REC-00726,Raw Cane Sugar,HighlandGrowers,89.8,0.9,0.9,0,5.2,4.7,Low,0
+REC-00727,Organic Cotton,SunValleyEstates,47.8,24.9,44.94,2,74.1,67.8,Medium,1
+REC-00728,Raw Cane Sugar,SunValleyEstates,78.1,0.5,1.54,0,1.7,7.8,Low,0
+REC-00729,Organic Cotton,DeltaFarms,59.0,12.6,10.93,0,28.0,30.0,Low,0
+REC-00730,Soybean Oil,AgriCoop-North,67.8,8.1,7.48,0,34.9,22.9,Low,0
+REC-00731,Raw Cane Sugar,AgriCoop-North,84.2,3.9,3.38,0,15.0,10.8,Low,0
+REC-00732,Arabica Coffee,FarmerOrgMSP,76.7,0.0,2.91,0,7.1,8.9,Low,0
+REC-00733,Organic Cotton,AgriCoop-North,94.3,3.0,3.58,0,14.0,7.0,Low,0
+REC-00734,Durum Wheat,SunValleyEstates,85.2,2.6,1.6,0,6.9,7.9,Low,0
+REC-00735,Durum Wheat,FarmerOrgMSP,92.5,1.9,1.15,0,9.1,5.2,Low,0
+REC-00736,Raw Cane Sugar,SunValleyEstates,91.9,0.2,1.98,0,3.0,3.7,Low,0
+REC-00737,Organic Cotton,FarmerOrgMSP,49.4,26.0,28.74,2,71.2,61.5,Medium,1
+REC-00738,Organic Cotton,HighlandGrowers,90.1,1.6,2.71,0,8.5,6.2,Low,0
+REC-00739,Soybean Oil,SunValleyEstates,72.6,9.4,4.09,1,30.4,23.7,Low,0
+REC-00740,Raw Cane Sugar,SunValleyEstates,60.5,13.6,10.39,1,20.0,32.3,Low,0
+REC-00741,Organic Cotton,FarmerOrgMSP,68.2,9.6,4.49,1,32.3,25.6,Low,0
+REC-00742,Organic Cotton,FarmerOrgMSP,57.3,11.4,4.22,1,17.5,28.7,Low,0
+REC-00743,Durum Wheat,SunValleyEstates,24.7,14.4,22.11,4,45.7,60.0,Medium,1
+REC-00744,Raw Cane Sugar,AgriCoop-North,89.2,0.2,1.84,0,4.7,4.6,Low,0
+REC-00745,Arabica Coffee,DeltaFarms,94.2,3.0,1.44,1,3.0,8.1,Low,0
+REC-00746,Arabica Coffee,SunValleyEstates,60.3,7.8,9.29,2,34.1,31.5,Low,0
+REC-00747,Soybean Oil,DeltaFarms,58.6,10.4,10.04,0,16.6,26.8,Low,0
+REC-00748,Soybean Oil,DeltaFarms,86.4,4.4,3.7,0,10.6,10.3,Low,0
+REC-00749,Basmati Rice,SunValleyEstates,87.7,0.9,1.23,0,6.3,5.6,Low,0
+REC-00750,Raw Cane Sugar,HighlandGrowers,51.0,13.2,9.1,1,33.3,35.7,Low,0
+REC-00751,Raw Cane Sugar,AgriCoop-North,81.4,0.2,2.65,0,11.8,8.0,Low,0
+REC-00752,Basmati Rice,SunValleyEstates,64.7,5.9,6.7,2,44.8,28.7,Low,0
+REC-00753,Basmati Rice,AgriCoop-North,75.2,0.1,1.7,0,10.6,9.3,Low,0
+REC-00754,Raw Cane Sugar,AgriCoop-North,56.3,4.3,8.96,0,43.2,24.6,Low,0
+REC-00755,Raw Cane Sugar,SunValleyEstates,37.3,24.7,16.32,3,63.8,61.3,Medium,1
+REC-00756,Durum Wheat,GlobalGrainConsortium,54.6,5.1,5.47,1,29.0,26.0,Low,0
+REC-00757,Basmati Rice,AgriCoop-North,98.9,2.2,2.8,0,11.8,4.5,Low,0
+REC-00758,Basmati Rice,AgriCoop-North,56.9,4.6,7.11,0,22.7,21.9,Low,0
+REC-00759,Arabica Coffee,SunValleyEstates,86.8,4.0,2.48,0,7.9,9.1,Low,0
+REC-00760,Durum Wheat,FarmerOrgMSP,55.5,10.4,11.3,2,22.8,34.8,Low,0
+REC-00761,Durum Wheat,FarmerOrgMSP,92.5,2.3,0.17,0,10.1,5.2,Low,0
+REC-00762,Raw Cane Sugar,DeltaFarms,56.7,11.0,11.24,2,15.1,34.2,Low,0
+REC-00763,Soybean Oil,GlobalGrainConsortium,84.7,2.0,3.27,1,4.2,11.0,Low,0
+REC-00764,Basmati Rice,DeltaFarms,62.1,9.7,11.48,1,25.0,29.5,Low,0
+REC-00765,Soybean Oil,HighlandGrowers,98.9,1.6,1.52,0,5.8,2.9,Low,0
+REC-00766,Soybean Oil,FarmerOrgMSP,54.4,4.4,7.07,0,24.0,22.6,Low,0
+REC-00767,Durum Wheat,AgriCoop-North,59.0,4.8,9.06,2,20.7,28.0,Low,0
+REC-00768,Soybean Oil,SunValleyEstates,98.9,0.4,1.62,0,10.0,2.3,Low,0
+REC-00769,Raw Cane Sugar,FarmerOrgMSP,43.4,29.4,12.59,4,47.8,63.3,Medium,1
+REC-00770,Organic Cotton,AgriCoop-North,80.1,1.6,2.14,0,13.2,9.5,Low,0
+REC-00771,Soybean Oil,SunValleyEstates,55.8,4.7,9.88,1,34.6,27.6,Low,0
+REC-00772,Durum Wheat,DeltaFarms,91.8,0.2,0.77,1,5.3,6.5,Low,0
+REC-00773,Organic Cotton,AgriCoop-North,70.9,4.6,10.54,0,29.9,19.8,Low,0
+REC-00774,Durum Wheat,GlobalGrainConsortium,79.9,0.6,3.36,0,6.6,8.5,Low,0
+REC-00775,Basmati Rice,FarmerOrgMSP,78.3,2.7,3.19,0,9.3,11.0,Low,0
+REC-00776,Organic Cotton,FarmerOrgMSP,78.4,0.8,2.82,0,7.1,9.0,Low,0
+REC-00777,Durum Wheat,FarmerOrgMSP,94.0,1.5,1.57,0,13.3,5.0,Low,0
+REC-00778,Soybean Oil,GlobalGrainConsortium,97.2,1.8,2.42,0,10.7,4.4,Low,0
+REC-00779,Raw Cane Sugar,FarmerOrgMSP,78.4,0.5,1.86,0,3.4,8.0,Low,0
+REC-00780,Soybean Oil,FarmerOrgMSP,92.2,1.4,0.44,0,5.2,4.2,Low,0
+REC-00781,Organic Cotton,SunValleyEstates,79.6,5.0,3.91,0,13.1,13.2,Low,0
+REC-00782,Raw Cane Sugar,DeltaFarms,93.5,1.6,1.18,0,12.2,5.0,Low,0
+REC-00783,Basmati Rice,HighlandGrowers,78.8,3.8,0.31,0,3.9,10.0,Low,0
+REC-00784,Arabica Coffee,AgriCoop-North,72.3,8.5,4.84,0,42.7,21.6,Low,0
+REC-00785,Organic Cotton,HighlandGrowers,62.1,5.2,11.16,2,28.3,29.0,Low,0
+REC-00786,Arabica Coffee,GlobalGrainConsortium,92.9,3.4,1.0,0,4.2,5.8,Low,0
+REC-00787,Soybean Oil,AgriCoop-North,79.8,3.3,0.39,0,1.8,9.1,Low,0
+REC-00788,Basmati Rice,HighlandGrowers,89.6,0.3,1.56,0,3.7,4.4,Low,0
+REC-00789,Soybean Oil,DeltaFarms,78.1,1.8,0.33,0,12.9,9.5,Low,0
+REC-00790,Organic Cotton,AgriCoop-North,83.2,3.3,2.45,0,9.9,9.8,Low,0
+REC-00791,Arabica Coffee,SunValleyEstates,88.3,0.4,1.71,0,13.1,5.8,Low,0
+REC-00792,Soybean Oil,SunValleyEstates,86.1,0.0,1.77,0,4.5,5.3,Low,0
+REC-00793,Durum Wheat,FarmerOrgMSP,97.3,4.4,3.66,0,6.8,6.6,Low,0
+REC-00794,Raw Cane Sugar,FarmerOrgMSP,40.7,21.1,27.33,5,69.0,68.2,Medium,1
+REC-00795,Arabica Coffee,HighlandGrowers,80.8,1.2,0.15,0,14.3,8.2,Low,0
+REC-00796,Organic Cotton,GlobalGrainConsortium,90.5,0.1,1.97,0,10.8,4.8,Low,0
+REC-00797,Basmati Rice,GlobalGrainConsortium,98.4,0.9,0.64,0,3.6,1.8,Low,0
+REC-00798,Durum Wheat,HighlandGrowers,90.2,3.0,0.38,0,5.7,6.2,Low,0
+REC-00799,Durum Wheat,SunValleyEstates,81.5,4.4,2.22,0,12.0,11.3,Low,0
+REC-00800,Durum Wheat,DeltaFarms,40.8,13.0,46.03,4,89.4,67.9,Medium,1
+REC-00801,Raw Cane Sugar,AgriCoop-North,89.9,0.7,0.78,0,1.9,4.1,Low,0
+REC-00802,Raw Cane Sugar,AgriCoop-North,83.0,1.2,2.63,0,11.5,8.3,Low,0
+REC-00803,Basmati Rice,FarmerOrgMSP,69.0,7.2,11.18,2,35.4,29.3,Low,0
+REC-00804,Raw Cane Sugar,SunValleyEstates,83.3,1.0,2.15,0,10.9,7.8,Low,0
+REC-00805,Soybean Oil,FarmerOrgMSP,30.8,18.6,36.24,2,54.4,62.2,Medium,1
+REC-00806,Raw Cane Sugar,AgriCoop-North,96.6,0.5,3.83,0,4.9,3.5,Low,0
+REC-00807,Organic Cotton,AgriCoop-North,96.0,1.1,2.55,0,14.6,4.6,Low,0
+REC-00808,Arabica Coffee,SunValleyEstates,85.1,2.0,0.18,0,1.3,6.3,Low,0
+REC-00809,Raw Cane Sugar,GlobalGrainConsortium,60.3,7.4,9.17,1,29.6,27.7,Low,0
+REC-00810,Basmati Rice,AgriCoop-North,88.2,0.9,2.31,0,5.3,5.7,Low,0
+REC-00811,Arabica Coffee,SunValleyEstates,98.3,2.2,0.28,0,7.4,3.2,Low,0
+REC-00812,Durum Wheat,FarmerOrgMSP,39.9,17.1,47.04,3,53.1,65.4,Medium,1
+REC-00813,Durum Wheat,GlobalGrainConsortium,35.1,19.9,25.31,3,73.1,62.5,Medium,1
+REC-00814,Durum Wheat,DeltaFarms,83.3,0.7,2.21,0,5.2,7.0,Low,0
+REC-00815,Raw Cane Sugar,SunValleyEstates,41.9,29.1,45.4,3,45.2,73.4,High,2
+REC-00816,Organic Cotton,GlobalGrainConsortium,26.6,24.7,29.06,4,93.5,75.6,High,2
+REC-00817,Durum Wheat,AgriCoop-North,88.6,3.6,1.82,0,11.2,8.3,Low,0
+REC-00818,Durum Wheat,HighlandGrowers,52.9,4.2,8.94,0,28.4,24.0,Low,0
+REC-00819,Durum Wheat,FarmerOrgMSP,90.4,1.3,0.97,0,4.9,4.8,Low,0
+REC-00820,Basmati Rice,SunValleyEstates,85.7,1.7,0.44,0,3.7,6.3,Low,0
+REC-00821,Soybean Oil,HighlandGrowers,73.6,13.1,6.89,0,36.5,25.2,Low,0
+REC-00822,Arabica Coffee,GlobalGrainConsortium,75.3,0.6,1.3,0,8.9,9.3,Low,0
+REC-00823,Soybean Oil,GlobalGrainConsortium,41.0,19.5,27.93,3,85.3,62.7,Medium,1
+REC-00824,Organic Cotton,HighlandGrowers,19.9,22.6,15.1,3,60.2,63.9,Medium,1
+REC-00825,Soybean Oil,AgriCoop-North,98.0,2.1,0.44,0,13.8,3.9,Low,0
+REC-00826,Organic Cotton,DeltaFarms,92.0,2.1,0.63,0,6.3,5.0,Low,0
+REC-00827,Durum Wheat,FarmerOrgMSP,94.8,2.7,1.29,0,7.5,5.1,Low,0
+REC-00828,Basmati Rice,DeltaFarms,82.2,1.5,2.58,0,10.3,8.7,Low,0
+REC-00829,Durum Wheat,SunValleyEstates,96.8,1.6,0.21,0,7.9,3.2,Low,0
+REC-00830,Raw Cane Sugar,FarmerOrgMSP,64.5,9.7,10.95,2,35.6,32.7,Low,0
+REC-00831,Soybean Oil,GlobalGrainConsortium,92.6,0.0,1.11,0,3.0,3.0,Low,0
+REC-00832,Basmati Rice,HighlandGrowers,78.9,0.5,1.74,0,6.0,8.0,Low,0
+REC-00833,Arabica Coffee,SunValleyEstates,97.5,1.1,3.09,0,2.3,3.1,Low,0
+REC-00834,Basmati Rice,FarmerOrgMSP,82.6,2.8,3.22,0,10.8,9.9,Low,0
+REC-00835,Soybean Oil,HighlandGrowers,83.4,0.2,0.63,0,11.9,6.6,Low,0
+REC-00836,Organic Cotton,SunValleyEstates,20.7,15.9,30.12,3,84.8,66.6,Medium,1
+REC-00837,Durum Wheat,DeltaFarms,73.8,12.5,9.7,2,37.7,31.9,Low,0
+REC-00838,Basmati Rice,AgriCoop-North,76.8,2.6,3.7,0,5.4,11.1,Low,0
+REC-00839,Basmati Rice,FarmerOrgMSP,72.2,10.0,10.11,1,20.2,25.7,Low,0
+REC-00840,Arabica Coffee,AgriCoop-North,53.0,5.3,9.55,2,21.8,30.5,Low,0
+REC-00841,Soybean Oil,FarmerOrgMSP,76.9,1.8,3.16,1,11.8,13.9,Low,0
+REC-00842,Durum Wheat,FarmerOrgMSP,75.8,1.6,2.41,0,13.7,10.9,Low,0
+REC-00843,Arabica Coffee,AgriCoop-North,75.2,0.2,0.58,0,9.2,8.8,Low,0
+REC-00844,Basmati Rice,HighlandGrowers,50.7,5.5,9.97,1,43.5,30.7,Low,0
+REC-00845,Organic Cotton,FarmerOrgMSP,87.0,2.0,1.04,0,2.4,6.2,Low,0
+REC-00846,Raw Cane Sugar,FarmerOrgMSP,92.2,5.0,0.77,0,1.1,6.9,Low,0
+REC-00847,Durum Wheat,AgriCoop-North,47.2,27.3,29.09,3,67.0,65.9,Medium,1
+REC-00848,Basmati Rice,FarmerOrgMSP,74.5,8.2,8.11,1,18.4,22.6,Low,0
+REC-00849,Durum Wheat,HighlandGrowers,87.5,1.0,1.51,0,11.1,6.3,Low,0
+REC-00850,Arabica Coffee,SunValleyEstates,84.2,0.9,2.97,0,12.8,8.0,Low,0
+REC-00851,Raw Cane Sugar,HighlandGrowers,98.6,0.8,3.44,0,12.2,3.7,Low,0
+REC-00852,Durum Wheat,FarmerOrgMSP,99.0,1.0,0.51,0,10.2,2.4,Low,0
+REC-00853,Durum Wheat,HighlandGrowers,84.6,1.3,0.5,0,14.7,7.4,Low,0
+REC-00854,Soybean Oil,GlobalGrainConsortium,26.9,22.7,47.66,2,56.6,71.6,High,2
+REC-00855,Soybean Oil,HighlandGrowers,93.4,2.2,2.42,0,12.2,6.0,Low,0
+REC-00856,Durum Wheat,FarmerOrgMSP,89.5,0.8,1.99,0,11.8,5.8,Low,0
+REC-00857,Durum Wheat,DeltaFarms,86.9,1.5,0.62,1,1.7,8.6,Low,0
+REC-00858,Organic Cotton,FarmerOrgMSP,74.3,7.8,9.43,0,24.1,20.4,Low,0
+REC-00859,Raw Cane Sugar,DeltaFarms,66.5,9.2,7.94,1,21.1,26.0,Low,0
+REC-00860,Durum Wheat,DeltaFarms,81.3,0.6,3.45,0,14.3,8.9,Low,0
+REC-00861,Durum Wheat,AgriCoop-North,19.2,20.1,42.7,5,68.0,79.9,High,2
+REC-00862,Raw Cane Sugar,DeltaFarms,95.6,0.5,2.85,0,2.9,3.2,Low,0
+REC-00863,Soybean Oil,SunValleyEstates,77.6,1.7,2.67,0,9.0,10.1,Low,0
+REC-00864,Basmati Rice,HighlandGrowers,32.7,19.0,29.81,5,75.8,70.5,High,2
+REC-00865,Durum Wheat,GlobalGrainConsortium,75.7,0.1,3.36,0,11.4,9.9,Low,0
+REC-00866,Arabica Coffee,AgriCoop-North,77.3,0.6,1.49,0,10.3,8.9,Low,0
+REC-00867,Arabica Coffee,FarmerOrgMSP,64.8,13.1,4.52,1,18.4,28.1,Low,0
+REC-00868,Durum Wheat,GlobalGrainConsortium,75.9,1.6,1.75,0,6.9,10.0,Low,0
+REC-00869,Soybean Oil,FarmerOrgMSP,75.5,0.6,2.32,0,2.4,9.0,Low,0
+REC-00870,Organic Cotton,HighlandGrowers,55.1,9.0,10.49,2,25.2,33.7,Low,0
+REC-00871,Organic Cotton,AgriCoop-North,85.5,1.0,3.4,0,12.8,7.8,Low,0
+REC-00872,Durum Wheat,GlobalGrainConsortium,76.1,5.0,1.67,0,11.4,13.1,Low,0
+REC-00873,Arabica Coffee,HighlandGrowers,52.4,7.4,4.54,2,29.3,31.2,Low,0
+REC-00874,Basmati Rice,AgriCoop-North,66.3,7.0,10.43,1,34.9,26.6,Low,0
+REC-00875,Raw Cane Sugar,GlobalGrainConsortium,81.0,1.1,2.72,0,13.3,9.0,Low,0
+REC-00876,Basmati Rice,GlobalGrainConsortium,79.5,1.0,2.68,0,14.1,9.5,Low,0
+REC-00877,Organic Cotton,AgriCoop-North,89.7,2.2,1.79,0,9.8,6.6,Low,0
+REC-00878,Basmati Rice,FarmerOrgMSP,78.5,0.2,2.77,0,7.1,8.4,Low,0
+REC-00879,Organic Cotton,AgriCoop-North,71.1,6.7,6.3,0,22.7,19.0,Low,0
+REC-00880,Organic Cotton,DeltaFarms,77.7,0.3,1.06,0,7.5,8.1,Low,0
+REC-00881,Basmati Rice,GlobalGrainConsortium,96.7,0.3,1.16,1,12.1,5.9,Low,0
+REC-00882,Durum Wheat,HighlandGrowers,90.5,0.1,2.92,0,1.8,4.3,Low,0
+REC-00883,Durum Wheat,DeltaFarms,71.7,13.0,7.26,1,35.2,28.7,Low,0
+REC-00884,Organic Cotton,SunValleyEstates,40.3,14.5,16.03,2,71.1,49.5,Medium,1
+REC-00885,Organic Cotton,GlobalGrainConsortium,96.2,0.4,0.58,0,5.6,2.3,Low,0
+REC-00886,Basmati Rice,DeltaFarms,93.0,0.4,1.75,0,3.5,3.5,Low,0
+REC-00887,Organic Cotton,DeltaFarms,95.7,0.1,2.18,0,2.6,2.5,Low,0
+REC-00888,Basmati Rice,HighlandGrowers,80.9,0.5,3.16,0,7.7,8.2,Low,0
+REC-00889,Raw Cane Sugar,GlobalGrainConsortium,98.2,1.4,3.38,0,14.2,4.5,Low,0
+REC-00890,Durum Wheat,SunValleyEstates,88.3,0.6,3.84,0,12.4,6.8,Low,0
+REC-00891,Basmati Rice,HighlandGrowers,45.0,19.0,44.75,5,91.4,74.4,High,2
+REC-00892,Raw Cane Sugar,HighlandGrowers,94.7,0.4,0.92,0,13.8,3.7,Low,0
+REC-00893,Soybean Oil,DeltaFarms,41.8,19.3,13.22,2,86.2,53.5,Medium,1
+REC-00894,Raw Cane Sugar,HighlandGrowers,73.2,7.3,7.38,0,39.7,21.0,Low,0
+REC-00895,Durum Wheat,FarmerOrgMSP,83.4,1.4,3.27,0,7.3,8.2,Low,0
+REC-00896,Raw Cane Sugar,HighlandGrowers,54.6,8.4,9.13,0,27.0,27.0,Low,0
+REC-00897,Arabica Coffee,SunValleyEstates,77.0,0.3,2.11,0,12.6,9.3,Low,0
+REC-00898,Arabica Coffee,GlobalGrainConsortium,69.8,7.2,7.83,2,19.0,26.1,Low,0
+REC-00899,Soybean Oil,SunValleyEstates,82.9,0.5,0.43,0,6.5,6.4,Low,0
+REC-00900,Soybean Oil,AgriCoop-North,97.8,3.8,2.62,0,13.7,6.2,Low,0
+REC-00901,Basmati Rice,AgriCoop-North,95.4,0.1,2.51,0,3.1,2.8,Low,0
+REC-00902,Soybean Oil,FarmerOrgMSP,19.1,24.9,27.67,5,86.4,79.7,High,2
+REC-00903,Soybean Oil,AgriCoop-North,79.9,4.4,3.27,0,11.5,12.2,Low,0
+REC-00904,Arabica Coffee,DeltaFarms,80.0,0.4,3.31,0,3.7,8.0,Low,0
+REC-00905,Basmati Rice,SunValleyEstates,50.7,13.8,5.88,1,42.2,35.9,Low,0
+REC-00906,Soybean Oil,GlobalGrainConsortium,61.5,4.1,5.07,1,44.2,24.4,Low,0
+REC-00907,Durum Wheat,HighlandGrowers,84.2,0.8,2.43,1,8.8,10.3,Low,0
+REC-00908,Organic Cotton,SunValleyEstates,31.5,18.4,33.83,2,45.3,59.9,Medium,1
+REC-00909,Arabica Coffee,HighlandGrowers,98.5,1.7,0.62,0,1.6,2.3,Low,0
+REC-00910,Soybean Oil,AgriCoop-North,86.8,0.6,1.93,1,10.9,9.3,Low,0
+REC-00911,Basmati Rice,DeltaFarms,82.5,5.0,2.05,0,4.9,10.7,Low,0
+REC-00912,Arabica Coffee,HighlandGrowers,96.0,1.4,3.07,0,5.4,4.1,Low,0
+REC-00913,Soybean Oil,FarmerOrgMSP,62.3,13.5,8.45,2,34.1,35.4,Low,0
+REC-00914,Durum Wheat,DeltaFarms,76.3,0.3,1.93,0,7.5,8.9,Low,0
+REC-00915,Arabica Coffee,FarmerOrgMSP,83.6,1.9,1.99,0,12.8,8.6,Low,0
+REC-00916,Organic Cotton,GlobalGrainConsortium,79.9,0.5,3.36,0,12.5,9.0,Low,0
+REC-00917,Durum Wheat,AgriCoop-North,89.0,5.0,2.15,0,6.8,9.0,Low,0
+REC-00918,Durum Wheat,DeltaFarms,66.9,12.9,4.21,2,44.4,32.8,Low,0
+REC-00919,Raw Cane Sugar,GlobalGrainConsortium,97.3,0.2,1.36,1,7.4,5.3,Low,0
+REC-00920,Organic Cotton,DeltaFarms,90.1,0.5,2.67,0,1.6,4.6,Low,0
+REC-00921,Durum Wheat,GlobalGrainConsortium,92.6,2.0,3.83,0,4.0,5.8,Low,0
+REC-00922,Basmati Rice,AgriCoop-North,94.2,2.0,2.23,0,2.3,4.5,Low,0
+REC-00923,Soybean Oil,HighlandGrowers,93.5,0.8,0.18,0,6.4,3.3,Low,0
+REC-00924,Basmati Rice,GlobalGrainConsortium,73.9,5.5,6.39,1,37.1,21.7,Low,0
+REC-00925,Soybean Oil,DeltaFarms,59.0,5.0,6.94,0,29.7,22.2,Low,0
+REC-00926,Raw Cane Sugar,DeltaFarms,89.4,0.1,1.75,0,3.6,4.3,Low,0
+REC-00927,Soybean Oil,SunValleyEstates,87.3,5.0,2.74,0,11.0,10.2,Low,0
+REC-00928,Arabica Coffee,GlobalGrainConsortium,63.1,6.9,7.5,1,24.0,25.2,Low,0
+REC-00929,Durum Wheat,SunValleyEstates,44.5,21.4,22.64,2,72.5,56.8,Medium,1
+REC-00930,Basmati Rice,SunValleyEstates,85.2,0.1,2.68,0,4.5,6.0,Low,0
+REC-00931,Soybean Oil,FarmerOrgMSP,87.1,0.2,2.68,0,3.6,5.5,Low,0
+REC-00932,Organic Cotton,HighlandGrowers,96.0,0.5,2.39,0,10.4,3.6,Low,0
+REC-00933,Basmati Rice,GlobalGrainConsortium,97.0,2.5,0.92,1,14.8,7.8,Low,0
+REC-00934,Raw Cane Sugar,DeltaFarms,87.8,0.0,0.56,0,7.7,4.7,Low,0
+REC-00935,Raw Cane Sugar,GlobalGrainConsortium,48.8,22.8,29.52,4,79.5,66.1,Medium,1
+REC-00936,Arabica Coffee,FarmerOrgMSP,82.3,0.2,0.15,0,1.2,5.7,Low,0
+REC-00937,Arabica Coffee,FarmerOrgMSP,90.6,1.6,1.8,0,12.1,6.1,Low,0
+REC-00938,Raw Cane Sugar,DeltaFarms,86.1,1.0,0.19,0,3.1,5.4,Low,0
+REC-00939,Soybean Oil,FarmerOrgMSP,31.5,27.5,33.07,3,59.7,71.7,High,2
+REC-00940,Organic Cotton,SunValleyEstates,77.5,2.8,1.78,0,7.9,10.6,Low,0
+REC-00941,Organic Cotton,GlobalGrainConsortium,75.0,4.4,7.2,2,32.7,23.3,Low,0
+REC-00942,Basmati Rice,SunValleyEstates,45.4,16.2,14.19,2,66.1,48.2,Medium,1
+REC-00943,Basmati Rice,DeltaFarms,96.4,0.8,1.95,0,14.1,3.9,Low,0
+REC-00944,Organic Cotton,AgriCoop-North,50.5,6.9,5.54,1,28.1,28.6,Low,0
+REC-00945,Basmati Rice,GlobalGrainConsortium,91.4,3.8,3.43,0,7.6,7.9,Low,0
+REC-00946,Soybean Oil,AgriCoop-North,74.0,12.3,9.38,2,25.8,30.4,Low,0
+REC-00947,Arabica Coffee,SunValleyEstates,57.1,11.5,9.34,0,20.2,28.2,Low,0
+REC-00948,Durum Wheat,HighlandGrowers,94.0,4.3,2.03,0,8.8,7.1,Low,0
+REC-00949,Basmati Rice,DeltaFarms,27.5,14.9,41.81,2,85.3,65.4,Medium,1
+REC-00950,Durum Wheat,SunValleyEstates,80.4,1.2,2.0,0,12.0,8.9,Low,0
+REC-00951,Soybean Oil,DeltaFarms,78.6,1.8,2.11,0,10.9,9.9,Low,0
+REC-00952,Durum Wheat,SunValleyEstates,41.5,29.5,40.14,2,86.2,72.8,High,2
+REC-00953,Soybean Oil,SunValleyEstates,90.1,3.1,3.65,0,5.1,7.5,Low,0
+REC-00954,Arabica Coffee,DeltaFarms,95.9,0.3,1.52,0,2.7,2.4,Low,0
+REC-00955,Organic Cotton,AgriCoop-North,41.9,12.1,42.05,5,62.1,65.5,Medium,1
+REC-00956,Organic Cotton,DeltaFarms,83.9,2.1,1.51,0,3.1,7.5,Low,0
+REC-00957,Organic Cotton,GlobalGrainConsortium,53.4,8.3,11.34,1,43.6,32.8,Low,0
+REC-00958,Durum Wheat,HighlandGrowers,75.7,0.2,0.14,0,14.2,8.9,Low,0
+REC-00959,Raw Cane Sugar,AgriCoop-North,98.6,0.3,0.34,0,10.2,1.8,Low,0
+REC-00960,Raw Cane Sugar,GlobalGrainConsortium,17.0,23.4,37.68,4,66.0,78.1,High,2
+REC-00961,Organic Cotton,SunValleyEstates,82.3,2.0,3.65,1,4.9,11.9,Low,0
+REC-00962,Raw Cane Sugar,DeltaFarms,39.5,20.0,19.38,5,79.9,65.6,Medium,1
+REC-00963,Raw Cane Sugar,AgriCoop-North,72.0,4.8,8.3,1,36.8,22.4,Low,0
+REC-00964,Raw Cane Sugar,AgriCoop-North,88.0,0.4,2.1,0,5.8,5.4,Low,0
+REC-00965,Soybean Oil,SunValleyEstates,96.4,1.2,1.11,0,5.3,3.1,Low,0
+REC-00966,Raw Cane Sugar,FarmerOrgMSP,76.4,0.7,2.55,0,1.7,8.9,Low,0
+REC-00967,Organic Cotton,SunValleyEstates,88.7,0.0,1.42,0,11.4,5.1,Low,0
+REC-00968,Basmati Rice,GlobalGrainConsortium,73.4,10.7,10.76,0,25.5,23.8,Low,0
+REC-00969,Durum Wheat,HighlandGrowers,67.9,10.7,9.71,2,37.1,32.1,Low,0
+REC-00970,Soybean Oil,FarmerOrgMSP,79.6,2.3,1.87,0,7.0,9.5,Low,0
+REC-00971,Soybean Oil,SunValleyEstates,85.2,0.2,0.94,1,10.5,9.0,Low,0
+REC-00972,Raw Cane Sugar,DeltaFarms,93.7,3.1,2.38,0,15.0,6.9,Low,0
+REC-00973,Arabica Coffee,GlobalGrainConsortium,60.4,5.6,8.05,1,36.3,26.4,Low,0
+REC-00974,Organic Cotton,HighlandGrowers,87.7,1.8,1.88,1,3.2,9.3,Low,0
+REC-00975,Durum Wheat,SunValleyEstates,19.2,27.3,15.97,4,73.6,72.7,High,2
+REC-00976,Arabica Coffee,SunValleyEstates,83.9,5.0,1.28,0,12.1,10.7,Low,0
+REC-00977,Durum Wheat,FarmerOrgMSP,97.5,0.5,1.21,0,11.4,2.8,Low,0
+REC-00978,Basmati Rice,DeltaFarms,76.6,0.1,1.98,0,7.3,8.6,Low,0
+REC-00979,Soybean Oil,GlobalGrainConsortium,92.3,1.4,3.07,0,7.5,5.5,Low,0
+REC-00980,Arabica Coffee,DeltaFarms,95.8,0.6,3.22,0,6.7,3.7,Low,0
+REC-00981,Arabica Coffee,GlobalGrainConsortium,76.1,1.7,1.83,0,2.2,9.5,Low,0
+REC-00982,Durum Wheat,AgriCoop-North,90.1,2.2,1.3,0,10.0,6.3,Low,0
+REC-00983,Organic Cotton,FarmerOrgMSP,34.0,25.6,46.46,3,82.5,77.0,High,2
+REC-00984,Raw Cane Sugar,SunValleyEstates,97.5,0.3,0.17,0,4.4,1.5,Low,0
+REC-00985,Durum Wheat,HighlandGrowers,94.4,1.4,1.67,1,13.1,7.8,Low,0
+REC-00986,Durum Wheat,SunValleyEstates,85.0,2.9,1.34,0,2.6,7.7,Low,0
+REC-00987,Arabica Coffee,FarmerOrgMSP,78.5,0.4,0.45,0,6.7,7.6,Low,0
+REC-00988,Arabica Coffee,DeltaFarms,58.1,4.3,4.47,1,18.0,22.7,Low,0
+REC-00989,Organic Cotton,SunValleyEstates,24.0,28.9,44.38,2,55.1,76.1,High,2
+REC-00990,Organic Cotton,DeltaFarms,87.2,1.1,3.8,0,5.5,6.8,Low,0
+REC-00991,Organic Cotton,GlobalGrainConsortium,75.7,1.5,3.66,1,8.8,13.9,Low,0
+REC-00992,Raw Cane Sugar,SunValleyEstates,93.3,1.6,0.59,0,7.2,4.3,Low,0
+REC-00993,Soybean Oil,SunValleyEstates,98.2,0.7,3.94,0,8.5,3.5,Low,0
+REC-00994,Durum Wheat,FarmerOrgMSP,75.0,0.9,3.33,0,14.6,11.0,Low,0
+REC-00995,Raw Cane Sugar,AgriCoop-North,31.9,22.8,42.22,5,95.0,80.8,High,2
+REC-00996,Soybean Oil,GlobalGrainConsortium,87.2,0.1,2.98,0,5.2,5.6,Low,0
+REC-00997,Basmati Rice,GlobalGrainConsortium,78.4,1.2,1.19,0,9.5,8.9,Low,0
+REC-00998,Basmati Rice,HighlandGrowers,37.2,29.6,37.48,4,57.3,76.2,High,2
+REC-00999,Organic Cotton,DeltaFarms,98.0,0.6,3.66,0,13.9,4.0,Low,0
+REC-01000,Soybean Oil,SunValleyEstates,75.2,0.3,2.27,0,7.8,9.4,Low,0
+REC-01001,Soybean Oil,GlobalGrainConsortium,96.0,1.6,2.2,0,12.4,4.7,Low,0
+REC-01002,Raw Cane Sugar,FarmerOrgMSP,98.3,0.7,2.45,0,12.7,3.3,Low,0
+REC-01003,Raw Cane Sugar,GlobalGrainConsortium,83.9,0.3,0.14,0,11.6,6.3,Low,0
+REC-01004,Soybean Oil,HighlandGrowers,77.2,1.4,1.28,0,4.3,8.9,Low,0
+REC-01005,Raw Cane Sugar,DeltaFarms,86.8,1.8,2.46,1,14.8,10.9,Low,0
+REC-01006,Raw Cane Sugar,GlobalGrainConsortium,81.7,1.0,0.76,0,11.3,7.8,Low,0
+REC-01007,Organic Cotton,AgriCoop-North,54.4,9.9,9.97,0,22.8,28.2,Low,0
+REC-01008,Raw Cane Sugar,GlobalGrainConsortium,40.5,16.9,42.52,2,94.6,64.4,Medium,1
+REC-01009,Raw Cane Sugar,FarmerOrgMSP,81.1,1.2,1.87,0,10.0,8.4,Low,0
+REC-01010,Soybean Oil,DeltaFarms,26.3,27.2,26.65,2,79.0,69.3,Medium,1
+REC-01011,Soybean Oil,HighlandGrowers,93.2,3.2,0.98,0,6.9,5.8,Low,0
+REC-01012,Raw Cane Sugar,DeltaFarms,79.7,0.1,2.33,1,11.3,11.2,Low,0
+REC-01013,Durum Wheat,FarmerOrgMSP,47.1,15.5,23.85,2,76.3,52.0,Medium,1
+REC-01014,Durum Wheat,DeltaFarms,94.4,1.3,2.54,0,4.5,4.2,Low,0
+REC-01015,Organic Cotton,SunValleyEstates,83.2,0.1,1.4,0,14.2,7.1,Low,0
+REC-01016,Soybean Oil,HighlandGrowers,77.3,0.9,0.59,0,13.8,9.2,Low,0
+REC-01017,Organic Cotton,GlobalGrainConsortium,39.3,26.1,14.23,5,47.7,65.4,Medium,1
+REC-01018,Organic Cotton,DeltaFarms,77.4,0.1,0.3,0,6.6,7.6,Low,0
+REC-01019,Organic Cotton,SunValleyEstates,89.4,1.6,0.14,0,12.1,5.8,Low,0
+REC-01020,Durum Wheat,FarmerOrgMSP,90.6,1.7,0.2,0,9.2,5.2,Low,0
+REC-01021,Organic Cotton,HighlandGrowers,92.1,1.3,3.38,0,2.8,5.1,Low,0
+REC-01022,Arabica Coffee,HighlandGrowers,86.6,1.5,0.83,0,1.6,5.8,Low,0
+REC-01023,Arabica Coffee,AgriCoop-North,87.3,1.6,1.5,0,8.6,6.6,Low,0
+REC-01024,Arabica Coffee,FarmerOrgMSP,89.5,0.5,3.88,0,10.2,6.1,Low,0
+REC-01025,Raw Cane Sugar,AgriCoop-North,94.7,1.2,0.31,0,14.7,4.2,Low,0
+REC-01026,Basmati Rice,SunValleyEstates,58.5,10.7,9.56,1,33.0,31.5,Low,0
+REC-01027,Durum Wheat,DeltaFarms,83.1,0.5,1.38,0,13.3,7.4,Low,0
+REC-01028,Raw Cane Sugar,HighlandGrowers,75.1,0.4,1.0,0,4.3,8.6,Low,0
+REC-01029,Durum Wheat,HighlandGrowers,59.4,8.0,10.61,0,25.9,25.7,Low,0
+REC-01030,Durum Wheat,FarmerOrgMSP,77.8,0.5,0.86,0,11.7,8.6,Low,0
+REC-01031,Arabica Coffee,AgriCoop-North,81.8,0.4,1.12,0,12.9,7.5,Low,0
+REC-01032,Raw Cane Sugar,FarmerOrgMSP,79.2,0.5,0.49,0,2.9,7.1,Low,0
+REC-01033,Organic Cotton,SunValleyEstates,80.0,0.9,1.54,0,3.4,7.7,Low,0
+REC-01034,Arabica Coffee,SunValleyEstates,45.7,13.2,17.2,3,84.7,51.6,Medium,1
+REC-01035,Organic Cotton,SunValleyEstates,84.0,1.4,3.91,0,1.6,7.7,Low,0
+REC-01036,Arabica Coffee,SunValleyEstates,87.9,2.3,1.38,1,12.1,10.3,Low,0
+REC-01037,Organic Cotton,FarmerOrgMSP,46.0,15.8,14.93,5,84.5,58.8,Medium,1
+REC-01038,Arabica Coffee,HighlandGrowers,84.3,3.2,3.03,0,8.3,9.4,Low,0
+REC-01039,Soybean Oil,GlobalGrainConsortium,63.1,8.8,11.65,1,23.1,28.4,Low,0
+REC-01040,Arabica Coffee,DeltaFarms,35.4,12.7,19.9,3,67.6,53.7,Medium,1
+REC-01041,Durum Wheat,AgriCoop-North,85.2,0.7,0.71,0,4.6,5.8,Low,0
+REC-01042,Organic Cotton,HighlandGrowers,57.4,9.2,5.84,0,29.0,25.7,Low,0
+REC-01043,Arabica Coffee,DeltaFarms,86.2,0.8,3.24,0,6.4,6.7,Low,0
+REC-01044,Raw Cane Sugar,FarmerOrgMSP,90.5,0.7,0.42,0,8.2,4.4,Low,0
+REC-01045,Basmati Rice,AgriCoop-North,73.2,5.0,4.57,0,31.4,17.2,Low,0
+REC-01046,Organic Cotton,AgriCoop-North,56.3,11.5,10.15,1,20.7,31.8,Low,0
+REC-01047,Basmati Rice,HighlandGrowers,41.3,25.3,44.85,2,83.5,71.0,High,2
+REC-01048,Raw Cane Sugar,SunValleyEstates,60.1,8.1,8.64,2,15.4,29.7,Low,0
+REC-01049,Organic Cotton,SunValleyEstates,48.3,27.6,20.19,3,68.7,62.5,Medium,1
+REC-01050,Arabica Coffee,DeltaFarms,68.9,11.2,7.69,0,24.4,24.2,Low,0
+REC-01051,Arabica Coffee,SunValleyEstates,67.4,6.1,7.6,2,15.9,25.5,Low,0
+REC-01052,Soybean Oil,DeltaFarms,25.7,25.3,29.99,4,62.0,73.6,High,2
+REC-01053,Organic Cotton,FarmerOrgMSP,60.1,11.8,8.3,1,32.6,31.4,Low,0
+REC-01054,Arabica Coffee,DeltaFarms,20.4,29.1,23.89,5,94.0,82.1,High,2
+REC-01055,Basmati Rice,FarmerOrgMSP,84.3,1.0,1.38,0,9.9,7.1,Low,0
+REC-01056,Arabica Coffee,FarmerOrgMSP,91.2,0.3,3.32,0,1.4,4.4,Low,0
+REC-01057,Basmati Rice,SunValleyEstates,28.5,15.7,22.48,2,67.7,56.3,Medium,1
+REC-01058,Soybean Oil,DeltaFarms,82.8,3.6,1.63,0,2.8,9.1,Low,0
+REC-01059,Raw Cane Sugar,GlobalGrainConsortium,59.7,13.0,5.65,0,24.3,27.6,Low,0
+REC-01060,Basmati Rice,AgriCoop-North,89.5,4.2,2.39,0,10.6,8.7,Low,0
+REC-01061,Organic Cotton,DeltaFarms,78.4,0.1,1.66,0,8.4,8.1,Low,0
+REC-01062,Raw Cane Sugar,GlobalGrainConsortium,88.8,2.0,1.22,0,7.4,6.3,Low,0
+REC-01063,Organic Cotton,GlobalGrainConsortium,59.8,12.2,10.8,1,22.5,31.8,Low,0
+REC-01064,Durum Wheat,AgriCoop-North,84.2,1.6,2.82,1,10.8,11.3,Low,0
+REC-01065,Raw Cane Sugar,AgriCoop-North,20.5,27.9,31.36,2,79.9,73.6,High,2
+REC-01066,Durum Wheat,SunValleyEstates,29.4,25.7,16.36,4,48.8,66.0,Medium,1
+REC-01067,Durum Wheat,FarmerOrgMSP,58.2,8.5,6.02,2,16.3,29.7,Low,0
+REC-01068,Soybean Oil,FarmerOrgMSP,66.9,8.6,6.75,1,40.7,26.9,Low,0
+REC-01069,Durum Wheat,FarmerOrgMSP,77.8,3.7,1.38,0,7.8,11.1,Low,0
+REC-01070,Arabica Coffee,FarmerOrgMSP,80.8,4.5,0.65,0,12.8,11.1,Low,0
+REC-01071,Durum Wheat,GlobalGrainConsortium,54.4,5.2,9.93,0,17.3,23.7,Low,0
+REC-01072,Soybean Oil,GlobalGrainConsortium,85.6,0.3,2.89,0,8.5,6.6,Low,0
+REC-01073,Raw Cane Sugar,HighlandGrowers,90.2,1.1,2.68,0,2.4,5.2,Low,0
+REC-01074,Arabica Coffee,AgriCoop-North,89.4,0.1,1.57,0,4.5,4.3,Low,0
+REC-01075,Arabica Coffee,FarmerOrgMSP,85.1,5.0,1.41,0,10.4,10.2,Low,0
+REC-01076,Basmati Rice,HighlandGrowers,70.8,5.7,5.34,1,30.4,21.7,Low,0
+REC-01077,Arabica Coffee,FarmerOrgMSP,79.5,0.3,2.21,0,2.7,7.6,Low,0
+REC-01078,Durum Wheat,GlobalGrainConsortium,79.2,0.8,1.33,0,7.4,8.2,Low,0
+REC-01079,Organic Cotton,DeltaFarms,66.2,7.7,4.54,0,27.3,21.1,Low,0
+REC-01080,Durum Wheat,SunValleyEstates,18.6,21.7,47.66,3,57.6,76.3,High,2
+REC-01081,Arabica Coffee,GlobalGrainConsortium,90.1,0.7,3.71,0,2.9,5.3,Low,0
+REC-01082,Organic Cotton,SunValleyEstates,67.2,13.8,9.33,0,25.1,27.6,Low,0
+REC-01083,Durum Wheat,SunValleyEstates,87.3,2.0,2.06,0,1.2,6.4,Low,0
+REC-01084,Durum Wheat,AgriCoop-North,53.1,6.4,7.43,0,33.6,25.7,Low,0
+REC-01085,Organic Cotton,DeltaFarms,82.1,0.2,0.9,1,13.9,10.3,Low,0
+REC-01086,Soybean Oil,GlobalGrainConsortium,58.2,6.8,9.15,0,30.6,24.9,Low,0
+REC-01087,Organic Cotton,FarmerOrgMSP,68.8,6.3,9.86,1,22.3,23.8,Low,0
+REC-01088,Soybean Oil,SunValleyEstates,38.3,16.5,36.74,3,75.4,63.5,Medium,1
+REC-01089,Raw Cane Sugar,AgriCoop-North,85.6,0.0,3.49,1,3.7,9.1,Low,0
+REC-01090,Durum Wheat,DeltaFarms,19.4,15.1,31.76,3,56.8,64.1,Medium,1
+REC-01091,Basmati Rice,HighlandGrowers,57.8,11.2,5.96,0,33.2,27.7,Low,0
+REC-01092,Basmati Rice,DeltaFarms,98.2,0.3,3.46,0,14.3,3.6,Low,0
+REC-01093,Soybean Oil,FarmerOrgMSP,86.3,0.8,2.48,0,3.2,6.1,Low,0
+REC-01094,Arabica Coffee,SunValleyEstates,60.7,4.8,11.25,1,32.9,26.6,Low,0
+REC-01095,Soybean Oil,FarmerOrgMSP,56.4,8.6,7.63,1,31.9,29.5,Low,0
+REC-01096,Raw Cane Sugar,GlobalGrainConsortium,92.2,0.3,3.67,1,13.1,8.4,Low,0
+REC-01097,Basmati Rice,GlobalGrainConsortium,84.7,0.8,1.64,0,6.4,6.6,Low,0
+REC-01098,Organic Cotton,AgriCoop-North,17.5,27.9,47.73,2,64.2,79.5,High,2
+REC-01099,Soybean Oil,GlobalGrainConsortium,85.5,0.4,3.66,0,8.1,7.0,Low,0
+REC-01100,Soybean Oil,FarmerOrgMSP,67.4,10.5,11.41,2,22.4,31.3,Low,0
+REC-01101,Soybean Oil,GlobalGrainConsortium,27.6,24.7,13.02,3,58.1,62.3,Medium,1
+REC-01102,Durum Wheat,GlobalGrainConsortium,80.9,1.3,2.68,0,2.6,8.1,Low,0
+REC-01103,Arabica Coffee,DeltaFarms,59.6,11.1,11.79,0,30.6,29.1,Low,0
+REC-01104,Organic Cotton,HighlandGrowers,85.2,1.8,2.05,0,13.4,8.1,Low,0
+REC-01105,Basmati Rice,AgriCoop-North,68.8,13.2,10.96,0,34.1,28.2,Low,0
+REC-01106,Soybean Oil,FarmerOrgMSP,80.0,2.1,2.83,1,3.4,12.2,Low,0
+REC-01107,Arabica Coffee,HighlandGrowers,93.6,0.8,1.73,0,7.0,4.0,Low,0
+REC-01108,Arabica Coffee,AgriCoop-North,78.2,1.0,2.06,0,8.9,9.1,Low,0
+REC-01109,Soybean Oil,GlobalGrainConsortium,93.0,2.5,0.85,0,13.2,5.8,Low,0
+REC-01110,Basmati Rice,FarmerOrgMSP,18.8,23.5,14.87,2,63.9,62.3,Medium,1
+REC-01111,Durum Wheat,GlobalGrainConsortium,89.1,1.0,2.72,0,1.9,5.4,Low,0
+REC-01112,Basmati Rice,DeltaFarms,98.7,0.2,2.14,1,9.4,5.4,Low,0
+REC-01113,Arabica Coffee,HighlandGrowers,83.1,0.8,1.55,0,15.0,7.9,Low,0
+REC-01114,Durum Wheat,DeltaFarms,59.5,4.6,6.85,1,39.2,25.6,Low,0
+REC-01115,Organic Cotton,HighlandGrowers,29.1,27.0,45.3,2,75.1,75.4,High,2
+REC-01116,Raw Cane Sugar,AgriCoop-North,41.3,16.5,28.27,5,70.7,64.7,Medium,1
+REC-01117,Raw Cane Sugar,HighlandGrowers,90.3,4.3,1.36,0,13.2,8.4,Low,0
+REC-01118,Soybean Oil,GlobalGrainConsortium,55.8,8.8,9.91,0,25.5,27.1,Low,0
+REC-01119,Organic Cotton,SunValleyEstates,46.7,25.2,22.58,3,80.6,63.1,Medium,1
+REC-01120,Raw Cane Sugar,SunValleyEstates,67.9,4.3,7.98,0,24.0,18.8,Low,0
+REC-01121,Arabica Coffee,AgriCoop-North,31.3,28.1,46.38,5,78.1,85.4,High,2
+REC-01122,Arabica Coffee,HighlandGrowers,93.1,1.6,0.45,0,11.0,4.7,Low,0
+REC-01123,Raw Cane Sugar,FarmerOrgMSP,41.8,16.0,21.27,5,92.6,63.6,Medium,1
+REC-01124,Arabica Coffee,SunValleyEstates,73.1,10.3,7.94,2,25.0,28.3,Low,0
+REC-01125,Raw Cane Sugar,DeltaFarms,65.0,10.4,7.02,2,37.3,31.7,Low,0
+REC-01126,Durum Wheat,HighlandGrowers,69.6,13.7,7.5,0,21.7,25.7,Low,0
+REC-01127,Basmati Rice,AgriCoop-North,77.1,2.0,3.76,0,2.6,10.3,Low,0
+REC-01128,Arabica Coffee,DeltaFarms,48.4,22.4,12.06,2,74.5,52.4,Medium,1
+REC-01129,Organic Cotton,SunValleyEstates,26.2,18.6,36.45,3,71.0,68.3,Medium,1
+REC-01130,Arabica Coffee,DeltaFarms,84.5,1.2,1.9,0,14.2,7.8,Low,0
+REC-01131,Basmati Rice,HighlandGrowers,53.7,6.8,9.98,2,16.0,31.1,Low,0
+REC-01132,Arabica Coffee,DeltaFarms,91.5,0.5,3.41,0,9.8,5.3,Low,0
+REC-01133,Raw Cane Sugar,AgriCoop-North,98.2,0.1,3.26,0,11.0,3.0,Low,0
+REC-01134,Basmati Rice,GlobalGrainConsortium,51.3,12.7,5.43,1,36.8,34.0,Low,0
+REC-01135,Basmati Rice,DeltaFarms,20.6,12.4,26.12,5,78.9,67.5,Medium,1
+REC-01136,Soybean Oil,FarmerOrgMSP,87.7,0.5,2.82,0,13.0,6.5,Low,0
+REC-01137,Soybean Oil,GlobalGrainConsortium,93.1,1.3,3.24,0,10.9,5.5,Low,0
+REC-01138,Raw Cane Sugar,AgriCoop-North,78.3,1.8,1.24,0,4.1,8.9,Low,0
+REC-01139,Arabica Coffee,DeltaFarms,50.2,11.3,8.61,2,38.6,37.7,Low,0
+REC-01140,Soybean Oil,AgriCoop-North,29.9,27.1,45.34,2,62.8,74.0,High,2
+REC-01141,Raw Cane Sugar,GlobalGrainConsortium,19.1,21.3,24.19,5,93.5,76.0,High,2
+REC-01142,Raw Cane Sugar,GlobalGrainConsortium,75.8,0.4,2.01,0,14.4,9.8,Low,0
+REC-01143,Raw Cane Sugar,DeltaFarms,91.6,2.4,2.67,0,13.1,6.9,Low,0
+REC-01144,Raw Cane Sugar,SunValleyEstates,90.7,0.7,0.57,1,7.8,7.4,Low,0
+REC-01145,Organic Cotton,AgriCoop-North,89.1,5.0,1.97,0,2.3,8.5,Low,0
+REC-01146,Raw Cane Sugar,SunValleyEstates,99.0,1.8,1.26,0,5.6,2.9,Low,0
+REC-01147,Soybean Oil,FarmerOrgMSP,94.5,0.0,2.27,0,12.4,3.8,Low,0
+REC-01148,Raw Cane Sugar,FarmerOrgMSP,89.0,1.9,3.18,0,11.5,7.3,Low,0
+REC-01149,Arabica Coffee,SunValleyEstates,89.4,0.3,2.26,0,2.7,4.6,Low,0
+REC-01150,Organic Cotton,HighlandGrowers,78.9,1.2,3.42,1,14.7,13.2,Low,0
+REC-01151,Organic Cotton,HighlandGrowers,88.1,0.8,3.79,1,5.2,9.3,Low,0
+REC-01152,Basmati Rice,SunValleyEstates,61.1,9.8,9.56,2,42.3,33.9,Low,0
+REC-01153,Basmati Rice,AgriCoop-North,80.0,0.2,3.3,0,3.6,7.8,Low,0
+REC-01154,Soybean Oil,FarmerOrgMSP,36.1,15.9,24.93,3,81.5,59.5,Medium,1
+REC-01155,Raw Cane Sugar,DeltaFarms,81.3,1.6,0.74,0,14.2,8.7,Low,0
+REC-01156,Raw Cane Sugar,GlobalGrainConsortium,20.0,15.7,34.66,4,94.8,72.4,High,2
+REC-01157,Arabica Coffee,HighlandGrowers,83.9,1.6,3.3,0,6.9,8.2,Low,0
+REC-01158,Organic Cotton,FarmerOrgMSP,30.2,12.5,33.73,2,58.5,56.7,Medium,1
+REC-01159,Arabica Coffee,AgriCoop-North,60.2,7.3,4.71,1,38.3,26.7,Low,0
+REC-01160,Durum Wheat,AgriCoop-North,77.4,5.0,0.97,0,12.0,12.5,Low,0
+REC-01161,Organic Cotton,HighlandGrowers,96.0,1.3,3.25,1,5.9,7.2,Low,0
+REC-01162,Basmati Rice,GlobalGrainConsortium,89.6,3.4,0.77,0,6.5,6.9,Low,0
+REC-01163,Arabica Coffee,HighlandGrowers,69.7,9.5,11.06,1,29.3,27.4,Low,0
+REC-01164,Durum Wheat,GlobalGrainConsortium,87.3,0.3,0.59,0,11.3,5.4,Low,0
+REC-01165,Arabica Coffee,DeltaFarms,59.3,11.8,9.43,1,36.2,32.4,Low,0
+REC-01166,Raw Cane Sugar,AgriCoop-North,42.9,21.0,21.93,5,71.0,65.5,Medium,1
+REC-01167,Durum Wheat,FarmerOrgMSP,95.6,4.4,1.69,0,2.3,5.9,Low,0
+REC-01168,Soybean Oil,FarmerOrgMSP,73.6,5.7,4.46,2,23.6,22.8,Low,0
+REC-01169,Raw Cane Sugar,GlobalGrainConsortium,29.8,21.2,38.31,5,69.9,76.0,High,2
+REC-01170,Raw Cane Sugar,SunValleyEstates,39.4,19.3,34.19,2,80.7,62.0,Medium,1
+REC-01171,Durum Wheat,SunValleyEstates,56.1,11.4,11.61,2,35.5,36.9,Low,0
+REC-01172,Basmati Rice,AgriCoop-North,79.0,4.0,3.08,0,3.4,11.2,Low,0
+REC-01173,Raw Cane Sugar,AgriCoop-North,97.9,0.8,1.58,0,2.6,2.2,Low,0
+REC-01174,Arabica Coffee,FarmerOrgMSP,71.3,12.6,6.32,1,23.8,27.0,Low,0
+REC-01175,Durum Wheat,DeltaFarms,64.2,6.2,6.44,2,30.5,27.5,Low,0
+REC-01176,Basmati Rice,FarmerOrgMSP,44.7,13.0,12.21,5,61.4,53.4,Medium,1
+REC-01177,Durum Wheat,SunValleyEstates,96.4,0.3,1.48,0,7.9,2.7,Low,0
+REC-01178,Arabica Coffee,DeltaFarms,78.7,0.2,2.0,0,10.2,8.4,Low,0
+REC-01179,Soybean Oil,GlobalGrainConsortium,82.2,0.8,0.81,0,2.5,6.6,Low,0
+REC-01180,Raw Cane Sugar,AgriCoop-North,54.0,7.5,7.47,1,41.5,30.2,Low,0
+REC-01181,Raw Cane Sugar,AgriCoop-North,81.8,0.2,1.74,0,1.4,6.5,Low,0
+REC-01182,Raw Cane Sugar,GlobalGrainConsortium,48.6,29.7,16.28,5,72.5,68.9,Medium,1
+REC-01183,Soybean Oil,AgriCoop-North,93.0,2.3,1.66,0,11.4,5.8,Low,0
+REC-01184,Arabica Coffee,FarmerOrgMSP,77.6,0.0,0.71,0,11.7,8.2,Low,0
+REC-01185,Basmati Rice,DeltaFarms,58.6,13.8,9.9,1,29.4,33.8,Low,0
+REC-01186,Durum Wheat,HighlandGrowers,85.3,1.4,2.94,0,4.9,7.2,Low,0
+REC-01187,Organic Cotton,SunValleyEstates,23.7,26.8,19.14,2,80.1,66.9,Medium,1
+REC-01188,Durum Wheat,HighlandGrowers,98.8,1.3,2.57,0,2.9,2.8,Low,0
+REC-01189,Soybean Oil,DeltaFarms,47.5,19.7,34.19,2,88.2,60.7,Medium,1
+REC-01190,Soybean Oil,GlobalGrainConsortium,91.8,5.0,0.96,0,1.9,7.2,Low,0
+REC-01191,Durum Wheat,AgriCoop-North,77.6,0.7,3.78,0,4.5,9.3,Low,0
+REC-01192,Durum Wheat,DeltaFarms,76.3,2.0,0.93,0,13.7,10.5,Low,0
+REC-01193,Organic Cotton,AgriCoop-North,97.8,0.7,1.29,1,1.2,4.9,Low,0
+REC-01194,Raw Cane Sugar,HighlandGrowers,92.8,0.7,3.14,0,6.2,4.6,Low,0
+REC-01195,Organic Cotton,GlobalGrainConsortium,84.2,3.3,0.61,0,2.7,8.0,Low,0
+REC-01196,Basmati Rice,GlobalGrainConsortium,54.8,8.5,4.79,2,33.6,31.9,Low,0
+REC-01197,Raw Cane Sugar,HighlandGrowers,93.3,1.1,0.7,0,6.9,3.9,Low,0
+REC-01198,Soybean Oil,GlobalGrainConsortium,41.6,27.2,32.17,4,89.7,74.0,High,2
+REC-01199,Arabica Coffee,SunValleyEstates,72.8,4.7,7.35,2,38.7,24.9,Low,0
+REC-01200,Arabica Coffee,GlobalGrainConsortium,98.2,0.5,3.83,1,14.6,6.9,Low,0
+REC-01201,Organic Cotton,DeltaFarms,62.4,9.3,8.11,0,20.0,24.3,Low,0
+REC-01202,Organic Cotton,GlobalGrainConsortium,84.4,1.4,0.91,1,9.0,10.1,Low,0
+REC-01203,Arabica Coffee,HighlandGrowers,97.3,1.1,2.06,0,4.6,3.0,Low,0
+REC-01204,Raw Cane Sugar,AgriCoop-North,63.8,5.7,4.36,0,23.8,19.7,Low,0
+REC-01205,Arabica Coffee,AgriCoop-North,24.7,14.4,43.44,2,77.1,65.7,Medium,1
+REC-01206,Raw Cane Sugar,SunValleyEstates,75.0,0.6,2.46,0,2.2,9.2,Low,0
+REC-01207,Durum Wheat,HighlandGrowers,78.2,3.4,1.25,0,9.8,10.9,Low,0
+REC-01208,Organic Cotton,FarmerOrgMSP,98.2,0.3,3.89,0,14.7,3.8,Low,0
+REC-01209,Organic Cotton,AgriCoop-North,67.2,13.5,6.06,2,34.0,32.9,Low,0
+REC-01210,Arabica Coffee,GlobalGrainConsortium,55.5,6.7,8.65,1,19.7,27.4,Low,0
+REC-01211,Arabica Coffee,AgriCoop-North,59.2,13.0,4.75,0,28.8,27.9,Low,0
+REC-01212,Soybean Oil,GlobalGrainConsortium,97.6,0.3,1.2,0,13.4,2.8,Low,0
+REC-01213,Durum Wheat,GlobalGrainConsortium,51.7,4.7,5.96,2,44.1,31.2,Low,0
+REC-01214,Durum Wheat,GlobalGrainConsortium,92.4,2.5,2.45,0,1.3,5.5,Low,0
+REC-01215,Durum Wheat,FarmerOrgMSP,19.6,25.9,21.64,2,84.6,68.8,Medium,1
+REC-01216,Soybean Oil,AgriCoop-North,94.6,2.9,0.43,0,11.6,5.4,Low,0
+REC-01217,Durum Wheat,FarmerOrgMSP,86.5,0.4,2.22,0,8.6,6.1,Low,0
+REC-01218,Durum Wheat,AgriCoop-North,82.1,1.1,3.36,0,13.8,9.0,Low,0
+REC-01219,Raw Cane Sugar,FarmerOrgMSP,78.5,1.6,0.98,0,6.4,8.8,Low,0
+REC-01220,Basmati Rice,FarmerOrgMSP,98.8,0.4,3.83,0,2.1,2.4,Low,0
+REC-01221,Basmati Rice,SunValleyEstates,97.2,0.1,0.27,0,7.0,1.7,Low,0
+REC-01222,Durum Wheat,HighlandGrowers,85.2,3.4,2.78,0,5.0,8.9,Low,0
+REC-01223,Arabica Coffee,GlobalGrainConsortium,38.2,28.8,41.19,2,84.4,73.5,High,2
+REC-01224,Durum Wheat,SunValleyEstates,78.5,0.9,3.21,0,12.4,9.7,Low,0
+REC-01225,Basmati Rice,HighlandGrowers,92.4,0.2,1.36,0,11.7,4.2,Low,0
+REC-01226,Raw Cane Sugar,AgriCoop-North,86.6,5.0,2.45,0,2.9,9.5,Low,0
+REC-01227,Durum Wheat,SunValleyEstates,88.2,1.2,2.02,0,4.2,5.8,Low,0
+REC-01228,Arabica Coffee,HighlandGrowers,63.2,11.8,10.49,0,36.1,28.7,Low,0
+REC-01229,Durum Wheat,HighlandGrowers,98.9,0.0,2.28,0,13.9,2.6,Low,0
+REC-01230,Organic Cotton,DeltaFarms,95.4,2.3,0.64,0,12.7,4.8,Low,0
+REC-01231,Soybean Oil,GlobalGrainConsortium,94.9,0.1,0.64,0,10.9,3.0,Low,0
+REC-01232,Organic Cotton,AgriCoop-North,98.2,0.7,2.84,0,2.0,2.5,Low,0
+REC-01233,Arabica Coffee,AgriCoop-North,83.8,0.1,0.4,0,12.4,6.3,Low,0
+REC-01234,Soybean Oil,GlobalGrainConsortium,78.4,1.1,3.8,0,11.1,10.0,Low,0
+REC-01235,Arabica Coffee,SunValleyEstates,57.2,5.6,11.05,0,33.1,25.2,Low,0
+REC-01236,Basmati Rice,SunValleyEstates,84.5,0.8,3.8,0,11.0,7.9,Low,0
+REC-01237,Arabica Coffee,GlobalGrainConsortium,92.0,0.8,0.71,0,8.3,4.2,Low,0
+REC-01238,Durum Wheat,GlobalGrainConsortium,89.9,0.4,0.82,0,8.8,4.6,Low,0
+REC-01239,Raw Cane Sugar,DeltaFarms,82.5,1.5,3.33,0,12.2,9.1,Low,0
+REC-01240,Basmati Rice,AgriCoop-North,77.6,0.1,2.45,0,1.4,7.9,Low,0
+REC-01241,Raw Cane Sugar,FarmerOrgMSP,76.6,1.4,3.05,0,8.7,10.3,Low,0
+REC-01242,Durum Wheat,HighlandGrowers,77.0,1.3,0.28,0,7.8,8.9,Low,0
+REC-01243,Basmati Rice,DeltaFarms,82.4,5.0,3.03,0,8.0,11.5,Low,0
+REC-01244,Organic Cotton,FarmerOrgMSP,74.3,11.0,4.78,1,41.9,26.0,Low,0
+REC-01245,Durum Wheat,HighlandGrowers,93.6,0.0,3.2,0,13.2,4.5,Low,0
+REC-01246,Arabica Coffee,GlobalGrainConsortium,91.4,0.1,2.54,0,4.2,4.1,Low,0
+REC-01247,Organic Cotton,GlobalGrainConsortium,69.2,5.6,11.71,2,44.8,29.1,Low,0
+REC-01248,Soybean Oil,FarmerOrgMSP,93.4,0.9,0.61,0,9.7,3.9,Low,0
+REC-01249,Organic Cotton,GlobalGrainConsortium,42.1,19.0,19.52,2,92.9,56.3,Medium,1
+REC-01250,Durum Wheat,DeltaFarms,18.4,12.3,39.59,4,72.4,69.8,Medium,1
+REC-01251,Durum Wheat,FarmerOrgMSP,82.5,4.1,0.73,0,6.1,9.6,Low,0
+REC-01252,Raw Cane Sugar,AgriCoop-North,93.5,0.4,1.95,0,13.3,4.4,Low,0
+REC-01253,Organic Cotton,GlobalGrainConsortium,49.0,20.8,25.08,4,65.0,61.2,Medium,1
+REC-01254,Organic Cotton,DeltaFarms,83.8,2.8,3.81,0,10.6,9.8,Low,0
+REC-01255,Arabica Coffee,GlobalGrainConsortium,96.0,1.7,2.52,0,11.4,4.8,Low,0
+REC-01256,Durum Wheat,AgriCoop-North,50.2,12.5,6.33,0,32.1,31.1,Low,0
+REC-01257,Soybean Oil,FarmerOrgMSP,86.1,0.1,1.92,0,13.6,6.4,Low,0
+REC-01258,Basmati Rice,FarmerOrgMSP,92.6,3.7,3.7,0,3.8,7.2,Low,0
+REC-01259,Durum Wheat,SunValleyEstates,98.9,1.0,2.84,0,4.9,2.8,Low,0
+REC-01260,Soybean Oil,FarmerOrgMSP,86.3,1.5,1.35,1,9.4,9.8,Low,0
+REC-01261,Durum Wheat,GlobalGrainConsortium,27.7,19.7,29.04,2,55.6,61.3,Medium,1
+REC-01262,Raw Cane Sugar,DeltaFarms,81.0,0.3,0.65,0,2.1,6.4,Low,0
+REC-01263,Soybean Oil,HighlandGrowers,33.4,24.1,21.34,2,49.6,59.6,Medium,1
+REC-01264,Raw Cane Sugar,AgriCoop-North,25.4,15.6,45.91,5,68.8,75.6,High,2
+REC-01265,Organic Cotton,AgriCoop-North,30.3,28.4,32.53,2,73.0,70.9,High,2
+REC-01266,Raw Cane Sugar,GlobalGrainConsortium,91.0,1.4,1.36,0,14.1,5.8,Low,0
+REC-01267,Durum Wheat,GlobalGrainConsortium,50.4,13.0,11.47,1,40.9,37.4,Low,0
+REC-01268,Soybean Oil,GlobalGrainConsortium,87.5,0.0,1.86,0,2.8,4.8,Low,0
+REC-01269,Arabica Coffee,SunValleyEstates,18.4,15.9,47.25,5,79.8,79.6,High,2
+REC-01270,Basmati Rice,FarmerOrgMSP,83.4,4.6,3.89,0,1.2,10.5,Low,0
+REC-01271,Soybean Oil,DeltaFarms,82.4,2.6,0.59,0,15.0,9.2,Low,0
+REC-01272,Soybean Oil,DeltaFarms,94.9,0.8,3.9,0,14.0,5.2,Low,0
+REC-01273,Raw Cane Sugar,DeltaFarms,88.3,0.3,1.8,0,10.2,5.5,Low,0
+REC-01274,Durum Wheat,FarmerOrgMSP,67.6,13.4,11.25,0,44.9,29.9,Low,0
+REC-01275,Durum Wheat,GlobalGrainConsortium,65.4,8.1,7.97,2,42.8,30.6,Low,0
+REC-01276,Soybean Oil,SunValleyEstates,88.9,0.0,1.23,0,4.1,4.2,Low,0
+REC-01277,Soybean Oil,GlobalGrainConsortium,79.7,1.0,0.59,0,13.8,8.5,Low,0
+REC-01278,Basmati Rice,GlobalGrainConsortium,68.5,4.1,7.0,0,30.2,18.7,Low,0
+REC-01279,Soybean Oil,FarmerOrgMSP,95.1,2.4,1.72,0,13.6,5.5,Low,0
+REC-01280,Basmati Rice,AgriCoop-North,78.7,0.7,3.29,0,9.4,9.2,Low,0
+REC-01281,Soybean Oil,FarmerOrgMSP,49.7,16.4,47.05,3,75.8,64.2,Medium,1
+REC-01282,Basmati Rice,SunValleyEstates,64.4,5.3,9.09,2,20.2,26.8,Low,0
+REC-01283,Soybean Oil,GlobalGrainConsortium,80.5,1.9,0.59,0,9.1,8.6,Low,0
+REC-01284,Soybean Oil,FarmerOrgMSP,44.3,14.9,23.61,2,49.7,49.5,Medium,1
+REC-01285,Durum Wheat,GlobalGrainConsortium,64.8,4.3,9.66,0,32.2,21.2,Low,0
+REC-01286,Arabica Coffee,HighlandGrowers,74.6,10.3,10.22,0,22.2,22.5,Low,0
+REC-01287,Durum Wheat,HighlandGrowers,95.2,1.9,3.25,0,4.6,4.8,Low,0
+REC-01288,Organic Cotton,FarmerOrgMSP,78.5,0.0,3.94,0,2.6,8.3,Low,0
+REC-01289,Arabica Coffee,DeltaFarms,81.8,3.4,0.46,0,6.1,9.1,Low,0
+REC-01290,Soybean Oil,DeltaFarms,94.1,0.8,2.0,0,3.9,3.6,Low,0
+REC-01291,Arabica Coffee,GlobalGrainConsortium,37.2,20.1,17.8,4,45.5,59.3,Medium,1
+REC-01292,Organic Cotton,SunValleyEstates,89.6,0.0,3.91,0,7.8,5.5,Low,0
+REC-01293,Durum Wheat,SunValleyEstates,78.8,2.0,3.71,0,1.4,9.7,Low,0
+REC-01294,Arabica Coffee,FarmerOrgMSP,78.7,3.0,0.55,0,5.6,9.7,Low,0
+REC-01295,Organic Cotton,GlobalGrainConsortium,73.5,6.7,7.85,0,25.5,19.2,Low,0
+REC-01296,Arabica Coffee,AgriCoop-North,92.9,1.0,2.1,0,3.7,4.2,Low,0
+REC-01297,Organic Cotton,HighlandGrowers,72.2,6.8,7.14,2,38.8,26.7,Low,0
+REC-01298,Basmati Rice,HighlandGrowers,79.9,1.9,1.79,0,9.3,9.3,Low,0
+REC-01299,Durum Wheat,DeltaFarms,65.2,8.3,8.54,1,41.9,28.0,Low,0
+REC-01300,Raw Cane Sugar,SunValleyEstates,75.8,1.1,2.39,0,12.6,10.4,Low,0
+REC-01301,Durum Wheat,AgriCoop-North,75.7,0.3,1.36,0,6.0,8.7,Low,0
+REC-01302,Raw Cane Sugar,HighlandGrowers,59.3,11.8,4.98,1,35.6,30.6,Low,0
+REC-01303,Arabica Coffee,SunValleyEstates,88.6,0.6,1.01,1,5.0,7.8,Low,0
+REC-01304,Organic Cotton,GlobalGrainConsortium,88.5,1.9,3.79,0,10.4,7.6,Low,0
+REC-01305,Soybean Oil,FarmerOrgMSP,93.1,0.6,1.35,0,12.2,4.3,Low,0
+REC-01306,Arabica Coffee,SunValleyEstates,29.7,14.2,18.16,4,74.6,59.6,Medium,1
+REC-01307,Arabica Coffee,DeltaFarms,75.4,2.3,2.35,1,7.5,14.0,Low,0
+REC-01308,Soybean Oil,GlobalGrainConsortium,87.8,1.1,1.42,1,7.6,8.9,Low,0
+REC-01309,Durum Wheat,DeltaFarms,82.6,0.6,0.41,0,7.9,6.7,Low,0
+REC-01310,Organic Cotton,FarmerOrgMSP,98.6,1.0,2.6,0,12.8,3.6,Low,0
+REC-01311,Soybean Oil,AgriCoop-North,76.1,0.0,0.51,0,10.6,8.4,Low,0
+REC-01312,Raw Cane Sugar,FarmerOrgMSP,79.6,3.5,1.54,0,14.9,11.1,Low,0
+REC-01313,Organic Cotton,DeltaFarms,93.8,0.2,3.79,1,5.6,7.1,Low,0
+REC-01314,Organic Cotton,DeltaFarms,79.1,0.2,1.9,0,13.1,8.5,Low,0
+REC-01315,Basmati Rice,HighlandGrowers,66.7,9.2,5.92,1,34.8,26.5,Low,0
+REC-01316,Organic Cotton,AgriCoop-North,62.1,4.9,10.13,2,17.5,27.3,Low,0
+REC-01317,Durum Wheat,GlobalGrainConsortium,68.4,6.1,4.62,1,16.8,21.1,Low,0
+REC-01318,Organic Cotton,SunValleyEstates,94.6,0.3,0.51,0,9.3,3.0,Low,0
+REC-01319,Durum Wheat,AgriCoop-North,41.6,17.6,28.34,3,87.4,61.3,Medium,1
+REC-01320,Arabica Coffee,FarmerOrgMSP,83.7,5.0,3.48,0,11.9,11.6,Low,0
+REC-01321,Durum Wheat,GlobalGrainConsortium,78.9,0.6,3.49,0,3.1,8.5,Low,0
+REC-01322,Basmati Rice,HighlandGrowers,75.4,0.9,1.14,0,8.4,9.4,Low,0
+REC-01323,Basmati Rice,FarmerOrgMSP,88.2,0.7,0.93,0,7.0,5.2,Low,0
+REC-01324,Arabica Coffee,DeltaFarms,83.9,0.1,1.59,0,3.7,5.9,Low,0
+REC-01325,Arabica Coffee,FarmerOrgMSP,81.6,1.4,2.12,0,1.7,7.7,Low,0
+REC-01326,Arabica Coffee,SunValleyEstates,76.3,0.1,1.14,1,2.4,10.9,Low,0
+REC-01327,Arabica Coffee,AgriCoop-North,60.1,7.9,5.76,2,23.0,29.2,Low,0
+REC-01328,Arabica Coffee,SunValleyEstates,58.7,6.9,8.77,2,15.1,29.2,Low,0
+REC-01329,Raw Cane Sugar,FarmerOrgMSP,36.8,25.3,42.69,3,53.5,71.5,High,2
+REC-01330,Durum Wheat,AgriCoop-North,83.0,0.9,3.85,0,7.0,8.1,Low,0
+REC-01331,Soybean Oil,SunValleyEstates,45.8,15.1,39.37,2,74.7,58.1,Medium,1
+REC-01332,Basmati Rice,AgriCoop-North,96.0,1.0,0.28,1,10.5,6.2,Low,0
+REC-01333,Soybean Oil,DeltaFarms,79.0,0.2,0.47,0,11.3,7.8,Low,0
+REC-01334,Basmati Rice,HighlandGrowers,74.7,6.6,7.89,1,28.8,22.1,Low,0
+REC-01335,Basmati Rice,GlobalGrainConsortium,72.3,11.7,10.86,2,29.5,31.4,Low,0
+REC-01336,Basmati Rice,DeltaFarms,90.4,0.2,1.7,0,14.9,5.2,Low,0
+REC-01337,Soybean Oil,GlobalGrainConsortium,88.9,1.8,1.78,0,2.2,5.8,Low,0
+REC-01338,Organic Cotton,AgriCoop-North,81.6,1.5,2.23,0,14.8,9.1,Low,0
+REC-01339,Basmati Rice,AgriCoop-North,91.3,3.3,1.63,0,14.9,7.5,Low,0
+REC-01340,Basmati Rice,HighlandGrowers,87.5,0.6,2.49,0,7.4,6.0,Low,0
+REC-01341,Basmati Rice,SunValleyEstates,75.2,3.9,0.67,0,8.3,11.8,Low,0
+REC-01342,Arabica Coffee,HighlandGrowers,78.9,1.0,0.35,0,7.4,8.0,Low,0
+REC-01343,Durum Wheat,FarmerOrgMSP,53.1,8.9,4.04,1,34.8,29.6,Low,0
+REC-01344,Arabica Coffee,FarmerOrgMSP,83.4,0.5,3.45,0,11.8,8.0,Low,0
+REC-01345,Durum Wheat,DeltaFarms,53.6,11.3,7.46,0,23.7,28.7,Low,0
+REC-01346,Durum Wheat,HighlandGrowers,23.7,24.2,25.9,5,93.3,77.7,High,2
+REC-01347,Arabica Coffee,GlobalGrainConsortium,35.9,15.1,27.69,4,85.2,63.4,Medium,1
+REC-01348,Organic Cotton,GlobalGrainConsortium,56.3,8.2,5.6,1,17.6,26.9,Low,0
+REC-01349,Raw Cane Sugar,HighlandGrowers,79.4,2.3,3.35,1,8.4,13.3,Low,0
+REC-01350,Soybean Oil,FarmerOrgMSP,91.4,0.7,1.48,0,14.5,5.2,Low,0
+REC-01351,Basmati Rice,AgriCoop-North,15.9,25.8,15.18,3,75.8,69.4,Medium,1
+REC-01352,Soybean Oil,AgriCoop-North,84.0,1.5,3.61,0,1.7,7.7,Low,0
+REC-01353,Durum Wheat,HighlandGrowers,75.1,2.5,3.51,0,1.8,11.1,Low,0
+REC-01354,Raw Cane Sugar,HighlandGrowers,66.2,7.3,4.78,1,32.0,24.3,Low,0
+REC-01355,Organic Cotton,AgriCoop-North,19.3,22.5,30.39,2,80.1,69.1,Medium,1
+REC-01356,Raw Cane Sugar,HighlandGrowers,98.2,0.2,3.59,0,3.2,2.5,Low,0
+REC-01357,Durum Wheat,AgriCoop-North,73.4,12.1,8.99,0,18.4,23.5,Low,0
+REC-01358,Organic Cotton,DeltaFarms,53.0,5.0,5.63,1,15.7,25.1,Low,0
+REC-01359,Organic Cotton,HighlandGrowers,97.2,0.5,1.99,0,4.3,2.5,Low,0
+REC-01360,Durum Wheat,AgriCoop-North,67.0,12.6,8.94,1,19.4,28.9,Low,0
+REC-01361,Soybean Oil,HighlandGrowers,92.9,0.4,2.09,0,3.8,3.7,Low,0
+REC-01362,Durum Wheat,DeltaFarms,77.4,1.3,1.53,0,6.4,9.1,Low,0
+REC-01363,Basmati Rice,FarmerOrgMSP,85.2,0.0,1.88,0,1.2,5.3,Low,0
+REC-01364,Soybean Oil,GlobalGrainConsortium,72.3,10.2,4.34,1,43.9,25.9,Low,0
+REC-01365,Raw Cane Sugar,SunValleyEstates,75.2,0.3,2.05,0,4.0,8.9,Low,0
+REC-01366,Raw Cane Sugar,AgriCoop-North,76.5,1.6,1.47,0,5.8,9.6,Low,0
+REC-01367,Soybean Oil,DeltaFarms,93.3,0.5,1.64,0,10.0,4.1,Low,0
+REC-01368,Arabica Coffee,GlobalGrainConsortium,54.5,11.1,8.06,2,30.8,35.2,Low,0
+REC-01369,Raw Cane Sugar,AgriCoop-North,97.9,0.6,2.51,0,1.6,2.3,Low,0
+REC-01370,Raw Cane Sugar,AgriCoop-North,91.0,1.0,2.75,0,4.2,5.1,Low,0
+REC-01371,Durum Wheat,SunValleyEstates,96.1,2.0,1.6,0,13.9,4.9,Low,0
+REC-01372,Durum Wheat,AgriCoop-North,75.9,2.1,1.82,0,9.8,10.7,Low,0
+REC-01373,Basmati Rice,DeltaFarms,91.8,0.7,3.96,0,3.8,5.0,Low,0
+REC-01374,Arabica Coffee,FarmerOrgMSP,81.9,0.3,0.73,0,12.3,7.2,Low,0
+REC-01375,Basmati Rice,DeltaFarms,90.1,1.7,0.89,0,13.5,6.1,Low,0
+REC-01376,Organic Cotton,DeltaFarms,95.7,0.6,2.76,0,11.2,4.0,Low,0
+REC-01377,Arabica Coffee,FarmerOrgMSP,80.0,2.6,2.05,0,13.6,10.3,Low,0
+REC-01378,Durum Wheat,FarmerOrgMSP,90.0,3.1,2.32,0,8.2,7.3,Low,0
+REC-01379,Basmati Rice,DeltaFarms,76.2,1.2,0.19,0,5.1,8.7,Low,0
+REC-01380,Arabica Coffee,SunValleyEstates,51.7,12.7,11.74,0,31.0,32.9,Low,0
+REC-01381,Basmati Rice,GlobalGrainConsortium,32.5,19.2,14.04,2,74.1,55.3,Medium,1
+REC-01382,Organic Cotton,GlobalGrainConsortium,83.1,0.5,1.4,0,3.0,6.3,Low,0
+REC-01383,Organic Cotton,SunValleyEstates,93.2,3.7,0.34,0,12.3,6.5,Low,0
+REC-01384,Organic Cotton,FarmerOrgMSP,69.1,4.4,11.85,1,32.9,24.0,Low,0
+REC-01385,Organic Cotton,AgriCoop-North,31.8,14.3,38.04,2,46.8,58.3,Medium,1
+REC-01386,Durum Wheat,FarmerOrgMSP,60.8,7.0,10.8,0,15.6,23.5,Low,0
+REC-01387,Durum Wheat,SunValleyEstates,70.3,9.3,10.88,2,35.5,30.6,Low,0
+REC-01388,Durum Wheat,DeltaFarms,84.3,0.7,0.59,0,8.7,6.4,Low,0
+REC-01389,Arabica Coffee,AgriCoop-North,89.8,3.5,1.47,0,13.9,8.0,Low,0
+REC-01390,Durum Wheat,FarmerOrgMSP,75.2,0.8,3.04,0,8.5,10.2,Low,0
+REC-01391,Durum Wheat,HighlandGrowers,23.7,13.0,14.04,5,54.0,59.7,Medium,1
+REC-01392,Durum Wheat,GlobalGrainConsortium,90.7,0.4,1.24,0,7.7,4.4,Low,0
+REC-01393,Arabica Coffee,DeltaFarms,81.0,1.2,2.03,0,6.0,8.1,Low,0
+REC-01394,Basmati Rice,HighlandGrowers,73.5,11.8,6.34,2,22.3,28.5,Low,0
+REC-01395,Soybean Oil,HighlandGrowers,62.6,4.5,11.2,2,43.5,29.8,Low,0
+REC-01396,Durum Wheat,HighlandGrowers,96.9,2.8,2.13,0,8.7,5.0,Low,0
+REC-01397,Soybean Oil,FarmerOrgMSP,69.7,4.4,5.88,1,34.5,21.6,Low,0
+REC-01398,Durum Wheat,HighlandGrowers,95.1,0.5,2.39,0,14.5,4.3,Low,0
+REC-01399,Arabica Coffee,DeltaFarms,28.4,12.3,25.77,5,47.2,61.8,Medium,1
+REC-01400,Durum Wheat,SunValleyEstates,85.3,0.1,1.29,0,5.9,5.6,Low,0
+REC-01401,Durum Wheat,HighlandGrowers,58.4,12.3,6.1,2,21.5,33.3,Low,0
+REC-01402,Durum Wheat,SunValleyEstates,65.5,12.7,10.26,2,37.6,34.8,Low,0
+REC-01403,Organic Cotton,GlobalGrainConsortium,92.3,1.7,3.45,0,7.5,5.9,Low,0
+REC-01404,Arabica Coffee,FarmerOrgMSP,87.5,0.3,1.59,0,13.9,6.0,Low,0
+REC-01405,Organic Cotton,DeltaFarms,91.4,0.5,4.0,0,5.1,5.1,Low,0
+REC-01406,Durum Wheat,FarmerOrgMSP,81.6,0.5,1.08,0,11.8,7.5,Low,0
+REC-01407,Durum Wheat,DeltaFarms,90.9,2.7,3.41,0,1.2,6.5,Low,0
+REC-01408,Durum Wheat,HighlandGrowers,83.6,1.5,2.27,0,9.1,8.0,Low,0
+REC-01409,Basmati Rice,HighlandGrowers,34.3,29.2,27.86,4,83.3,75.5,High,2
+REC-01410,Raw Cane Sugar,FarmerOrgMSP,19.5,23.3,17.29,2,56.6,62.1,Medium,1
+REC-01411,Raw Cane Sugar,HighlandGrowers,87.2,0.9,1.34,0,4.2,5.5,Low,0
+REC-01412,Basmati Rice,FarmerOrgMSP,15.6,27.2,42.58,2,75.0,78.5,High,2
+REC-01413,Raw Cane Sugar,DeltaFarms,85.7,1.1,1.02,0,6.2,6.2,Low,0
+REC-01414,Soybean Oil,GlobalGrainConsortium,85.2,0.5,0.2,0,6.0,5.5,Low,0
+REC-01415,Arabica Coffee,SunValleyEstates,97.6,0.5,0.22,0,5.1,1.7,Low,0
+REC-01416,Organic Cotton,GlobalGrainConsortium,89.6,2.5,2.09,0,8.1,6.8,Low,0
+REC-01417,Raw Cane Sugar,FarmerOrgMSP,80.2,2.7,0.23,0,6.3,8.9,Low,0
+REC-01418,Durum Wheat,SunValleyEstates,48.6,29.9,32.35,5,71.9,75.5,High,2
+REC-01419,Organic Cotton,HighlandGrowers,65.2,10.6,8.16,1,23.1,27.8,Low,0
+REC-01420,Raw Cane Sugar,FarmerOrgMSP,26.5,26.4,47.19,3,67.8,78.7,High,2
+REC-01421,Organic Cotton,FarmerOrgMSP,61.1,13.6,7.28,0,25.6,28.5,Low,0
+REC-01422,Arabica Coffee,SunValleyEstates,37.9,22.9,28.16,5,56.5,69.6,Medium,1
+REC-01423,Basmati Rice,HighlandGrowers,96.8,1.7,2.7,0,12.1,4.7,Low,0
+REC-01424,Arabica Coffee,AgriCoop-North,84.8,1.1,0.68,0,13.3,7.1,Low,0
+REC-01425,Arabica Coffee,FarmerOrgMSP,15.5,14.2,21.48,5,82.1,69.0,Medium,1
+REC-01426,Soybean Oil,DeltaFarms,50.6,5.7,4.58,2,41.0,31.5,Low,0
+REC-01427,Basmati Rice,SunValleyEstates,84.7,1.2,2.88,0,13.6,8.1,Low,0
+REC-01428,Soybean Oil,GlobalGrainConsortium,52.7,11.2,4.59,1,43.5,32.7,Low,0
+REC-01429,Organic Cotton,SunValleyEstates,95.0,0.5,1.96,0,3.6,3.1,Low,0
+REC-01430,Soybean Oil,AgriCoop-North,96.5,1.4,1.54,0,6.3,3.5,Low,0
+REC-01431,Organic Cotton,SunValleyEstates,89.1,4.3,0.48,0,5.8,7.6,Low,0
+REC-01432,Arabica Coffee,AgriCoop-North,35.3,27.2,27.36,4,64.2,71.4,High,2
+REC-01433,Organic Cotton,HighlandGrowers,97.7,3.2,2.95,0,4.9,5.0,Low,0
+REC-01434,Basmati Rice,HighlandGrowers,81.8,0.2,1.17,0,13.4,7.4,Low,0
+REC-01435,Organic Cotton,SunValleyEstates,41.4,28.6,35.99,3,49.8,69.8,Medium,1
+REC-01436,Arabica Coffee,FarmerOrgMSP,50.7,13.0,11.68,2,31.1,39.4,Low,0
+REC-01437,Soybean Oil,SunValleyEstates,94.7,0.7,1.2,0,7.0,3.4,Low,0
+REC-01438,Soybean Oil,DeltaFarms,85.9,3.8,2.89,0,2.7,8.8,Low,0
+REC-01439,Durum Wheat,GlobalGrainConsortium,95.7,5.0,2.95,0,6.0,7.2,Low,0
+REC-01440,Raw Cane Sugar,SunValleyEstates,68.2,7.3,8.06,1,28.6,24.7,Low,0
+REC-01441,Raw Cane Sugar,SunValleyEstates,51.9,10.9,11.14,0,28.0,30.8,Low,0
+REC-01442,Durum Wheat,AgriCoop-North,95.2,1.6,3.52,1,9.9,8.2,Low,0
+REC-01443,Arabica Coffee,GlobalGrainConsortium,84.0,4.3,2.73,0,3.1,9.8,Low,0
+REC-01444,Arabica Coffee,FarmerOrgMSP,78.2,1.5,0.45,0,11.1,9.1,Low,0
+REC-01445,Organic Cotton,DeltaFarms,86.8,1.4,2.87,1,10.6,10.3,Low,0
+REC-01446,Arabica Coffee,HighlandGrowers,55.9,7.5,8.24,0,41.3,26.9,Low,0
+REC-01447,Durum Wheat,AgriCoop-North,62.3,10.3,8.78,2,29.4,32.3,Low,0
+REC-01448,Raw Cane Sugar,DeltaFarms,96.1,2.1,1.22,0,5.6,4.0,Low,0
+REC-01449,Soybean Oil,DeltaFarms,86.2,0.6,0.54,0,10.9,5.9,Low,0
+REC-01450,Soybean Oil,FarmerOrgMSP,67.2,4.3,6.14,0,41.7,20.0,Low,0
+REC-01451,Basmati Rice,FarmerOrgMSP,82.8,1.7,1.7,0,7.0,8.0,Low,0
+REC-01452,Organic Cotton,AgriCoop-North,92.5,0.6,3.29,0,6.7,4.7,Low,0
+REC-01453,Organic Cotton,FarmerOrgMSP,93.7,0.2,3.88,0,2.8,3.9,Low,0
+REC-01454,Organic Cotton,FarmerOrgMSP,15.7,18.8,40.1,4,90.6,78.1,High,2
+REC-01455,Soybean Oil,GlobalGrainConsortium,63.0,7.6,5.59,0,40.1,23.7,Low,0
+REC-01456,Durum Wheat,FarmerOrgMSP,94.2,3.6,1.39,0,11.3,6.4,Low,0
+REC-01457,Basmati Rice,HighlandGrowers,68.9,9.3,8.01,1,16.3,24.9,Low,0
+REC-01458,Soybean Oil,GlobalGrainConsortium,90.2,1.7,0.23,0,12.4,5.7,Low,0
+REC-01459,Raw Cane Sugar,GlobalGrainConsortium,94.6,3.1,3.46,1,8.1,9.4,Low,0
+REC-01460,Soybean Oil,AgriCoop-North,75.4,2.7,2.46,0,11.3,11.7,Low,0
+REC-01461,Basmati Rice,DeltaFarms,71.5,11.8,7.4,2,15.7,28.9,Low,0
+REC-01462,Soybean Oil,SunValleyEstates,81.3,1.6,1.94,0,2.3,7.9,Low,0
+REC-01463,Raw Cane Sugar,DeltaFarms,81.8,1.8,2.08,0,14.9,9.3,Low,0
+REC-01464,Arabica Coffee,DeltaFarms,41.7,24.9,28.28,2,64.9,62.0,Medium,1
+REC-01465,Durum Wheat,SunValleyEstates,88.5,1.5,1.4,0,14.7,6.7,Low,0
+REC-01466,Soybean Oil,SunValleyEstates,95.8,1.0,1.07,0,9.6,3.5,Low,0
+REC-01467,Raw Cane Sugar,HighlandGrowers,64.2,6.3,10.14,1,27.4,25.8,Low,0
+REC-01468,Arabica Coffee,SunValleyEstates,50.9,10.9,8.79,0,23.0,29.6,Low,0
+REC-01469,Soybean Oil,SunValleyEstates,63.6,7.1,9.22,1,28.8,26.4,Low,0
+REC-01470,Arabica Coffee,FarmerOrgMSP,92.8,2.0,3.69,0,2.1,5.5,Low,0
+REC-01471,Soybean Oil,DeltaFarms,93.0,0.3,1.81,0,1.5,3.2,Low,0
+REC-01472,Basmati Rice,FarmerOrgMSP,94.3,1.0,3.02,0,6.6,4.4,Low,0
+REC-01473,Basmati Rice,SunValleyEstates,82.1,3.8,2.74,0,9.6,10.6,Low,0
+REC-01474,Basmati Rice,SunValleyEstates,53.5,9.2,5.64,2,43.6,34.2,Low,0
+REC-01475,Arabica Coffee,AgriCoop-North,61.8,6.1,6.64,2,36.6,28.9,Low,0
+REC-01476,Durum Wheat,HighlandGrowers,94.9,0.0,1.72,0,1.9,2.4,Low,0
+REC-01477,Soybean Oil,SunValleyEstates,55.0,4.9,7.67,0,16.8,22.3,Low,0
+REC-01478,Basmati Rice,HighlandGrowers,83.4,1.2,0.98,0,14.0,7.8,Low,0
+REC-01479,Basmati Rice,SunValleyEstates,71.7,9.8,6.45,2,38.0,29.0,Low,0
+REC-01480,Basmati Rice,SunValleyEstates,90.8,0.1,0.69,0,4.9,3.6,Low,0
+REC-01481,Organic Cotton,SunValleyEstates,94.1,1.3,3.09,0,11.8,5.3,Low,0
+REC-01482,Arabica Coffee,AgriCoop-North,94.4,3.1,2.71,0,3.4,5.7,Low,0
+REC-01483,Durum Wheat,AgriCoop-North,94.3,0.2,0.74,0,5.5,2.7,Low,0
+REC-01484,Organic Cotton,DeltaFarms,85.6,1.6,1.38,0,2.6,6.5,Low,0
+REC-01485,Organic Cotton,AgriCoop-North,84.3,1.0,1.32,0,8.4,6.9,Low,0
+REC-01486,Soybean Oil,GlobalGrainConsortium,48.1,27.0,37.61,5,73.0,75.4,High,2
+REC-01487,Basmati Rice,DeltaFarms,67.1,9.6,7.48,1,20.3,25.9,Low,0
+REC-01488,Arabica Coffee,GlobalGrainConsortium,58.6,8.2,8.94,0,26.5,25.5,Low,0
+REC-01489,Basmati Rice,HighlandGrowers,21.9,18.5,19.02,4,61.4,64.6,Medium,1
+REC-01490,Raw Cane Sugar,GlobalGrainConsortium,75.3,0.5,2.62,0,6.6,9.5,Low,0
+REC-01491,Organic Cotton,GlobalGrainConsortium,90.0,5.0,3.31,0,14.0,9.9,Low,0
+REC-01492,Basmati Rice,FarmerOrgMSP,79.2,2.1,2.63,0,2.5,9.3,Low,0
+REC-01493,Durum Wheat,FarmerOrgMSP,67.8,11.1,5.42,0,17.5,22.8,Low,0
+REC-01494,Raw Cane Sugar,SunValleyEstates,92.1,0.6,3.45,0,12.9,5.5,Low,0
+REC-01495,Organic Cotton,GlobalGrainConsortium,58.3,10.7,11.2,2,20.1,33.9,Low,0
+REC-01496,Organic Cotton,AgriCoop-North,33.1,28.9,26.51,2,48.2,65.6,Medium,1
+REC-01497,Soybean Oil,AgriCoop-North,52.1,8.4,6.2,0,35.7,27.4,Low,0
+REC-01498,Basmati Rice,DeltaFarms,71.1,13.4,6.49,2,25.5,31.0,Low,0
+REC-01499,Raw Cane Sugar,FarmerOrgMSP,91.7,1.3,1.91,0,2.3,4.6,Low,0
+REC-01500,Basmati Rice,DeltaFarms,89.2,5.0,3.09,0,4.0,9.0,Low,0
