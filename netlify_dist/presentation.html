@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUPPLYCHAIN-X: Project Presentation Deck</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              900: '#064e3b',
+              950: '#022c22',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    code, pre {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+    }
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .slide {
+        display: flex !important;
+        opacity: 1 !important;
+        page-break-after: always;
+        height: 100vh !important;
+        border: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Navigation & Controls Bar -->
+  <header class="no-print bg-slate-900/80 backdrop-blur border-b border-slate-800 px-6 py-3 flex items-center justify-between z-50">
+    <div class="flex items-center space-x-3">
+      <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+        <i data-lucide="shield-check" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <h1 class="text-sm font-bold tracking-tight text-white flex items-center gap-2">
+          SUPPLYCHAIN-X <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">v1.0</span>
+        </h1>
+        <p class="text-xs text-slate-400">AI & Blockchain Supply Chain Presentation Deck</p>
+      </div>
+    </div>
+
+    <!-- Quick Slide Selector & Controls -->
+    <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-2 bg-slate-800/80 rounded-lg p-1 border border-slate-700/60">
+        <button onclick="prevSlide()" class="p-1.5 hover:bg-slate-700 text-slate-300 hover:text-white rounded transition" title="Previous Slide (Left Arrow)">
+          <i data-lucide="chevron-left" class="w-4 h-4"></i>
+        </button>
+        <span id="slide-indicator" class="text-xs font-mono font-medium px-2 text-slate-300">01 / 15</span>
+        <button onclick="nextSlide()" class="p-1.5 hover:bg-slate-700 text-slate-300 hover:text-white rounded transition" title="Next Slide (Right Arrow or Space)">
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <button onclick="toggleNotes()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-medium text-slate-300 flex items-center gap-1.5 transition">
+        <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Notes <kbd class="px-1 py-0.2 bg-slate-900 rounded text-[10px] text-slate-400">N</kbd>
+      </button>
+
+      <button onclick="toggleFullscreen()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-medium text-slate-300 flex items-center gap-1.5 transition">
+        <i data-lucide="maximize" class="w-3.5 h-3.5"></i> Fullscreen <kbd class="px-1 py-0.2 bg-slate-900 rounded text-[10px] text-slate-400">F</kbd>
+      </button>
+
+      <button onclick="window.print()" class="px-3 py-1.5 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/30 text-emerald-300 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
+        <i data-lucide="printer" class="w-3.5 h-3.5"></i> Print / PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Viewport (16:9 Aspect Ratio Container) -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-6 md:p-8">
+    <div class="w-full max-w-6xl aspect-[16/9] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden relative flex flex-col justify-between p-8 md:p-12">
+
+      <!-- ==================== SLIDE 1: TITLE SLIDE ==================== -->
+      <section class="slide active flex-col justify-between h-full" data-slide="1" data-notes="Welcome everyone. Today I am presenting SUPPLYCHAIN-X, an intelligent, permissioned blockchain and AI framework engineered for end-to-end supply chain traceability, multi-party cryptographic authorization, and risk prediction. Crucially, this system operates under a strict Zero-IoT hardware constraint, ensuring tamper-proof integrity through pure cryptography.">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-widest">
+              Project Defense & Technical Presentation
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-widest">
+              PRD Version 1.0
+            </span>
+          </div>
+          <span class="text-xs font-mono text-slate-500">CFT Raft • Hyperledger Ready • ML Risk Engine</span>
+        </div>
+
+        <div class="my-auto space-y-4">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            SUPPLYCHAIN<span class="text-emerald-400">-X</span>
+          </h1>
+          <p class="text-xl md:text-2xl font-medium text-slate-300 leading-snug max-w-3xl">
+            AI-Driven Permissioned Blockchain Framework for Intelligent Supply Chain Traceability, Verification & Proactive Risk Prediction
+          </p>
+          <div class="pt-2 flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+            <span class="px-2.5 py-1 bg-slate-800/80 rounded border border-slate-700/60">Zero-IoT Hardware Architecture</span>
+            <span class="px-2.5 py-1 bg-slate-800/80 rounded border border-slate-700/60">3-Node Raft Consensus</span>
+            <span class="px-2.5 py-1 bg-slate-800/80 rounded border border-slate-700/60">IPFS CIDv1 + Merkle Proofs</span>
+            <span class="px-2.5 py-1 bg-slate-800/80 rounded border border-slate-700/60">Random Forest Risk Scoring (97.3% Acc)</span>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-800 pt-4 flex flex-wrap items-center justify-between text-xs text-slate-400">
+          <div>
+            <span class="font-semibold text-slate-200">System Architecture:</span> 5 Decoupled Layers • 13 Smart Contracts • 7 Dashboard Screens
+          </div>
+          <div class="font-mono text-emerald-400 flex items-center gap-2">
+            <i data-lucide="shield" class="w-3.5 h-3.5"></i> Pure Cryptographic Custody
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 2: PROBLEM STATEMENT ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="2" data-notes="Modern supply chains suffer from severe systemic vulnerabilities. Counterfeit goods represent over $500 billion annually. Centralized databases are vulnerable to unauthorized administrative alteration. Furthermore, traditional IoT tracking hardware creates a massive attack surface—sensors can be spoofed, GPS jammed, or batteries depleted. Our framework solves this by establishing mathematical proof of custody without fragile physical hardware.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 01 // Problem Statement</span>
+          <span class="text-xs font-mono text-slate-500">PRD §2 • Challenges in Global Supply Chains</span>
+        </div>
+
+        <div class="my-auto space-y-6">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white">Why Traditional Supply Chains Fail</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="bg-slate-800/50 border border-slate-700/60 p-5 rounded-xl space-y-2">
+              <div class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 flex items-center justify-center">
+                <i data-lucide="eye-off" class="w-4 h-4"></i>
+              </div>
+              <h3 class="text-base font-bold text-slate-100">Opacity & Counterfeits</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Over $500B lost annually to counterfeit products due to untraceable multi-tier handoffs and fraudulent origin documentation.
+              </p>
+            </div>
+
+            <div class="bg-slate-800/50 border border-slate-700/60 p-5 rounded-xl space-y-2">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center">
+                <i data-lucide="database" class="w-4 h-4"></i>
+              </div>
+              <h3 class="text-base font-bold text-slate-100">Centralized Alterations</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Traditional relational ERPs permit privileged DBA users to silently alter audit logs, change ownership dates, or rewrite rejection rates.
+              </p>
+            </div>
+
+            <div class="bg-slate-800/50 border border-slate-700/60 p-5 rounded-xl space-y-2">
+              <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center">
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+              </div>
+              <h3 class="text-base font-bold text-slate-100">IoT Hardware Fallibility</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                RFID tags, GPS beacons, and ESP32 sensors fail in real-world transit: battery drainage, physical tampering, signal jamming, and high unit cost.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-emerald-950/30 border border-emerald-500/20 p-3 rounded-lg flex items-center gap-3 text-xs text-emerald-300">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+          <span><strong>The Solution:</strong> Replace fallible hardware trust with mathematical trust—X.509 cryptographic identities, Raft consensus, Merkle proofs, and AI risk analytics.</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 3: OBJECTIVES & ZERO-IOT SCOPE ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="3" data-notes="Here we detail the project objectives and our explicit scope boundaries. As mandated by PRD Section 4, this project strictly excludes IoT hardware such as microcontrollers, GPS dongles, or RFID chips. Why? Because hardware can be detached from products. Instead, all supply chain information is entered through authorized software interfaces where digital signatures authenticate the actor, smart contracts enforce rules, and IPFS anchors documents.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 02 // Project Objectives & Scope</span>
+          <span class="text-xs font-mono text-slate-500">PRD §3 & §4</span>
+        </div>
+
+        <div class="my-auto space-y-5">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white">Objectives & Hardware-Free Scope</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-xl space-y-3">
+              <h3 class="text-sm font-bold text-emerald-400 flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4"></i> In-Scope Deliverables
+              </h3>
+              <ul class="text-xs space-y-2 text-slate-300">
+                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> Complete batch registration & end-to-end stage traceability.</li>
+                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> 13 smart contract methods controlling ownership transitions.</li>
+                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> Multi-party endorsement policies (Farmer + Manufacturer + Regulator).</li>
+                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> IPFS document hashing & Merkle tree inclusion proofs.</li>
+                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> 3-Node Raft consensus ordering cluster with dynamic quorum.</li>
+                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">•</span> Machine learning risk scoring engine (Random Forest).</li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-800/40 border border-rose-900/40 p-5 rounded-xl space-y-3">
+              <h3 class="text-sm font-bold text-rose-400 flex items-center gap-2">
+                <i data-lucide="x-circle" class="w-4 h-4"></i> Explicit Hardware Exclusions (PRD §4)
+              </h3>
+              <ul class="text-xs space-y-2 text-slate-400">
+                <li class="flex items-start gap-2"><span class="text-rose-400 font-bold">✕</span> No Arduino, ESP32, or Raspberry Pi microcontrollers.</li>
+                <li class="flex items-start gap-2"><span class="text-rose-400 font-bold">✕</span> No GPS hardware trackers or automated cellular telemetry.</li>
+                <li class="flex items-start gap-2"><span class="text-rose-400 font-bold">✕</span> No physical RFID tags or NFC stickers.</li>
+              </ul>
+              <div class="bg-rose-950/30 border border-rose-500/20 p-2.5 rounded text-[11px] text-rose-300 leading-relaxed">
+                <strong>Architectural Justification:</strong> Hardware creates physical attack vectors. Eliminating IoT removes single-point hardware failures while enforcing accountability through authenticated digital signatures.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>Enterprise Ready • Future Hyperledger Fabric Compatible</span>
+          <span>100% Cryptographic Verification</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 4: ROLES & RBAC ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="4" data-notes="Every participant in SUPPLYCHAIN-X belongs to an authorized Organization with an X.509 cryptographic identity. As defined in PRD Section 5, we support six distinct roles. Farmers register raw harvests; Manufacturers process and convert batches; Distributors update transit logs; Retailers stock verified units; Regulators independently audit compliance; and Administrators manage the consortium. Unauthorized operations are cryptographically rejected at the smart contract level.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 03 // Target Stakeholders & RBAC</span>
+          <span class="text-xs font-mono text-slate-500">PRD §5 • Role-Based Access Control</span>
+        </div>
+
+        <div class="my-auto space-y-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white">Consortium Roles & Digital Identity</h2>
+          <p class="text-xs text-slate-300">Each organization possesses a distinct cryptographic keypair and simulated X.509 Membership Service Provider (MSP) identity.</p>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="p-3.5 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-emerald-400">FarmerOrg</span>
+                <i data-lucide="sprout" class="w-4 h-4 text-emerald-400"></i>
+              </div>
+              <p class="text-[11px] text-slate-300"><strong>Responsibilities:</strong> Registers origin, harvest geo-coords, batch size, and initial certificates.</p>
+              <div class="text-[10px] font-mono text-slate-400">Cert: MSP-FARMER-01</div>
+            </div>
+
+            <div class="p-3.5 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-blue-400">ManufacturerOrg</span>
+                <i data-lucide="factory" class="w-4 h-4 text-blue-400"></i>
+              </div>
+              <p class="text-[11px] text-slate-300"><strong>Responsibilities:</strong> Accepts raw materials, processes batches, attaches QA lab test hashes.</p>
+              <div class="text-[10px] font-mono text-slate-400">Cert: MSP-MFG-01</div>
+            </div>
+
+            <div class="p-3.5 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-amber-400">DistributorOrg</span>
+                <i data-lucide="truck" class="w-4 h-4 text-amber-400"></i>
+              </div>
+              <p class="text-[11px] text-slate-300"><strong>Responsibilities:</strong> Custody acceptance, logistics routing, bill-of-lading hashing.</p>
+              <div class="text-[10px] font-mono text-slate-400">Cert: MSP-DIST-01</div>
+            </div>
+
+            <div class="p-3.5 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-purple-400">RetailerOrg</span>
+                <i data-lucide="store" class="w-4 h-4 text-purple-400"></i>
+              </div>
+              <p class="text-[11px] text-slate-300"><strong>Responsibilities:</strong> Verification on arrival, shelf inventory activation, consumer passport release.</p>
+              <div class="text-[10px] font-mono text-slate-400">Cert: MSP-RETAIL-01</div>
+            </div>
+
+            <div class="p-3.5 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-rose-400">RegulatorOrg</span>
+                <i data-lucide="scale" class="w-4 h-4 text-rose-400"></i>
+              </div>
+              <p class="text-[11px] text-slate-300"><strong>Responsibilities:</strong> Multi-party compliance endorsement, sanitary audits, fraud flags.</p>
+              <div class="text-[10px] font-mono text-slate-400">Cert: MSP-REG-01</div>
+            </div>
+
+            <div class="p-3.5 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-cyan-400">AdminOrg</span>
+                <i data-lucide="shield-alert" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <p class="text-[11px] text-slate-300"><strong>Responsibilities:</strong> Network governance, ordering service lifecycle, channel membership.</p>
+              <div class="text-[10px] font-mono text-slate-400">Cert: MSP-ADMIN-01</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-800 pt-3 flex items-center justify-between text-xs text-slate-400">
+          <span>Digital Signature Standard: HMAC-SHA256 (Go / X.509 ECDSA ready)</span>
+          <span>Zero Impersonation Vulnerability</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 5: 5-LAYER SYSTEM ARCHITECTURE ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="5" data-notes="Here is the 5-layer architectural blueprint of SUPPLYCHAIN-X. Layer 1 is our responsive web presentation layer built with Tailwind and Chart.js. Layer 2 is the Python REST API server handling request dispatch and signature verification. Layer 3 contains the 13 smart contract functions. Layer 4 hosts the simulated permissioned blockchain ledger, 3-node Raft consensus cluster, and IPFS storage. Finally, Layer 5 is our machine learning engine which evaluates 5 supply chain features to output risk tiers.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 04 // 5-Layer Architectural Blueprint</span>
+          <span class="text-xs font-mono text-slate-500">PRD §8 • Decoupled Modular Architecture</span>
+        </div>
+
+        <div class="my-auto space-y-4">
+          <h2 class="text-3xl font-extrabold text-white">Full-Stack 5-Layer Architecture</h2>
+
+          <div class="space-y-2 text-xs">
+            <div class="p-3 bg-slate-800/80 border-l-4 border-emerald-400 rounded-r-lg flex items-center justify-between">
+              <div>
+                <span class="font-bold text-emerald-400 uppercase tracking-wider">Layer 1: Presentation Layer</span>
+                <p class="text-slate-300 mt-0.5">Interactive Single-Page Application • 7 Specialized Screens • Responsive Tailwind CSS & Chart.js Visuals</p>
+              </div>
+              <span class="font-mono text-slate-500">Frontend (SPA)</span>
+            </div>
+
+            <div class="p-3 bg-slate-800/80 border-l-4 border-blue-400 rounded-r-lg flex items-center justify-between">
+              <div>
+                <span class="font-bold text-blue-400 uppercase tracking-wider">Layer 2: Application Layer</span>
+                <p class="text-slate-300 mt-0.5">Python Multithreaded REST Server • FastAPI Ready • Session Auth & Signature Verification Middleware</p>
+              </div>
+              <span class="font-mono text-slate-500">REST API / gRPC</span>
+            </div>
+
+            <div class="p-3 bg-slate-800/80 border-l-4 border-indigo-400 rounded-r-lg flex items-center justify-between">
+              <div>
+                <span class="font-bold text-indigo-400 uppercase tracking-wider">Layer 3: Smart Contract Layer</span>
+                <p class="text-slate-300 mt-0.5">13 PRD Chaincode Operations • Python Engine + Production Go Fabric Chaincode (`supplychain.go`)</p>
+              </div>
+              <span class="font-mono text-slate-500">Smart Contracts</span>
+            </div>
+
+            <div class="p-3 bg-slate-800/80 border-l-4 border-amber-400 rounded-r-lg flex items-center justify-between">
+              <div>
+                <span class="font-bold text-amber-400 uppercase tracking-wider">Layer 4: Blockchain & Storage Layer</span>
+                <p class="text-slate-300 mt-0.5">Simulated Permissioned Ledger • 3-Node CFT Raft Ordering Service • IPFS Content Addressing • Merkle Trees</p>
+              </div>
+              <span class="font-mono text-slate-500">Blockchain & IPFS</span>
+            </div>
+
+            <div class="p-3 bg-slate-800/80 border-l-4 border-rose-400 rounded-r-lg flex items-center justify-between">
+              <div>
+                <span class="font-bold text-rose-400 uppercase tracking-wider">Layer 5: AI Analytics Layer</span>
+                <p class="text-slate-300 mt-0.5">Random Forest Classifier (97.33% Acc) • Isolation Forest Anomaly Detection • Snapshot SHA-256 Anchoring</p>
+              </div>
+              <span class="font-mono text-slate-500">Scikit-Learn ML</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>High Modularity • Zero Tight-Coupling</span>
+          <span>Scalable to Multi-Cloud Fabric Deployment</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 6: 13 SMART CONTRACTS ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="6" data-notes="PRD Section 4 specifies exactly 13 smart contract methods. We have implemented all 13 with strict state validation. For example, RegisterProduct initializes a batch; ProposeTransfer and ApproveTransfer implement multi-party quorum; StoreDocumentHash records IPFS digests; VerifyMerkleProof executes logarithmic proof validation; and ReportRisk immutably anchors AI inference snapshots. Both a Python engine and an official Hyperledger Fabric Go contract are included.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 05 // Smart Contract Implementation</span>
+          <span class="text-xs font-mono text-slate-500">PRD §6 (FR-04) • 13 Core Chaincode Methods</span>
+        </div>
+
+        <div class="my-auto space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-3xl font-extrabold text-white">13 Smart Contract Methods</h2>
+            <span class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono rounded">
+              fabric/chaincode/supplychain.go
+            </span>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-emerald-400">1. RegisterProduct</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Mints new batch with origin and initial owner.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-emerald-400">2. ReadProduct</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Queries current stage, owner, and status.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-emerald-400">3. UpdateProductStage</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Advances stage along verifiable pipeline.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-blue-400">4. ProposeTransfer</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Initiates multi-party custody handoff.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-blue-400">5. ApproveTransfer</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Records cryptographically signed approvals.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-blue-400">6. FinalizeTransfer</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Validates quorum and commits ownership.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-purple-400">7. VerifyProduct</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Checks authentic lineage and tamper-evidence.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-amber-400">8. StoreDocumentHash</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Binds SHA-256 digest & CIDv1 to blockchain.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-amber-400">9. VerifyDocument</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Detects zero-byte tampering on certificates.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-amber-400">10. SubmitMerkleRoot</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Stores 32-byte batch root on the ledger.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-amber-400">11. VerifyMerkleProof</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Logarithmic O(log N) membership audit.</p>
+            </div>
+            <div class="p-2.5 bg-slate-800/50 border border-slate-700/60 rounded-lg">
+              <span class="font-mono font-bold text-rose-400">12. ReportRisk</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Anchors ML score and input snapshot hash.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>+ 13. GetTransactionHistory (Full batch audit trail)</span>
+          <span>100% PRD Functional Coverage</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 7: END-TO-END TRACEABILITY ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="7" data-notes="This slide shows the 6-stage lifecycle journey of every product batch. From Harvest at the farm, through Processing at the factory, Packaging, Carrier Transit, Retail Receipt, and finally Shelf Stocking. At every stage, the current owner signs the transaction, the smart contract checks permissions, the Raft ordering service sequences the block, and the cryptographic chain grows immutably.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 06 // Lifecycle Traceability Pipeline</span>
+          <span class="text-xs font-mono text-slate-500">PRD §6 (FR-02 & FR-03)</span>
+        </div>
+
+        <div class="my-auto space-y-6">
+          <h2 class="text-3xl font-extrabold text-white">6-Stage Cryptographic Chain of Custody</h2>
+
+          <div class="grid grid-cols-2 md:grid-cols-6 gap-3 text-center">
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-2">
+              <div class="w-8 h-8 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">1</div>
+              <div class="font-bold text-xs text-slate-200">Harvested</div>
+              <p class="text-[10px] text-slate-400">Farmer registers batch origin & geo-coordinates.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-2">
+              <div class="w-8 h-8 mx-auto rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs">2</div>
+              <div class="font-bold text-xs text-slate-200">Processing</div>
+              <p class="text-[10px] text-slate-400">Manufacturer processes raw batch with QA lab hash.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-2">
+              <div class="w-8 h-8 mx-auto rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">3</div>
+              <div class="font-bold text-xs text-slate-200">Packaged</div>
+              <p class="text-[10px] text-slate-400">Sealed with tamper-evident cryptographic badge.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-2">
+              <div class="w-8 h-8 mx-auto rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">4</div>
+              <div class="font-bold text-xs text-slate-200">In Transit</div>
+              <p class="text-[10px] text-slate-400">Distributor signs custody; route manifest anchored.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-2">
+              <div class="w-8 h-8 mx-auto rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs">5</div>
+              <div class="font-bold text-xs text-slate-200">Received</div>
+              <p class="text-[10px] text-slate-400">Retailer inspects delivery & signs receipt.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-emerald-500/40 bg-emerald-950/20 rounded-xl space-y-2">
+              <div class="w-8 h-8 mx-auto rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center font-bold text-xs">6</div>
+              <div class="font-bold text-xs text-emerald-400">Retail Stocked</div>
+              <p class="text-[10px] text-slate-300">Consumer passport QR unlocked for scanning.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/60 flex items-center justify-between text-xs">
+            <span class="text-slate-300"><strong>Block Header Linkage:</strong> Every transition mints a block containing `previous_hash`, `merkle_root`, `timestamp`, and the endorsing digital signature.</span>
+            <span class="text-emerald-400 font-mono font-bold shrink-0 ml-4">Tamper-Proof Guarantee</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>O(1) Direct Lookup by Product ID or Batch ID</span>
+          <span>Zero Blind Spots in Custody Lineage</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 8: MULTI-PARTY VERIFICATION ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="8" data-notes="In traditional systems, one compromised account can authorize a fraudulent shipment. SUPPLYCHAIN-X solves this via Multi-Party Verification (FR-06). Critical custody transfers require multi-signature endorsement. In our 3-party governance policy, the Farmer proposes the transfer, the Manufacturer must approve it, and the independent Regulator must also verify compliance. Only when all required cryptographic signatures are validated does FinalizeTransfer execute on-chain.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 07 // Multi-Party Authorization</span>
+          <span class="text-xs font-mono text-slate-500">PRD §6 (FR-06) • Multi-Signature Workflow</span>
+        </div>
+
+        <div class="my-auto space-y-5">
+          <h2 class="text-3xl font-extrabold text-white">Multi-Party Endorsement Policy</h2>
+          <p class="text-xs text-slate-300">Critical custody transfers enforce distributed multi-signature authorization to prevent unilateral fraud.</p>
+
+          <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-xl space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+              <div class="p-3 bg-slate-900/80 border border-slate-700/60 rounded-lg space-y-1">
+                <span class="text-emerald-400 font-bold font-mono">Step 1: Proposal</span>
+                <p class="text-slate-300">Farmer submits transfer request to Manufacturer with digital signature.</p>
+              </div>
+
+              <div class="p-3 bg-slate-900/80 border border-slate-700/60 rounded-lg space-y-1">
+                <span class="text-blue-400 font-bold font-mono">Step 2: Recipient Sign</span>
+                <p class="text-slate-300">Manufacturer inspects batch details and appends cryptographic acceptance.</p>
+              </div>
+
+              <div class="p-3 bg-slate-900/80 border border-slate-700/60 rounded-lg space-y-1">
+                <span class="text-rose-400 font-bold font-mono">Step 3: Regulator Audit</span>
+                <p class="text-slate-300">Independent Regulator verifies compliance certificate and signs endorsement.</p>
+              </div>
+
+              <div class="p-3 bg-emerald-950/40 border border-emerald-500/40 rounded-lg space-y-1">
+                <span class="text-emerald-400 font-bold font-mono">Step 4: Smart Execution</span>
+                <p class="text-slate-300">Chaincode verifies all signatures $\ge$ quorum threshold and shifts ownership.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-400 font-mono">Smart Contract Policy Check: <code class="text-emerald-400">len(approvals) &gt;= threshold &amp;&amp; "RegulatorOrg" in approvals</code></span>
+              <span class="px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold text-[10px]">CONSORTIUM GOVERNANCE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>Zero Single-Point-of-Compromise</span>
+          <span>Configurable Endorsement Quorums</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 9: IPFS & MERKLE TREES ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="9" data-notes="Storing large PDF certificates or quality inspection files directly on a blockchain is prohibitively expensive and causes ledger bloat. SUPPLYCHAIN-X implements an IPFS decentralized storage architecture (FR-07) paired with binary Merkle Tree verification (FR-08). Documents receive a SHA-256 digest and base32 CIDv1. Batches of documents are compiled into a Merkle Tree, where only the 32-byte root is stored on the ledger. Inclusion is proven in O(log N) time with zero-byte tamper detection.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 08 // Decentralized Storage & Merkle Trees</span>
+          <span class="text-xs font-mono text-slate-500">PRD §6 (FR-07 & FR-08)</span>
+        </div>
+
+        <div class="my-auto space-y-5">
+          <h2 class="text-3xl font-extrabold text-white">IPFS Storage & O(log N) Merkle Proofs</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl space-y-3">
+              <h3 class="text-sm font-bold text-cyan-400 flex items-center gap-2">
+                <i data-lucide="hard-drive" class="w-4 h-4"></i> IPFS Content Addressing (CIDv1)
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Off-chain document storage for phytosanitary certificates, invoices, and lab tests. Only the cryptographic hash and Content Identifier travel on-chain.
+              </p>
+              <div class="space-y-1 font-mono text-[11px] bg-slate-900 p-2.5 rounded border border-slate-800">
+                <div class="text-slate-400">Hash: <span class="text-slate-200">SHA-256 (32 Bytes)</span></div>
+                <div class="text-slate-400">CID: <span class="text-cyan-400">bafybeic... (Base32 CIDv1)</span></div>
+                <div class="text-emerald-400">Tamper Status: Zero-Byte Bitflip Detection</div>
+              </div>
+            </div>
+
+            <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl space-y-3">
+              <h3 class="text-sm font-bold text-emerald-400 flex items-center gap-2">
+                <i data-lucide="git-merge" class="w-4 h-4"></i> Binary Merkle Tree Verification
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Enables batch verification of thousands of supply chain documents with a single 32-byte on-chain Merkle root.
+              </p>
+              <div class="space-y-1 font-mono text-[11px] bg-slate-900 p-2.5 rounded border border-slate-800">
+                <div class="text-slate-400">Complexity: <span class="text-emerald-400 font-bold">O(log N) Verification</span></div>
+                <div class="text-slate-400">Proof: <span class="text-slate-200">Cryptographic audit sibling path</span></div>
+                <div class="text-emerald-400">Integrity: Mathematically Incorruptible</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-700/40 flex items-center justify-between text-xs text-slate-300">
+            <span><strong>Efficiency Gain:</strong> Storing 1,000 certificates directly costs megabytes on-chain; Merkle trees reduce ledger footprint to a single 32-byte root.</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>Zero Ledger Bloat</span>
+          <span>Scalable to Millions of Documents</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 10: RAFT CONSENSUS ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="10" data-notes="For the ordering service, SUPPLYCHAIN-X implements the Crash-Fault Tolerant Raft consensus algorithm (FR-09), identical to Hyperledger Fabric production architecture. We simulate a 3-node ordering cluster (orderer1, orderer2, orderer3). Raft guarantees consensus through strict quorum calculation: floor(N/2) + 1 = 2 nodes. If the leader fails, followers detect the missed heartbeat and automatically elect a new leader. If two nodes crash, quorum is lost and the network halts writes safely to prevent split-brain states.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 09 // Ordering Network Consensus</span>
+          <span class="text-xs font-mono text-slate-500">PRD §6 (FR-09) • Raft CFT Consensus Engine</span>
+        </div>
+
+        <div class="my-auto space-y-5">
+          <h2 class="text-3xl font-extrabold text-white">3-Node Raft Consensus (CFT)</h2>
+          <p class="text-xs text-slate-300">Emulates production Hyperledger Fabric Raft ordering service with state machine replication and dynamic quorum.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 bg-emerald-950/20 border border-emerald-500/40 rounded-xl space-y-2 text-center">
+              <div class="w-10 h-10 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                <i data-lucide="crown" class="w-5 h-5"></i>
+              </div>
+              <div class="font-bold text-sm text-emerald-400">orderer1 (Leader)</div>
+              <p class="text-[11px] text-slate-300">Term 1 • Active Leader</p>
+              <div class="text-[10px] font-mono text-slate-400">Heartbeat: Pulse OK</div>
+            </div>
+
+            <div class="p-4 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-2 text-center">
+              <div class="w-10 h-10 mx-auto rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                <i data-lucide="server" class="w-5 h-5"></i>
+              </div>
+              <div class="font-bold text-sm text-blue-400">orderer2 (Follower)</div>
+              <p class="text-[11px] text-slate-300">Term 1 • Replicated Log</p>
+              <div class="text-[10px] font-mono text-slate-400">Sync: Matched Head</div>
+            </div>
+
+            <div class="p-4 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-2 text-center">
+              <div class="w-10 h-10 mx-auto rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                <i data-lucide="server" class="w-5 h-5"></i>
+              </div>
+              <div class="font-bold text-sm text-blue-400">orderer3 (Follower)</div>
+              <p class="text-[11px] text-slate-300">Term 1 • Replicated Log</p>
+              <div class="text-[10px] font-mono text-slate-400">Sync: Matched Head</div>
+            </div>
+          </div>
+
+          <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/60 flex flex-wrap items-center justify-between text-xs gap-3">
+            <div>
+              <span class="text-slate-200 font-bold">Strict Quorum Rule:</span>
+              <span class="text-slate-400 ml-2 font-mono">Quorum = &lfloor;3 / 2&rfloor; + 1 = 2 Active Nodes</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold rounded">Tolerates 1 Node Crash</span>
+              <span class="px-2.5 py-1 bg-rose-500/10 text-rose-400 border border-rose-500/20 font-bold rounded">Prevents Split-Brain</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>Crash-Fault Tolerant (CFT) Architecture</span>
+          <span>Zero Unordered Block Creation</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 11: AI RISK PREDICTION ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="11" data-notes="Now we examine our AI Risk Prediction Engine (FR-10). The model analyzes 5 critical supply chain indicators: Supplier Reliability, Historical Delivery Delays, Batch Rejection Rate, Document Verification Failures, and Transaction Irregularities. Our Random Forest ensemble achieves 97.33% test accuracy and categorizes batches into Low (0–39%), Medium (40–69%), and High (70–100%) risk tiers. Furthermore, we compute a SHA-256 snapshot hash of the input features and anchor it to the blockchain to prevent AI model output tampering.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 10 // AI Machine Learning Risk Engine</span>
+          <span class="text-xs font-mono text-slate-500">PRD §6 (FR-10) • Random Forest & Anomaly Model</span>
+        </div>
+
+        <div class="my-auto space-y-5">
+          <h2 class="text-3xl font-extrabold text-white">AI-Based Supply Chain Risk Scoring</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl space-y-3">
+              <h3 class="text-sm font-bold text-emerald-400 flex items-center gap-2">
+                <i data-lucide="activity" class="w-4 h-4"></i> 5 Evaluated Feature Vectors
+              </h3>
+              <ul class="text-xs space-y-1.5 text-slate-300">
+                <li class="flex items-center justify-between">
+                  <span>1. Supplier Reliability Score</span>
+                  <span class="font-mono text-slate-400">0 – 100%</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span>2. Historical Delivery Delay</span>
+                  <span class="font-mono text-slate-400">0 – 30 Days</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span>3. Batch Rejection Rate</span>
+                  <span class="font-mono text-slate-400">0 – 50%</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span>4. Document Verification Failures</span>
+                  <span class="font-mono text-slate-400">Count (0 – 10)</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span>5. Transaction Irregularity Index</span>
+                  <span class="font-mono text-slate-400">0 – 100 Score</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-xl space-y-3">
+              <h3 class="text-sm font-bold text-blue-400 flex items-center gap-2">
+                <i data-lucide="bar-chart-2" class="w-4 h-4"></i> Trained Model Metrics
+              </h3>
+              <div class="grid grid-cols-2 gap-2 text-center text-xs">
+                <div class="p-2.5 bg-slate-900 rounded border border-slate-800">
+                  <div class="text-xl font-black text-emerald-400">97.33%</div>
+                  <div class="text-[10px] text-slate-400">Test Accuracy</div>
+                </div>
+                <div class="p-2.5 bg-slate-900 rounded border border-slate-800">
+                  <div class="text-xl font-black text-blue-400">86.51%</div>
+                  <div class="text-[10px] text-slate-400">Macro F1 Score</div>
+                </div>
+              </div>
+              <div class="space-y-1 text-[11px] text-slate-300">
+                <div class="flex items-center justify-between">
+                  <span class="text-emerald-400 font-bold">Low Risk: 0–39%</span>
+                  <span class="text-slate-400">Standard Clearance</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-amber-400 font-bold">Medium Risk: 40–69%</span>
+                  <span class="text-slate-400">Secondary Audit</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-rose-400 font-bold">High Risk: 70–100%</span>
+                  <span class="text-slate-400">Quarantine Required</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-indigo-950/30 border border-indigo-500/30 p-3 rounded-lg flex items-center justify-between text-xs">
+            <span class="text-indigo-200"><strong>Cryptographic Snapshot Anchoring:</strong> Predictions are anchored on-chain with a SHA-256 hash of the input parameters to guarantee auditability.</span>
+            <span class="font-mono text-indigo-400 text-[10px]">immutable risk audit</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>Decision Support • Not Proof of Fraud</span>
+          <span>Scikit-Learn Random Forest Ensemble</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 12: 7 DASHBOARD SCREENS ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="12" data-notes="SUPPLYCHAIN-X includes a fully interactive single-page web dashboard implementing all 7 screens required by PRD Section 7. Screen 1 displays live telemetry and throughput charts. Screen 2 provides batch search and 6-stage journey tracking. Screen 3 is a visual blockchain explorer with cryptographic block linking. Screen 4 handles multi-party verification. Screen 5 performs IPFS upload and SVG Merkle tree rendering. Screen 6 provides AI risk simulation sliders and 5-axis Spider radar charts. And Screen 7 displays the animated Raft consensus topology.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 11 // Interactive Web Interface</span>
+          <span class="text-xs font-mono text-slate-500">PRD §7 • 7 Functional Screens</span>
+        </div>
+
+        <div class="my-auto space-y-4">
+          <h2 class="text-3xl font-extrabold text-white">7 Interactive Web Dashboard Screens</h2>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1">
+              <span class="font-bold text-emerald-400">1. Main Dashboard</span>
+              <p class="text-[11px] text-slate-300">Live KPIs, Donut batch stages chart, Raft commit throughput timeline.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1">
+              <span class="font-bold text-emerald-400">2. Product Manager</span>
+              <p class="text-[11px] text-slate-300">Batch registration, 6-stage journey stepper, digital passport QR modal.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1">
+              <span class="font-bold text-emerald-400">3. Blockchain Explorer</span>
+              <p class="text-[11px] text-slate-300">Visual linked blocks ribbon (#0, #1, #2), block headers, digital signatures.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1">
+              <span class="font-bold text-emerald-400">4. Multi-Party Queue</span>
+              <p class="text-[11px] text-slate-300">Transfer proposals, multi-sig endorsement status, execution triggers.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1">
+              <span class="font-bold text-emerald-400">5. Document Verifier</span>
+              <p class="text-[11px] text-slate-300">IPFS CID hasher, zero-byte tamper test, hierarchical SVG Merkle tree.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1">
+              <span class="font-bold text-emerald-400">6. AI Risk Dashboard</span>
+              <p class="text-[11px] text-slate-300">Interactive factor sliders, 5-axis Spider Radar chart, confusion matrix.</p>
+            </div>
+
+            <div class="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl space-y-1">
+              <span class="font-bold text-emerald-400">7. Raft Network</span>
+              <p class="text-[11px] text-slate-300">Triangular node topology diagram, pulsing heartbeats, quorum ring.</p>
+            </div>
+
+            <div class="p-3 bg-emerald-950/30 border border-emerald-500/40 rounded-xl space-y-1 flex flex-col justify-center text-center">
+              <span class="font-bold text-emerald-400 text-xs">Offline Simulation Engine</span>
+              <p class="text-[10px] text-slate-300">ClientSim engine enables 100% offline browser execution.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>Tailwind CSS • Chart.js • Lucide Icons</span>
+          <span>100% Responsive Across Mobile & Desktop</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 13: TEST SUITE & VERIFICATION ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="13" data-notes="Quality assurance and correctness are paramount in cryptographic systems. We built an automated test suite with 14 unit and integration test suites covering every module: cryptographic identities, genesis block minting, tamper detection, Raft leader election, smart contract workflows, IPFS storage, Merkle proofs, and AI risk scoring. All 14 tests pass in 0.003 seconds.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 12 // Verification & Automated Testing</span>
+          <span class="text-xs font-mono text-slate-500">PRD §13 • 14 Comprehensive Test Suites</span>
+        </div>
+
+        <div class="my-auto space-y-5">
+          <div class="flex items-center justify-between">
+            <h2 class="text-3xl font-extrabold text-white">Automated Test Suite (100% Pass)</h2>
+            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold rounded-full text-xs">
+              14 / 14 Tests Passing (0.003s)
+            </span>
+          </div>
+
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs space-y-1 text-slate-300">
+            <div class="text-emerald-400">test_01_crypto_identity_and_signing ........................... [OK]</div>
+            <div class="text-emerald-400">test_02_blockchain_genesis_and_block_minting ................. [OK]</div>
+            <div class="text-emerald-400">test_03_blockchain_tamper_detection .......................... [OK]</div>
+            <div class="text-emerald-400">test_04_raft_consensus_and_quorum ............................ [OK]</div>
+            <div class="text-emerald-400">test_05_raft_leader_failure_and_re_election ................. [OK]</div>
+            <div class="text-emerald-400">test_06_smart_contract_register_and_read ..................... [OK]</div>
+            <div class="text-emerald-400">test_07_smart_contract_lifecycle_stages ...................... [OK]</div>
+            <div class="text-emerald-400">test_08_smart_contract_multi_party_transfer .................. [OK]</div>
+            <div class="text-emerald-400">test_09_ipfs_storage_and_tamper_detection .................... [OK]</div>
+            <div class="text-emerald-400">test_10_merkle_tree_proof_generation_and_verification ........ [OK]</div>
+            <div class="text-emerald-400">test_11_ai_risk_engine_scoring_tiers ......................... [OK]</div>
+            <div class="text-emerald-400">test_12_ai_risk_snapshot_hash_anchoring ...................... [OK]</div>
+            <div class="text-emerald-400">test_13_sqlite_database_audit_trail .......................... [OK]</div>
+            <div class="text-emerald-400">test_14_end_to_end_supply_chain_pipeline ..................... [OK]</div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>Executed via: <code class="text-slate-300">python3 run_supply_chain.py --test</code></span>
+          <span>Zero Failures • Deterministic Results</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 14: FUTURE FABRIC ROADMAP ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="14" data-notes="Looking ahead, SUPPLYCHAIN-X was purposefully architected for zero-friction migration to Hyperledger Fabric production deployments. We have already written the official Go chaincode implementing the contract-api interface, as well as the configtx.yaml and docker-compose.yaml network definitions. Future phases can integrate Fabric Certificate Authority, Private Data Collections for sensitive pricing, and opt-in IoT oracle gateways.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 13 // Future Roadmap & Fabric Migration</span>
+          <span class="text-xs font-mono text-slate-500">PRD §12 • Enterprise Scalability</span>
+        </div>
+
+        <div class="my-auto space-y-5">
+          <h2 class="text-3xl font-extrabold text-white">Hyperledger Fabric Production Roadmap</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 bg-slate-800/40 border border-slate-700/60 rounded-xl space-y-2">
+              <span class="font-bold text-emerald-400 text-sm">Phase 1: Fabric Chaincode (Done)</span>
+              <p class="text-slate-300 leading-relaxed">
+                Official Go chaincode (`fabric/chaincode/supplychain.go`) written and ready for deployment with channel endorsement policies.
+              </p>
+            </div>
+
+            <div class="p-4 bg-slate-800/40 border border-slate-700/60 rounded-xl space-y-2">
+              <span class="font-bold text-blue-400 text-sm">Phase 2: Private Data Collections</span>
+              <p class="text-slate-300 leading-relaxed">
+                Enables confidential wholesale pricing and contract terms accessible only between direct transaction counter-parties.
+              </p>
+            </div>
+
+            <div class="p-4 bg-slate-800/40 border border-slate-700/60 rounded-xl space-y-2">
+              <span class="font-bold text-purple-400 text-sm">Phase 3: Hardware Oracle Gateways</span>
+              <p class="text-slate-300 leading-relaxed">
+                Optional hardware oracles (e.g., cold chain temperature monitors) integrated via signed zero-knowledge cryptographic proofs.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-700/40 flex items-center justify-between text-xs">
+            <span class="text-slate-300"><strong>Fabric Artifacts Included:</strong> `configtx.yaml` (channel config), `docker-compose.yaml` (multi-peer cluster), `supplychain.go` (contract-api).</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+          <span>Enterprise Grade • Cloud Native</span>
+          <span>Compatible with IBM Blockchain / AWS Managed Fabric</span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 15: CONCLUSION & Q&A ==================== -->
+      <section class="slide flex-col justify-between h-full" data-slide="15" data-notes="In conclusion, SUPPLYCHAIN-X demonstrates that enterprise supply chain integrity does not depend on fragile physical hardware. By fusing permissioned blockchain, CFT Raft consensus, IPFS Merkle trees, and Random Forest risk intelligence, we achieve an incorruptible digital chain of custody. The repository is live on GitHub and the application is accessible for demonstration. Thank you, and I now welcome your questions.">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Section 14 // Conclusion & Viva Defense</span>
+          <span class="text-xs font-mono text-slate-500">Summary of Deliverables</span>
+        </div>
+
+        <div class="my-auto space-y-5 text-center">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center">
+            <i data-lucide="award" class="w-8 h-8"></i>
+          </div>
+          
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white">Conclusion & Project Summary</h2>
+          <p class="text-sm md:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            SUPPLYCHAIN-X successfully delivers an end-to-end, mathematically verifiable supply chain platform combining <strong>Permissioned Blockchain</strong>, <strong>Crash-Fault Tolerant Raft Consensus</strong>, <strong>IPFS Merkle Proofs</strong>, and <strong>AI Risk Prediction</strong>.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-3 pt-2 text-xs font-mono">
+            <a href="https://github.com/vaishnavir26-byte/SUPPLYCHAIN-X-AI-Driven-Blockchain-Framework-for-Intelligent-Supply-Chain-Traceability" target="_blank" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 rounded-lg flex items-center gap-2 transition">
+              <i data-lucide="github" class="w-4 h-4"></i> GitHub Repository
+            </a>
+            <a href="http://localhost:8000" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg flex items-center gap-2 shadow-lg shadow-emerald-500/20 transition">
+              <i data-lucide="external-link" class="w-4 h-4"></i> Live Application Demo
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-800 pt-4 flex items-center justify-between text-xs text-slate-400">
+          <span class="font-bold text-emerald-400">Thank you! Questions & Discussion</span>
+          <span class="font-mono">PRD v1.0 • Complete & Verified</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Presenter Speaker Notes Drawer (Toggled with 'N') -->
+  <aside id="speaker-notes-panel" class="no-print hidden bg-slate-900 border-t border-slate-800 px-8 py-4 max-w-6xl mx-auto w-full rounded-t-xl text-xs space-y-1.5 transition">
+    <div class="flex items-center justify-between text-slate-400 font-semibold uppercase tracking-wider text-[11px]">
+      <span class="flex items-center gap-1.5 text-emerald-400"><i data-lucide="mic" class="w-3.5 h-3.5"></i> Presenter Talking Points (Slide <span id="notes-slide-num">1</span>)</span>
+      <button onclick="toggleNotes()" class="text-slate-400 hover:text-white">&times; Close</button>
+    </div>
+    <p id="speaker-notes-text" class="text-slate-300 leading-relaxed">
+      Welcome everyone. Today I am presenting SUPPLYCHAIN-X...
+    </p>
+  </aside>
+
+  <!-- Keyboard Shortcuts Bar (Footer) -->
+  <footer class="no-print bg-slate-900/60 border-t border-slate-800/80 px-6 py-2.5 text-center text-xs text-slate-500 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <span>Navigate: <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">&larr;</kbd> <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">&rarr;</kbd> or <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">Space</kbd></span>
+      <span>Fullscreen: <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">F</kbd></span>
+      <span>Notes: <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">N</kbd></span>
+    </div>
+    <div>
+      <span class="text-emerald-500/80 font-mono">SUPPLYCHAIN-X Academic Presentation</span>
+    </div>
+  </footer>
+
+  <script>
+    // Slide Navigation Controller
+    let currentSlide = 1;
+    const totalSlides = 15;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      slides.forEach(slide => {
+        slide.classList.remove('active');
+        if (parseInt(slide.getAttribute('data-slide')) === currentSlide) {
+          slide.classList.add('active');
+          // Update Notes
+          const notes = slide.getAttribute('data-notes') || 'No speaker notes for this slide.';
+          document.getElementById('speaker-notes-text').innerText = notes;
+          document.getElementById('notes-slide-num').innerText = currentSlide;
+        }
+      });
+
+      // Update indicator
+      const pad = (n) => n < 10 ? '0' + n : n;
+      document.getElementById('slide-indicator').innerText = `${pad(currentSlide)} / ${pad(totalSlides)}`;
+      lucide.createIcons();
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    function toggleNotes() {
+      const panel = document.getElementById('speaker-notes-panel');
+      panel.classList.toggle('hidden');
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Keyboard Listeners
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        showSlide(1);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        showSlide(totalSlides);
+      } else if (e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if (e.key.toLowerCase() === 'n') {
+        e.preventDefault();
+        toggleNotes();
+      }
+    });
+
+    // Initialize
+    showSlide(1);
+    lucide.createIcons();
+  </script>
+</body>
+</html>

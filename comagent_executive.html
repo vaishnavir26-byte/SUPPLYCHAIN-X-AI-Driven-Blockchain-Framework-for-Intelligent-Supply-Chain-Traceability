@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComAgent: 10-Slide Executive Review Deck</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- KaTeX for Math Equations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+    .slide { display: none; opacity: 0; transition: opacity 0.25s ease-in-out; }
+    .slide.active { display: flex; opacity: 1; }
+    @media print {
+      body { background: white !important; color: black !important; }
+      .no-print { display: none !important; }
+      .slide { display: flex !important; opacity: 1 !important; page-break-after: always; height: 100vh !important; border: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-sky-500 selection:text-white">
+
+  <!-- Header Bar -->
+  <header class="no-print bg-slate-900/90 backdrop-blur border-b border-slate-800 px-6 py-3 flex items-center justify-between z-50 sticky top-0">
+    <div class="flex items-center space-x-3">
+      <div class="w-8 h-8 rounded-lg bg-sky-500/20 border border-sky-500/30 flex items-center justify-center text-sky-400">
+        <i data-lucide="radio" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <h1 class="text-sm font-bold tracking-tight text-white flex items-center gap-2">
+          COMAGENT <span class="text-xs px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 font-mono font-normal">Executive 10-Slide Deck</span>
+        </h1>
+        <p class="text-xs text-slate-400">Presidency University • 7–10 Minute Review</p>
+      </div>
+    </div>
+
+    <!-- Center Slide Counter -->
+    <div class="flex items-center space-x-2 bg-slate-800/80 px-4 py-1.5 rounded-full border border-slate-700 text-xs font-mono">
+      <span class="text-slate-400">SLIDE</span>
+      <span id="currentSlideNum" class="text-sky-400 font-bold text-sm">01</span>
+      <span class="text-slate-500">/</span>
+      <span class="text-slate-400">10</span>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex items-center space-x-2">
+      <button onclick="toggleSpeakerNotes()" title="Speaker Notes (N)" id="notesBtn" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors flex items-center gap-1.5 text-xs">
+        <i data-lucide="mic" class="w-4 h-4 text-emerald-400"></i>
+        <span class="hidden md:inline">Notes</span>
+      </button>
+      <button onclick="toggleFullscreen()" title="Fullscreen (F)" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors">
+        <i data-lucide="maximize" class="w-4 h-4"></i>
+      </button>
+      <button onclick="window.print()" title="Print / PDF" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors">
+        <i data-lucide="printer" class="w-4 h-4"></i>
+      </button>
+      <a href="https://spectacular-peony-b06cf6.netlify.app" target="_blank" class="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs font-medium transition-colors flex items-center gap-1.5">
+        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        <span>Live App</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="flex-1 flex flex-col justify-center items-center p-4 md:p-8 max-w-6xl mx-auto w-full relative">
+
+    <!-- SLIDE 01 -->
+    <section class="slide active flex-col justify-between w-full min-h-[540px] bg-gradient-to-br from-slate-900/90 to-slate-950 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl relative" data-slide="1" data-speaker="Vaishnavi R" data-notes="Welcome committee. State project title, credentials, and central thesis: max throughput != reliable network.">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">PROJECT REVIEW • PRESIDENCY UNIVERSITY</span>
+        <span class="text-xs text-slate-500 font-mono">01 / 10</span>
+      </div>
+      <div class="my-auto py-6">
+        <div class="inline-block px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono mb-4">
+          FINAL YEAR PROJECT VIVA • 2026
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">
+          COMAGENT: Reliability-Aware<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">Wireless Resource Allocation</span>
+        </h1>
+        <p class="text-slate-300 text-base max-w-2xl font-light">
+          A controlled simulation study investigating target-rate compliance, throughput trade-offs, and Jain fairness.
+        </p>
+      </div>
+      <div class="border-t border-slate-800/80 pt-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+        <div class="bg-slate-800/40 p-2.5 rounded border border-slate-800">
+          <p class="font-bold text-white">Vaishnavi R</p>
+          <p class="text-[11px] text-sky-400 font-mono">20241CSE0706</p>
+        </div>
+        <div class="bg-slate-800/40 p-2.5 rounded border border-slate-800">
+          <p class="font-bold text-white">Reshma K</p>
+          <p class="text-[11px] text-sky-400 font-mono">20241CSE0694</p>
+        </div>
+        <div class="bg-slate-800/40 p-2.5 rounded border border-slate-800">
+          <p class="font-bold text-white">M B Gayatri</p>
+          <p class="text-[11px] text-sky-400 font-mono">20241CSE0704</p>
+        </div>
+        <div class="bg-slate-800/40 p-2.5 rounded border border-slate-800">
+          <p class="font-bold text-white">Prakruthi HR</p>
+          <p class="text-[11px] text-sky-400 font-mono">20241CSE0703</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 02 -->
+    <section class="slide flex-col justify-between w-full min-h-[540px] bg-slate-900/90 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl" data-slide="2" data-speaker="Vaishnavi R" data-notes="Contrast sum-rate maximization vs user outage. Explain 50 users competing for 10 MHz & 1W.">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">PROBLEM STATEMENT</span>
+        <span class="text-xs text-slate-500 font-mono">02 / 10</span>
+      </div>
+      <div class="my-auto py-6">
+        <h2 class="text-3xl font-bold text-white mb-4">The Outage Dilemma in Shared Spectrum</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+          <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+            <h3 class="font-bold text-red-400 text-base mb-2">The Traditional Flaw</h3>
+            <p class="text-slate-300 text-xs leading-relaxed mb-3">
+              Most schedulers maximize aggregate sum-rate ($\sum r_i$). Under scarce resources, this gives almost all bandwidth to users with the cleanest channels.
+            </p>
+            <div class="p-3 bg-slate-900 rounded border border-slate-800 text-xs text-amber-300">
+              <strong>Result:</strong> High aggregate speed, but severe outage for cell-edge users who fail their target rates ($R_t$).
+            </div>
+          </div>
+          <div class="bg-slate-800/50 p-5 rounded-xl border border-sky-500/30">
+            <h3 class="font-bold text-sky-400 text-base mb-2">ComAgent's Objective</h3>
+            <p class="text-slate-300 text-xs leading-relaxed mb-3">
+              Distribute limited spectrum ($10\text{ MHz}$) and power ($1.0\text{ W}$) to maximize the fraction of users meeting their target operating rate ($r_i \ge R_t$).
+            </p>
+            <div class="p-3 bg-sky-950/40 rounded border border-sky-500/20 text-xs text-sky-300">
+              <strong>Focus:</strong> Quantify the explicit trade-off between reliability gains and Jain fairness.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/80 pt-3 text-xs text-slate-400">
+        Physical limits: 10 MHz spectrum • 1.0 W total transmit power • Heterogeneous channel gains ($g_i$)
+      </div>
+    </section>
+
+    <!-- SLIDE 03 -->
+    <section class="slide flex-col justify-between w-full min-h-[540px] bg-slate-900/90 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl" data-slide="3" data-speaker="Reshma K" data-notes="Explain the Shannon rate abstraction formula and Jain's fairness index.">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">MATHEMATICAL MODEL</span>
+        <span class="text-xs text-slate-500 font-mono">03 / 10</span>
+      </div>
+      <div class="my-auto py-6">
+        <h2 class="text-3xl font-bold text-white mb-4">Rate Abstraction & Fairness Metrics</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+          <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+            <h3 class="font-bold text-sky-400 text-base mb-2">Shannon Achievable Rate</h3>
+            <div class="p-3 bg-slate-900 rounded text-center text-sky-300 font-mono text-base my-2">
+              $$r_i = B_i \log_2\left(1 + \frac{P_i g_i}{N_i + I_i}\right)$$
+            </div>
+            <ul class="text-xs text-slate-300 space-y-1 mt-2">
+              <li>• $B_i$: Assigned bandwidth slice ($\sum B_i \le 10\text{ MHz}$)</li>
+              <li>• $P_i$: Assigned transmit power ($\sum P_i \le 1.0\text{ W}$)</li>
+              <li>• $N_i$: Thermal noise floor ($N_0 B_i$)</li>
+              <li>• $I_i$: Cross-user interference coupling</li>
+            </ul>
+          </div>
+          <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+            <h3 class="font-bold text-amber-400 text-base mb-2">Jain's Fairness Index</h3>
+            <div class="p-3 bg-slate-900 rounded text-center text-amber-300 font-mono text-base my-2">
+              $$J(r) = \frac{\left(\sum_{i=1}^N r_i\right)^2}{N \sum_{i=1}^N r_i^2}$$
+            </div>
+            <ul class="text-xs text-slate-300 space-y-1 mt-2">
+              <li>• Range: $[1/N, 1.0]$</li>
+              <li>• Evaluated directly on achieved rate vector $r$</li>
+              <li>• Closer to 1.0 = equal sharing; lower = skewed</li>
+              <li>• Prevents drawing false throughput-only conclusions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/80 pt-3 text-xs text-slate-400">
+        Theoretical grounding: Shannon (1948), Goldsmith (2005), and Jain et al. (1984).
+      </div>
+    </section>
+
+    <!-- SLIDE 04 -->
+    <section class="slide flex-col justify-between w-full min-h-[540px] bg-slate-900/90 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl" data-slide="4" data-speaker="Reshma K" data-notes="Walk through the 6-stage architecture and note the 100% budget check pass rate.">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">SYSTEM CONSTRAINTS</span>
+        <span class="text-xs text-slate-500 font-mono">04 / 10</span>
+      </div>
+      <div class="my-auto py-6">
+        <h2 class="text-3xl font-bold text-white mb-4">Architecture & Resource Budget Caps</h2>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-3 text-xs text-center mb-6">
+          <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
+            <div class="font-bold text-sky-400">1. Scenario</div>
+            <p class="text-[11px] text-slate-400 mt-1">$N$, Target $R_t$</p>
+          </div>
+          <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
+            <div class="font-bold text-sky-400">2. Channel</div>
+            <p class="text-[11px] text-slate-400 mt-1">Gain $g_i$, Noise $N_i$</p>
+          </div>
+          <div class="bg-slate-800/60 p-3 rounded-lg border border-sky-500/40">
+            <div class="font-bold text-sky-300">3. Allocator</div>
+            <p class="text-[11px] text-slate-300 mt-1">Equal, Greedy, PF, V2</p>
+          </div>
+          <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
+            <div class="font-bold text-sky-400">4. Rate Engine</div>
+            <p class="text-[11px] text-slate-400 mt-1">Shannon $r_i$ capacity</p>
+          </div>
+          <div class="bg-slate-800/60 p-3 rounded-lg border border-emerald-500/40">
+            <div class="font-bold text-emerald-400">5. Validator</div>
+            <p class="text-[11px] text-emerald-300 mt-1">$\le 10\text{MHz}, 1\text{W}$</p>
+          </div>
+          <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
+            <div class="font-bold text-sky-400">6. Metrics</div>
+            <p class="text-[11px] text-slate-400 mt-1">$T, R, J$, Bootstrap</p>
+          </div>
+        </div>
+        <div class="p-3 bg-emerald-950/30 rounded-xl border border-emerald-500/30 text-xs text-emerald-300 flex justify-between items-center">
+          <span><strong>Budget Guarantee:</strong> $\sum B_i \le 10\text{ MHz}, \quad \sum P_i \le 1.0\text{ W}, \quad B_i \ge 0, \quad P_i \ge 0$</span>
+          <span class="font-mono font-bold">100% (480/480 Runs Passed)</span>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/80 pt-3 text-xs text-slate-400">
+        Paired seed design: identical channel realizations evaluated across all 4 methods.
+      </div>
+    </section>
+
+    <!-- SLIDE 05 -->
+    <section class="slide flex-col justify-between w-full min-h-[540px] bg-slate-900/90 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl" data-slide="5" data-speaker="M B Gayatri" data-notes="Explain the 4 steps of V2: estimate need, sort by feasibility, feasible-first, greedy remainder.">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">PROPOSED METHOD</span>
+        <span class="text-xs text-slate-500 font-mono">05 / 10</span>
+      </div>
+      <div class="my-auto py-6">
+        <h2 class="text-3xl font-bold text-white mb-4">Reliability Aware V2: Feasible-First Allocation</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+          <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+            <div class="font-mono text-sky-400 font-bold mb-1">1. Estimate Need</div>
+            <p class="text-slate-300">Inverts the rate formula to estimate bandwidth $\hat{B}_i$ needed for user $i$ to hit target rate $R_t$.</p>
+          </div>
+          <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+            <div class="font-mono text-sky-400 font-bold mb-1">2. Sort by Need</div>
+            <p class="text-slate-300">Ranks users in ascending order of resource need. Users closest to feasibility are served first.</p>
+          </div>
+          <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+            <div class="font-mono text-sky-400 font-bold mb-1">3. Feasible-First</div>
+            <p class="text-slate-300">Allocates bandwidth sequentially until budget runs out; prunes unserviceable users in this pass.</p>
+          </div>
+          <div class="bg-slate-800/60 p-4 rounded-xl border border-sky-500/40">
+            <div class="font-mono text-sky-300 font-bold mb-1">4. Greedy Surplus</div>
+            <p class="text-slate-300">Any leftover spectral or power headroom is greedily assigned to boost aggregate sum throughput.</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/80 pt-3 text-xs text-slate-400">
+        Design shift: Blind symmetric division (Equal) $\rightarrow$ Target-aware threshold optimization (V2).
+      </div>
+    </section>
+
+    <!-- SLIDE 06 -->
+    <section class="slide flex-col justify-between w-full min-h-[540px] bg-slate-900/90 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl" data-slide="6" data-speaker="M B Gayatri" data-notes="Detail the 480-run factorial experiment matrix.">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">EXPERIMENTAL SETUP</span>
+        <span class="text-xs text-slate-500 font-mono">06 / 10</span>
+      </div>
+      <div class="my-auto py-6">
+        <h2 class="text-3xl font-bold text-white mb-4">480-Run Factorial Simulation Matrix</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs text-center mb-6">
+          <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+            <span class="text-slate-400 block text-[11px]">User Counts ($N$)</span>
+            <span class="text-xl font-bold font-mono text-white mt-1 block">5, 10, 20, 50</span>
+            <span class="text-[10px] text-sky-400">Light to congested load</span>
+          </div>
+          <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+            <span class="text-slate-400 block text-[11px]">Target Rates ($R_t$)</span>
+            <span class="text-xl font-bold font-mono text-white mt-1 block">0.5, 1.0, 2.0</span>
+            <span class="text-[10px] text-sky-400">Mbps per user</span>
+          </div>
+          <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+            <span class="text-slate-400 block text-[11px]">Random Seeds</span>
+            <span class="text-xl font-bold font-mono text-white mt-1 block">42 – 51</span>
+            <span class="text-[10px] text-sky-400">10 matched seeds</span>
+          </div>
+          <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+            <span class="text-slate-400 block text-[11px]">Allocation Methods</span>
+            <span class="text-xl font-bold font-mono text-white mt-1 block">Equal, Greedy, PF, V2</span>
+            <span class="text-[10px] text-sky-400">4 comparative policies</span>
+          </div>
+        </div>
+        <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 text-xs text-center text-slate-300">
+          <strong>Scale:</strong> 4 populations $\times$ 3 target rates $\times$ 10 seeds $\times$ 4 methods = <strong>480 evaluations</strong>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/80 pt-3 text-xs text-slate-400">
+        Metrics tracked: Aggregate Throughput, Reliability (% $\ge R_t$), Minimum Rate, Jain Fairness Index.
+      </div>
+    </section>
+
+    <!-- SLIDE 07 -->
+    <section class="slide flex-col justify-between w-full min-h-[540px] bg-slate-900/90 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl" data-slide="7" data-speaker="Prakruthi HR" data-notes="Present the 10-user, 1.0 Mbps benchmark results (+10 pp reliability vs -0.296 fairness).">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">BENCHMARK EVALUATION</span>
+        <span class="text-xs text-slate-500 font-mono">07 / 10</span>
+      </div>
+      <div class="my-auto py-6">
+        <h2 class="text-3xl font-bold text-white mb-2">Benchmark: 10 Users, 1.0 Mbps Target</h2>
+        <p class="text-slate-400 text-xs mb-6">Empirical results averaged across 10 paired seeds (42–51):</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700">
+            <span class="text-xs text-slate-400 font-mono uppercase block mb-1">Throughput</span>
+            <div class="text-xl font-bold font-mono text-white mt-1">25.353 Mbps</div>
+            <p class="text-xs text-emerald-400 font-mono mt-2">+0.631 Mbps (+2.6% vs Equal)</p>
+          </div>
+          <div class="bg-slate-800/60 p-5 rounded-xl border border-sky-500/40">
+            <span class="text-xs text-sky-400 font-mono uppercase block mb-1 font-bold">Reliability (%)</span>
+            <div class="text-xl font-bold font-mono text-sky-300 mt-1">77.000%</div>
+            <p class="text-xs text-sky-300 font-mono mt-2 font-bold">+10.0 pp gain (67% $\rightarrow$ 77%)</p>
+          </div>
+          <div class="bg-slate-800/60 p-5 rounded-xl border border-amber-500/30">
+            <span class="text-xs text-amber-400 font-mono uppercase block mb-1 font-bold">Jain Fairness</span>
+            <div class="text-xl font-bold font-mono text-amber-300 mt-1">0.274</div>
+            <p class="text-xs text-amber-300 font-mono mt-2">−0.296 drop (0.570 $\rightarrow$ 0.274)</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/80 pt-3 text-xs text-slate-400">
+        Key finding: Higher throughput and +10% more users satisfied, at the direct cost of rate equity.
+      </div>
+    </section>
+
+    <!-- SLIDE 08 -->
+    <section class="slide flex-col justify-between w-full min-h-[540px] bg-slate-900/90 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl" data-slide="8" data-speaker="Prakruthi HR" data-notes="Walk through the 4x3 matrix. Highlight peak +25.8 pp at 50 users and explain why 5 users dropped.">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">EMPIRICAL EVIDENCE</span>
+        <span class="text-xs text-slate-500 font-mono">08 / 10</span>
+      </div>
+      <div class="my-auto py-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Scenario-Wide Matrix: The 4×3 Heatmap</h2>
+        <p class="text-slate-400 text-xs mb-4">Reliability change ($\Delta = \text{V2} - \text{Equal}$ in pp) across all 12 scenarios:</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-center text-xs border border-slate-800 rounded-xl overflow-hidden font-mono">
+            <thead class="bg-slate-800 text-slate-300">
+              <tr>
+                <th class="p-2.5 text-left">USERS \ TARGET</th>
+                <th class="p-2.5">0.5 Mbps</th>
+                <th class="p-2.5">1.0 Mbps</th>
+                <th class="p-2.5">2.0 Mbps</th>
+                <th class="p-2.5">Outcome</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800 text-slate-200">
+              <tr>
+                <td class="p-2.5 text-left font-bold text-white">5 Users</td>
+                <td class="p-2.5 text-amber-400 bg-amber-950/20 font-bold">-6.0 pp</td>
+                <td class="p-2.5 text-slate-400 bg-slate-900/40">+0.0 pp</td>
+                <td class="p-2.5 text-amber-400 bg-amber-950/20 font-bold">-4.0 pp</td>
+                <td class="p-2.5 text-slate-400">Equal superior (abundant spectrum)</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-left font-bold text-white">10 Users</td>
+                <td class="p-2.5 text-emerald-400 bg-emerald-950/20 font-bold">+20.0 pp</td>
+                <td class="p-2.5 text-emerald-400 bg-emerald-950/20 font-bold">+10.0 pp</td>
+                <td class="p-2.5 text-emerald-400 bg-emerald-950/20 font-bold">+18.0 pp</td>
+                <td class="p-2.5 text-emerald-400">Consistent reliability gain</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 text-left font-bold text-white">20 Users</td>
+                <td class="p-2.5 text-emerald-400 bg-emerald-950/20 font-bold">+5.0 pp</td>
+                <td class="p-2.5 text-emerald-400 bg-emerald-950/20 font-bold">+19.0 pp</td>
+                <td class="p-2.5 text-emerald-400 bg-emerald-950/20 font-bold">+22.5 pp</td>
+                <td class="p-2.5 text-emerald-400">Robust gain under load</td>
+              </tr>
+              <tr class="bg-sky-950/20">
+                <td class="p-2.5 text-left font-bold text-white">50 Users</td>
+                <td class="p-2.5 text-emerald-400 bg-emerald-950/20 font-bold">+19.6 pp</td>
+                <td class="p-2.5 text-emerald-300 bg-emerald-900/30 font-bold border border-emerald-500/40 rounded">+25.8 pp</td>
+                <td class="p-2.5 text-emerald-400 bg-emerald-950/20 font-bold">+20.6 pp</td>
+                <td class="p-2.5 text-emerald-300 font-bold">Peak Advantage (+25.8 pp)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/80 pt-3 text-xs text-slate-400 flex justify-between">
+        <span>V2 improved reliability in 8/12 scenarios.</span>
+        <span>Jain fairness lower in all 12 scenarios.</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 09 -->
+    <section class="slide flex-col justify-between w-full min-h-[540px] bg-slate-900/90 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl" data-slide="9" data-speaker="Prakruthi HR" data-notes="Explain 95% bootstrap CIs and research boundaries (Shannon, PF audit).">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">STATISTICAL RIGOR & INTEGRITY</span>
+        <span class="text-xs text-slate-500 font-mono">09 / 10</span>
+      </div>
+      <div class="my-auto py-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Bootstrap Uncertainty & Scope Boundaries</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+          <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+            <h3 class="font-bold text-sky-400 text-sm mb-3">20,000 Paired Bootstrap CIs</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>• <strong>50 Users (1.0 Mbps):</strong> 95% CI $[+15.6, +34.6\text{ pp}]$ (Excludes zero $\rightarrow$ Statistically significant)</li>
+              <li>• <strong>20 Users (2.0 Mbps):</strong> 95% CI $[+12.5, +31.0\text{ pp}]$ (Excludes zero $\rightarrow$ Significant)</li>
+              <li>• <strong>10 Users (1.0 Mbps):</strong> 95% CI $[−8.0, +23.0\text{ pp}]$ (Includes zero $\rightarrow$ Uncertain under 10 seeds)</li>
+            </ul>
+          </div>
+          <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+            <h3 class="font-bold text-amber-400 text-sm mb-3">Academic Research Integrity</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>• <strong>Shannon Abstraction:</strong> Simulation model; not 3GPP NR PHY hardware</li>
+              <li>• <strong>Proportional Fair Audit:</strong> PF outputs matched Equal across several seeds, noted for code audit</li>
+              <li>• <strong>Heuristic Scope:</strong> V2 is an engineering greedy heuristic, not provably Pareto optimal</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/80 pt-3 text-xs text-slate-400">
+        Scientific honesty: Stating both the measured achievement and the boundaries of the experiment.
+      </div>
+    </section>
+
+    <!-- SLIDE 10 -->
+    <section class="slide flex-col justify-between w-full min-h-[540px] bg-slate-900/90 p-8 md:p-12 rounded-2xl border border-slate-800 shadow-2xl" data-slide="10" data-speaker="Vaishnavi R" data-notes="Deliver the closing conclusion and open for Q&A.">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+        <span class="text-xs uppercase font-mono text-sky-400 font-bold">CONCLUSION & VIVA SUMMARY</span>
+        <span class="text-xs text-slate-500 font-mono">10 / 10</span>
+      </div>
+      <div class="my-auto py-6">
+        <div class="bg-gradient-to-r from-sky-950/60 to-slate-900 p-6 rounded-2xl border border-sky-500/30 mb-6">
+          <h2 class="text-2xl font-bold text-white mb-2">Final Research Conclusion</h2>
+          <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
+            Reliability Aware V2 increases the probability of users meeting their required data rates in <strong>8 out of 12 scenarios</strong>, achieving gains up to <strong>+25.8 percentage points</strong> under severe congestion. However, its Jain fairness is lower than Equal Allocation in all 12 scenarios. It represents a <strong>reliability-focused engineering trade-off</strong>—not a universal drop-in replacement.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono text-slate-300">
+          <div class="p-3 bg-slate-800/40 rounded border border-slate-800">
+            <span class="text-sky-400 block font-bold mb-1">Live Simulator Deployment:</span>
+            <a href="https://spectacular-peony-b06cf6.netlify.app" target="_blank" class="hover:underline text-slate-300">https://spectacular-peony-b06cf6.netlify.app</a>
+          </div>
+          <div class="p-3 bg-slate-800/40 rounded border border-slate-800">
+            <span class="text-sky-400 block font-bold mb-1">GitHub Source Code:</span>
+            <a href="https://github.com/vaishnavir26-byte/ComAgent-Wireless-Optimization.git" target="_blank" class="hover:underline text-slate-300">vaishnavir26-byte/ComAgent-Wireless-Optimization</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/80 pt-3 text-xs text-slate-400 flex justify-between">
+        <span>Presidency University • Department of CSE • 2026</span>
+        <span class="text-sky-400 font-bold">Thank You! Questions Welcome.</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Persistent Presenter Notes Drawer -->
+  <div id="speakerNotesDrawer" class="no-print bg-slate-900 border-t border-slate-800 px-6 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <div class="flex items-start gap-3">
+      <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+        <i data-lucide="mic" class="w-4 h-4"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs uppercase font-mono tracking-wider text-slate-400">Presenter:</span>
+          <span id="noteSpeaker" class="text-xs font-bold text-sky-400">Vaishnavi R</span>
+        </div>
+        <p id="noteText" class="text-xs text-slate-300 mt-1 max-w-4xl leading-relaxed">
+          Welcome committee. State project title, credentials, and central thesis: max throughput != reliable network.
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2 shrink-0">
+      <button onclick="prevSlide()" class="p-2 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs flex items-center gap-1">
+        <i data-lucide="chevron-left" class="w-4 h-4"></i> Prev
+      </button>
+      <button onclick="nextSlide()" class="p-2 rounded bg-sky-600 hover:bg-sky-500 text-white text-xs flex items-center gap-1 font-medium">
+        Next <i data-lucide="chevron-right" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 10;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(n) {
+      if (n < 1) n = 1;
+      if (n > totalSlides) n = totalSlides;
+      currentSlide = n;
+
+      slides.forEach((s, idx) => {
+        if (idx === currentSlide - 1) {
+          s.classList.add('active');
+          document.getElementById('noteSpeaker').textContent = s.getAttribute('data-speaker') || 'Team Member';
+          document.getElementById('noteText').textContent = s.getAttribute('data-notes') || 'No specific notes.';
+        } else {
+          s.classList.remove('active');
+        }
+      });
+
+      document.getElementById('currentSlideNum').textContent = String(currentSlide).padStart(2, '0');
+    }
+
+    function nextSlide() { if (currentSlide < totalSlides) showSlide(currentSlide + 1); }
+    function prevSlide() { if (currentSlide > 1) showSlide(currentSlide - 1); }
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+      else if (document.exitFullscreen) document.exitFullscreen();
+    }
+    function toggleSpeakerNotes() {
+      document.getElementById('speakerNotesDrawer').classList.toggle('hidden');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') nextSlide();
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+      else if (e.key === 'Home') showSlide(1);
+      else if (e.key === 'End') showSlide(totalSlides);
+      else if (e.key.toLowerCase() === 'f') toggleFullscreen();
+      else if (e.key.toLowerCase() === 'n' || e.key.toLowerCase() === 'p') toggleSpeakerNotes();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      showSlide(1);
+    });
+  </script>
+</body>
+</html>

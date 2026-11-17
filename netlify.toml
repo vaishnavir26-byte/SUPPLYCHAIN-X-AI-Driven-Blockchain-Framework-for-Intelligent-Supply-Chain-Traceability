@@ -2,6 +2,16 @@
   publish = "."
 
 [[redirects]]
+  from = "/student"
+  to = "/student_dashboard.html"
+  status = 200
+
+[[redirects]]
+  from = "/analytics"
+  to = "/student_dashboard.html"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
@@ -13,3 +23,4 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+

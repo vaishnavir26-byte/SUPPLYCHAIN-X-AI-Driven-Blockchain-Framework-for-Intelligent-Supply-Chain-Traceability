@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance Analytics Dashboard (PRD v1.0)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    /* Custom scrollbars */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--card); }
+    ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen p-4 md:p-6 font-sans">
+  <div class="max-w-7xl mx-auto space-y-6">
+
+    <!-- Top Navigation Bar / Header -->
+    <header class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)]">PRD v1.0 Compliant</span>
+            <span class="text-xs text-[var(--muted-foreground)]">UCI Mathematics Dataset (N = 395)</span>
+          </div>
+          <h1 class="text-2xl font-bold tracking-tight text-[var(--foreground)] mt-1.5">
+            Student Performance Analytics & Early Risk System
+          </h1>
+          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+            Empirical investigation of academic determinants, mid-course trajectories, and holdout-validated risk models.
+          </p>
+        </div>
+
+        <!-- Quick Summary Stats -->
+        <div class="flex items-center gap-4 text-xs">
+          <div class="bg-[var(--background)] px-3 py-2 rounded-lg border border-[var(--border)]">
+            <span class="text-[var(--muted-foreground)] block">Cohort Size</span>
+            <span class="font-bold text-sm text-[var(--foreground)]">395 Students</span>
+          </div>
+          <div class="bg-[var(--background)] px-3 py-2 rounded-lg border border-[var(--border)]">
+            <span class="text-[var(--muted-foreground)] block">At-Risk Rate (G3 &lt; 10)</span>
+            <span class="font-bold text-sm text-red-500">32.9% (130)</span>
+          </div>
+          <div class="bg-[var(--background)] px-3 py-2 rounded-lg border border-[var(--border)]">
+            <span class="text-[var(--muted-foreground)] block">Holdout Test AUC</span>
+            <span class="font-bold text-sm text-emerald-500">0.980</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="flex border-b border-[var(--border)] mt-6 -mb-5 space-x-6">
+        <button onclick="switchTab('simulator')" id="tab-btn-simulator" class="tab-btn pb-3 text-sm font-semibold border-b-2 border-[var(--primary)] text-[var(--primary)]">
+          1. Risk & Grade Predictor
+        </button>
+        <button onclick="switchTab('threshold')" id="tab-btn-threshold" class="tab-btn pb-3 text-sm font-medium border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+          2. Threshold & Confusion Matrix (Holdout)
+        </button>
+        <button onclick="switchTab('hypotheses')" id="tab-btn-hypotheses" class="tab-btn pb-3 text-sm font-medium border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+          3. Hypothesis Testing Explorer
+        </button>
+        <button onclick="switchTab('data')" id="tab-btn-data" class="tab-btn pb-3 text-sm font-medium border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+          4. Cohort Data Explorer
+        </button>
+      </nav>
+    </header>
+
+    <!-- ============================================================== -->
+    <!-- TAB 1: PREDICTIVE SIMULATOR -->
+    <!-- ============================================================== -->
+    <section id="tab-simulator" class="tab-pane space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Input Parameters Card -->
+        <div class="lg:col-span-7 bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-[var(--border)]">
+            <div>
+              <h2 class="font-bold text-base text-[var(--foreground)]">Mid-Course Scenario Parameters</h2>
+              <p class="text-xs text-[var(--muted-foreground)]">Adjust student features to inspect dual-model projections</p>
+            </div>
+            <!-- Presets -->
+            <div class="flex gap-1.5">
+              <button onclick="applyPreset(5, 6, 1, 10, 2, 'yes')" class="text-xs px-2.5 py-1 rounded bg-[var(--background)] hover:bg-[var(--border)] border border-[var(--border)] transition">High Risk</button>
+              <button onclick="applyPreset(11, 11, 2, 4, 0, 'no')" class="text-xs px-2.5 py-1 rounded bg-[var(--background)] hover:bg-[var(--border)] border border-[var(--border)] transition">Average</button>
+              <button onclick="applyPreset(16, 17, 3, 2, 0, 'no')" class="text-xs px-2.5 py-1 rounded bg-[var(--background)] hover:bg-[var(--border)] border border-[var(--border)] transition">Honors</button>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <!-- Period 1 & 2 Grades -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-[var(--background)] p-3 rounded-lg border border-[var(--border)] space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <label class="font-medium text-[var(--foreground)]">Period 1 Grade (G1)</label>
+                  <span id="g1-num" class="font-mono text-sm font-bold text-[var(--primary)]">11 / 20</span>
+                </div>
+                <input id="in-g1" type="range" min="0" max="20" value="11" class="w-full accent-[var(--primary)] cursor-pointer" oninput="runModels()">
+                <div class="flex justify-between text-[10px] text-[var(--muted-foreground)]">
+                  <span>0 (Failing)</span>
+                  <span>10 (Pass)</span>
+                  <span>20 (Max)</span>
+                </div>
+              </div>
+
+              <div class="bg-[var(--background)] p-3 rounded-lg border border-[var(--border)] space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <label class="font-medium text-[var(--foreground)]">Period 2 Grade (G2)</label>
+                  <span id="g2-num" class="font-mono text-sm font-bold text-[var(--primary)]">11 / 20</span>
+                </div>
+                <input id="in-g2" type="range" min="0" max="20" value="11" class="w-full accent-[var(--primary)] cursor-pointer" oninput="runModels()">
+                <div class="flex justify-between text-[10px] text-[var(--muted-foreground)]">
+                  <span>0 (Failing)</span>
+                  <span>10 (Pass)</span>
+                  <span>20 (Max)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Behavioral Factors -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-[var(--background)] p-3 rounded-lg border border-[var(--border)] space-y-1.5">
+                <label class="font-medium text-[var(--foreground)] block">Weekly Study Time</label>
+                <select id="in-study" class="w-full bg-[var(--card)] border border-[var(--border)] rounded px-2.5 py-1.5 text-xs text-[var(--foreground)]" onchange="runModels()">
+                  <option value="1">Tier 1: &lt; 2 hours / week</option>
+                  <option value="2" selected>Tier 2: 2 to 5 hours / week</option>
+                  <option value="3">Tier 3: 5 to 10 hours / week</option>
+                  <option value="4">Tier 4: &gt; 10 hours / week</option>
+                </select>
+                <span class="text-[10px] text-[var(--muted-foreground)]">ANOVA indicates within-cohort variance dominates tier difference.</span>
+              </div>
+
+              <div class="bg-[var(--background)] p-3 rounded-lg border border-[var(--border)] space-y-1.5">
+                <label class="font-medium text-[var(--foreground)] block">Extra Educational Support (`schoolsup`)</label>
+                <select id="in-sup" class="w-full bg-[var(--card)] border border-[var(--border)] rounded px-2.5 py-1.5 text-xs text-[var(--foreground)]" onchange="runModels()">
+                  <option value="no" selected>No Institutional Tutoring</option>
+                  <option value="yes">Yes (Assigned Remedial Tutoring)</option>
+                </select>
+                <span class="text-[10px] text-[var(--muted-foreground)]">Compensatory indicator assigned to struggling learners.</span>
+              </div>
+            </div>
+
+            <!-- Absences & Failures -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-[var(--background)] p-3 rounded-lg border border-[var(--border)] space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <label class="font-medium text-[var(--foreground)]">Class Absences</label>
+                  <span id="abs-num" class="font-mono text-sm font-bold text-[var(--foreground)]">4 sessions</span>
+                </div>
+                <input id="in-abs" type="range" min="0" max="40" value="4" class="w-full accent-[var(--primary)] cursor-pointer" oninput="runModels()">
+              </div>
+
+              <div class="bg-[var(--background)] p-3 rounded-lg border border-[var(--border)] space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <label class="font-medium text-[var(--foreground)]">Past Course Failures</label>
+                  <span id="fails-num" class="font-mono text-sm font-bold text-[var(--foreground)]">0</span>
+                </div>
+                <input id="in-fails" type="range" min="0" max="3" value="0" class="w-full accent-[var(--primary)] cursor-pointer" oninput="runModels()">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Cards -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Final Grade Estimate Card -->
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-semibold text-[var(--muted-foreground)] uppercase tracking-wider">OLS Multiple Linear Regression</span>
+              <span class="text-[11px] px-2 py-0.5 rounded font-mono bg-emerald-500/10 text-emerald-500">Test R² = 0.826</span>
+            </div>
+            
+            <div class="flex items-baseline justify-between">
+              <div>
+                <span class="text-3xl font-extrabold font-mono text-[var(--foreground)]" id="out-g3">10.9</span>
+                <span class="text-sm text-[var(--muted-foreground)]">/ 20</span>
+              </div>
+              <span id="out-status-badge" class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-500">
+                Passing Trajectory
+              </span>
+            </div>
+
+            <!-- Grade Scale Bar -->
+            <div class="space-y-1">
+              <div class="w-full bg-[var(--background)] h-2.5 rounded-full overflow-hidden border border-[var(--border)]">
+                <div id="out-grade-bar" class="h-full bg-[var(--primary)] transition-all duration-200" style="width: 54.5%;"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>0 (Fail)</span>
+                <span class="text-red-400 font-semibold">10 (Cutoff)</span>
+                <span>20 (Top)</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-[var(--muted-foreground)] border-t border-[var(--border)] pt-3 leading-relaxed">
+              Formula: <code class="text-[11px] font-mono bg-[var(--background)] px-1 rounded">G3 = -1.56 + 0.18(G1) + 0.96(G2) - 0.20(Study) + 0.04(Abs) - 0.15(Fails)</code>. Held-out standard error is <strong class="text-[var(--foreground)]">±1.92 points</strong>.
+            </p>
+          </div>
+
+          <!-- Risk Probability Card -->
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-semibold text-[var(--muted-foreground)] uppercase tracking-wider">Logistic Classification Engine</span>
+              <span class="text-[11px] px-2 py-0.5 rounded font-mono bg-blue-500/10 text-blue-500">Test AUC = 0.980</span>
+            </div>
+
+            <div class="flex items-baseline justify-between">
+              <div>
+                <span class="text-3xl font-extrabold font-mono" id="out-prob">13.5%</span>
+                <span class="text-xs text-[var(--muted-foreground)]">at-risk chance</span>
+              </div>
+              <span id="out-risk-level" class="text-xs font-bold text-emerald-500">Low Risk</span>
+            </div>
+
+            <div class="w-full bg-[var(--background)] h-2.5 rounded-full overflow-hidden border border-[var(--border)]">
+              <div id="out-risk-bar" class="h-full bg-emerald-500 transition-all duration-200" style="width: 13.5%;"></div>
+            </div>
+
+            <!-- Action Advice Box -->
+            <div id="out-advice-box" class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs text-[var(--muted-foreground)] space-y-1">
+              <span class="font-semibold text-[var(--foreground)] block">Advisory Recommendation:</span>
+              <span id="out-advice-text">Performance indicators indicate satisfactory progress. Standard periodic monitoring is sufficient.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 2: THRESHOLD SENSITIVITY & CONFUSION MATRIX -->
+    <!-- ============================================================== -->
+    <section id="tab-threshold" class="tab-pane hidden space-y-6">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--border)]">
+          <div>
+            <h2 class="text-base font-bold text-[var(--foreground)]">Holdout Test Set Classification Evaluator</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Evaluate real-time tradeoffs on the strictly isolated 20% test partition (N = 79, Seed 42, 26 At-Risk, 53 Passing)
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="setThreshold(0.50)" class="text-xs px-3 py-1 rounded bg-[var(--background)] border border-[var(--border)] hover:bg-[var(--border)] transition">Standard 0.50</button>
+            <button onclick="setThreshold(0.3314)" class="text-xs px-3 py-1 rounded bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 transition font-semibold">Youden J Optimal (0.33)</button>
+          </div>
+        </div>
+
+        <!-- Threshold Slider Control -->
+        <div class="bg-[var(--background)] p-4 rounded-xl border border-[var(--border)] space-y-2">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-semibold text-[var(--foreground)]">Classification Probability Cutoff ($\tau$)</span>
+            <span id="thresh-val" class="text-base font-mono font-bold text-[var(--primary)]">0.5000</span>
+          </div>
+          <input id="thresh-slider" type="range" min="0.05" max="0.95" step="0.01" value="0.50" class="w-full accent-[var(--primary)] cursor-pointer" oninput="updateConfusionMatrix()">
+          <div class="flex justify-between text-[11px] text-[var(--muted-foreground)]">
+            <span>0.05 (Aggressive Screening - High Recall)</span>
+            <span>0.50 (Balanced Cutoff)</span>
+            <span>0.95 (Conservative - High Specificity)</span>
+          </div>
+        </div>
+
+        <!-- Metrics Grid & Confusion Matrix Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Confusion Matrix (5 cols) -->
+          <div class="lg:col-span-5 bg-[var(--background)] p-4 rounded-xl border border-[var(--border)] space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)]">Holdout Confusion Matrix</h3>
+            
+            <div class="grid grid-cols-2 gap-2 text-center text-xs">
+              <!-- True Negative -->
+              <div class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold block">True Negative (TN)</span>
+                <span id="cm-tn" class="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400">49</span>
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Correct Passing</span>
+              </div>
+              <!-- False Positive -->
+              <div class="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                <span class="text-[10px] text-amber-600 dark:text-amber-400 font-semibold block">False Positive (FP)</span>
+                <span id="cm-fp" class="text-2xl font-bold font-mono text-amber-600 dark:text-amber-400">4</span>
+                <span class="text-[10px] text-[var(--muted-foreground)] block">False Alarms</span>
+              </div>
+              <!-- False Negative -->
+              <div class="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
+                <span class="text-[10px] text-red-600 dark:text-red-400 font-semibold block">False Negative (FN)</span>
+                <span id="cm-fn" class="text-2xl font-bold font-mono text-red-600 dark:text-red-400">3</span>
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Missed At-Risk</span>
+              </div>
+              <!-- True Positive -->
+              <div class="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
+                <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold block">True Positive (TP)</span>
+                <span id="cm-tp" class="text-2xl font-bold font-mono text-blue-600 dark:text-blue-400">23</span>
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Correctly Flagged</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Class-Sensitive Metrics Readouts (7 cols) -->
+          <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="bg-[var(--background)] p-3 rounded-xl border border-[var(--border)] text-xs">
+              <span class="text-[var(--muted-foreground)] block">Sensitivity (Recall)</span>
+              <span id="m-sens" class="text-xl font-bold font-mono text-blue-500">88.5%</span>
+              <span class="text-[10px] text-[var(--muted-foreground)] block mt-0.5">TP / (TP + FN)</span>
+            </div>
+
+            <div class="bg-[var(--background)] p-3 rounded-xl border border-[var(--border)] text-xs">
+              <span class="text-[var(--muted-foreground)] block">Specificity (TNR)</span>
+              <span id="m-spec" class="text-xl font-bold font-mono text-emerald-500">92.5%</span>
+              <span class="text-[10px] text-[var(--muted-foreground)] block mt-0.5">TN / (TN + FP)</span>
+            </div>
+
+            <div class="bg-[var(--background)] p-3 rounded-xl border border-[var(--border)] text-xs">
+              <span class="text-[var(--muted-foreground)] block">Precision (PPV)</span>
+              <span id="m-prec" class="text-xl font-bold font-mono text-[var(--foreground)]">85.2%</span>
+              <span class="text-[10px] text-[var(--muted-foreground)] block mt-0.5">TP / (TP + FP)</span>
+            </div>
+
+            <div class="bg-[var(--background)] p-3 rounded-xl border border-[var(--border)] text-xs">
+              <span class="text-[var(--muted-foreground)] block">Overall Accuracy</span>
+              <span id="m-acc" class="text-xl font-bold font-mono text-[var(--foreground)]">91.1%</span>
+              <span class="text-[10px] text-[var(--muted-foreground)] block mt-0.5">(TP + TN) / N</span>
+            </div>
+
+            <div class="bg-[var(--background)] p-3 rounded-xl border border-[var(--border)] text-xs">
+              <span class="text-[var(--muted-foreground)] block">F1-Score</span>
+              <span id="m-f1" class="text-xl font-bold font-mono text-[var(--foreground)]">0.868</span>
+              <span class="text-[10px] text-[var(--muted-foreground)] block mt-0.5">Harmonic Mean</span>
+            </div>
+
+            <div class="bg-[var(--background)] p-3 rounded-xl border border-[var(--border)] text-xs">
+              <span class="text-[var(--muted-foreground)] block">AUC-ROC (Fixed)</span>
+              <span class="text-xl font-bold font-mono text-purple-500">0.980</span>
+              <span class="text-[10px] text-[var(--muted-foreground)] block mt-0.5">Global Discrim.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 3: HYPOTHESIS TESTING EXPLORER -->
+    <!-- ============================================================== -->
+    <section id="tab-hypotheses" class="tab-pane hidden space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Test 1 Card -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-4">
+          <div class="flex justify-between items-start">
+            <span class="text-[11px] font-semibold text-purple-500 bg-purple-500/10 px-2 py-0.5 rounded">RQ1: Persistence</span>
+            <span class="text-xs text-[var(--muted-foreground)] font-mono">FR-05</span>
+          </div>
+          <h3 class="font-bold text-sm text-[var(--foreground)]">Period 2 (G2) vs Final Grade (G3)</h3>
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+            Examines linear and monotonic correlation between mid-course assessment and final achievement.
+          </p>
+
+          <div class="space-y-2 text-xs border-t border-[var(--border)] pt-3">
+            <div class="flex justify-between">
+              <span class="text-[var(--muted-foreground)]">Pearson r:</span>
+              <span class="font-mono font-bold text-[var(--foreground)]">0.9049 (p &lt; 0.0001)</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-[var(--muted-foreground)]">95% Confidence:</span>
+              <span class="font-mono text-[var(--foreground)]">[0.8844, 0.9218]</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-[var(--muted-foreground)]">Spearman &rho;:</span>
+              <span class="font-mono font-bold text-[var(--foreground)]">0.9571 (p &lt; 0.0001)</span>
+            </div>
+          </div>
+          <div class="p-2.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-600 dark:text-emerald-400">
+            <strong>Conclusion:</strong> Reject H₀. Academic progression exhibits near-deterministic continuity across periods.
+          </div>
+        </div>
+
+        <!-- Test 2 Card -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-4">
+          <div class="flex justify-between items-start">
+            <span class="text-[11px] font-semibold text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded">RQ2: Study Habit</span>
+            <span class="text-xs text-[var(--muted-foreground)] font-mono">FR-05</span>
+          </div>
+          <h3 class="font-bold text-sm text-[var(--foreground)]">Study Time Cohort Comparison</h3>
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+            One-way ANOVA and Kruskal-Wallis across 4 weekly study duration tiers (&lt;2h, 2-5h, 5-10h, &gt;10h).
+          </p>
+
+          <div class="space-y-2 text-xs border-t border-[var(--border)] pt-3">
+            <div class="flex justify-between">
+              <span class="text-[var(--muted-foreground)]">ANOVA F(3, 391):</span>
+              <span class="font-mono font-bold text-[var(--foreground)]">1.7278 (p = 0.1607)</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-[var(--muted-foreground)]">Effect Size (&eta;²):</span>
+              <span class="font-mono text-[var(--foreground)]">0.0131 (1.3% var)</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-[var(--muted-foreground)]">Kruskal-Wallis H:</span>
+              <span class="font-mono font-bold text-[var(--foreground)]">7.5789 (p = 0.0556)</span>
+            </div>
+          </div>
+          <div class="p-2.5 rounded bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-600 dark:text-amber-400">
+            <strong>Conclusion:</strong> Fail to reject H₀ at &alpha;=0.05. Self-reported hours alone do not differentiate marks without study quality controls.
+          </div>
+        </div>
+
+        <!-- Test 3 Card -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-4">
+          <div class="flex justify-between items-start">
+            <span class="text-[11px] font-semibold text-red-500 bg-red-500/10 px-2 py-0.5 rounded">RQ3: Institutional</span>
+            <span class="text-xs text-[var(--muted-foreground)] font-mono">FR-05</span>
+          </div>
+          <h3 class="font-bold text-sm text-[var(--foreground)]">School Support vs At-Risk Status</h3>
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+            Chi-Square test of independence with Yates correction and Fisher's exact test for `schoolsup`.
+          </p>
+
+          <div class="space-y-2 text-xs border-t border-[var(--border)] pt-3">
+            <div class="flex justify-between">
+              <span class="text-[var(--muted-foreground)]">Chi² (Yates, df=1):</span>
+              <span class="font-mono font-bold text-[var(--foreground)]">3.3307 (p = 0.0680)</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-[var(--muted-foreground)]">Fisher Exact (2-tail):</span>
+              <span class="font-mono text-[var(--foreground)]">p = 0.0555</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-[var(--muted-foreground)]">Odds Ratio (OR):</span>
+              <span class="font-mono font-bold text-[var(--foreground)]">1.8194 (45% vs 31%)</span>
+            </div>
+          </div>
+          <div class="p-2.5 rounded bg-blue-500/10 border border-blue-500/20 text-[11px] text-blue-600 dark:text-blue-400">
+            <strong>Non-Causal Note:</strong> Association reflects compensatory remedial targeting (students already behind receive tutoring).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 4: COHORT DATA EXPLORER -->
+    <!-- ============================================================== -->
+    <section id="tab-data" class="tab-pane hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h2 class="text-base font-bold text-[var(--foreground)]">UCI Mathematics Cohort Browser</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">Showing records with period marks, behavioral features, and computed at-risk indicator</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <select id="filter-status" class="bg-[var(--background)] border border-[var(--border)] rounded px-2.5 py-1 text-xs" onchange="filterCohort()">
+              <option value="all">All Statuses (395)</option>
+              <option value="risk">At-Risk Only (G3 &lt; 10)</option>
+              <option value="pass">Passing Only (G3 &ge; 10)</option>
+            </select>
+            <input id="search-input" type="text" placeholder="Search (school, sex, job)..." class="bg-[var(--background)] border border-[var(--border)] rounded px-2.5 py-1 text-xs w-44" oninput="filterCohort()">
+          </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="overflow-x-auto border border-[var(--border)] rounded-lg">
+          <table class="w-full text-xs text-left">
+            <thead class="bg-[var(--background)] border-b border-[var(--border)] text-[var(--muted-foreground)]">
+              <tr>
+                <th class="py-2.5 px-3 font-semibold">ID</th>
+                <th class="py-2.5 px-3 font-semibold">School</th>
+                <th class="py-2.5 px-3 font-semibold">Sex</th>
+                <th class="py-2.5 px-3 font-semibold">Age</th>
+                <th class="py-2.5 px-3 font-semibold">Study Time</th>
+                <th class="py-2.5 px-3 font-semibold">Support</th>
+                <th class="py-2.5 px-3 font-semibold">Absences</th>
+                <th class="py-2.5 px-3 font-semibold">G1</th>
+                <th class="py-2.5 px-3 font-semibold">G2</th>
+                <th class="py-2.5 px-3 font-semibold">G3 (Final)</th>
+                <th class="py-2.5 px-3 font-semibold">Status</th>
+              </tr>
+            </thead>
+            <tbody id="cohort-tbody" class="divide-y divide-[var(--border)]">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Client-Side JavaScript Logic -->
+  <script>
+    // Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('border-[var(--primary)]', 'text-[var(--primary)]');
+        el.classList.add('border-transparent', 'text-[var(--muted-foreground)]');
+      });
+
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+      const activeBtn = document.getElementById('tab-btn-tabId' || 'tab-btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.remove('border-transparent', 'text-[var(--muted-foreground)]');
+        activeBtn.classList.add('border-[var(--primary)]', 'text-[var(--primary)]');
+      }
+    }
+
+    // Predictive Simulator Logic
+    function applyPreset(g1, g2, study, abs, fails, sup) {
+      document.getElementById('in-g1').value = g1;
+      document.getElementById('in-g2').value = g2;
+      document.getElementById('in-study').value = study;
+      document.getElementById('in-abs').value = abs;
+      document.getElementById('in-fails').value = fails;
+      document.getElementById('in-sup').value = sup;
+      runModels();
+    }
+
+    function runModels() {
+      const g1 = parseFloat(document.getElementById('in-g1').value);
+      const g2 = parseFloat(document.getElementById('in-g2').value);
+      const study = parseFloat(document.getElementById('in-study').value);
+      const abs = parseFloat(document.getElementById('in-abs').value);
+      const fails = parseFloat(document.getElementById('in-fails').value);
+      const sup = document.getElementById('in-sup').value === 'yes' ? 1 : 0;
+
+      // Update indicators
+      document.getElementById('g1-num').innerText = g1 + ' / 20';
+      document.getElementById('g2-num').innerText = g2 + ' / 20';
+      document.getElementById('abs-num').innerText = abs + ' sessions';
+      document.getElementById('fails-num').innerText = fails;
+
+      // 1. OLS Linear Model
+      let predG3 = -1.5618 + (0.1770 * g1) + (0.9586 * g2) - (0.2015 * study) + (0.0434 * abs) - (0.1515 * fails);
+      predG3 = Math.max(0, Math.min(20, predG3));
+      document.getElementById('out-g3').innerText = predG3.toFixed(1);
+
+      const gradeBar = document.getElementById('out-grade-bar');
+      gradeBar.style.width = ((predG3 / 20) * 100) + '%';
+
+      const badge = document.getElementById('out-status-badge');
+      if (predG3 >= 14) {
+        badge.innerText = 'High Achievement';
+        badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-500';
+        gradeBar.className = 'h-full bg-emerald-500 transition-all duration-200';
+      } else if (predG3 >= 10) {
+        badge.innerText = 'Passing Trajectory';
+        badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-500';
+        gradeBar.className = 'h-full bg-blue-500 transition-all duration-200';
+      } else {
+        badge.innerText = 'At-Risk Alert (G3 < 10)';
+        badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-red-500/15 text-red-500';
+        gradeBar.className = 'h-full bg-red-500 transition-all duration-200';
+      }
+
+      // 2. Logistic Model
+      const logit = 18.2194 - (0.2911 * g1) - (1.8552 * g2) + (0.5999 * study) + (0.0501 * abs) - (0.2111 * fails) - (0.5313 * sup);
+      const prob = 1 / (1 + Math.exp(-logit));
+      const pct = prob * 100;
+
+      document.getElementById('out-prob').innerText = pct.toFixed(1) + '%';
+      const riskBar = document.getElementById('out-risk-bar');
+      riskBar.style.width = pct + '%';
+
+      const riskLevel = document.getElementById('out-risk-level');
+      const adviceText = document.getElementById('out-advice-text');
+
+      if (prob >= 0.50) {
+        riskLevel.innerText = 'High Risk';
+        riskLevel.className = 'text-xs font-bold text-red-500';
+        riskBar.className = 'h-full bg-red-500 transition-all duration-200';
+        adviceText.innerHTML = '<span class="text-red-500 font-semibold">Immediate Review Required:</span> Student probability of failing final exam is elevated. Recommend structured office hours, diagnostic review of Period 1 & 2 deficiencies, and parent-educator conference.';
+      } else if (prob >= 0.25) {
+        riskLevel.innerText = 'Moderate Risk';
+        riskLevel.className = 'text-xs font-bold text-amber-500';
+        riskBar.className = 'h-full bg-amber-500 transition-all duration-200';
+        adviceText.innerHTML = '<span class="text-amber-500 font-semibold">Early Watchlist:</span> Student is borderline. Monitor subsequent homework submissions and offer optional peer-tutoring groups.';
+      } else {
+        riskLevel.innerText = 'Low Risk';
+        riskLevel.className = 'text-xs font-bold text-emerald-500';
+        riskBar.className = 'h-full bg-emerald-500 transition-all duration-200';
+        adviceText.innerText = 'Performance indicators indicate satisfactory progress. Standard periodic monitoring is sufficient.';
+      }
+    }
+
+    // ==============================================================
+    // TEST SET EVALUATOR & CONFUSION MATRIX SIMULATOR
+    // ==============================================================
+    // Compact representation of 79 held-out test predictions (a: actual 0/1, p: predicted prob)
+    const testSet = [{"a": 1, "p": 0.9995}, {"a": 0, "p": 0.1346}, {"a": 0, "p": 0.5485}, {"a": 1, "p": 0.8515}, {"a": 1, "p": 0.9973}, {"a": 0, "p": 0.0003}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.0}, {"a": 1, "p": 0.8973}, {"a": 0, "p": 0.0008}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.0}, {"a": 1, "p": 1.0}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.0002}, {"a": 0, "p": 0.1124}, {"a": 0, "p": 0.5994}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.0}, {"a": 1, "p": 1.0}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.4759}, {"a": 1, "p": 0.7332}, {"a": 0, "p": 0.3514}, {"a": 0, "p": 0.0741}, {"a": 1, "p": 0.8373}, {"a": 1, "p": 0.8815}, {"a": 0, "p": 0.1877}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.0004}, {"a": 0, "p": 0.035}, {"a": 0, "p": 0.0044}, {"a": 1, "p": 0.9997}, {"a": 1, "p": 0.9999}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.002}, {"a": 0, "p": 0.0008}, {"a": 0, "p": 0.0013}, {"a": 0, "p": 0.0}, {"a": 1, "p": 0.1012}, {"a": 0, "p": 0.0799}, {"a": 0, "p": 0.0093}, {"a": 1, "p": 0.1909}, {"a": 1, "p": 0.9698}, {"a": 1, "p": 0.9988}, {"a": 1, "p": 0.9483}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.6505}, {"a": 1, "p": 0.6818}, {"a": 1, "p": 0.6483}, {"a": 1, "p": 0.6372}, {"a": 0, "p": 0.0013}, {"a": 0, "p": 0.0266}, {"a": 1, "p": 0.9947}, {"a": 0, "p": 0.0204}, {"a": 0, "p": 0.0311}, {"a": 0, "p": 0.0001}, {"a": 0, "p": 0.0}, {"a": 1, "p": 0.9986}, {"a": 0, "p": 0.0039}, {"a": 0, "p": 0.0001}, {"a": 0, "p": 0.0}, {"a": 1, "p": 0.9275}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.0089}, {"a": 0, "p": 0.5029}, {"a": 1, "p": 0.9999}, {"a": 0, "p": 0.0707}, {"a": 1, "p": 0.1106}, {"a": 0, "p": 0.0108}, {"a": 0, "p": 0.1366}, {"a": 1, "p": 0.9947}, {"a": 0, "p": 0.0016}, {"a": 0, "p": 0.0}, {"a": 0, "p": 0.0848}, {"a": 0, "p": 0.0001}, {"a": 0, "p": 0.0}, {"a": 1, "p": 0.9973}];
+
+    function setThreshold(val) {
+      document.getElementById('thresh-slider').value = val;
+      updateConfusionMatrix();
+    }
+
+    function updateConfusionMatrix() {
+      const tau = parseFloat(document.getElementById('thresh-slider').value);
+      document.getElementById('thresh-val').innerText = tau.toFixed(4);
+
+      let tn = 0, fp = 0, fn = 0, tp = 0;
+      testSet.forEach(item => {
+        const pred = item.p >= tau ? 1 : 0;
+        if (item.a === 0 && pred === 0) tn++;
+        else if (item.a === 0 && pred === 1) fp++;
+        else if (item.a === 1 && pred === 0) fn++;
+        else if (item.a === 1 && pred === 1) tp++;
+      });
+
+      document.getElementById('cm-tn').innerText = tn;
+      document.getElementById('cm-fp').innerText = fp;
+      document.getElementById('cm-fn').innerText = fn;
+      document.getElementById('cm-tp').innerText = tp;
+
+      const total = tn + fp + fn + tp;
+      const acc = (tp + tn) / total;
+      const sens = (tp + fn) > 0 ? (tp / (tp + fn)) : 0;
+      const spec = (tn + fp) > 0 ? (tn / (tn + fp)) : 0;
+      const prec = (tp + fp) > 0 ? (tp / (tp + fp)) : 0;
+      const f1 = (prec + sens) > 0 ? (2 * prec * sens / (prec + sens)) : 0;
+
+      document.getElementById('m-acc').innerText = (acc * 100).toFixed(1) + '%';
+      document.getElementById('m-sens').innerText = (sens * 100).toFixed(1) + '%';
+      document.getElementById('m-spec').innerText = (spec * 100).toFixed(1) + '%';
+      document.getElementById('m-prec').innerText = (prec * 100).toFixed(1) + '%';
+      document.getElementById('m-f1').innerText = f1.toFixed(3);
+    }
+
+    // Cohort Data Sample Generator & Filter
+    const sampleCohort = [
+      { id: 1, school: "GP", sex: "F", age: 18, study: 2, sup: "yes", abs: 6, g1: 5, g2: 6, g3: 6 },
+      { id: 2, school: "GP", sex: "F", age: 17, study: 2, sup: "no", abs: 4, g1: 5, g2: 5, g3: 6 },
+      { id: 3, school: "GP", sex: "F", age: 15, study: 2, sup: "yes", abs: 10, g1: 7, g2: 8, g3: 10 },
+      { id: 4, school: "GP", sex: "F", age: 15, study: 3, sup: "no", abs: 2, g1: 15, g2: 14, g3: 15 },
+      { id: 5, school: "GP", sex: "F", age: 16, study: 2, sup: "no", abs: 4, g1: 6, g2: 10, g3: 10 },
+      { id: 6, school: "GP", sex: "M", age: 16, study: 2, sup: "no", abs: 10, g1: 15, g2: 15, g3: 15 },
+      { id: 7, school: "GP", sex: "M", age: 16, study: 2, sup: "no", abs: 0, g1: 12, g2: 12, g3: 11 },
+      { id: 8, school: "GP", sex: "F", age: 17, study: 2, sup: "yes", abs: 6, g1: 6, g2: 5, g3: 6 },
+      { id: 9, school: "GP", sex: "M", age: 15, study: 2, sup: "no", abs: 0, g1: 16, g2: 18, g3: 19 },
+      { id: 10, school: "GP", sex: "M", age: 15, study: 2, sup: "no", abs: 0, g1: 14, g2: 15, g3: 15 },
+      { id: 11, school: "GP", sex: "F", age: 15, study: 2, sup: "no", abs: 0, g1: 10, g2: 8, g3: 9 },
+      { id: 12, school: "GP", sex: "F", age: 15, study: 3, sup: "no", abs: 4, g1: 10, g2: 12, g3: 12 },
+      { id: 129, school: "GP", sex: "M", age: 18, study: 1, sup: "no", abs: 0, g1: 7, g2: 4, g3: 0 },
+      { id: 131, school: "GP", sex: "F", age: 15, study: 1, sup: "no", abs: 0, g1: 8, g2: 0, g3: 0 },
+      { id: 395, school: "MS", sex: "M", age: 19, study: 1, sup: "no", abs: 5, g1: 8, g2: 9, g3: 9 }
+    ];
+
+    function filterCohort() {
+      const statusFilter = document.getElementById('filter-status').value;
+      const search = document.getElementById('search-input').value.toLowerCase();
+      const tbody = document.getElementById('cohort-tbody');
+      tbody.innerHTML = '';
+
+      sampleCohort.forEach(s => {
+        const isRisk = s.g3 < 10;
+        if (statusFilter === 'risk' && !isRisk) return;
+        if (statusFilter === 'pass' && isRisk) return;
+
+        const str = `${s.school} ${s.sex} ${s.sup}`.toLowerCase();
+        if (search && !str.includes(search)) return;
+
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-[var(--background)] transition';
+        row.innerHTML = `
+          <td class="py-2.5 px-3 font-mono text-[var(--muted-foreground)]">#${s.id}</td>
+          <td class="py-2.5 px-3 font-medium">${s.school}</td>
+          <td class="py-2.5 px-3">${s.sex}</td>
+          <td class="py-2.5 px-3">${s.age}</td>
+          <td class="py-2.5 px-3">Tier ${s.study}</td>
+          <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded text-[10px] ${s.sup === 'yes' ? 'bg-purple-500/15 text-purple-500 font-semibold' : 'text-[var(--muted-foreground)]'}">${s.sup}</span></td>
+          <td class="py-2.5 px-3 font-mono">${s.abs}</td>
+          <td class="py-2.5 px-3 font-mono font-medium">${s.g1}</td>
+          <td class="py-2.5 px-3 font-mono font-medium">${s.g2}</td>
+          <td class="py-2.5 px-3 font-mono font-bold ${isRisk ? 'text-red-500' : 'text-emerald-500'}">${s.g3}</td>
+          <td class="py-2.5 px-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-semibold ${isRisk ? 'bg-red-500/15 text-red-500' : 'bg-emerald-500/15 text-emerald-500'}">
+              ${isRisk ? 'At-Risk' : 'Passing'}
+            </span>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    // Initialize
+    runModels();
+    updateConfusionMatrix();
+    filterCohort();
+  </script>
+</body>
+</html>

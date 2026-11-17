@@ -86,7 +86,7 @@ class SupplyChainRequestHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             return
 
-        if path == "/presentation" or path == "/presentation.html":
+        if path in ("/presentation", "/presentation.html"):
             pres_path = os.path.join(STATIC_DIR, "presentation.html")
             if not os.path.exists(pres_path):
                 pres_path = os.path.join(os.path.dirname(STATIC_DIR), "..", "presentation.html")
@@ -101,6 +101,23 @@ class SupplyChainRequestHandler(SimpleHTTPRequestHandler):
                 return
             else:
                 self._send_json(404, {"error": "Presentation template not found"})
+                return
+
+        if path in ("/comagent", "/comagent.html", "/comagent-presentation", "/comagent_presentation.html"):
+            comagent_path = os.path.join(STATIC_DIR, "comagent_presentation.html")
+            if not os.path.exists(comagent_path):
+                comagent_path = os.path.join(os.path.dirname(STATIC_DIR), "..", "comagent_presentation.html")
+            if os.path.exists(comagent_path):
+                with open(comagent_path, 'rb') as f:
+                    content = f.read()
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.end_headers()
+                self.wfile.write(content)
+                return
+            else:
+                self._send_json(404, {"error": "ComAgent presentation template not found"})
                 return
 
         if path == "/" or path == "/index.html":
